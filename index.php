@@ -59,7 +59,7 @@
   </div>
   <div class="row">
     <div class="col text-center">
-      <p class="mt-4 mb-3 text-muted">&copy; 2020</p>
+      <p class="mt-4 mb-3 text-muted">&copy; 2020 <br>Version 1.0</p>
     </div>
   </div>
   </div>
