@@ -1,6 +1,6 @@
 <html:5>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-      <img src="../assets/img/icon.png" class="card-img-top" alt="Imagen" style="width: 30px; align-self: center;">
+      <img src="../assets/img/icon.png" class="card-img-top img-nav" alt="Imagen">
       <a class="navbar-brand" href="index.php">&nbsp&nbsp&nbspActfast</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>

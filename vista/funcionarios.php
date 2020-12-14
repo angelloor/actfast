@@ -25,8 +25,8 @@
     <!-- SCRIPTS -->
     <script src="../assets/js/all.min.js"></script>
     <script src="../assets/js/jquery.js"></script>
-    <script src="../assets/js/jquery.dataTables.min.js"></script>
     <script src="../js/funcionario.js"></script>
+    <link rel="stylesheet" href="../assets/css/main.css">
   </head>
   <body>
   <!-- HEADER -->
@@ -52,7 +52,7 @@
   <!-- Gestionar  -->
   <div class="container-fluid">
         <div class="card">
-            <div class="card-header bg-primary" style="color: white;">
+            <div class="card-header bg-primary text-color-white">
                   <h5>Gestionar Funcionarios</h5>
             </div>
             <div class="card-body">
@@ -88,12 +88,12 @@
                     </div>
                     <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 mt-2">
                         <label for="cargo">Cargo</label>
-                        <select name="cargoFuncionario" class="form-control" style="border-radius: 5px;" id="cargoFuncionario">
+                        <select name="cargoFuncionario" class="form-control br" id="cargoFuncionario">
                        </select>
                     </div>
                     <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 mt-2">
                         <label for="Unidad">Unidad</label>
-                        <select name="unidadFuncionario" class="form-control" style="border-radius: 5px;" id="unidadFuncionario">
+                        <select name="unidadFuncionario" class="form-control br" id="unidadFuncionario">
                        </select>
                     </div>
                 </div>
@@ -109,7 +109,7 @@
                             <th scope="col">Teléfono</th>
                             <th scope="col">Cargo</th>
                             <th scope="col">Unidad</th>
-                            <th style='text-align: right;'>Acciones</th>
+                            <th class="th-text-align-right">Acciones</th>
                         </tr>
                     </thead>
                     <tbody id="datos">

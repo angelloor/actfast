@@ -25,8 +25,8 @@
     <!-- SCRIPTS -->
     <script src="../assets/js/all.min.js"></script>
     <script src="../assets/js/jquery.js"></script>
-    <script src="../assets/js/jquery.dataTables.min.js"></script>
     <script src="../js/gestionActa.js"></script>
+    <link rel="stylesheet" href="../assets/css/main.css">
   </head>
   <body>
   <!-- HEADER -->
@@ -52,7 +52,7 @@
 <!-- Gestionar  -->
 <div class="container-fluid">
         <div class="card">
-            <div class="card-header bg-primary" style="color: white;">
+            <div class="card-header bg-primary text-color-white">
                   <h5>Gestionar Actas</h5>
             </div>
             <div class="card-body">
@@ -65,7 +65,7 @@
                         </div>
                     </div>
                     <div class="col-12 col-sm-12 col-md-5 col-xl-5">
-                        <div class="btn-toolbar" style="place-content: flex-end;">
+                        <div class="btn-toolbar pc-flex-end">
                             <div class="btn-group mt-2">
                                 <button class="btn btn-success mr-2" type="submit" onclick="mostrarTodo();"><span class="fa fa-search"></span>&nbsp&nbspMostrar Todo</button>
                             </div>
@@ -82,18 +82,18 @@
                 <div class="row">
                     <div class="col-md-6 mt-2">
                         <label for="funcionario">Funcionario</label>
-                        <select name="idPersona" id="idPersona" class="form-control" style="border-radius: 5px;">
+                        <select name="idPersona" id="idPersona" class="form-control br">
                        </select>
                     </div>
                     <div class="col-md-6 mt-2">
                         <label for="activo">Activo</label>
                         <datalist id="activo" name="activo">
                         </datalist>
-                        <input id="codigoActivo" list="activo" class="form-control" style="border-radius: 5px;">
+                        <input id="codigoActivo" list="activo" class="form-control br">
                     </div>
                     <div class="col-md-6 mt-2">
                         <label for="custodio">Custodio</label>
-                        <select name="custodio" id="custodio" class="form-control" style="border-radius: 5px;">
+                        <select name="custodio" id="custodio" class="form-control br">
                        </select>
                     </div>
                     <div class="col-md-6 mt-2">
@@ -111,7 +111,7 @@
                             <th>Codigo activo</th>
                             <th>Custodio</th>
                             <th>Fecha</th>
-                            <th style='text-align: right;'>Acciones</th>
+                            <th class="th-text-align-right">Acciones</th>
                         </tr>
                     </thead>
                     <tbody id="datos">

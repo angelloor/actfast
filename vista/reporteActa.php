@@ -25,8 +25,8 @@
     <!-- SCRIPTS -->
     <script src="../assets/js/all.min.js"></script>
     <script src="../assets/js/jquery.js"></script>
-    <script src="../assets/js/jquery.dataTables.min.js"></script>
     <script src="../js/reporteActa.js"></script>
+    <link rel="stylesheet" href="../assets/css/main.css">
   </head>
   <body>
   <!-- HEADER -->
@@ -52,7 +52,7 @@
 <div class="container-fluid">
     <form action="../modelo/report.php" method="POST" target="blank">
         <div class="card">
-            <div class="card-header bg-primary" style="color: white;">
+            <div class="card-header bg-primary text-color-white">
                   <h5>Reporte de Actas</h5>
             </div>
             <div class="card-body">
@@ -68,27 +68,27 @@
                 <div class="row">
                     <div class="col-12 col-sm-6 col-md-4 col-lg-4 mt-3">
                         <label for="categoria">Categoria</label>
-                        <select name="categoria" class="form-control" style="border-radius: 5px;" id="categoria">
+                        <select name="categoria" class="form-control br" id="categoria">
                        </select>
                     </div>
                     <div class="col-12 col-sm-6 col-md-4 col-lg-4 mt-3">
                         <label for="marca">Marca</label>
-                        <select name="marca" class="form-control" style="border-radius: 5px;" id="marca">
+                        <select name="marca" class="form-control br" id="marca">
                        </select>
                     </div>
                     <div class="col-12 col-sm-6 col-md-4 col-lg-4 mt-3">
                         <label for="estado">Estado</label>
-                        <select name="estado" class="form-control" style="border-radius: 5px;" id="estado">
+                        <select name="estado" class="form-control br" id="estado">
                        </select>
                     </div>
                     <div class="col-md-6 mt-2">
                         <label for="custodio">Custodio</label>
-                        <select name="custodio" class="form-control" style="border-radius: 5px;" id="custodio">
+                        <select name="custodio" class="form-control br" id="custodio">
                        </select>
                     </div>
                     <div class="col-md-6 mt-2">
                         <label for="funcionario">Funcionario</label>
-                        <select name="funcionario" class="form-control" style="border-radius: 5px;" id="funcionario">
+                        <select name="funcionario" class="form-control br" id="funcionario">
                        </select>
                     </div>
                 </div>

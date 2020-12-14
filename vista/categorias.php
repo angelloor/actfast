@@ -25,8 +25,8 @@
     <!-- SCRIPTS -->
     <script src="../assets/js/all.min.js"></script>
     <script src="../assets/js/jquery.js"></script>
-    <script src="../assets/js/jquery.dataTables.min.js"></script>
     <script src="../js/categoria.js"></script>
+    <link rel="stylesheet" href="../assets/css/main.css">   
   </head>
   <body>
   <!-- HEADER -->
@@ -52,7 +52,7 @@
   <!-- Gestionar  -->
   <div class="container-fluid">
         <div class="card">
-            <div class="card-header bg-primary" style="color: white;">
+            <div class="card-header bg-primary text-color-white">
                   <h5>Gestionar Categorías</h5>
             </div>
             <div class="card-body">
@@ -87,7 +87,7 @@
                             <th>ID</th>
                             <th>Nombre</th>
                             <th>Descripción</th>
-                            <th style='text-align: right;'>Acciones</th>
+                            <th class="th-text-align-right">Acciones</th>
                         </tr>
                     </thead>
                     <tbody id="datos">

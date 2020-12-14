@@ -25,8 +25,8 @@
     <!-- SCRIPTS -->
     <script src="../assets/js/all.min.js"></script>
     <script src="../assets/js/jquery.js"></script>
-    <script src="../assets/js/jquery.dataTables.min.js"></script>
     <script src="../js/usuario.js"></script>
+    <link rel="stylesheet" href="../assets/css/main.css">
   </head>
   <body>
   <!-- HEADER -->
@@ -52,7 +52,7 @@
 <!-- Gestionar  -->
 <div class="container-fluid">
         <div class="card">
-            <div class="card-header bg-primary" style="color: white;">
+            <div class="card-header bg-primary text-color-white">
                   <h5>Gestionar Usuarios</h5>
             </div>
             <div class="card-body">
@@ -72,7 +72,7 @@
                 <div class="row">
                     <div class="col-md-6 mt-2">
                         <label for="funcionario">Funcionario</label>
-                        <select name="idPersona" class="form-control" style="border-radius: 5px;" id="idPersona">
+                        <select name="idPersona" class="form-control br" id="idPersona">
                        </select>
                     </div>
                     <div class="col-md-6 mt-2">
@@ -85,7 +85,7 @@
                     </div>
                     <div class="col-md-6 mt-2">
                         <label for="rol">Rol</label>
-                        <select name="rol" class="form-control" style="border-radius: 5px;" id="rol">
+                        <select name="rol" class="form-control br" id="rol">
                        </select>
                     </div>
                 </div>
@@ -99,7 +99,7 @@
                             <th>Nombre de usuario</th>
                             <th>Clave</th>
                             <th>Rol</th>
-                            <th style='text-align: right;'>Acciones</th>
+                            <th class="th-text-align-right">Acciones</th>
                         </tr>
                     </thead>
                     <tbody id="datos">

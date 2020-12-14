@@ -25,13 +25,13 @@
     <!-- SCRIPTS -->
     <script src="../assets/js/all.min.js"></script>
     <script src="../assets/js/jquery.js"></script>
-    <script src="../assets/js/jquery.dataTables.min.js"></script>
     <script src="../js/main.js"></script>
+    <link rel="stylesheet" href="../assets/css/main.css">
   </head>
   <body>
   <!-- header -->
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-      <img src="../assets/img/icon.png" class="card-img-top" alt="Imagen" style="width: 30px; align-self: center;">
+      <img src="../assets/img/icon.png" class="card-img-top img-nav" alt="Imagen">
       <a class="navbar-brand" href="index.php">&nbsp&nbsp&nbspActfast</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -98,8 +98,8 @@
 <div class="container text-center">
   <div class="row text-center">
         <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">                      
-          <div class="card-sm" id="card-inicio" style="width: 18rem;">
-            <img src="../assets/img/gac.png" class="card-img-top mt-3" alt="Imagen" style="width: 30px; align-self: center;">
+          <div class="card-sm width-card" id="card-inicio">
+            <img src="../assets/img/ga.png" class="card-img-top mt-3 img-card" alt="Imagen">
             <div class="card-body">
               <h5 class="card-title">Generar actas</h5>
               <p class="card-text">Todas la actas con un solo click</p>
@@ -108,8 +108,8 @@
           </div>
         </div>
         <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">                      
-          <div class="card-sm" id="card-inicio" style="width: 18rem;">
-            <img src="../assets/img/au.png" class="card-img-top mt-3" alt="Imagen" style="width: 30px; align-self: center;">
+          <div class="card-sm width-card" id="card-inicio">
+            <img src="../assets/img/au.png" class="card-img-top mt-3 img-card" alt="Imagen">
             <div class="card-body">
               <h5 class="card-title">Generar actas por usuario </h5>
               <p class="card-text">Solo tienes que seleccionar el usuario y listo!</p>
@@ -118,8 +118,8 @@
           </div>
         </div>
         <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 mt-1">                      
-          <div class="card-sm" id="card-inicio" style="width: 18rem;">
-            <img src="../assets/img/au.png" class="card-img-top mt-3" alt="Imagen" style="width: 30px; align-self: center;">
+          <div class="card-sm width-card" id="card-inicio">
+            <img src="../assets/img/au.png" class="card-img-top mt-3 img-card" alt="Imagen">
             <div class="card-body">
               <h5 class="card-title">Generar actas usuario y bien</h5>
               <p class="card-text">Genera un acta con el usuario y el bien a cargo</p>
@@ -128,8 +128,8 @@
           </div>
         </div>
         <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">                      
-          <div class="card-sm" id="card-inicio" style="width: 18rem;">
-            <img src="../assets/img/ci.png" class="card-img-top mt-3" alt="Imagen" style="width: 30px; align-self: center;">
+          <div class="card-sm width-card" id="card-inicio">
+            <img src="../assets/img/ci.png" class="card-img-top mt-3 img-card" alt="Imagen">
             <div class="card-body">
               <h5 class="card-title">Comprobar Inventario</h5>
               <p class="card-text">Comprueba los activos de la institucion</p>
@@ -138,10 +138,20 @@
           </div>
         </div>
         <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 mt-1">                      
-          <div class="card-sm" id="card-inicio" style="width: 18rem;">
-            <img src="../assets/img/ri.png" class="card-img-top mt-3" alt="Imagen" style="width: 30px; align-self: center;">
+          <div class="card-sm width-card" id="card-inicio">
+            <img src="../assets/img/rp.png" class="card-img-top mt-3 img-card" alt="Imagen">
             <div class="card-body">
               <h5 class="card-title">Reportes</h5>
+              <p class="card-text">Reporte sobre activos y actas</p>
+              <a href="./reporteActa.php" class="btn btn-primary">Acceder</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 mt-1">                      
+          <div class="card-sm width-card" id="card-inicio">
+            <img src="../assets/img/ad.png" class="card-img-top mt-3 img-card" alt="Imagen">
+            <div class="card-body">
+              <h5 class="card-title">Actas Digitales</h5>
               <p class="card-text">Reporte sobre activos y actas</p>
               <a href="./reporteActa.php" class="btn btn-primary">Acceder</a>
             </div>

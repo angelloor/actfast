@@ -25,8 +25,8 @@
     <!-- SCRIPTS -->
     <script src="../assets/js/all.min.js"></script>
     <script src="../assets/js/jquery.js"></script>
-    <script src="../assets/js/jquery.dataTables.min.js"></script>
     <script src="../js/activo.js"></script>
+    <link rel="stylesheet" href="../assets/css/main.css">   
   </head>
   <body>
   <!-- HEADER -->
@@ -52,7 +52,7 @@
 <!-- Gestionar  -->
 <div class="container-fluid">
         <div class="card">
-            <div class="card-header bg-primary" style="color: white;">
+            <div class="card-header bg-primary text-color-white">
                   <h5>Gestionar Activos</h5>
             </div>
             <div class="card-body">
@@ -65,7 +65,7 @@
                         </div>
                     </div>
                     <div class="col-12 col-sm-12 col-md-5 col-xl-5">
-                        <div class="btn-toolbar" style="place-content: flex-end;">
+                        <div class="btn-toolbar pc-flex-end">
                             <div class="btn-group mt-2">
                                 <button class="btn btn-success mr-2" type="submit" onclick="mostrarTodo();"><span class="fa fa-search"></span>&nbsp&nbspMostrar Todo</button>
                             </div>
@@ -85,22 +85,22 @@
                 <div class="row">
                     <div class="col-12 col-sm-12- col-md-4 col-lg-3 col-xl-3 mt-2">
                         <label for="categoria">Categoría</label>
-                        <select name="categoria" id="categoria" class="form-control" style="border-radius: 5px;">
+                        <select name="categoria" id="categoria" class="form-control br">
                        </select>
                     </div>
                     <div class="col-12 col-sm-12- col-md-4 col-lg-3 col-xl-3 mt-2">
                         <label for="marca">Marca</label>
-                        <select name="marca" id="marca" class="form-control" style="border-radius: 5px;">
+                        <select name="marca" id="marca" class="form-control br">
                        </select>
                     </div>
                     <div class="col-12 col-sm-12- col-md-4 col-lg-3 col-xl-3 mt-2">
                         <label for="estado"><strong>Estado</strong></label>
-                        <select name="estado" id="estado" class="form-control" style="border-radius: 5px;">
+                        <select name="estado" id="estado" class="form-control br">
                        </select>
                     </div>
                     <div class="col-12 col-sm-12- col-md-4 col-lg-3 col-xl-3 mt-2">
                         <label for="color">Color</label>
-                        <select name="color" id="color" class="form-control" style="border-radius: 5px;">
+                        <select name="color" id="color" class="form-control br">
                        </select>
                     </div>
                     <div class="col-12 col-sm-12- col-md-4 col-lg-3 col-xl-3 mt-2">
@@ -109,12 +109,12 @@
                     </div>
                     <div class="col-12 col-sm-12- col-md-4 col-lg-3 col-xl-3 mt-2">
                         <label for="bodega">Bodega</label>
-                        <select name="bodega" id="bodega" class="form-control" style="border-radius: 5px;">
+                        <select name="bodega" id="bodega" class="form-control br">
                        </select>
                     </div>
                     <div class="col-12 col-sm-12- col-md-4 col-lg-3 col-xl-3 mt-2">
                         <label for="custodio">Custodio</label>
-                        <select name="custodio" id="custodio" class="form-control" style="border-radius: 5px;">
+                        <select name="custodio" id="custodio" class="form-control br">
                        </select>
                     </div>
                     <div class="col-12 col-sm-12- col-md-4 col-lg-3 col-xl-3 mt-2">
@@ -151,7 +151,7 @@
                     </div>
                     <div class="col-12 col-sm-12- col-md-4 col-lg-3 col-xl-3 mt-2">
                         <label for="comprobacionInventario"><strong>Comprobacion Inventario</strong></label>
-                        <select name="comprobacionInventario" id="comprobacionInventario" class="form-control" style="border-radius: 5px;">
+                        <select name="comprobacionInventario" id="comprobacionInventario" class="form-control br">
                             <option>SI</option>
                             <option>NO</option>
                         </select>

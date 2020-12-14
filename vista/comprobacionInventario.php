@@ -25,8 +25,8 @@
     <!-- SCRIPTS -->
     <script src="../assets/js/all.min.js"></script>
     <script src="../assets/js/jquery.js"></script>
-    <script src="../assets/js/jquery.dataTables.min.js"></script>
     <script src="../js/comprobacionInventario.js"></script>
+    <link rel="stylesheet" href="../assets/css/main.css">   
   </head>
   <body>
   <!-- HEADER -->
@@ -51,7 +51,7 @@
 <!-- BREADCRUMB -->
 <div class="container">
         <div class="card">
-            <div class="card-header bg-primary" style="color: white;">
+            <div class="card-header bg-primary text-color-white">
                   <h5>Comprobación de Inventario</h5>
             </div>
             <div class="card-body text">
@@ -72,12 +72,12 @@
                     </div>
                     <div class="col-md-6 mt-2">
                         <label for="estado">Estado</label>
-                        <select name="estado" id="estado" class="form-control" style="border-radius: 5px;" ">
+                        <select name="estado" id="estado" class="form-control br">
                        </select>
                     </div>
                     <div class="col-md-6 mt-2">
                         <label for="funcionario">Funcionario</label>
-                        <select name="funcionario" id="funcionario" class="form-control" style="border-radius: 5px;" ">
+                        <select name="funcionario" id="funcionario" class="form-control br">
                        </select>
                     </div>
                     <div class="col-md-6 mt-2">

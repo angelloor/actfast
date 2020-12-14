@@ -26,10 +26,10 @@
     <!-- SCRIPTS -->
     <script src="assets/js/all.min.js"></script>
     <script src="assets/js/jquery.js"></script>
-    <script src="assets/js/jquery.dataTables.min.js"></script>
     <script src="js/login.js"></script>
+    <link rel="stylesheet" href="./assets/css/main.css">
   </head>
-  <body style="background: #2C3E50; margin-top: 40px;">
+  <body class="bg-branding">
   
   <div class="container pt-5">
   <div class="row pt-5">
@@ -39,7 +39,7 @@
   </div>
   <div class="row">
     <div class="col text-center">
-      <h1 class="h3 mb-3 font-weight-bold" style="color: white;">Actfast</h1>
+      <h1 class="h3 mb-3 font-weight-bold text-color-white">Actfast</h1>
     </div>
   </div>
   <div class="row">
@@ -49,7 +49,7 @@
   </div>
   <div class="row">
     <div class="col-4 offset-4 col-sm-4 offset-4 col-md-4 offset-4 col-xl-4 offset-4 text-center">
-      <input type="password" id="clave" name="clave" class="form-control" placeholder="Contraseña" style="margin-top: 20px"/>
+      <input type="password" id="clave" name="clave" class="form-control mt-20" placeholder="Contraseña"/>
     </div>  
   </div>
   <div class="row pt-3">

@@ -4,7 +4,7 @@ class Conexion extends PDO{
 
     public function __construct(){
         try{
-            parent::__construct("mysql:host=localhost;dbname=actfast", "root", "");
+            parent::__construct("mysql:host=localhost;dbname=actfast", "root", "Puyo16*");
             parent::exec("set names utf8");
         }catch(PDOException $e){
             echo "Error al conectar " . $e->getMessage();

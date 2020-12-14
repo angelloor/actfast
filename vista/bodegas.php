@@ -25,8 +25,8 @@
     <!-- SCRIPTS -->
     <script src="../assets/js/all.min.js"></script>
     <script src="../assets/js/jquery.js"></script>
-    <script src="../assets/js/jquery.dataTables.min.js"></script>
     <script src="../js/bodega.js"></script>
+    <link rel="stylesheet" href="../assets/css/main.css">   
   </head>
   <body>
 <!-- HEADER -->
@@ -52,7 +52,7 @@
 <!-- Gestionar  -->
 <div class="container-fluid text-left">
         <div class="card">
-            <div class="card-header bg-primary" style="color: white;">
+            <div class="card-header bg-primary text-color-white">
                   <h5>Gestionar Bodegas</h5>
             </div>
             <div class="card-body">
@@ -80,7 +80,7 @@
                     </div>
                     <div class="col-md-4 mt-2">
                         <label for="responsable_bodega">Responsable de la bodega</label>
-                        <select name="idNombrePersona" class="form-control" style="border-radius: 5px;" id="idNombrePersona">
+                        <select name="idNombrePersona" class="form-control br" id="idNombrePersona">
                        </select>
                     </div>
                 </div>
@@ -93,7 +93,7 @@
                             <th>Nombre</th>
                             <th>Ubicación</th>
                             <th>Responsable Bodega</th>
-                            <th style='text-align: right;'>Acciones</th>
+                            <th class="th-text-align-right">Acciones</th>
                         </tr>
                     </thead>
                     <tbody id="datos">
