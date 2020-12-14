@@ -119,16 +119,6 @@ html{
     border: solid 1px var(--color-uno);
 }
 
-body > div.swal2-container.swal2-center.swal2-backdrop-show > div{
-    background-color: white;
-}
-
-#swal2-content{
-    color: var(--color-texto);
-    font-size: 1.4rem;
-}
-
-
 body > .navbar-actdig{
     background-color: var(--color-uno);
 
