@@ -43,13 +43,13 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-4 offset-4 col-sm-4 offset-4 col-md-4 offset-4 col-xl-4 offset-4 text-center">
-      <input class="form-control" type="text" id="usuario" name="usuario" class="form-control" placeholder="Usuario"  autofocus/>
+    <div class="col-8 col-sm-8 col-md-4 col-xl-4 text-center" class="input-center">
+      <input class="form-control" type="text" id="usuario" name="usuario" class="form-control" placeholder="Usuario"  autofocus onkeypress="enter(1)">
     </div>
   </div>
   <div class="row">
-    <div class="col-4 offset-4 col-sm-4 offset-4 col-md-4 offset-4 col-xl-4 offset-4 text-center">
-      <input type="password" id="clave" name="clave" class="form-control mt-20" placeholder="Contraseña"/>
+    <div class="col-8 col-sm-8 col-md-4 col-xl-4 text-center" class="input-center">
+      <input type="password" id="clave" name="clave" class="form-control mt-20" placeholder="Contraseña" onkeypress="enter(2)">
     </div>  
   </div>
   <div class="row pt-3">

@@ -5,6 +5,22 @@ $(document).ready(function() {
     
 })
 
+function enter(valor){
+    if (valor == 1) {
+        input = document.getElementById("usuario");
+        input.addEventListener('keypress', logKey);
+    }else{
+        input = document.getElementById("clave");
+        input.addEventListener('keypress', logKey);
+    }
+    function logKey(e) {
+        var keycode = (e.keyCode ? e.keyCode : e.which);
+        if(keycode == 13 ){
+            iniciarSesion();
+        }
+    }
+}
+
 function iniciarSesion(){
     let usuario, clave;
     usuario = document.getElementById("usuario").value;

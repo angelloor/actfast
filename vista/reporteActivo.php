@@ -66,29 +66,14 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-4 mt-3">
-                        <label for="categoria">Categoria</label>
+                    <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
+                        <label for="categoria">Campo</label>
                         <select name="categoria" class="form-control br" id="categoria">
                        </select>
                     </div>
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-4 mt-3">
-                        <label for="marca">Marca</label>
+                    <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
+                        <label for="marca">Valor del criterio</label>
                         <select name="marca" class="form-control br" id="marca">
-                       </select>
-                    </div>
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-4 mt-3">
-                        <label for="estado">Estado</label>
-                        <select name="estado" class="form-control br" id="estado">
-                       </select>
-                    </div>
-                    <div class="col-md-6 mt-2">
-                        <label for="custodio">Custodio</label>
-                        <select name="custodio" class="form-control br" id="custodio">
-                       </select>
-                    </div>
-                    <div class="col-md-6 mt-2">
-                        <label for="funcionario">Funcionario</label>
-                        <select name="funcionario" class="form-control br" id="funcionario">
                        </select>
                     </div>
                 </div>

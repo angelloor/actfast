@@ -40,7 +40,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
           <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Activos</a>
+        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gestión de Activos</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
           <a class="dropdown-item" href="activos.php">Activos</a>
           <a class="dropdown-item" href="categorias.php">Categorías</a>
@@ -52,9 +52,9 @@
         </div>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="gestionActa.php" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actas</a>
+        <a class="nav-link dropdown-toggle" href="gestionActa.php" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gestión de Actas</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
-          <a class="dropdown-item" href="gestionActa.php">Gestion Actas</a>
+          <a class="dropdown-item" href="gestionActa.php">Actas</a>
         </div>
       </li>
       <li class="nav-item dropdown">
@@ -77,7 +77,7 @@
         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Reportes</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
           <a class="dropdown-item" href="./reporteActivo.php">Activos</a>
-          <a class="dropdown-item" href="./reporteActa.php">Actas</a>
+          <a class="dropdown-item" href="./reporteActa.php">Movimientos de activos</a>
           <a class="dropdown-item" href="../modelo/activosConfirmados.php" target="blank">Activos Confirmados</a>
           <a class="dropdown-item" href="../modelo/activosNoConfirmados.php" target="blank">Activos No Confirmados</a>
         </div>
@@ -102,7 +102,7 @@
             <img src="../assets/img/ga.png" class="card-img-top mt-3 img-card" alt="Imagen">
             <div class="card-body">
               <h5 class="card-title">Generar actas</h5>
-              <p class="card-text">Todas la actas con un solo click</p>
+              <p class="card-text">Genera todas las actas de manera rapida</p>
               <button id="acta" onclick="acta();" class="btn btn-primary">Acceder</button>
             </div>
           </div>
@@ -112,7 +112,7 @@
             <img src="../assets/img/au.png" class="card-img-top mt-3 img-card" alt="Imagen">
             <div class="card-body">
               <h5 class="card-title">Generar actas por usuario </h5>
-              <p class="card-text">Solo tienes que seleccionar el usuario y listo!</p>
+              <p class="card-text">Genera las actas de acuerdo a un usuario seleccionado</p>
               <button id="acta" onclick="actaUsuario();" class="btn btn-primary">Acceder</button>
             </div>
           </div>
@@ -121,8 +121,8 @@
           <div class="card-sm width-card" id="card-inicio">
             <img src="../assets/img/au.png" class="card-img-top mt-3 img-card" alt="Imagen">
             <div class="card-body">
-              <h5 class="card-title">Generar actas usuario y bien</h5>
-              <p class="card-text">Genera un acta con el usuario y el bien a cargo</p>
+              <h5 class="card-title">Generar actas por activo</h5>
+              <p class="card-text">Genera un acta seleccionando un activo</p>
               <button id="acta" onclick="acta();" class="btn btn-primary">Acceder</button>
             </div>
           </div>
@@ -142,7 +142,7 @@
             <img src="../assets/img/rp.png" class="card-img-top mt-3 img-card" alt="Imagen">
             <div class="card-body">
               <h5 class="card-title">Reportes</h5>
-              <p class="card-text">Reporte sobre activos y actas</p>
+              <p class="card-text">Activos, Comrpobacion de inventario y movimiento de activos</p>
               <a href="./reporteActa.php" class="btn btn-primary">Acceder</a>
             </div>
           </div>
@@ -152,7 +152,7 @@
             <img src="../assets/img/ad.png" class="card-img-top mt-3 img-card" alt="Imagen">
             <div class="card-body">
               <h5 class="card-title">Actas Digitales</h5>
-              <p class="card-text">Reporte sobre activos y actas</p>
+              <p class="card-text">Genera actas sobre las credenciales digitales de sistemas</p>
               <a href="./reporteActa.php" class="btn btn-primary">Acceder</a>
             </div>
           </div>

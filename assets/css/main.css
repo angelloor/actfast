@@ -185,3 +185,7 @@ body > div > div.container-title > nav{
     width: 70px; 
     align-self: center;
 }
+
+.bg-branding > .container > .row {
+    justify-content: center !important;
+}
