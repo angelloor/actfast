@@ -6,6 +6,14 @@ $(document).ready(function() {
     BloquearBotones(true);
 })
 
+function soloLetras(){
+    $('#nombre').keypress(function (event) {
+      if (event.which < 65 || event.which > 122 ) {
+        return false;
+      }
+    });
+}
+
 function Consultar() {
     $.ajax({
         data: { "accion": "CONSULTAR" },

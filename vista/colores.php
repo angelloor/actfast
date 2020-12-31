@@ -72,7 +72,7 @@
                 <div class="row">
                     <div class="col-md-6 mt-2">
                         <label for="nombres">Nombre</label>
-                        <input type="text" name="nombre" id="nombre" placeholder="Ingrese el color" class="form-control text-mayus">
+                        <input type="text" name="nombre" id="nombre" placeholder="Ingrese el color" class="form-control text-mayus" onkeypress="soloLetras()">
                     </div>
                 </div>
             </div>

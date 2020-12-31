@@ -72,7 +72,7 @@
                 <div class="row">
                     <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 mt-2">
                         <label for="Cedula">Cedula</label>
-                        <input type="text" name="cedulaFuncionario" id="cedulaFuncionario" placeholder="Ingrese su número de cedula" class="form-control text-mayus">
+                        <input type="text" name="cedulaFuncionario" id="cedulaFuncionario" placeholder="Ingrese su número de cedula" class="form-control text-mayus" onkeypress="soloNumeros()">
                     </div>
                     <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 mt-2">
                         <label for="nombreCompleto">Nombre Completo</label>
@@ -84,7 +84,7 @@
                     </div>
                     <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 mt-2">
                         <label for="Teléfono">Teléfono</label>
-                        <input type="text" name="telefonoFuncionario" id="telefonoFuncionario" placeholder="Ingrese el teléfono" class="form-control text-mayus">
+                        <input type="text" name="telefonoFuncionario" id="telefonoFuncionario" placeholder="Ingrese el teléfono" class="form-control text-mayus" onkeypress="soloNumeros()">
                     </div>
                     <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 mt-2">
                         <label for="cargo">Cargo</label>

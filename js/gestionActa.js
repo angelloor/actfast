@@ -10,6 +10,14 @@ $(document).ready(function() {
     cargarFechaActual();
 })
 
+function soloNumeros(){
+    $('#codigoActivo').keypress(function (event) {
+      if (event.which < 48 || event.which > 57 ) {
+        return false;
+      }
+    });
+}
+
 function cargarFechaActual(){
     var f = new Date();
     document.getElementById('fecha').value = f.getFullYear() + "-" + (f.getMonth() +1) + "-" + f.getDate()

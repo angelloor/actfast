@@ -13,6 +13,22 @@ $(document).ready(function() {
     cargarFechaActual();
 })
 
+function soloNumeros(){
+    $('#codigo').keypress(function (event) {
+      if (event.which < 48 || event.which > 57  || event.which == 9) {
+        return false;
+      }
+    });
+}
+
+function soloNumerosPunto(){
+    $('#valorCompra').keypress(function (event) {
+      if (event.which < 46 || event.which > 57  || event.which == 9) {
+        return false;
+      }
+    });
+}
+
 function cargarFechaActual(){
     var f = new Date();
     document.getElementById('fechaIngreso').value = f.getFullYear() + "-" + (f.getMonth() +1) + "-" + f.getDate()

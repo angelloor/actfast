@@ -89,7 +89,7 @@
                         <label for="activo">Activo</label>
                         <datalist id="activo" name="activo">
                         </datalist>
-                        <input id="codigoActivo" list="activo" class="form-control br">
+                        <input id="codigoActivo" list="activo" class="form-control br" onkeypress="soloNumeros()">
                     </div>
                     <div class="col-md-6 mt-2">
                         <label for="custodio">Custodio</label>

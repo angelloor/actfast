@@ -73,7 +73,7 @@
                 <div class="row">
                     <div class="col-md-6 mt-3">
                         <label for="nombres">Nombre</label>
-                        <input type="text" name="nombre" id="nombre" placeholder="Ingrese el estado" class="form-control text-mayus">
+                        <input type="text" name="nombre" id="nombre" placeholder="Ingrese el estado" class="form-control text-mayus" onkeypress="soloLetras()">
                     </div>
                 </div>
             </div>
