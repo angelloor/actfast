@@ -18,7 +18,6 @@ function Consultar() {
         var html = "";
         $.each(response, function(index, data) {
             html += "<tr>";
-            html += "<td>" + data.id_persona + "</td>";
             html += "<td>" + data.cedula + "</td>";
             html += "<td>" + data.nombre_persona + "</td>";
             html += "<td>" + data.direccion + "</td>";
@@ -50,7 +49,6 @@ function EscucharConsulta(){
                 var html = "";
                 $.each(response, function(index, data) {
                     html += "<tr>";
-                    html += "<td>" + data.ID_PERSONA + "</td>";
                     html += "<td>" + data.CEDULA + "</td>";
                     html += "<td>" + data.NOMBRE_PERSONA + "</td>";
                     html += "<td>" + data.DIRECCION + "</td>";
@@ -245,8 +243,8 @@ function Validar() {
 function retornarDatos(accion) {
     return {
         "cedulaFuncionario": document.getElementById('cedulaFuncionario').value,
-        "nombreFuncionario": document.getElementById('nombreFuncionario').value,
-        "direccionFuncionario": document.getElementById('direccionFuncionario').value,
+        "nombreFuncionario": (document.getElementById('nombreFuncionario').value).toUpperCase(),
+        "direccionFuncionario": (document.getElementById('direccionFuncionario').value).toUpperCase(),
         "telefonoFuncionario": document.getElementById('telefonoFuncionario').value,
         "cargoFuncionario": document.getElementById('cargoFuncionario').value,
         "unidadFuncionario": document.getElementById('unidadFuncionario').value,

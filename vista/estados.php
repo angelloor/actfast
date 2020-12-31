@@ -42,7 +42,7 @@
         <nav aria-label="breadcrumb bg-light">
       <ol class="breadcrumb bg-transparent">
         <li class="breadcrumb-item"><a href="index.php">Inicio</a></li>
-        <li class="breadcrumb-item active">Activos</li>
+        <li class="breadcrumb-item active">Gestión de Activos</li>
         <li class="breadcrumb-item active" aria-current="page">Estados</li>
       </ol>
     </nav>
@@ -73,7 +73,7 @@
                 <div class="row">
                     <div class="col-md-6 mt-3">
                         <label for="nombres">Nombre</label>
-                        <input type="text" name="nombre" id="nombre" placeholder="Por favor el estado" class="form-control">
+                        <input type="text" name="nombre" id="nombre" placeholder="Ingrese el estado" class="form-control text-mayus">
                     </div>
                 </div>
             </div>
@@ -81,7 +81,6 @@
                 <table class="table tabled-bordered table-sm" id="tablaEstado">
                     <thead>
                         <tr>
-                            <th>ID</th>
                             <th>Nombre</th>
                             <th class="th-text-align-right">Acciones</th>
                         </tr>

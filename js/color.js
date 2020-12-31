@@ -16,7 +16,6 @@ function Consultar() {
         var html = "";
         $.each(response, function(index, data) {
             html += "<tr>";
-            html += "<td>" + data.ID_COLOR + "</td>";
             html += "<td>" + data.NOMBRE_COLOR + "</td>";
             html += "<td style='text-align: right;'>";
             html += "<button class='btn btn-success mr-1' onclick='ConsultarPorId(" + data.ID_COLOR + ");'><span class='fa fa-edit'></span></button>"
@@ -44,7 +43,6 @@ function EscucharConsulta(){
                 var html = "";
                 $.each(response, function(index, data) {
                     html += "<tr>";
-                    html += "<td>" + data.ID_COLOR + "</td>";
                     html += "<td>" + data.NOMBRE_COLOR + "</td>";
                     html += "<td style='text-align: right;'>";
                     html += "<button class='btn btn-success mr-1' onclick='ConsultarPorId(" + data.ID_COLOR + ");'><span class='fa fa-edit'></span></button>"
@@ -185,7 +183,7 @@ function Validar() {
 
 function retornarDatos(accion) {
     return {
-        "nombreColor": document.getElementById('nombre').value,
+        "nombreColor": (document.getElementById('nombre').value).toUpperCase(),
         "accion": accion,
         "idColor": document.getElementById("idColor").value
     };

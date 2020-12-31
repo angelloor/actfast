@@ -42,7 +42,7 @@
       <ol class="breadcrumb bg-transparent">
         <li class="breadcrumb-item"><a href="index.php">Inicio</a></li>
         <li class="breadcrumb-item active">Reportes</li>
-        <li class="breadcrumb-item active" aria-current="page">Actas</li>
+        <li class="breadcrumb-item active" aria-current="page">Movimientos de activos</li>
       </ol>
     </nav>
     </div>
@@ -53,7 +53,7 @@
     <form action="../modelo/report.php" method="POST" target="blank">
         <div class="card">
             <div class="card-header bg-primary text-color-white">
-                  <h5>Reporte de Actas</h5>
+                  <h5>Movimientos de activos</h5>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -66,32 +66,31 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-4 mt-3">
-                        <label for="categoria">Categoria</label>
-                        <select name="categoria" class="form-control br" id="categoria">
-                       </select>
+                    <div class="col-md-3 mt-2">
+                        <label for="fechaInicio">Fecha Inicio</label>
+                        <input type="date" class="form-control" name="fechaInicio" id="fechaInicio">
                     </div>
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-4 mt-3">
-                        <label for="marca">Marca</label>
-                        <select name="marca" class="form-control br" id="marca">
-                       </select>
-                    </div>
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-4 mt-3">
-                        <label for="estado">Estado</label>
-                        <select name="estado" class="form-control br" id="estado">
-                       </select>
-                    </div>
-                    <div class="col-md-6 mt-2">
-                        <label for="custodio">Custodio</label>
-                        <select name="custodio" class="form-control br" id="custodio">
-                       </select>
-                    </div>
-                    <div class="col-md-6 mt-2">
-                        <label for="funcionario">Funcionario</label>
-                        <select name="funcionario" class="form-control br" id="funcionario">
-                       </select>
+                    <div class="col-md-3 mt-2">
+                        <label for="fechaFinal">Fecha Final</label>
+                        <input type="date" class="form-control" name="fechaFinal" id="fechaFinal">
                     </div>
                 </div>
+            </div>
+            <div class="card-footer">
+                <table class="table tabled-bordered table-sm" id="tablaUsuario">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Activo</th>
+                            <th>Custodio</th>
+                            <th>Funcionario</th>
+                            <th>Fecha Movimiento</th>
+                        </tr>
+                    </thead>
+                    <tbody id="datos">
+
+                    </tbody>
+                </table>
             </div>
         </div>
     </form>

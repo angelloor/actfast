@@ -17,7 +17,6 @@ function Consultar() {
         var html = "";
         $.each(response, function(index, data) {
             html += "<tr>";
-            html += "<td>" + data.id_custodio + "</td>";
             html += "<td>" + data.nombre_persona + "</td>";
             html += "<td style='text-align: right;'>";
             html += "<button class='btn btn-success mr-1' onclick='ConsultarPorId(" + data.id_custodio + ");'><span class='fa fa-edit'></span></button>"
@@ -61,7 +60,6 @@ function EscucharConsulta(){
                 var html = "";
                 $.each(response, function(index, data) {
                     html += "<tr>";
-                    html += "<td>" + data.id_custodio + "</td>";
                     html += "<td>" + data.nombre_persona + "</td>";
                     html += "<td style='text-align: right;'>";
                     html += "<button class='btn btn-success mr-1' onclick='ConsultarPorId(" + data.id_custodio + ");'><span class='fa fa-edit'></span></button>"

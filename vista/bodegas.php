@@ -41,7 +41,7 @@
         <nav aria-label="breadcrumb bg-light">
       <ol class="breadcrumb bg-transparent">
         <li class="breadcrumb-item"><a href="index.php">Inicio</a></li>
-        <li class="breadcrumb-item active">Actas</li>
+        <li class="breadcrumb-item active">Gestión de Activos</li>
         <li class="breadcrumb-item active" aria-current="page">Bodegas</li>
       </ol>
     </nav>
@@ -72,11 +72,11 @@
                 <div class="row mt-2">
                     <div class="col-md-4 mt-2">
                         <label for="nombres">Nombre</label>
-                        <input type="text" name="nombre" id="nombre" placeholder="Por favor ingrese su nombre" class="form-control">
+                        <input type="text" name="nombre" id="nombre" placeholder="Ingrese su nombre" class="form-control text-mayus">
                     </div>
                     <div class="col-md-4 mt-2">
                         <label for="apellidos">Ubicación</label>
-                        <input type="text" name="ubicacion" id="ubicacion" placeholder="Por favor ingrese la Ubicación" class="form-control">
+                        <input type="text" name="ubicacion" id="ubicacion" placeholder="Ingrese la ubicación" class="form-control text-mayus">
                     </div>
                     <div class="col-md-4 mt-2">
                         <label for="responsable_bodega">Responsable de la bodega</label>
@@ -89,7 +89,6 @@
                 <table class="table tabled-bordered table-sm" id="tablaBodega">
                     <thead>
                         <tr>
-                            <th>Id</th>
                             <th>Nombre</th>
                             <th>Ubicación</th>
                             <th>Responsable Bodega</th>

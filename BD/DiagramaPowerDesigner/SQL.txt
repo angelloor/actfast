@@ -1,0 +1,70 @@
+load data local infile 'C:\\usuario.csv' into table usuario FIELDS TERMINATED BY ';' LINES TERMINATED BY '\n';
+
+
+Solucion definitiva local infile
+https://www.zeppelinux.es/como-habilitar-load-data-local-infile/
+
+
+SET GLOBAL local_infile=1;
+
+ALTER TABLE unidad AUTO_INCREMENT = 1;
+
+
+delete from unidad;
+
+
+alter table activo drop key FK_ACTIVO_REF_CUSTODIO;
+
+alter table activo add KEY `FK_ACTIVO_REF_CUSTODIO` (`CUSTODIO_ID`);
+
+alter table activo add CONSTRAINT `activo_ibfk_6` FOREIGN KEY (`CUSTODIO_ID`) REFERENCES `custodio` (`PERSONA_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+
+update entrega_recepcion SET custodio_id = 1 where custodio_id = 4;
+CONSTRAINT `rol_institucional_ibfk_1` FOREIGN KEY (`unidad_id`) REFERENCES `unidad` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+
+create FUNCTION suma (a int, b int) returns int(11)
+begin 
+	declare r;
+	declare n1;
+	declare n2;
+	set n1=a;
+	set n2=b;
+	r = n1 + n2;
+	return r;
+END
+
+
+CREATE PROCEDURE listar_activo (IN idactivo INT) BEGIN SELECT * FROM activo where id = idactivo; END
+
+
+
+show procedure status;
+show function status;
+exec nombre_funcion;
+DROP FUNCTION ingreso_neto_sucursal;
+
+call 
+
+
+
+
+crear usuario en base de datos 
+
+
+create USER 'usuario'@'localhost' IDENTIFIED BY 'password';
+
+GRANT ALL PRIVILEGES ON *.* TO 'usuario'@'localhost';
+
+
+GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP
+    -> ON codigofacilito.*
+    -> TO 'nombre_usuario'@'localhost';
+
+DROP USER 'usuario'@'localhost';
+
+FLUSH PRIVILEGES;
+
+select user from mysql.user;
+
+

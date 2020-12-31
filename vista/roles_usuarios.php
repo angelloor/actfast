@@ -41,7 +41,7 @@
         <nav aria-label="breadcrumb bg-light">
       <ol class="breadcrumb bg-transparent">
         <li class="breadcrumb-item"><a href="index.php">Inicio</a></li>
-        <li class="breadcrumb-item active">Usuarios</li>
+        <li class="breadcrumb-item active">Gestión de Usuarios</li>
         <li class="breadcrumb-item active" aria-current="page">Roles de Usuario</li>
       </ol>
     </nav>
@@ -66,13 +66,13 @@
                     </div>
                     <div class="col-12 col-sm-12 col-md-4 col-xl-4 input-group mt-2">
                       <button class="btn btn-success mr-2" type="submit" onclick="mostrarTodo();"><span class="fa fa-search"></span>&nbsp&nbspMostrar Todo</button>
-                      <input class="form-control" id="idRolUsuario"  type="search" placeholder="Buscar por Id" aria-label="Buscar" autofocus>
+                      <input class="form-control" id="idRolUsuario"  type="search" placeholder="Buscar por nombre" aria-label="Buscar" autofocus>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
                         <label for="nombres">Nombre</label>
-                        <input type="text" name="nombre" id="nombre" placeholder="Por favor ingrese su nombre" class="form-control">
+                        <input type="text" name="nombre" id="nombre" placeholder="Ingrese el nombre" class="form-control text-mayus">
                     </div>
                 </div>
             </div>
@@ -80,7 +80,6 @@
                 <table class="table tabled-bordered table-sm" id="tablaRolUsuario">
                     <thead>
                         <tr>
-                            <th>ID</th>
                             <th>Nombre</th>
                             <th class="th-text-align-right">Acciones</th>
                         </tr>

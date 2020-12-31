@@ -19,8 +19,8 @@
 
         public function ConsultarPorIdRow($idRolUsuario){
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("SELECT * FROM rol_usuario where ID_ROL_USUARIO = :idRolUsuario");
-            $stmt->bindValue(":idRolUsuario", $idRolUsuario, PDO::PARAM_INT);
+            $stmt = $conexion->prepare("SELECT * FROM rol_usuario where NOMBRE_ROL_USUARIO LIKE :patron");
+            $stmt->bindValue(":patron", "%".$idRolUsuario."%", PDO::PARAM_STR);
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_OBJ);
         }

@@ -73,7 +73,7 @@
                 <div class="row">
                     <div class="col-md-6 mt-2">
                         <label for="nombres">Nombre</label>
-                        <input type="text" name="nombre" id="nombre" placeholder="Por favor ingrese el cargo" class="form-control">
+                        <input type="text" name="nombre" id="nombre" placeholder="Ingrese el cargo" class="form-control text-mayus">
                     </div>
                 </div>
             </div>
@@ -81,7 +81,6 @@
                 <table class="table tabled-bordered table-sm" id="tablaCargo">
                     <thead>
                         <tr>
-                            <th>ID</th>
                             <th>Nombre</th>
                             <th class="th-text-align-right">Acciones</th>
                         </tr>

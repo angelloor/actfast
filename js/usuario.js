@@ -18,7 +18,6 @@ function Consultar() {
         var html = "";
         $.each(response, function(index, data) {
             html += "<tr>";
-            html += "<td>" + data.id_usuario + "</td>";
             html += "<td>" + data.nombre_persona + "</td>";
             html += "<td>" + data.nombre_usuario + "</td>";
             html += "<td style='-webkit-text-security: disc;'>" + data.clave + "</td>";
@@ -49,7 +48,6 @@ function EscucharConsulta(){
                 var html = "";
                 $.each(response, function(index, data) {
                     html += "<tr>";
-                    html += "<td>" + data.id_usuario + "</td>";
                     html += "<td>" + data.nombre_persona + "</td>";
                     html += "<td>" + data.nombre_usuario + "</td>";
                     html += "<td style='-webkit-text-security: disc;'>" + data.clave + "</td>";

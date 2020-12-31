@@ -72,19 +72,19 @@
                 <div class="row">
                     <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 mt-2">
                         <label for="Cedula">Cedula</label>
-                        <input type="text" name="cedulaFuncionario" id="cedulaFuncionario" placeholder="Por favor ingrese su número de cedula" class="form-control">
+                        <input type="text" name="cedulaFuncionario" id="cedulaFuncionario" placeholder="Ingrese su número de cedula" class="form-control text-mayus">
                     </div>
                     <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 mt-2">
                         <label for="nombreCompleto">Nombre Completo</label>
-                        <input type="text" name="nombreFuncionario" id="nombreFuncionario" placeholder="Nombres - Apellidos" class="form-control">
+                        <input type="text" name="nombreFuncionario" id="nombreFuncionario" placeholder="Apellidos - Nombres" class="form-control text-mayus">
                     </div>
                     <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 mt-2">
                         <label for="Dirección">Dirección</label>
-                        <input type="text" name="direccionFuncionario" id="direccionFuncionario" placeholder="Por favor ingrese la dirección" class="form-control">
+                        <input type="text" name="direccionFuncionario" id="direccionFuncionario" placeholder="Ingrese la dirección" class="form-control text-mayus">
                     </div>
                     <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 mt-2">
                         <label for="Teléfono">Teléfono</label>
-                        <input type="text" name="telefonoFuncionario" id="telefonoFuncionario" placeholder="Por favor ingrese el teléfono" class="form-control">
+                        <input type="text" name="telefonoFuncionario" id="telefonoFuncionario" placeholder="Ingrese el teléfono" class="form-control text-mayus">
                     </div>
                     <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 mt-2">
                         <label for="cargo">Cargo</label>
@@ -102,7 +102,6 @@
                 <table class="table tabled-bordered table-sm" id="tablaFuncionario">
                     <thead>
                         <tr>
-                            <th scope="col">Id</th>
                             <th scope="col">Cedula</th>
                             <th scope="col">Nombre</th>
                             <th scope="col">Dirección</th>

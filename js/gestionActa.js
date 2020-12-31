@@ -7,7 +7,13 @@ $(document).ready(function() {
     listarFuncionario();
     listarActivo();
     listarCustodio();
+    cargarFechaActual();
 })
+
+function cargarFechaActual(){
+    var f = new Date();
+    document.getElementById('fecha').value = f.getFullYear() + "-" + (f.getMonth() +1) + "-" + f.getDate()
+}
 
 function listarFuncionario(){
     $.ajax({
@@ -71,7 +77,6 @@ function Consultar() {
         var html = "";
         $.each(response, function(index, data) {
             html += "<tr>";
-            html += "<td>" + data.id_entrega_recepcion + "</td>";
             html += "<td>" + data.funcionario + "</td>";
             html += "<td>" + data.codigo + "</td>";
             html += "<td>" + data.custodio + "</td>";
@@ -101,7 +106,6 @@ function EscucharConsulta(){
                 var html = "";
                 $.each(response, function(index, data) {
                     html += "<tr>";
-                    html += "<td>" + data.id_entrega_recepcion + "</td>";
                     html += "<td>" + data.funcionario + "</td>";
                     html += "<td>" + data.codigo + "</td>";
                     html += "<td>" + data.custodio + "</td>";

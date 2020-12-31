@@ -41,7 +41,7 @@
         <nav aria-label="breadcrumb bg-light">
       <ol class="breadcrumb bg-transparent">
         <li class="breadcrumb-item"><a href="index.php">Inicio</a></li>
-        <li class="breadcrumb-item active">Activos</li>
+        <li class="breadcrumb-item active">Gestión de Activos</li>
         <li class="breadcrumb-item active" aria-current="page">Activos</li>
       </ol>
     </nav>
@@ -105,7 +105,7 @@
                     </div>
                     <div class="col-12 col-sm-12- col-md-4 col-lg-3 col-xl-3 mt-2">
                         <label for="caracteristica"><strong>Características</strong></label>
-                        <input type="text" name="caracteristica" id="caracteristica" placeholder="Por favor ingrese las características" class="form-control">
+                        <input type="text" name="caracteristica" id="caracteristica" placeholder="Ejemplo: i7 - 512BG - 8RAM" class="form-control">
                     </div>
                     <div class="col-12 col-sm-12- col-md-4 col-lg-3 col-xl-3 mt-2">
                         <label for="bodega">Bodega</label>
@@ -118,42 +118,42 @@
                        </select>
                     </div>
                     <div class="col-12 col-sm-12- col-md-4 col-lg-3 col-xl-3 mt-2">
-                        <label for="codigo"><strong>Codigo</strong></label>
-                        <input type="text" name="codigo" id="codigo" placeholder="Por favor ingrese el codigo" class="form-control">
+                        <label for="codigo"><strong>Código</strong></label>
+                        <input type="text" name="codigo" id="codigo" placeholder="Ingrese el código" class="form-control">
                     </div>
                     <div class="col-12 col-sm-12- col-md-4 col-lg-3 col-xl-3 mt-2">
                         <label for="nombre">Nombre</label>
-                        <input type="text" name="nombre" id="nombre" placeholder="Por favor ingrese el nombre" class="form-control">
+                        <input type="text" name="nombre" id="nombre" placeholder="Ingrese el nombre" class="form-control">
                     </div>
                     <div class="col-12 col-sm-12- col-md-4 col-lg-3 col-xl-3 mt-2">
                         <label for="modelo">Modelo</label>
-                        <input type="text" name="modelo" id="modelo" placeholder="Por favor ingrese el modelo" class="form-control">
+                        <input type="text" name="modelo" id="modelo" placeholder="Ingrese el modelo" class="form-control">
                     </div>
                     <div class="col-12 col-sm-12- col-md-4 col-lg-3 col-xl-3 mt-2">
                         <label for="serie">Serie</label>
-                        <input type="text" name="serie" id="serie" placeholder="Por favor ingrese la serie" class="form-control">
+                        <input type="text" name="serie" id="serie" placeholder="Ingrese la serie" class="form-control">
                     </div>
                     <div class="col-12 col-sm-12- col-md-4 col-lg-3 col-xl-3 mt-2">
                         <label for="origenIngreso">Origen de Ingreso</label>
-                        <input type="text" name="origenIngreso" id="origenIngreso" placeholder="Por favor ingrese el origen de ingreso" class="form-control">
+                        <input type="text" name="origenIngreso" id="origenIngreso" placeholder="Ingrese el origen de ingreso" class="form-control">
                     </div>
                     <div class="col-12 col-sm-12- col-md-4 col-lg-3 col-xl-3 mt-2">
                         <label for="fechaIngreso">Fecha de Ingreso</label>
-                        <input type="date" name="fechaIngreso" id="fechaIngreso" placeholder="Por favor ingrese la fecha de ingreso" class="form-control">
+                        <input type="date" name="fechaIngreso" id="fechaIngreso" placeholder="Ingrese la fecha de ingreso" class="form-control">
                     </div>
                     <div class="col-12 col-sm-12- col-md-4 col-lg-3 col-xl-3 mt-2">
                         <label for="valorCompra">Valor de compra</label>
-                        <input type="text" name="valorCompra" id="valorCompra" placeholder="Por favor ingrese el valor de la compra" class="form-control">
+                        <input type="text" name="valorCompra" id="valorCompra" placeholder="Ingrese el valor de la compra" class="form-control">
                     </div>
                     <div class="col-12 col-sm-12- col-md-4 col-lg-3 col-xl-3 mt-2">
                         <label for="comentario"><strong>Comentario</strong></label>
-                        <textarea name="comentario" id="comentario" cols="60" rows="1" placeholder="Por favor ingrese un comentario" class="form-control"></textarea>
+                        <textarea name="comentario" id="comentario" cols="60" rows="1" placeholder="Ingrese un comentario" class="form-control"></textarea>
                     </div>
                     <div class="col-12 col-sm-12- col-md-4 col-lg-3 col-xl-3 mt-2">
-                        <label for="comprobacionInventario"><strong>Comprobacion Inventario</strong></label>
+                        <label for="comprobacionInventario"><strong>Comprobación Inventario</strong></label>
                         <select name="comprobacionInventario" id="comprobacionInventario" class="form-control br">
-                            <option>SI</option>
                             <option>NO</option>
+                            <option>SI</option>
                         </select>
                     </div>
                 </div>

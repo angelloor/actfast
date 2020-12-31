@@ -17,7 +17,6 @@ function Consultar() {
         var html = "";
         $.each(response, function(index, data) {
             html += "<tr>";
-            html += "<td>" + data.id_bodega + "</td>";
             html += "<td>" + data.nombre_bodega + "</td>";
             html += "<td>" + data.ubicacion + "</td>";
             html += "<td>" + data.nombre_persona + "</td>";
@@ -63,7 +62,6 @@ function EscucharConsulta(){
                 var html = "";
                 $.each(response, function(index, data) {
                     html += "<tr>";
-                    html += "<td>" + data.id_bodega + "</td>";
                     html += "<td>" + data.nombre_bodega + "</td>";
                     html += "<td>" + data.ubicacion + "</td>";
                     html += "<td>" + data.nombre_persona + "</td>";
@@ -211,8 +209,8 @@ function Validar() {
 
 function retornarDatos(accion) {
     return {
-        "nombreBodega": document.getElementById('nombre').value,
-        "ubicacion": document.getElementById('ubicacion').value,
+        "nombreBodega": (document.getElementById('nombre').value).toUpperCase(),
+        "ubicacion": (document.getElementById('ubicacion').value).toUpperCase(),
         "nombreResponsable": document.getElementById('idNombrePersona').value,
         "accion": accion,
         "idBodega": document.getElementById("idBodega").value

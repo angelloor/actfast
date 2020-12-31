@@ -65,9 +65,8 @@
           <a class="dropdown-item" href="cargos.php">Cargos</a>
         </div>
       </li>
-
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Usuarios</a>
+        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gestión de Usuarios</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
           <a class="dropdown-item" href="usuarios.php">Usuarios</a>
           <a class="dropdown-item" href="roles_usuarios.php">Roles de usuarios </a>
@@ -77,6 +76,7 @@
         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Reportes</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
           <a class="dropdown-item" href="./reporteActivo.php">Activos</a>
+          <a class="dropdown-item" href="./historico.php">Histórico de activos</a>
           <a class="dropdown-item" href="./reporteActa.php">Movimientos de activos</a>
           <a class="dropdown-item" href="../modelo/activosConfirmados.php" target="blank">Activos Confirmados</a>
           <a class="dropdown-item" href="../modelo/activosNoConfirmados.php" target="blank">Activos No Confirmados</a>
@@ -153,7 +153,7 @@
             <div class="card-body">
               <h5 class="card-title">Actas Digitales</h5>
               <p class="card-text">Genera actas sobre las credenciales digitales de sistemas</p>
-              <a href="./reporteActa.php" class="btn btn-primary">Acceder</a>
+              <a href="./actasDigitales.php" class="btn btn-primary">Acceder</a>
             </div>
           </div>
         </div>

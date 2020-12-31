@@ -16,7 +16,6 @@ function Consultar() {
         var html = "";
         $.each(response, function(index, data) {
             html += "<tr>";
-            html += "<td>" + data.ID_ROL_USUARIO + "</td>";
             html += "<td>" + data.NOMBRE_ROL_USUARIO + "</td>";
             html += "<td style='text-align: right;'>";
             html += "<button class='btn btn-success mr-1' onclick='ConsultarPorId(" + data.ID_ROL_USUARIO + ");'><span class='fa fa-edit'></span></button>"
@@ -40,10 +39,10 @@ function EscucharConsulta(){
             type: 'POST',
             dataType: 'json'
             }).done(function(response) {
+                console.log(response);
                 var html = "";
                 $.each(response, function(index, data) {
                     html += "<tr>";
-                    html += "<td>" + data.ID_ROL_USUARIO + "</td>";
                     html += "<td>" + data.NOMBRE_ROL_USUARIO + "</td>";
                     html += "<td style='text-align: right;'>";
                     html += "<button class='btn btn-success mr-1' onclick='ConsultarPorId(" + data.ID_ROL_USUARIO + ");'><span class='fa fa-edit'></span></button>"
@@ -184,7 +183,7 @@ function Validar() {
 
 function retornarDatos(accion) {
     return {
-        "nombreRolUsuario": document.getElementById('nombre').value,
+        "nombreRolUsuario": (document.getElementById('nombre').value).toUpperCase(),
         "accion": accion,
         "idRolUsuario": document.getElementById("idRolUsuario").value
     };

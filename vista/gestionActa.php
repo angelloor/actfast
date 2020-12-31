@@ -41,8 +41,8 @@
         <nav aria-label="breadcrumb bg-light">
       <ol class="breadcrumb bg-transparent">
         <li class="breadcrumb-item"><a href="index.php">Inicio</a></li>
-        <li class="breadcrumb-item active">Actas</li>
-        <li class="breadcrumb-item active" aria-current="page">Gestionar Actas</li>
+        <li class="breadcrumb-item active">Gestión de Actas</li>
+        <li class="breadcrumb-item active" aria-current="page">Actas</li>
       </ol>
     </nav>
     </div>
@@ -106,7 +106,6 @@
                 <table class="table tabled-bordered table-sm" id="tablaUsuario">
                     <thead>
                         <tr>
-                            <th>Id</th>
                             <th>Funcionario</th>
                             <th>Codigo activo</th>
                             <th>Custodio</th>

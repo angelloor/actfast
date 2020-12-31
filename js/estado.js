@@ -16,7 +16,6 @@ function Consultar() {
         var html = "";
         $.each(response, function(index, data) {
             html += "<tr>";
-            html += "<td>" + data.ID_ESTADO + "</td>";
             html += "<td>" + data.NOMBRE_ESTADO + "</td>";
             html += "<td style='text-align: right;'>";
             html += "<button class='btn btn-success mr-1' onclick='ConsultarPorId(" + data.ID_ESTADO + ");'><span class='fa fa-edit'></span></button>"
@@ -44,7 +43,6 @@ function EscucharConsulta(){
                 var html = "";
                 $.each(response, function(index, data) {
                     html += "<tr>";
-                    html += "<td>" + data.ID_ESTADO + "</td>";
                     html += "<td>" + data.NOMBRE_ESTADO + "</td>";
                     html += "<td style='text-align: right;'>";
                     html += "<button class='btn btn-success mr-1' onclick='ConsultarPorId(" + data.ID_ESTADO + ");'><span class='fa fa-edit'></span></button>"
@@ -185,7 +183,7 @@ function Validar() {
 
 function retornarDatos(accion) {
     return {
-        "nombreEstado": document.getElementById('nombre').value,
+        "nombreEstado": (document.getElementById('nombre').value).toUpperCase(),
         "accion": accion,
         "idEstado": document.getElementById("idEstado").value
     };

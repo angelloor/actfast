@@ -41,7 +41,7 @@
           <nav aria-label="breadcrumb bg-light">
           <ol class="breadcrumb bg-transparent">
           <li class="breadcrumb-item"><a href="index.php">Inicio</a></li>
-          <li class="breadcrumb-item active">Activos</li>
+          <li class="breadcrumb-item active">Gestión de Activos</li>
           <li class="breadcrumb-item active" aria-current="page">Categorías</li>
         </ol>
       </nav>
@@ -72,11 +72,11 @@
                 <div class="row">
                     <div class="col-md-6 mt-2">
                         <label for="nombres">Nombre</label>
-                        <input type="text" name="nombre" id="nombre" placeholder="Por favor ingrese su nombre" class="form-control">
+                        <input type="text" name="nombre" id="nombre" placeholder="Ingrese el nombre" class="form-control text-mayus">
                     </div>
                     <div class="col-md-6 mt-2">
                         <label for="descripcion">Descripción</label>
-                        <input type="text" name="descripcion" id="descripcion" placeholder="Por favor ingrese la descripción" class="form-control">
+                        <input type="text" name="descripcion" id="descripcion" placeholder="Ingrese la descripción" class="form-control text-mayus">
                     </div>
                 </div>
             </div>
@@ -84,7 +84,6 @@
                 <table class="table tabled-bordered table-sm" id="tablaCategoria">
                     <thead>
                         <tr>
-                            <th>ID</th>
                             <th>Nombre</th>
                             <th>Descripción</th>
                             <th class="th-text-align-right">Acciones</th>

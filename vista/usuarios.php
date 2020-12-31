@@ -41,7 +41,7 @@
         <nav aria-label="breadcrumb bg-light">
       <ol class="breadcrumb bg-transparent">
         <li class="breadcrumb-item"><a href="index.php">Inicio</a></li>
-        <li class="breadcrumb-item active">Usuarios</li>
+        <li class="breadcrumb-item active">Gestión de Usuarios</li>
         <li class="breadcrumb-item active" aria-current="page">Usuarios</li>
       </ol>
     </nav>
@@ -77,11 +77,11 @@
                     </div>
                     <div class="col-md-6 mt-2">
                         <label for="nombre">Nombre de usuario</label>
-                        <input type="text" name="nombre" id="nombre" placeholder="Por favor ingrese la descripcion" class="form-control">
+                        <input type="text" name="nombre" id="nombre" placeholder="Ingrese el nombre de usuario" class="form-control">
                     </div>
                     <div class="col-md-6 mt-2">
                         <label for="clave">Clave</label>
-                        <input type="text" name="clave" id="clave" placeholder="Por favor ingrese su nombre" class="form-control">
+                        <input type="text" name="clave" id="clave" placeholder="Ingrese la contraseña" class="form-control">
                     </div>
                     <div class="col-md-6 mt-2">
                         <label for="rol">Rol</label>
@@ -94,7 +94,6 @@
                 <table class="table tabled-bordered table-sm" id="tablaUsuario">
                     <thead>
                         <tr>
-                            <th>Id</th>
                             <th>Funcionario</th>
                             <th>Nombre de usuario</th>
                             <th>Clave</th>

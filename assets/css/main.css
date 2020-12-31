@@ -189,3 +189,7 @@ body > div > div.container-title > nav{
 .bg-branding > .container > .row {
     justify-content: center !important;
 }
+
+.text-mayus{
+    text-transform: uppercase;
+}

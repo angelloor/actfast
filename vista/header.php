@@ -9,7 +9,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
           <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Activos</a>
+        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gestión de Activos</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
           <a class="dropdown-item" href="activos.php">Activos</a>
           <a class="dropdown-item" href="categorias.php">Categorías</a>
@@ -21,9 +21,9 @@
         </div>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="gestionActa.php" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actas</a>
+        <a class="nav-link dropdown-toggle" href="gestionActa.php" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gestión de Actas</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
-          <a class="dropdown-item" href="gestionActa.php">Gestion Actas</a>
+          <a class="dropdown-item" href="gestionActa.php">Actas</a>
         </div>
       </li>
       <li class="nav-item dropdown">
@@ -35,7 +35,7 @@
         </div>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Usuarios</a>
+        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gestión de Usuarios</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
           <a class="dropdown-item" href="usuarios.php">Usuarios</a>
           <a class="dropdown-item" href="roles_usuarios.php">Roles de usuarios </a>
@@ -45,7 +45,8 @@
         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Reportes</a>
         <div class="dropdown-menu" href="null" aria-labelledby="dropdown01">
           <a class="dropdown-item" href="./reporteActivo.php">Activos</a>
-          <a class="dropdown-item" href="./reporteActa.php">Actas</a>
+          <a class="dropdown-item" href="./historico.php">Histórico de activos</a>
+          <a class="dropdown-item" href="./reporteActa.php">Movimientos de activos</a>
           <a class="dropdown-item" href="../modelo/activosConfirmados.php" target="blank">Activos Confirmados</a>
           <a class="dropdown-item" href="../modelo/activosNoConfirmados.php" target="blank">Activos No Confirmados</a>
         </div>

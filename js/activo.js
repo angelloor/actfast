@@ -10,7 +10,13 @@ $(document).ready(function() {
     listarColor();
     listarBodega();
     listarCustodio();
+    cargarFechaActual();
 })
+
+function cargarFechaActual(){
+    var f = new Date();
+    document.getElementById('fechaIngreso').value = f.getFullYear() + "-" + (f.getMonth() +1) + "-" + f.getDate()
+}
 
 function listarCategoria(){
     $.ajax({

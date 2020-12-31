@@ -82,7 +82,6 @@
                 <table class="table tabled-bordered table-sm" id="tablaCustodio">
                     <thead>
                         <tr>
-                            <th>Id</th>
                             <th>Funcionario</th>
                             <th class="th-text-align-right">Acciones</th>
                         </tr>

@@ -67,8 +67,13 @@
                 </div>
                 <div class="row">
                     <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
-                        <label for="categoria">Campo</label>
-                        <select name="categoria" class="form-control br" id="categoria">
+                        <label for="campo">Campo</label>
+                        <select name="campo" class="form-control br" id="campo">
+                            <option value="Categoria">Categoria</option>
+                            <option value="Marca">Marca</option>
+                            <option value="Estado">Estado</option>
+                            <option value="Custodio">Custodio</option>
+                            <option value="Funcionario">Funcionario</option>
                        </select>
                     </div>
                     <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
@@ -77,6 +82,26 @@
                        </select>
                     </div>
                 </div>
+
+            </div>
+            <div class="card-footer">
+                <table class="table tabled-bordered table-sm" id="tablaUsuario">
+                    <thead>
+                        <tr>
+                            <th>Codigo</th>
+                            <th>Nombre</th>
+                            <th>Marca</th>
+                            <th>Modelo</th>
+                            <th>Serie</th>
+                            <th>Estado</th>
+                            <th>Caracteristica</th>
+                            <th>Custodio</th>
+                        </tr>
+                    </thead>
+                    <tbody id="datos">
+
+                    </tbody>
+                </table>
             </div>
         </div>
     </form>
