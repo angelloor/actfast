@@ -238,6 +238,7 @@ function Eliminar(idFuncionario) {
             swalWithBootstrapButtons.fire('','Operación Cancelada','info')
         }
       })
+      Limpiar();
 }
 
 function Validar() {
@@ -267,12 +268,15 @@ function retornarDatos(accion) {
 }
 
 function Limpiar() {
+    document.getElementById('idFuncionario').value = "";
     document.getElementById('cedulaFuncionario').value = "";
     document.getElementById('nombreFuncionario').value = "";
     document.getElementById('direccionFuncionario').value = "";
     document.getElementById('telefonoFuncionario').value = "";
     document.getElementById('cargoFuncionario').value = "";
     document.getElementById('unidadFuncionario').value = "";
+    listarCargo();
+    listarUnidad();
     BloquearBotones(true);
 }
 

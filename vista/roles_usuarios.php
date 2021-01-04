@@ -55,33 +55,12 @@
             <div class="card-header bg-primary text-color-white">
                   <h5>Gestionar Roles de usuario</h5>
             </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-12 col-sm-12 col-md-8 col-xl-8 mt-2">
-                        <div class="btn-group-sm">
-                            <button class="btn btn-success" id="guardar"  onclick="Guardar();"><span class="fa fa-save"></span>&nbsp&nbspGuardar</button>
-                            <button class="btn btn-success" id="modificar" onclick="Modificar();"><span class="fa fa-pencil-alt"></span>&nbsp&nbspModificar</button>
-                            <button class="btn btn-primary" id="cancelar" onclick="Cancelar();"><span class="fa fa-ban"></span>&nbsp&nbspCancelar</button>
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-12 col-md-4 col-xl-4 input-group mt-2">
-                      <button class="btn btn-success mr-2" type="submit" onclick="mostrarTodo();"><span class="fa fa-search"></span>&nbsp&nbspMostrar Todo</button>
-                      <input class="form-control" id="idRolUsuario"  type="search" placeholder="Buscar por nombre" aria-label="Buscar" autofocus>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <label for="nombres">Nombre</label>
-                        <input type="text" name="nombre" id="nombre" placeholder="Ingrese el nombre" class="form-control text-mayus">
-                    </div>
-                </div>
-            </div>
             <div class="card-footer">
                 <table class="table tabled-bordered table-sm" id="tablaRolUsuario">
                     <thead>
                         <tr>
                             <th>Nombre</th>
-                            <th class="th-text-align-right">Acciones</th>
+                            <th>Descripción</th>
                         </tr>
                     </thead>
                     <tbody id="datos">

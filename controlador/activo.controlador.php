@@ -179,7 +179,8 @@
             break;
             case "ELIMINAR":
                 $idActivo = $_POST['idActivo'];
-                $respuesta = $activo->Eliminar($idActivo);
+                $fechaEliminar = $_POST['fechaEliminar'];
+                $respuesta = $activo->Eliminar($idActivo,$fechaEliminar);
                 echo json_encode($respuesta);
             break;
 

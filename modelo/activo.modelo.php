@@ -4,7 +4,7 @@
     class Activo{
         public function ConsultarTodo(){
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("select a.id_activo, a.codigo, a.nombre_activo, c.nombre_categoria, a.caracteristica, m.nombre_marca, a.modelo, a.serie, e.nombre_estado, a.comprobacion_inventario from activo a inner join categoria c on a.categoria_id = c.id_categoria inner join marca m on a.marca_id = m.id_marca inner join estado e on a.estado_id = e.id_estado order by a.id_activo asc limit 50");
+            $stmt = $conexion->prepare("select a.id_activo, a.codigo, a.nombre_activo, c.nombre_categoria, a.caracteristica, m.nombre_marca, a.modelo, a.serie, e.nombre_estado, a.comprobacion_inventario from activo a inner join categoria c on a.categoria_id = c.id_categoria inner join marca m on a.marca_id = m.id_marca inner join estado e on a.estado_id = e.id_estado where a.historico = 1 order by a.id_activo asc limit 50");
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_OBJ);
         }
@@ -20,7 +20,7 @@
         public function ConsultarPorIdRow($idBuscar,$campoBuscar){
             $conexion = new Conexion();
             if($campoBuscar == "Codigo"){
-                $stmt = $conexion->prepare("select a.id_activo, a.codigo, a.nombre_activo, c.nombre_categoria, a.caracteristica, m.nombre_marca, a.modelo, a.serie, e.nombre_estado, a.comprobacion_inventario from activo a inner join categoria c on a.categoria_id = c.id_categoria inner join marca m on a.marca_id = m.id_marca inner join estado e on a.estado_id = e.id_estado WHERE a.codigo LIKE :patron");
+                $stmt = $conexion->prepare("select a.id_activo, a.codigo, a.nombre_activo, c.nombre_categoria, a.caracteristica, m.nombre_marca, a.modelo, a.serie, e.nombre_estado, a.comprobacion_inventario from activo a inner join categoria c on a.categoria_id = c.id_categoria inner join marca m on a.marca_id = m.id_marca inner join estado e on a.estado_id = e.id_estado WHERE (a.codigo LIKE :patron) and ( where a.historico = 1)");
                 $stmt->bindValue(":patron", "%".$idBuscar."%", PDO::PARAM_STR);
                 $stmt->execute();
                 return $stmt->fetchAll(PDO::FETCH_OBJ);
@@ -189,10 +189,11 @@
             }
         }
 
-        public function Eliminar($idActivo){
+        public function Eliminar($idActivo,$fechaEliminar){
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("DELETE FROM activo WHERE ID_ACTIVO  = :idActivo");
+            $stmt = $conexion->prepare("UPDATE `activo` SET `HISTORICO` = 0, `FECHA_HISTORICO` = :fechaEliminar  WHERE ID_ACTIVO = :idActivo");
             $stmt->bindValue(":idActivo",$idActivo, PDO::PARAM_INT);
+            $stmt->bindValue(":fechaEliminar",$fechaEliminar, PDO::PARAM_STR);
             if($stmt->execute()){
                 return "OK";
             }else{

@@ -20,7 +20,13 @@ function soloNumeros(){
 
 function cargarFechaActual(){
     var f = new Date();
-    document.getElementById('fecha').value = f.getFullYear() + "-" + (f.getMonth() +1) + "-" + f.getDate()
+    if((f.getMonth() +1) <=9){
+        mesFinal = "0"+(f.getMonth() +1);
+    }
+    if((f.getDate()) <=9){
+        diaFinal = "0"+(f.getDate());
+    }
+    document.getElementById('fecha').value = f.getFullYear() + "-" + mesFinal + "-" + diaFinal;
 }
 
 function listarFuncionario(){
@@ -250,6 +256,7 @@ function Eliminar(idGestionActa) {
             swalWithBootstrapButtons.fire('','Operación Cancelada','info')
         }
       })
+      Limpiar();
 }
 
 function Validar() {
@@ -283,10 +290,11 @@ function retornarDatosConsulta(accion){
 }
 
 function Limpiar() {
-    document.getElementById('idPersona').value = "";
+    document.getElementById('idGestionActa').value = "";
     document.getElementById('codigoActivo').value = "";
-    document.getElementById('custodio').value = "";
-    document.getElementById('fecha').value = "";
+    listarCustodio();
+    listarFuncionario();
+    cargarFechaActual();
     BloquearBotones(true);
 }
 

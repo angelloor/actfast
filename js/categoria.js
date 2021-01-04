@@ -173,6 +173,7 @@ function Eliminar(idCategoria) {
             swalWithBootstrapButtons.fire('','Operación Cancelada','info')
         }
       })
+      Limpiar();
 }
 
 function Validar() {
@@ -194,6 +195,7 @@ function retornarDatos(accion) {
 }
 
 function Limpiar() {
+    document.getElementById('idCategoria').value = "";
     document.getElementById('nombre').value = "";
     document.getElementById('descripcion').value = "";
     BloquearBotones(true);

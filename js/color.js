@@ -179,6 +179,7 @@ function Eliminar(idColor) {
             swalWithBootstrapButtons.fire('','Operación Cancelada','info')
         }
       })
+      Eliminar();
 }
 
 function Validar() {
@@ -198,6 +199,7 @@ function retornarDatos(accion) {
 }
 
 function Limpiar() {
+    document.getElementById('idColor').value = "";
     document.getElementById('nombre').value = "";
     BloquearBotones(true);
 }

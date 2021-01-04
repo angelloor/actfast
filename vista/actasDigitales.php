@@ -25,7 +25,7 @@
     <!-- SCRIPTS -->
     <script src="../assets/js/all.min.js"></script>
     <script src="../assets/js/jquery.js"></script>
-    <script src="../js/rol_usuario.js"></script>
+    <script src="../js/actaDigital.js"></script>
     <link rel="stylesheet" href="../assets/css/main.css">
   </head>
   <body>
@@ -65,8 +65,13 @@
                 </div>
                 <div class="row">
                     <div class="col-md-4 mt-2">
-                        <label for="nombres">Nombre</label>
-                        <input type="text" name="nombre" id="nombre" placeholder="Ingrese el nombre del funcionario" class="form-control text-mayus">
+                        <label for="funcionario">Funcionario</label>
+                        <select name="idPersona" id="idPersona" class="form-control br">
+                       </select>
+                    </div>
+                    <div class="col-md-4 mt-2">
+                        <label for="nombres">Año del Proceso</label>
+                        <input type="text" name="periodo" id="periodo" placeholder="Ingrese el año del proceso" class="form-control text-mayus" onkeypress="soloNumeros();">
                     </div>
                     <div class="col-md-4 mt-2">
                         <label for="nombres">Nombre de usuario</label>
@@ -77,37 +82,14 @@
                     </div>
                     <div class="col-md-4 pl-5">
                         <h4>Sistemas</h4>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                            <label class="form-check-label" for="flexCheckDefault">
-                                MJRV
-                            </label>
+                        <div id="sistemas">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    MJRV
+                                </label>
+                            </div>
                         </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                            <label class="form-check-label" for="flexCheckDefault">
-                                Sistema
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                            <label class="form-check-label" for="flexCheckDefault">
-                                Sistema
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                            <label class="form-check-label" for="flexCheckDefault">
-                                Sistema
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                            <label class="form-check-label" for="flexCheckDefault">
-                                Sistema
-                            </label>
-                        </div>
-
                     </div>
                 </div>
             </div>

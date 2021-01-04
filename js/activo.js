@@ -19,6 +19,7 @@ function soloNumeros(){
         return false;
       }
     });
+
 }
 
 function soloNumerosPunto(){
@@ -31,7 +32,13 @@ function soloNumerosPunto(){
 
 function cargarFechaActual(){
     var f = new Date();
-    document.getElementById('fechaIngreso').value = f.getFullYear() + "-" + (f.getMonth() +1) + "-" + f.getDate()
+    if((f.getMonth() +1) <=9){
+        mesFinal = "0"+(f.getMonth() +1);
+    }
+    if((f.getDate()) <=9){
+        diaFinal = "0"+(f.getDate());
+    }
+    document.getElementById('fechaIngreso').value = f.getFullYear() + "-" + mesFinal + "-" + diaFinal;
 }
 
 function listarCategoria(){
@@ -297,6 +304,15 @@ function Modificar() {
 }
 
 function Eliminar(idActivo) {
+    var f = new Date();
+    if((f.getMonth() +1) <=9){
+        mesFinal = "0"+(f.getMonth() +1);
+    }
+    if((f.getDate()) <=9){
+        diaFinal = "0"+(f.getDate());
+    }
+    var fechaEliminar = f.getFullYear() + "-" + mesFinal + "-" + diaFinal;
+    console.log(fechaEliminar);
     const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
           cancelButton: 'btn btn-primary mr-2 ml-2',
@@ -315,7 +331,7 @@ function Eliminar(idActivo) {
         if (result.isConfirmed) {
         $.ajax({
             url: url,
-            data: { "idActivo": idActivo, "accion": "ELIMINAR" },
+            data: { "idActivo": idActivo, "accion": "ELIMINAR", "fechaEliminar": fechaEliminar },
             type: 'POST',
             dataType: 'json'
         }).done(function(response) {
@@ -334,6 +350,7 @@ function Eliminar(idActivo) {
             swalWithBootstrapButtons.fire('','Operación Cancelada','info')
         }
       })
+      Limpiar();
 }
 
 function Validar() {
@@ -392,13 +409,7 @@ function retornarDatos(accion) {
 
 function Limpiar() {
     document.getElementById('idActivo').value = "";
-    document.getElementById('categoria').value = "";
-    document.getElementById('marca').value = "";
-    document.getElementById('estado').value = "";
-    document.getElementById('color').value = "";
     document.getElementById('caracteristica').value = "";
-    document.getElementById('bodega').value = "";
-    document.getElementById('custodio').value = "";
     document.getElementById('codigo').value = "";
     document.getElementById('nombre').value = "";
     document.getElementById('modelo').value = "";
@@ -408,6 +419,13 @@ function Limpiar() {
     document.getElementById('valorCompra').value = "";
     document.getElementById('comentario').value = "";
     document.getElementById('comprobacionInventario').value = "";
+    listarCategoria();
+    listarMarca();
+    listarEstado();
+    listarColor();
+    listarBodega();
+    listarCustodio();
+    cargarFechaActual();
     BloquearBotones(true);
 }
 

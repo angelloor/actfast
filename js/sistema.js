@@ -1,10 +1,9 @@
-var url = "../controlador/bodega.controlador.php";
+var url = "../controlador/sistema.controlador.php";
 
 $(document).ready(function() {
     Consultar();
     EscucharConsulta();
     BloquearBotones(true);
-    listarResponsableBodega();
 })
 
 function Consultar() {
@@ -17,12 +16,11 @@ function Consultar() {
         var html = "";
         $.each(response, function(index, data) {
             html += "<tr>";
-            html += "<td>" + data.nombre_bodega + "</td>";
-            html += "<td>" + data.ubicacion + "</td>";
-            html += "<td>" + data.nombre_persona + "</td>";
+            html += "<td>" + data.NOMBRE_SISTEMA + "</td>";
+            html += "<td>" + data.DIRECCION_SISTEMA + "</td>";
             html += "<td style='text-align: right;'>";
-            html += "<button class='btn btn-success mr-1' onclick='ConsultarPorId(" + data.id_bodega + ");'><span class='fa fa-edit'></span></button>"
-            html += "<button class='btn btn-danger ml-1' onclick='Eliminar(" + data.id_bodega + ");'><span class='fa fa-trash'></span></button>"
+            html += "<button class='btn btn-success mr-1' onclick='ConsultarPorId(" + data.ID_SISTEMA + ");'><span class='fa fa-edit'></span></button>"
+            html += "<button class='btn btn-danger ml-1' onclick='Eliminar(" + data.ID_SISTEMA + ");'><span class='fa fa-trash'></span></button>"
             html += "</td>";
             html += "</tr>";
         });
@@ -32,27 +30,10 @@ function Consultar() {
     });
 }
 
-function listarResponsableBodega(){
-    $.ajax({
-        data: { "accion": "LISTARRESPONSABLEBODEGA" },
-        url: url,
-        type: 'POST',
-        dataType: 'json'
-    }).done(function(response){
-        var html = "";
-        $.each(response, function(index, data) {
-            html += "<option>" + data.nombre_persona + "</option>";
-        });
-        document.getElementById("idNombrePersona").innerHTML = html;
-    }).fail(function(response){
-        console.log(response);
-    });
-}
-
 function EscucharConsulta(){
-    $('#idBodega').keyup(function() {
-        if($('#idBodega').val()) {
-          let idBuscar = $('#idBodega').val();
+    $('#idSistema').keyup(function() {
+        if($('#idSistema').val()) {
+          let idBuscar = $('#idSistema').val();
           $.ajax({
             data: { "idBuscar": idBuscar, "accion": "CONSULTAR_ID_ROW" },
             url: url,
@@ -62,12 +43,11 @@ function EscucharConsulta(){
                 var html = "";
                 $.each(response, function(index, data) {
                     html += "<tr>";
-                    html += "<td>" + data.nombre_bodega + "</td>";
-                    html += "<td>" + data.ubicacion + "</td>";
-                    html += "<td>" + data.nombre_persona + "</td>";
+                    html += "<td>" + data.NOMBRE_SISTEMA + "</td>";
+                    html += "<td>" + data.DIRECCION_SISTEMA + "</td>";
                     html += "<td style='text-align: right;'>";
-                    html += "<button class='btn btn-success mr-1' onclick='ConsultarPorId(" + data.id_bodega + ");'><span class='fa fa-edit'></span></button>"
-                    html += "<button class='btn btn-danger ml-1' onclick='Eliminar(" + data.id_bodega + ");'><span class='fa fa-trash'></span></button>"
+                    html += "<button class='btn btn-success mr-1' onclick='ConsultarPorId(" + data.ID_SISTEMA + ");'><span class='fa fa-edit'></span></button>"
+                    html += "<button class='btn btn-danger ml-1' onclick='Eliminar(" + data.ID_SISTEMA + ");'><span class='fa fa-trash'></span></button>"
                     html += "</td>";
                     html += "</tr>";
                 });
@@ -79,7 +59,7 @@ function EscucharConsulta(){
       });
 }
 
-function ConsultarPorId(idBodega) {
+function ConsultarPorId(idSistema) {
         const swalWithBootstrapButtons = Swal.mixin({
             customClass: {
               cancelButton: 'btn btn-primary mr-2 ml-2',
@@ -88,7 +68,7 @@ function ConsultarPorId(idBodega) {
             buttonsStyling: false
           })
           swalWithBootstrapButtons.fire({
-            text: '¿Estas seguro de modificar la Bodega?',
+            text: '¿Estas seguro de modificar el sistema?',
             icon: 'warning',
             showCancelButton: true,
             confirmButtonText: 'Si',
@@ -98,14 +78,13 @@ function ConsultarPorId(idBodega) {
             if (result.isConfirmed) {
                 $.ajax({
                     url: url,
-                    data: { "idBodega": idBodega, "accion": "CONSULTAR_ID" },
+                    data: { "idSistema": idSistema, "accion": "CONSULTAR_ID" },
                     type: 'POST',
                     dataType: 'json'
                 }).done(function(response) {
-                    document.getElementById('nombre').value = response.nombre_bodega;
-                    document.getElementById('ubicacion').value = response.ubicacion;
-                    document.getElementById('idNombrePersona').value = response.nombre_persona;
-                    document.getElementById('idBodega').value = response.id_bodega;
+                    document.getElementById('nombre').value = response.NOMBRE_SISTEMA;
+                    document.getElementById('direccion').value = response.DIRECCION_SISTEMA;
+                    document.getElementById('idSistema').value = response.ID_SISTEMA;
                     BloquearBotones(false);
                 }).fail(function(response) {
                     console.log(response);
@@ -156,7 +135,7 @@ function Modificar() {
     });
 }
 
-function Eliminar(idBodega) {
+function Eliminar(idSistema) {
     const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
           cancelButton: 'btn btn-primary mr-2 ml-2',
@@ -165,7 +144,7 @@ function Eliminar(idBodega) {
         buttonsStyling: false
       })
       swalWithBootstrapButtons.fire({
-        text: '¿Estas seguro de eliminar la Bodega?',
+        text: '¿Estas seguro de eliminar el sistema?',
         icon: 'warning',
         showCancelButton: true,
         confirmButtonText: 'Si',
@@ -175,11 +154,10 @@ function Eliminar(idBodega) {
         if (result.isConfirmed) {
         $.ajax({
             url: url,
-            data: { "idBodega": idBodega, "accion": "ELIMINAR" },
+            data: { "idSistema": idSistema, "accion": "ELIMINAR" },
             type: 'POST',
             dataType: 'json'
         }).done(function(response) {
-
             if (response == "OK") {
                 swalWithBootstrapButtons.fire('','Registro eliminado','success')
             } else {
@@ -199,10 +177,9 @@ function Eliminar(idBodega) {
 }
 
 function Validar() {
-    nombreBodega = document.getElementById('nombre').value
-    ubicacion = document.getElementById('ubicacion').value
-    nombreResponsable = document.getElementById('idNombrePersona').value
-    if (nombreBodega == "" || ubicacion == "" || nombreResponsable == "") {
+    nombresistema = document.getElementById('nombre').value
+    direccion = document.getElementById('direccion').value
+    if (nombresistema == "" || direccion == "") {
         return false;
     }
     return true;
@@ -210,20 +187,17 @@ function Validar() {
 
 function retornarDatos(accion) {
     return {
-        "nombreBodega": (document.getElementById('nombre').value).toUpperCase(),
-        "ubicacion": (document.getElementById('ubicacion').value).toUpperCase(),
-        "nombreResponsable": document.getElementById('idNombrePersona').value,
+        "nombreSistema": (document.getElementById('nombre').value).toUpperCase(),
+        "direccion": document.getElementById('direccion').value,
         "accion": accion,
-        "idBodega": document.getElementById("idBodega").value
+        "idSistema": document.getElementById("idSistema").value
     };
 }
 
 function Limpiar() {
-    document.getElementById('idBodega').value = "";
+    document.getElementById('idSistema').value = "";
     document.getElementById('nombre').value = "";
-    document.getElementById('ubicacion').value = "";
-    document.getElementById('idNombrePersona').value = "";
-    listarResponsableBodega();
+    document.getElementById('direccion').value = "";
     BloquearBotones(true);
 }
 
@@ -254,5 +228,5 @@ function MostrarAlerta(titulo, descripcion, tipoAlerta) {
 
 function mostrarTodo(){
     Consultar();
-    document.getElementById('idBodega').value = "";
+    document.getElementById('idSistema').value = "";
 }

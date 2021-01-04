@@ -217,6 +217,7 @@ function Eliminar(idUsuario) {
             swalWithBootstrapButtons.fire('','Operación Cancelada','info')
         }
       })
+      Limpiar();
 }
 
 function Validar() {
@@ -242,10 +243,12 @@ function retornarDatos(accion) {
 }
 
 function Limpiar() {
+    document.getElementById('idUsuario').value = "";
     document.getElementById('idPersona').value = "";
     document.getElementById('nombre').value = "";
     document.getElementById('clave').value = "";
     document.getElementById('rol').value = "";
+    listarRoles();
     BloquearBotones(true);
 }
 

@@ -170,6 +170,7 @@ function Eliminar(idUnidad) {
             swalWithBootstrapButtons.fire('','Operación Cancelada','info')
         }
       })
+      Limpiar();
 }
 
 function Validar() {
@@ -189,6 +190,7 @@ function retornarDatos(accion) {
 }
 
 function Limpiar() {
+    document.getElementById('idUnidad').value = "";
     document.getElementById('nombre').value = "";
     BloquearBotones(true);
 }

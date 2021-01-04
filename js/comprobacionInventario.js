@@ -117,7 +117,8 @@ function Restablecer(){
         ) {
             swalWithBootstrapButtons.fire('','Operación Cancelada','info')
         }
-      })   
+      })
+      Limpiar();   
 }
 
 function Validar() {

@@ -188,6 +188,7 @@ function Eliminar(idCustodio) {
             swalWithBootstrapButtons.fire('','Operación Cancelada','info')
         }
       })
+      Limpiar();
 }
 
 function Validar() {
@@ -207,7 +208,8 @@ function retornarDatos(accion) {
 }
 
 function Limpiar() {
-    document.getElementById('idPersona').value = "";
+    document.getElementById('idCustodio').value = "";
+    listarFuncionarios();
     BloquearBotones(true);
 }
 
