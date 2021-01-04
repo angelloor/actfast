@@ -5,6 +5,7 @@ $(document).ready(function() {
 })
 
 function cargarFechaActual(){
+    var f = new Date();
     if((f.getMonth() +1) <=9){
         mesFinal = "0"+(f.getMonth() +1);
     }

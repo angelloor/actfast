@@ -196,6 +196,7 @@ function EscucharConsulta(){
                     html += "<td>" + data.modelo + "</td>";
                     html += "<td>" + data.serie + "</td>";
                     html += "<td>" + data.nombre_estado + "</td>";
+                    html += "<td>" + data.comprobacion_inventario + "</td>";
                     html += "<td style='text-align: center;'>";
                     html += "<button class='btn btn-success' onclick='ConsultarPorId(" + data.id_activo + ");'><span class='fa fa-edit'></span></button>"
                     html += "<button style='margin-top: 3px;' class='btn btn-danger' onclick='Eliminar(" + data.id_activo + ");'><span class='fa fa-trash'></span></button>"
@@ -312,7 +313,6 @@ function Eliminar(idActivo) {
         diaFinal = "0"+(f.getDate());
     }
     var fechaEliminar = f.getFullYear() + "-" + mesFinal + "-" + diaFinal;
-    console.log(fechaEliminar);
     const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
           cancelButton: 'btn btn-primary mr-2 ml-2',

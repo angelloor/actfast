@@ -6,7 +6,7 @@
 
         public function ConsultarTodo(){
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("select er.id_entrega_recepcion, p.nombre_persona as funcionario, a.codigo, pe.nombre_persona as custodio, er.fecha from entrega_recepcion er inner join persona p on er.persona_id = p.id_persona inner join activo a on er.activo_id = a.id_activo inner join custodio cu on er.custodio_id = cu.id_custodio inner join persona pe on cu.persona_id = pe.id_persona order by er.id_entrega_recepcion asc limit 50");
+            $stmt = $conexion->prepare("select er.id_entrega_recepcion, p.nombre_persona as funcionario, a.codigo, pe.nombre_persona as custodio, er.fecha from entrega_recepcion er inner join persona p on er.persona_id = p.id_persona inner join activo a on er.activo_id = a.id_activo inner join custodio cu on er.custodio_id = cu.id_custodio inner join persona pe on cu.persona_id = pe.id_persona where a.historico = 1 order by er.id_entrega_recepcion asc limit 50");
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_OBJ);
         }
@@ -23,13 +23,13 @@
             $conexion = new Conexion();
 
             if($campoBuscar == "Funcionario"){
-                $stmt = $conexion->prepare("select er.id_entrega_recepcion, p.nombre_persona as funcionario, a.codigo, pe.nombre_persona as custodio, er.fecha from entrega_recepcion er inner join persona p on er.persona_id = p.id_persona inner join activo a on er.activo_id = a.id_activo inner join custodio cu on er.custodio_id = cu.id_custodio inner join persona pe on cu.persona_id = pe.id_persona where p.nombre_persona like :patron order by er.id_entrega_recepcion asc");
+                $stmt = $conexion->prepare("select er.id_entrega_recepcion, p.nombre_persona as funcionario, a.codigo, pe.nombre_persona as custodio, er.fecha from entrega_recepcion er inner join persona p on er.persona_id = p.id_persona inner join activo a on er.activo_id = a.id_activo inner join custodio cu on er.custodio_id = cu.id_custodio inner join persona pe on cu.persona_id = pe.id_persona where (p.nombre_persona like :patron) and (historico = 1) order by er.id_entrega_recepcion asc");
                 $stmt->bindValue(":patron", "%".$idGestionActa."%", PDO::PARAM_STR);
                 $stmt->execute();
                 return $stmt->fetchAll(PDO::FETCH_OBJ);
             }
             if($campoBuscar == "Activo"){
-                $stmt = $conexion->prepare("select er.id_entrega_recepcion, p.nombre_persona as funcionario, a.codigo, pe.nombre_persona as custodio, er.fecha from entrega_recepcion er inner join persona p on er.persona_id = p.id_persona inner join activo a on er.activo_id = a.id_activo inner join custodio cu on er.custodio_id = cu.id_custodio inner join persona pe on cu.persona_id = pe.id_persona where a.codigo like :patron order by er.id_entrega_recepcion asc");
+                $stmt = $conexion->prepare("select er.id_entrega_recepcion, p.nombre_persona as funcionario, a.codigo, pe.nombre_persona as custodio, er.fecha from entrega_recepcion er inner join persona p on er.persona_id = p.id_persona inner join activo a on er.activo_id = a.id_activo inner join custodio cu on er.custodio_id = cu.id_custodio inner join persona pe on cu.persona_id = pe.id_persona where (a.codigo like :patron) and (a.historico = 1) order by er.id_entrega_recepcion asc");
                 $stmt->bindValue(":patron", "%".$idGestionActa."%", PDO::PARAM_STR);
                 $stmt->execute();
                 return $stmt->fetchAll(PDO::FETCH_OBJ);
@@ -38,6 +38,41 @@
 
         public function Guardar($nombreFuncionario, $codigoActivo, $nombreCustodio, $fecha){
             $conexion = new Conexion();
+
+            $stmt = $conexion->prepare("select count(*) from activo where codigo = :codigo");
+            $stmt->bindValue(":codigo", $codigoActivo, PDO::PARAM_INT);
+            $stmt->execute();
+            $results = $stmt->fetch(PDO::FETCH_ASSOC);
+            $existeActivo = $results['count(*)'];
+
+            if($existeActivo == 0){
+                return "El Activo no se encuentra registrado";
+            }
+
+            $stmt = $conexion->prepare("select count(*) from activo where (codigo = :codigo) and (historico = 0)");
+            $stmt->bindValue(":codigo", $codigoActivo, PDO::PARAM_INT);
+            $stmt->execute();
+            $results = $stmt->fetch(PDO::FETCH_ASSOC);
+            $historicoActivo = $results['count(*)'];
+            if($historicoActivo == 1){
+                return "El Activo se encuentra dado de baja";
+            }
+            
+            $stmt = $conexion->prepare("select count(*) from entrega_recepcion er inner join activo a on er.activo_id = a.id_activo where a.codigo = :codigo;");
+            $stmt->bindValue(":codigo", $codigoActivo, PDO::PARAM_INT);
+            $stmt->execute();
+            $results = $stmt->fetch(PDO::FETCH_ASSOC);
+            $existeActa = $results['count(*)'];
+
+            if($existeActa >= 1){
+                return "El activo ya se encuentra asignado a un funcionario";
+            }
+
+            
+
+            
+
+
             $stmt = $conexion->prepare("select ID_PERSONA FROM persona where NOMBRE_PERSONA = :nombreFuncionario");
             $stmt->bindValue(":nombreFuncionario", $nombreFuncionario, PDO::PARAM_STR);
             $stmt->execute();
@@ -134,7 +169,7 @@
 
         public function listarActivo(){
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("select a.codigo activo from activo a;");
+            $stmt = $conexion->prepare("select a.codigo activo from activo a where a.historico = 1;");
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_OBJ);
         }

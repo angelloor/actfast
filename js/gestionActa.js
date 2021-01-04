@@ -166,6 +166,7 @@ function ConsultarPorId(idGestionActa) {
                 document.getElementById('custodio').value = response.custodio;
                 document.getElementById('fecha').value = response.fecha;
                 document.getElementById('idGestionActa').value = response.id_entrega_recepcion;
+                document.getElementById('codigoActivo').disabled = true;
                 BloquearBotones(false);
             }).fail(function(response) {
                 console.log(response);
@@ -292,6 +293,7 @@ function retornarDatosConsulta(accion){
 function Limpiar() {
     document.getElementById('idGestionActa').value = "";
     document.getElementById('codigoActivo').value = "";
+    document.getElementById('codigoActivo').disabled = false;
     listarCustodio();
     listarFuncionario();
     cargarFechaActual();

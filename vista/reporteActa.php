@@ -25,7 +25,7 @@
     <!-- SCRIPTS -->
     <script src="../assets/js/all.min.js"></script>
     <script src="../assets/js/jquery.js"></script>
-    <script src="../js/MovimientoActivo.js"></script>
+    <script src="../js/reporteActa.js"></script>
     <link rel="stylesheet" href="../assets/css/main.css">
   </head>
   <body>
