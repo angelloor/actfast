@@ -4,7 +4,7 @@
     class Sistema{
         public function cargarSistemas(){
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("select nombre_sistema from sistema");
+            $stmt = $conexion->prepare("select nombre_sistema, direccion_sistema from sistema");
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_OBJ);
         }

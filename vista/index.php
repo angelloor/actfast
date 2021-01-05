@@ -27,6 +27,7 @@
     <script src="../assets/js/jquery.js"></script>
     <script src="../js/main.js"></script>
     <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/popup.css">
   </head>
   <body>
   <!-- header -->
@@ -104,7 +105,7 @@
             <div class="card-body">
               <h5 class="card-title">Generar actas</h5>
               <p class="card-text">Genera todas las actas de manera rapida</p>
-              <button id="acta" onclick="acta();" class="btn btn-primary">Acceder</button>
+              <button id="acta" onclick="" class="btn btn-primary">Acceder</button>
             </div>
           </div>
         </div>
@@ -114,7 +115,7 @@
             <div class="card-body">
               <h5 class="card-title">Generar actas por usuario </h5>
               <p class="card-text">Genera las actas de acuerdo a un usuario seleccionado</p>
-              <button id="acta" onclick="actaUsuario();" class="btn btn-primary">Acceder</button>
+              <button id="acta" onclick="" class="btn btn-primary">Acceder</button>
             </div>
           </div>
         </div>
@@ -124,7 +125,7 @@
             <div class="card-body">
               <h5 class="card-title">Generar actas por activo</h5>
               <p class="card-text">Genera un acta seleccionando un activo</p>
-              <button id="acta" onclick="acta();" class="btn btn-primary">Acceder</button>
+              <button id="acta" onclick="" class="btn btn-primary">Acceder</button>
             </div>
           </div>
         </div>
@@ -158,6 +159,24 @@
             </div>
           </div>
         </div>
+        <!-- POPUP -->
+        <div class="overlay" id="overlay">
+          <div class="popup" id="popup">
+            <a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup"><i class="fas fa-times"></i></a>
+            <h3>Ventana Emergente</h3>
+            <h4>Dejanos tus datos</h4>
+            <form action="">
+              <div class="contenedor-inputs">
+                <input type="text" placeholder="Nombre Completo">
+                <input type="email" placeholder="Email">
+              </div>
+              <input type="submit" class="btn-submit" value="Enviar">
+            </form>
+          </div>
+        </div>
+        <!-- POPUP -->
+<script src="popup.js"></script>
+
   </div>    
 </div>
   </body>

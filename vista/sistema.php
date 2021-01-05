@@ -73,7 +73,7 @@
                 <div class="row">
                     <div class="col-md-6 mt-3">
                         <label for="nombre">Nombre</label>
-                        <input type="text" name="nombre" id="nombre" placeholder="Ingrese el nombre del sistema" class="form-control text-mayus">
+                        <input type="text" name="nombre" id="nombre" placeholder="Ingrese el nombre del sistema (1 PALABRA)" class="form-control text-mayus">
                     </div>
                     <div class="col-md-6 mt-3">
                         <label for="direccion">Dirección de Acceso (URL)</label>

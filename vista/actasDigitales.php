@@ -64,33 +64,19 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-4 mt-2">
+                    <div class="col-md-6 mt-2">
                         <label for="funcionario">Funcionario</label>
                         <select name="idPersona" id="idPersona" class="form-control br">
                        </select>
                     </div>
-                    <div class="col-md-4 mt-2">
+                    <div class="col-md-6 mt-2">
                         <label for="nombres">Año del Proceso</label>
-                        <input type="text" name="periodo" id="periodo" placeholder="Ingrese el año del proceso" class="form-control text-mayus" onkeypress="soloNumeros();">
+                        <input type="text" name="periodo" id="periodo" placeholder="Ingrese el año del proceso" class="form-control text-mayus">
                     </div>
-                    <div class="col-md-4 mt-2">
-                        <label for="nombres">Nombre de usuario</label>
-                        <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Ingrese el nombre de usuario" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                        <span class="input-group-text" id="basic-addon2">@cne.gob.ec</span>
-                        </div>
-                    </div>
-                    <div class="col-md-4 pl-5">
-                        <h4>Sistemas</h4>
-                        <div id="sistemas">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    MJRV
-                                </label>
-                            </div>
-                        </div>
-                    </div>
+                </div>
+                <h4 class="mt-5">Sistemas</h4>
+                <div id="sistemas">
+                    
                 </div>
             </div>
         </div>

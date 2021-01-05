@@ -4,7 +4,16 @@ $(document).ready(function() {
     Consultar();
     EscucharConsulta();
     BloquearBotones(true);
+    
+    $("#nombre").keyup(function(){              
+        var ta = $("#nombre");
+        letras = ta.val().replace(/ /g, "");
+        ta.val(letras)
+    }); 
 })
+
+
+
 
 function Consultar() {
     $.ajax({
