@@ -4,82 +4,95 @@
     require 'conexion.php';
     $conexion = new Conexion();
 
+    $ciudad="Puyo";
+    $dia=date("d");
+    $mes_inicial=date("F");
+    $año=date("Y");
+    function mes_format($mes_inicial){
+        if ($mes_inicial == "January") $mes = "Enero";
+        if ($mes_inicial == "February") $mes = "Febrero";
+        if ($mes_inicial == "March") $mes = "Marzo";
+        if ($mes_inicial == "April") $mes = "Abril";
+        if ($mes_inicial == "May") $mes = "Mayo";
+        if ($mes_inicial == "June") $mes = "Junio";
+        if ($mes_inicial == "July") $mes = "Julio";
+        if ($mes_inicial == "August") $mes = "Agosto";
+        if ($mes_inicial == "September") $mes = "Setiembre";
+        if ($mes_inicial == "October") $mes = "Octubre";
+        if ($mes_inicial == "November") $mes = "Noviembre";
+        if ($mes_inicial == "December") $mes = "Diciembre";
+        return $mes;
+    }
+    $mes = mes_format($mes_inicial);
+
     class PDF extends FPDF
-    {
-        // Cabecera de página
-        function Header()
         {
-            // Logo
-            $this->Image('../assets/img/img_acta.png',25,10,40);
-            // Arial bold 15
-            $this->SetFont('Arial','',10);
-            // Movernos a la derecha
-            $this->Ln(5);
-            $this->Cell(70);
-            // Título
-        
-            $this->SetTextColor(42,81,147);
-            $this->MultiCell(105,5,utf8_decode('UNIDAD PROVINCIAL DE SEGURIDAD INFORMÁTICA Y PROYECTOS TECNOLÓGICOS ELECTORALES DE PASTAZA'));
-            //$this->SetDrawColor(42,81,147); 
-        // $this->SetLineWidth(0.5); 
-            //$this->Line(80, 45, 185, 45);
-            // Salto de línea
-            $this->Ln(15);
+            function Header()
+            {
+                $this->Image('../assets/img/img_acta.png',25,10,40);
+                $this->SetFont('Times','',15);
+                $this->Ln(10);
+                $this->Cell(60);
+                $this->SetTextColor(17,86,160);
+                $this->MultiCell(200,5,utf8_decode('UNIDAD PROVINCIAL DE SEGURIDAD INFORMÁTICA Y PROYECTOS TECNOLÓGICOS ELECTORALES DE PASTAZA'));
+                $this->Ln(5);
+            }
+
+            function parrafo($texto)
+            {
+                $txt = $texto;
+                $this->SetFont('Times','',10);
+                $this->SetRightMargin(25);
+                $this->SetLeftMargin(25);    
+                $this->MultiCell(0,5,utf8_decode($txt)  );
+                $this->Ln();
+                $this->SetFont('','I');
+            }
         }
-        
-        function parrafo($texto)
-        {
-            // Leemos el fichero
-            $txt = $texto;
-            // Times 12
-            $this->SetFont('Times','',12);
-            // Imprimimos el texto justificado
-            $this->SetRightMargin(25);
-            $this->SetLeftMargin(25);    
-            $this->MultiCell(0,5,utf8_decode($txt)  );
-            // Salto de línea
-            $this->Ln();
-            // Cita en itálica
-            $this->SetFont('','I');
-        }
-    }
     
-    // Creación del objeto de la clase heredada
-    $pdf = new PDF('L','mm','A4');
-    $pdf->AliasNbPages();
-    $pdf->AddPage();
-    $pdf->SetTextColor(31,78,121);
-    $pdf->SetFont('Times','B',12);
-    $pdf->Cell(0,10,utf8_decode('REPORTE ACTIVOS CONFIRMADOS'),0,1,'C');
-    $pdf->SetTextColor(0,0,0);
+        $pdf = new PDF('L','mm','A4');
+          
+        $pdf->AliasNbPages();
+        $pdf->AddPage();
+        $pdf->SetTextColor(17,86,160);
+        $pdf->SetFont('Times','B',12);
+        $pdf->SetX(23);
+        $pdf->Cell(50,10,utf8_decode('REPORTE DE ACTIVOS CONFIRMADOS'),0,1,'L');
+        $pdf->SetTextColor(0,0,0);
+        $pdf->SetFont('Times','',12);
+        $pdf->SetX(23);
+        $pdf->MultiCell(0,5,utf8_decode("Fecha: $dia de $mes del $año"),0,'L');
    
-    // Logica del reporte 
-    $stmt = $conexion->prepare("select a.codigo, a.nombre_activo, a.caracteristica, m.nombre_marca, a.modelo, a.serie, e.nombre_estado from activo a inner join marca m on a.marca_id = m.id_marca inner join estado e on a.estado_id = e.id_estado where a.comprobacion_inventario = 'SI' order by nombre_activo asc;");
-    $stmt->execute();
-    $datos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $stmt = $conexion->prepare("select a.codigo, a.nombre_activo, a.caracteristica, m.nombre_marca, a.modelo, a.serie, e.nombre_estado from activo a inner join marca m on a.marca_id = m.id_marca inner join estado e on a.estado_id = e.id_estado where a.comprobacion_inventario = 'SI' order by nombre_activo asc;");
+        $stmt->execute();
+        $datos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        // Cabecera de la tabla
-    $pdf->Cell(20,10, "codigo", 1,0,'C',0);
-    $pdf->Cell(70,10, "Nombre", 1,0,'C',0);
-    $pdf->Cell(55,10, "Caracteristica", 1,0,'C',0);
-    $pdf->Cell(35,10, "Marca", 1,0,'C',0);
-    $pdf->Cell(35,10, "Modelo", 1,0,'C',0);
-    $pdf->Cell(40,10, "Serie", 1,0,'C',0);
-    $pdf->Cell(20,10, "Estado", 1,1,'C',0);
-    $pdf->SetFont('Times','',10);
+        $pdf->Ln(5);
+        
+            // Cabecera de la tabla
+        $pdf->SetFont('Times','B',12);
+        $pdf->SetX(23);
+        $pdf->Cell(18,10, "Codigo", 1,0,'C',0);
+        $pdf->Cell(65,10, "Nombre", 1,0,'C',0);
+        $pdf->Cell(50,10, "Caracteristica", 1,0,'C',0);
+        $pdf->Cell(30,10, "Marca", 1,0,'C',0);
+        $pdf->Cell(30,10, "Modelo", 1,0,'C',0);
+        $pdf->Cell(35,10, "Serie", 1,0,'C',0);
+        $pdf->Cell(20,10, "Estado", 1,1,'C',0);
+        $pdf->SetFont('Times','',10);
 
-        // datos de la tabla
-    foreach ($datos as $row) {
-        $pdf->Cell(20,10, $row['codigo'], 1,0,'C',0);
-        $pdf->Cell(70,10, $row['nombre_activo'], 1,0,'C',0);
-        $pdf->Cell(55,10, $row['caracteristica'], 1,0,'C',0);
-        $pdf->Cell(35,10, $row['nombre_marca'], 1,0,'C',0);
-        $pdf->Cell(35,10, $row['modelo'], 1,0,'C',0);
-        $pdf->Cell(40,10, $row['serie'], 1,0,'C',0);
-        $pdf->Cell(20,10, $row['nombre_estado'], 1,1,'C',0);
+            // datos de la tabla
+        foreach ($datos as $row) {
+            $pdf->SetX(23);
+            $pdf->Cell(18,10, $row['codigo'], 1,0,'C',0);
+            $pdf->Cell(65,10, $row['nombre_activo'], 1,0,'C',0);
+            $pdf->Cell(50,10, $row['caracteristica'], 1,0,'C',0);
+            $pdf->Cell(30,10, $row['nombre_marca'], 1,0,'C',0);
+            $pdf->Cell(30,10, $row['modelo'], 1,0,'C',0);
+            $pdf->Cell(35,10, $row['serie'], 1,0,'C',0);
+            $pdf->Cell(20,10, $row['nombre_estado'], 1,1,'C',0);
 
-    }
-
+        }
 
     $pdf->Output();
 ?>

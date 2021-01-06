@@ -15,9 +15,6 @@
     $nombreEntrega = $results['nombre_persona'];
     $cargoEntrega = $results['nombre_cargo'];
 
-
-
-
     $stmt = $conexion->prepare("select p.cedula, c.nombre_cargo from persona p inner join cargo c on p.cargo_id = c.id_cargo where p.nombre_persona = :nombrePersona;");
     $stmt->bindValue(":nombrePersona", $nombreFuncionario, PDO::PARAM_STR);
     $stmt->execute();

@@ -50,7 +50,6 @@
 </div>
 <!-- BREADCRUMB -->
 <div class="container-fluid">
-    <form action="../modelo/report.php" method="POST" target="blank">
         <div class="card">
             <div class="card-header bg-primary text-color-white">
                   <h5>Reporte de Activos</h5>
@@ -59,9 +58,9 @@
                 <div class="row">
                     <div class="col-12 col-sm-12 col-md-8 col-xl-8 mt-2">
                         <div class="btn-group-sm">
-                            <button class="btn btn-success" id="consultar"><span class="fa fa-file-pdf"></span>&nbsp&nbspConsultar</button>
-                            <button class="btn btn-success" id="generar"><span class="fa fa-file-pdf"></span>&nbsp&nbspPdf</button>
-                            <button class="btn btn-success" id="excel"><span class="fa fa-file-pdf"></span>&nbsp&nbspExcel</button>
+                            <button class="btn btn-success" onclick="consultar();" id="consultar"><span class="fa fa-file-pdf"></span>&nbsp&nbspConsultar</button>
+                            <button class="btn btn-success" onclick="pdf();" id="pdf"><span class="fa fa-file-pdf"></span>&nbsp&nbspPdf</button>
+                            <button class="btn btn-success" onclick="excel();" id="excel"><span class="fa fa-file-pdf"></span>&nbsp&nbspExcel</button>
                         </div>
                     </div>
                 </div>
@@ -69,33 +68,30 @@
                     <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
                         <label for="campo">Campo</label>
                         <select name="campo" class="form-control br" id="campo">
-                            <option value="Categoria">Categoria</option>
-                            <option value="Marca">Marca</option>
-                            <option value="Estado">Estado</option>
-                            <option value="Custodio">Custodio</option>
-                            <option value="Funcionario">Funcionario</option>
+                            <option value="categoria">Categoria</option>
+                            <option value="marca">Marca</option>
+                            <option value="estado">Estado</option>
+                            <option value="funcionario">Funcionario</option>
                        </select>
                     </div>
                     <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
-                        <label for="marca">Valor del criterio</label>
-                        <select name="marca" class="form-control br" id="marca">
+                        <label for="valor">Valor del criterio</label>
+                        <select name="valor" class="form-control br" id="valor">
                        </select>
                     </div>
                 </div>
-
             </div>
             <div class="card-footer">
-                <table class="table tabled-bordered table-sm" id="tablaUsuario">
+                <table class="table tabled-bordered table-sm" id="tablaActivo">
                     <thead>
                         <tr>
                             <th>Codigo</th>
                             <th>Nombre</th>
+                            <th>Caracteristica</th>
                             <th>Marca</th>
                             <th>Modelo</th>
                             <th>Serie</th>
                             <th>Estado</th>
-                            <th>Caracteristica</th>
-                            <th>Custodio</th>
                         </tr>
                     </thead>
                     <tbody id="datos">
@@ -104,7 +100,6 @@
                 </table>
             </div>
         </div>
-    </form>
     </div>
     <!-- Gestionar  -->
 </html>

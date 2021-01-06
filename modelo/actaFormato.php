@@ -23,15 +23,6 @@
     }
     $mes = mes_format($mes_inicial);
 
-    //Consultas a la BD
-
-    //$records = $conn->prepare('SELECT id, correo, clave FROM usuarios WHERE correo = :correo');
-    //$records->bindParam(':correo', $_POST['correo']);
-    //$records->execute();
-    //$results = $records->fetch(PDO::FETCH_ASSOC);
-
-    //echo $results['nombre'];
-
     $custodio="RICARDO CARDENAS";
     $cargo_custodio="Técnico Electoral 2";
     $unidad_custodio="UNIDAD PROVINCIAL DE SEGURIDAD INFORMÁTICA Y PROYECTOS TECNOLÓGICOS ELECTORALES";
@@ -46,35 +37,21 @@
     
     class PDF extends FPDF
     {
-        // Cabecera de página
         function Header()
         {
-            // Logo
             $this->Image('../assets/img/img_acta.png',25,10,40);
-            // Arial bold 15
             $this->SetFont('Arial','',10);
-            // Movernos a la derecha
             $this->Ln(5);
             $this->Cell(70);
-            // Título
-        
             $this->SetTextColor(42,81,147);
             $this->MultiCell(105,5,utf8_decode('UNIDAD PROVINCIAL DE SEGURIDAD INFORMÁTICA Y PROYECTOS TECNOLÓGICOS ELECTORALES DE PASTAZA'));
-            //$this->SetDrawColor(42,81,147); 
-        // $this->SetLineWidth(0.5); 
-            //$this->Line(80, 45, 185, 45);
-            // Salto de línea
             $this->Ln(15);
         }
         
-        // Pie de página
         function Footer()
         {
-            // Posición: a 1,5 cm del final
             $this->SetY(-25);
             $this->SetX(30);
-            // Número de página
-            //$this->Cell(0,10,'Page '.$this->PageNo().'/{nb}',0,0,'C');
             $this->SetTextColor(183,191,214);
             $this->SetFont('Times','I',24);
             $this->Cell(0,10,utf8_decode('Construyendo Democracia'),0,1,'L');
@@ -89,22 +66,16 @@
         }
         function parrafo($texto)
         {
-            // Leemos el fichero
             $txt = $texto;
-            // Times 12
             $this->SetFont('Times','',12);
-            // Imprimimos el texto justificado
             $this->SetRightMargin(25);
             $this->SetLeftMargin(25);    
             $this->MultiCell(0,5,utf8_decode($txt)  );
-            // Salto de línea
             $this->Ln();
-            // Cita en itálica
             $this->SetFont('','I');
         }
     }
     
-    // Creación del objeto de la clase heredada
     $pdf = new PDF();
     $pdf->AliasNbPages();
     $pdf->AddPage();
@@ -117,7 +88,6 @@
     Para lo actuado las partes firman en duplicado de igual valor y contenido.
     ");
     
-    //Firmas de las actas
     $pdf->SetFont('Times','',12);
     $pdf->Cell(0,10,utf8_decode('ENTREGAN CONFORME'),0,1,'C');
 

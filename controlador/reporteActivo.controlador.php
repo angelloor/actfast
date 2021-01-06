@@ -4,26 +4,20 @@
 
     if($_POST){
         $reporteActivo = new reporteActivo();
-
         switch($_POST["accion"]){
-            case "LISTARCATEGORIA":
-                $respuesta = $reporteActivo->listarCategoria();
+            case "CARGARVALOR":
+                $respuesta = $reporteActivo->cargarValor();
                 echo json_encode($respuesta);
             break;
-            case "LISTARMARCA":
-                $respuesta = $reporteActivo->listarMarca();
+            case "LISTARVALOR":
+                $campo = $_POST['campo'];
+                $respuesta = $reporteActivo->cagarValor($campo);
                 echo json_encode($respuesta);
             break;
-            case "LISTARESTADO":
-                $respuesta = $reporteActivo->listarEstado();
-                echo json_encode($respuesta);
-            break;
-            case "LISTARCUSTODIO":
-                $respuesta = $reporteActivo->listarCustodio();
-                echo json_encode($respuesta);
-            break;
-            case "LISTARFUNCIONARIO":
-                $respuesta = $reporteActivo->listarFuncionario();
+            case "CONSULTAR":
+                $campo = $_POST['campo'];
+                $valor = $_POST['valor'];
+                $respuesta = $reporteActivo->consultar($campo,$valor);
                 echo json_encode($respuesta);
             break;
         }
