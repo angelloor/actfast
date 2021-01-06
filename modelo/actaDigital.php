@@ -7,6 +7,17 @@
     $nombreFuncionario = $_GET['funcionario'];
 
     $conexion = new Conexion();
+    //TRAER DATOS DEL FUNCIONARIO QUE ENTREGA
+    $stmt = $conexion->prepare("select p.nombre_persona, c.nombre_cargo from persona p inner join cargo c on p.cargo_id = c.id_cargo where p.id_persona = 4;");
+    $stmt->bindValue(":nombrePersona", $nombreFuncionario, PDO::PARAM_STR);
+    $stmt->execute();
+    $results = $stmt->fetch(PDO::FETCH_ASSOC);
+    $nombreEntrega = $results['nombre_persona'];
+    $cargoEntrega = $results['nombre_cargo'];
+
+
+
+
     $stmt = $conexion->prepare("select p.cedula, c.nombre_cargo from persona p inner join cargo c on p.cargo_id = c.id_cargo where p.nombre_persona = :nombrePersona;");
     $stmt->bindValue(":nombrePersona", $nombreFuncionario, PDO::PARAM_STR);
     $stmt->execute();
@@ -50,7 +61,7 @@
             $this->Cell(60);
             $this->SetTextColor(31,78,121);
             $this->MultiCell(115,5,utf8_decode('UNIDAD PROVINCIAL DE SEGURIDAD INFORMÁTICA Y PROYECTOS TECNOLÓGICOS ELECTORALES DE PASTAZA'));
-            $this->Ln(15);
+            $this->Ln(5);
         }
         
         function Footer()
@@ -65,7 +76,7 @@
             $this->SetTextColor(42,81,147);
             $this->SetFont('Times','',8);
             $this->SetRightMargin(33);
-            $this->MultiCell(0,3,utf8_decode("Puyo / Ecuador \n www.cnedppastaza.gob.ec \n Av. Alberto Zambrano \n Palacios s/n \n PBX: (593)2 885 145/885 359 \n"),0,'R');
+            $this->MultiCell(0,3,utf8_decode("Puyo / Ecuador \n www.cnedppastaza.gob.ec \n Av. Alberto Zambrano \n Palacios s/n \n PBX: (593)2 885 145/885 359 \nFO-01(DG-SM-AD-09)"),0,'R');
             $this->Image('../assets/img/ec.png',180,265,2);
 
         }
@@ -73,7 +84,7 @@
         function parrafo($texto)
         {
             $txt = $texto;
-            $this->SetFont('Times','',12);
+            $this->SetFont('Times','',10);
             $this->SetRightMargin(25);
             $this->SetLeftMargin(25);    
             $this->MultiCell(0,5,utf8_decode($txt)  );
@@ -90,43 +101,32 @@
     $pdf->Cell(0,10,utf8_decode('ACTA ENTREGA RECEPCION DE CREDENCIALES DIGITALES'),0,1,'C');
     $pdf->SetTextColor(0,0,0);
     $pdf->parrafo("La presente acta de entrega recepción tiene por objeto otorgar credenciales para el manejo de los siguientes sistemas: ");
-    
-    for ($i=1; $i <=$totalSistemas ; $i++) {
-        $sistema = $_GET['sistema'.$i];
-        $sistemas = $sistemas.$i.".- ".$sistema."\n";
-    }
-
-    $pdf->parrafo($sistemas);
-    $pdf->parrafo("a $nombreFuncionario con numero de cedula $cedula, cuyo cargo es $nombreCargo para el proceso Electoral $periodo, El funcionario receptor de las credenciales está obligado al complimiento de:
-    ");
-    $pdf->parrafo("1. Las credenciales entregadas al funcionario para el manejo de los sistemas antes mencionados son para uso institucional e intransferible, y su utilización es de exclusiva responsabilidad del funcionario.\n\n2. El funcionario LOOR MANZANO ANGEL MIGUEL, se compromete a la no divulgación y buen uso de la información facilitada por la institución con total confidencialidad, de incumplir con este compromiso será responsable de las consecuencias establecida en el artículo 190.- 'Apropiación fraudulenta por medios electrónicos' del COIP.\n\n3. En caso de pérdida, olvido o sustracción del usuario y/o clave de acceso para el manejo de los sistemas, el funcionario deberá comunicar al área de tecnología del Consejo Nacional Electoral Delegación Pastaza, de manera inmediata. \n\n4. Las credenciales de acceso serán entregadas de manera persona al funcionario responsable de la misma.");
-
-    $pdf->parrafo("Para la constancia de la actuado y en fe de conformidad y aceptación, se suscribe la presente acta en dos originales de igual valor y efecto para las personas que intervienen en esta diligencia, en la ciudad de $ciudad, a los $dia días del mes de $mes del $año.");
-    $pdf->SetTextColor(31,78,121);
-    $pdf->SetFont('Times','B',12);
-    $pdf->Cell(0,10,utf8_decode('CREDENCIALES'),0,1,'C');
-    $pdf->SetTextColor(0,0,0);
     for ($i=1; $i <=$totalSistemas ; $i++) {
         $sistema = $_GET['sistema'.$i];
         $url = $_GET['url'.$i];
         $usuario = $_GET['usuario'.$i];
         $clave = $_GET['clave'.$i];
-
-        $credenciales = $credenciales.$sistema." url = ".$url."\n"."Usuario = ".$usuario." Contraseña = ".$clave."\n\n";
+        $sistemas = $sistemas.$i.".- ".$sistema." - URL = ".$url." - USUARIO = ".$usuario." - CLAVE = ".$clave."\n";
     }
+    $pdf->parrafo($sistemas);
+    $pdf->parrafo("a $nombreFuncionario con numero de cedula $cedula, cuyo cargo es $nombreCargo para el proceso Electoral $periodo, El funcionario receptor de las credenciales está obligado al complimiento de:");
+    $pdf->parrafo("1. Las credenciales entregadas al funcionario para el manejo de los sistemas antes mencionados son para uso institucional e intransferible, y su utilización es de exclusiva responsabilidad del funcionario.\n2. El funcionario $nombreFuncionario, se compromete a la no divulgación y buen uso de la información facilitada por la institución con total confidencialidad, de incumplir con este compromiso será responsable de las consecuencias establecida en el artículo 190.- 'Apropiación fraudulenta por medios electrónicos' del COIP.\n3. En caso de pérdida, olvido o sustracción del usuario y/o clave de acceso para el manejo de los sistemas, el funcionario deberá comunicar al área de tecnología del Consejo Nacional Electoral Delegación Pastaza, de manera inmediata. \n4. Las credenciales de acceso serán entregadas de manera persona al funcionario responsable de la misma.");
 
-    $pdf->parrafo($credenciales);
-
+    $pdf->parrafo("Para la constancia de la actuado y en fe de conformidad y aceptación, se suscribe la presente acta en dos originales de igual valor y efecto para las personas que intervienen en esta diligencia, en la ciudad de $ciudad, a los $dia días del mes de $mes del $año.");
+    $pdf->SetTextColor(0,0,0);
     //Firmas de las actas
-    $pdf->SetFont('Times','',12);
+    $pdf->SetFont('Times','B',10);
     $pdf->Cell(0,10,utf8_decode('ENTREGAN CONFORME'),0,1,'C');
-    $pdf->ln(15);
-    $pdf->MultiCell(0,5,utf8_decode("NOMBRE \nCARGO"),0,'C');
+    $pdf->SetFont('Times','',10);
+    $pdf->ln(10);
+    $pdf->MultiCell(0,5,utf8_decode("$nombreEntrega \n$cargoEntrega"),0,'C');
 
-    $pdf->SetFont('Times','',12);
+    $pdf->ln(5);
+    $pdf->SetFont('Times','B',10);
     $pdf->Cell(0,10,utf8_decode('RECIBÍ CONFORME'),0,1,'C');
-    $pdf->ln(15);
-    $pdf->MultiCell(0,5,utf8_decode("NOMBRE \nCARGO"),0,'C');
+    $pdf->SetFont('Times','',10);
+    $pdf->ln(10);
+    $pdf->MultiCell(0,5,utf8_decode("$nombreFuncionario \n$nombreCargo"),0,'C');
 
     $pdf->Output();
 

@@ -34,13 +34,17 @@ function Generar(){
             }
         });
         if (checkInput == 0) {
-            MostrarAlerta("","No se ha seleccionado ningun sistema","info")
+            MostrarAlerta("","No se ha seleccionado ningun sistema","info");
         }else{
             if (vacio >= 1) {
-                MostrarAlerta("","Complete el usuario o contraseña","info")
+                MostrarAlerta("","Complete el usuario o contraseña","info");
             }else{
                 nombrePersona = document.getElementById('idPersona').value;
                 periodo = document.getElementById('periodo').value;
+                if (periodo == "") {
+                    MostrarAlerta("","Ingrese el año del proceso","info");
+                    return;
+                }
                 urlGet = urlGet+"totalSistemas="+checkInput+"&funcionario="+nombrePersona+"&periodo="+periodo;
                 console.log(urlGet);
                 window.open('../modelo/actaDigital.php?'+urlGet, '_blank');
