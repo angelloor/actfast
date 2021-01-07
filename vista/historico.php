@@ -59,8 +59,8 @@
                     <div class="col-12 col-sm-12 col-md-8 col-xl-8 mt-2">
                         <div class="btn-group-sm">
                             <button class="btn btn-success" onclick="ConsultarPorFecha()" id="consultar"><span class="fa fa-file-pdf"></span>&nbsp&nbspConsultar</button>
-                            <button class="btn btn-success" id="generar"><span class="fa fa-file-pdf"></span>&nbsp&nbspPdf</button>
-                            <button class="btn btn-success" id="excel"><span class="fa fa-file-pdf"></span>&nbsp&nbspExcel</button>
+                            <button class="btn btn-success" onclick="pdf();" id="generar"><span class="fa fa-file-pdf"></span>&nbsp&nbspPdf</button>
+                            <button class="btn btn-success" onclick="excel();" id="excel"><span class="fa fa-file-pdf"></span>&nbsp&nbspExcel</button>
                         </div>
                     </div>
                 </div>

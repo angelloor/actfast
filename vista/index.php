@@ -78,7 +78,7 @@
         <div class="dropdown-menu" aria-labelledby="dropdown01">
           <a class="dropdown-item" href="./reporteActivo.php">Activos</a>
           <a class="dropdown-item" href="./historico.php">Histórico de activos</a>
-          <a class="dropdown-item" href="./reporteActa.php">Movimientos de activos</a>
+          <a class="dropdown-item" href="./movimientoActivo.php">Movimientos de activos</a>
           <a class="dropdown-item" href="../modelo/activosConfirmados.php" target="blank">Activos Confirmados</a>
           <a class="dropdown-item" href="../modelo/activosNoConfirmados.php" target="blank">Activos No Confirmados</a>
         </div>
@@ -158,22 +158,6 @@
             </div>
           </div>
         </div>
-        <!-- POPUP -->
-        <div class="overlay" id="overlay">
-          <div class="popup" id="popup">
-            <a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup"><i class="fas fa-times"></i></a>
-            <h3>Ventana Emergente</h3>
-            <h4>Dejanos tus datos</h4>
-            <form action="">
-              <div class="contenedor-inputs">
-                <input type="text" placeholder="Nombre Completo">
-                <input type="email" placeholder="Email">
-              </div>
-              <input type="submit" class="btn-submit" value="Enviar">
-            </form>
-          </div>
-        </div>
-        <!-- POPUP -->
   </div>    
 </div>
   </body>

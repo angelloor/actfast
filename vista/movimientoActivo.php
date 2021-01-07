@@ -20,12 +20,12 @@
     <!-- FONTAWESOME -->
     <link rel="stylesheet" href="../assets/css/all.min.css">
     <!-- SWEET ALERT -->
-    <link href="../assets/css/dark.css" rel="stylesheet">
+    <link href="../assets/css/dark.css" rel="stylesheet" >
     <script src="../assets/js/sweetalert2.min.js"></script>
     <!-- SCRIPTS -->
     <script src="../assets/js/all.min.js"></script>
     <script src="../assets/js/jquery.js"></script>
-    <script src="../js/reporteActa.js"></script>
+    <script src="../js/movimientoActivo.js"></script>
     <link rel="stylesheet" href="../assets/css/main.css">
   </head>
   <body>
@@ -50,7 +50,6 @@
 </div>
 <!-- BREADCRUMB -->
 <div class="container-fluid">
-    <form action="../modelo/report.php" method="POST" target="blank">
         <div class="card">
             <div class="card-header bg-primary text-color-white">
                   <h5>Movimientos de activos</h5>
@@ -59,9 +58,9 @@
                 <div class="row">
                     <div class="col-12 col-sm-12 col-md-8 col-xl-8 mt-2">
                         <div class="btn-group-sm">
-                            <button class="btn btn-success" id="consultar"><span class="fa fa-file-pdf"></span>&nbsp&nbspConsultar</button>
-                            <button class="btn btn-success" id="generar"><span class="fa fa-file-pdf"></span>&nbsp&nbspPdf</button>
-                            <button class="btn btn-success" id="excel"><span class="fa fa-file-pdf"></span>&nbsp&nbspExcel</button>
+                            <button class="btn btn-success" onclick="ConsultarPorFecha();" id="consultar"><span class="fa fa-file-pdf"></span>&nbsp&nbspConsultar</button>
+                            <button class="btn btn-success" onclick="pdf();" id="generar"><span class="fa fa-file-pdf"></span>&nbsp&nbspPdf</button>
+                            <button class="btn btn-success" onclick="excel();" id="excel"><span class="fa fa-file-pdf"></span>&nbsp&nbspExcel</button>
                         </div>
                     </div>
                 </div>
@@ -93,7 +92,6 @@
                 </table>
             </div>
         </div>
-    </form>
     </div>
     <!-- Gestionar  -->
 </html>

@@ -67,12 +67,7 @@
             if($existeActa >= 1){
                 return "El activo ya se encuentra asignado a un funcionario";
             }
-
             
-
-            
-
-
             $stmt = $conexion->prepare("select ID_PERSONA FROM persona where NOMBRE_PERSONA = :nombreFuncionario");
             $stmt->bindValue(":nombreFuncionario", $nombreFuncionario, PDO::PARAM_STR);
             $stmt->execute();
@@ -113,6 +108,19 @@
             
         public function Modificar($idActa, $nombreFuncionario, $codigoActivo, $nombreCustodio, $fecha){
             $conexion = new Conexion();
+
+            $fechaTotal = getdate();
+            $diaInicial = $fechaTotal['mday'];
+            $mesInicial = $fechaTotal['mon'];
+            $año = $fechaTotal['year'];
+            if($diaInicial <= 9){
+                $dia = "0".$diaInicial;
+            }
+            if($mesInicial <= 9){
+                $mes = "0".$mesInicial;
+            }
+            $fechaActual = $año."-".$mes."-".$dia;
+
             $stmt = $conexion->prepare("select ID_PERSONA FROM persona where NOMBRE_PERSONA = :nombreFuncionario");
             $stmt->bindValue(":nombreFuncionario", $nombreFuncionario, PDO::PARAM_STR);
             $stmt->execute();
@@ -142,7 +150,21 @@
             $stmt->bindValue(":idCustodio", $idCustodio, PDO::PARAM_INT);
             $stmt->bindValue(":fecha", $fecha, PDO::PARAM_STR);
             $stmt->bindValue(":idActa", $idActa, PDO::PARAM_INT);
-            if($stmt->execute()){
+
+            $stmt1 = $conexion->prepare("INSERT INTO `movimiento_activo`
+                                                    (`ACTIVO_ID`,
+                                                    `CUSTODIO_ID`,
+                                                    `PERSONA_ID`,
+                                                    `FECHA_MOVIMIENTO`)
+                                        VALUES (:idActivo,
+                                                :idCustodio,
+                                                :idPersona,    
+                                                :fecha);");
+            $stmt1->bindValue(":idActivo", $idActivo, PDO::PARAM_INT);
+            $stmt1->bindValue(":idCustodio", $idCustodio, PDO::PARAM_INT);
+            $stmt1->bindValue(":idPersona", $idPersona, PDO::PARAM_INT);
+            $stmt1->bindValue(":fecha", $fechaActual, PDO::PARAM_STR);
+            if(($stmt->execute()) && ($stmt1->execute())){
                 return "OK";
             }else{
                 return "Error: se ha generado un error al modificar la información";
