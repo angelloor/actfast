@@ -27,7 +27,6 @@
     <script src="../assets/js/jquery.js"></script>
     <script src="../js/main.js"></script>
     <link rel="stylesheet" href="../assets/css/main.css">
-    <link rel="stylesheet" href="../assets/css/popup.css">
   </head>
   <body>
   <!-- header -->
@@ -175,8 +174,6 @@
           </div>
         </div>
         <!-- POPUP -->
-<script src="popup.js"></script>
-
   </div>    
 </div>
   </body>

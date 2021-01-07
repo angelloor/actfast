@@ -50,7 +50,6 @@
 </div>
 <!-- BREADCRUMB -->
 <div class="container-fluid">
-    <form action="../modelo/report.php" method="POST" target="blank">
         <div class="card">
             <div class="card-header bg-primary text-color-white">
                   <h5>Histórico de activos</h5>
@@ -59,7 +58,7 @@
                 <div class="row">
                     <div class="col-12 col-sm-12 col-md-8 col-xl-8 mt-2">
                         <div class="btn-group-sm">
-                            <button class="btn btn-success" id="consultar"><span class="fa fa-file-pdf"></span>&nbsp&nbspConsultar</button>
+                            <button class="btn btn-success" onclick="ConsultarPorFecha()" id="consultar"><span class="fa fa-file-pdf"></span>&nbsp&nbspConsultar</button>
                             <button class="btn btn-success" id="generar"><span class="fa fa-file-pdf"></span>&nbsp&nbspPdf</button>
                             <button class="btn btn-success" id="excel"><span class="fa fa-file-pdf"></span>&nbsp&nbspExcel</button>
                         </div>
@@ -85,6 +84,7 @@
                             <th>Marca</th>
                             <th>Modelo</th>
                             <th>Serie</th>
+                            <th>Fecha de Eliminacion</th>
                             <th class="th-text-align-right">Acciones</th>
                         </tr>
                     </thead>
@@ -94,7 +94,6 @@
                 </table>
             </div>
         </div>
-    </form>
     </div>
     <!-- Gestionar  -->
 </html>
