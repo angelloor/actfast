@@ -47,8 +47,8 @@
           <a class="dropdown-item" href="./reporteActivo.php">Activos</a>
           <a class="dropdown-item" href="./historico.php">Histórico de activos</a>
           <a class="dropdown-item" href="./movimientoActivo.php">Movimientos de activos</a>
-          <a class="dropdown-item" href="../modelo/activosConfirmados.php" target="blank">Activos Confirmados</a>
-          <a class="dropdown-item" href="../modelo/activosNoConfirmados.php" target="blank">Activos No Confirmados</a>
+          <a class="dropdown-item" href="../vista/activosConfirmados.php">Activos Confirmados</a>
+          <a class="dropdown-item" href="../vista/activosNoConfirmados.php">Activos No Confirmados</a>
         </div>
       </li>
           </ul>

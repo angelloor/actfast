@@ -1,8 +1,10 @@
 <?php
-    require('../fpdf/fpdf.php');
+    require('../fpdf/wrapper.php');
     require 'conexion.php';
 
     $conexion = new Conexion();
+
+    $fechaTotal = getdate();
 
     $fechaInicio = $_GET['fechaInicio'];
     $fechaFinal = $_GET['fechaFinal'];
@@ -30,7 +32,7 @@
     $mes = mes_format($mes_inicial);
 
     if($accion == "pdf"){
-        class PDF extends FPDF
+        class PDF extends Wrapper
     {
         function Header()
         {
@@ -43,6 +45,28 @@
             $this->Ln(5);
         }
   
+        function Footer()
+        {
+            $this->SetY(-25);
+            $this->SetX(30);
+            $this->SetTextColor(183,191,214);
+            $this->SetFont('Times','I',24);
+            $this->Cell(0,10,utf8_decode('Construyendo Democracia'),0,1,'L');
+            $this->SetY(-30);
+            $this->SetX(0);
+            $this->SetTextColor(42,81,147);
+            $this->SetFont('Times','',8);
+            $this->SetRightMargin(33);
+            $this->MultiCell(0,3,utf8_decode("Puyo / Ecuador \n www.cnedppastaza.gob.ec \n Av. Alberto Zambrano \n Palacios s/n \n PBX: (593)2 885 145/885 359 \nFO-01(DG-SM-AD-09)"),0,'R');
+            $this->Image('../assets/img/ec.png',180,265,2);
+            $this->SetFont('Times','',10);
+            $this->SetTextColor(0,0,0);
+            $this->SetY(-15);
+            $this->Cell(192,10,utf8_decode('Página ').$this->PageNo().' / {nb}',0,0,'C');
+
+
+        }
+
         function parrafo($texto)
         {
             $txt = $texto;
@@ -57,6 +81,7 @@
 
         $pdf = new PDF();
         $pdf->AliasNbPages();
+        $pdf->SetAutoPageBreak(true,40);
         $pdf->AddPage();
         $pdf->SetTextColor(17,86,160);
         $pdf->SetFont('Times','B',12);
@@ -76,6 +101,10 @@
         $pdf->Cell(60,10, "Custodio", 1,0,'C',0);
         $pdf->Cell(60,10, "Funcionario", 1,0,'C',0);
         $pdf->Cell(18,10, "Fecha", 1,1,'C',0);
+        //definiar distancias de cada celda
+        $pdf->SetWidths(Array(10,18,60,60,18));
+        $pdf->SetLineHeight(5);
+
         $pdf->SetFont('Times','',8);
         
         $stmt = $conexion->prepare("select ma.id_movimiento_activo, a.codigo as codigo, p.nombre_persona as nombreCustodio, pe.nombre_persona as nombreFuncionario, ma.fecha_movimiento from movimiento_activo ma inner join activo a on ma.activo_id = a.id_activo inner join custodio cu on ma.custodio_id = cu.id_custodio inner join persona p on cu.persona_id = p.id_persona inner join persona pe on ma.persona_id = pe.id_persona where ma.fecha_movimiento BETWEEN :fechaInicio AND :fechaFinal;");
@@ -85,14 +114,16 @@
         $datos = $stmt->fetchAll(PDO::FETCH_ASSOC);
         
         foreach ($datos as $row) {
-            $pdf->SetX(23);
-            $pdf->Cell(10,10, $row['id_movimiento_activo'], 1,0,'C',0);
-            $pdf->Cell(18,10, $row['codigo'], 1,0,'C',0);
-            $pdf->Cell(60,10, $row['nombreCustodio'], 1,0,'C',0);
-            $pdf->Cell(60,10, $row['nombreFuncionario'], 1,0,'C',0);
-            $pdf->Cell(18,10, $row['fecha_movimiento'], 1,1,'C',0);
+            $pdf->Row(23, 0,Array(
+                $row['id_movimiento_activo'],
+                $row['codigo'],
+                $row['nombreCustodio'],
+                $row['nombreFuncionario'],
+                $row['fecha_movimiento'],
+            ), 'C');
         }
-        $pdf->Output();
+        $nombrePdf = "movimientoActivo";
+        $pdf->Output('',nombrePdf($nombrePdf),true);
 
     }else{
         header('Content-type:application/xls');
@@ -112,8 +143,18 @@
           }
           echo implode("\t", array_values($row)) . "\n";
         }
-
-
     }
 
+    function nombrePdf($nombre){
+        $fechaTotal = getdate();
+        if($fechaTotal['wday'] <= 9){
+            $dia = "0".$fechaTotal['wday'];
+        }
+        if($fechaTotal['mon'] <= 9){
+            $mes = "0".$fechaTotal['mon'];
+        }
+        $fechaFinal = $fechaTotal['year']."-".$mes."-".$dia;
+        $nombreFinal = $nombre.$fechaFinal.".pdf";
+        return $nombreFinal;
+    }
 ?>
