@@ -9,7 +9,6 @@
         $saltoLinea = 5;
     }
 
-
     $conexion = new Conexion();
     //TRAER DATOS DEL FUNCIONARIO QUE ENTREGA
     $stmt = $conexion->prepare("select f.denominacion ,p.nombre_persona, c.nombre_cargo, u.nombre_unidad from firma f inner join persona p on f.persona_id = p.id_persona inner join cargo c on p.cargo_id = c.id_cargo inner join unidad u on p.unidad_id = u.id_unidad  where f.id_firma = 1;");
@@ -316,7 +315,7 @@
                 }
 
                 $pdf->ln(5);
-                $pdf->parrafo("Equipos informáticos y cables de poder que se encuentran en perfectas condiciones de funcionamiento en caso de pérdida, daño o deterioro de los mismos quedaran a su entera responsabilidad. \n\nPara lo actuado las partes firman en duplicado de igual valor y contenido.");
+                $pdf->parrafo("Equipos informáticos y cables de poder, incluida la maleta en la cual se transportan, que se encuentran en perfectas condiciones de funcionamiento en caso de pérdida, daño o deterioro de los mismos quedarán a su entera responsabilidad. \n\nPara lo actuado las partes firman en duplicado de igual valor y contenido.");
                 
                 $pdf->SetFont('Times','B',10);
                 $pdf->ln($saltoLinea);
@@ -333,10 +332,7 @@
                 $pdf->ln(10);
                 $pdf->MultiCell(0,5,utf8_decode("$nombreFuncionario \n $cargoFuncionario"),0,'C');
             }
-            
-
         }
-        
     }
 
     $nombrePdf = "actaGlobal".$categoria;
@@ -354,7 +350,6 @@
         $nombreFinal = $nombre.$fechaFinal.".pdf";
         return $nombreFinal;
     }
-
 ?>
 
 
