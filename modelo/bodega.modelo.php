@@ -19,7 +19,7 @@
 
         public function listarResponsableBodega(){
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("select p.nombre_persona from persona p");
+            $stmt = $conexion->prepare("select p.nombre_persona from persona p order by p.nombre_persona asc;");
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_OBJ);
         }

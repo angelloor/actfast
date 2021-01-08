@@ -27,6 +27,7 @@
     <script src="../assets/js/jquery.js"></script>
     <script src="../js/main.js"></script>
     <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/popup.css">
   </head>
   <body>
   <!-- header -->
@@ -104,7 +105,7 @@
             <div class="card-body">
               <h5 class="card-title">Generar actas</h5>
               <p class="card-text">Genera todas las actas de manera rapida</p>
-              <button id="acta" onclick="" class="btn btn-primary">Acceder</button>
+              <button id="btnCategoria" name="categoria" class="btn-abrir-popup">Acceder</button>
             </div>
           </div>
         </div>
@@ -114,7 +115,7 @@
             <div class="card-body">
               <h5 class="card-title">Generar actas por usuario </h5>
               <p class="card-text">Genera las actas de acuerdo a un usuario seleccionado</p>
-              <button id="acta" onclick="" class="btn btn-primary">Acceder</button>
+              <button id="btnFuncionario" name="funcionario" class="btn-abrir-popup">Acceder</button>
             </div>
           </div>
         </div>
@@ -124,7 +125,7 @@
             <div class="card-body">
               <h5 class="card-title">Generar actas por activo</h5>
               <p class="card-text">Genera un acta seleccionando un activo</p>
-              <button id="acta" onclick="" class="btn btn-primary">Acceder</button>
+              <button id="btnActivo" name="activo" class="btn-abrir-popup">Acceder</button>
             </div>
           </div>
         </div>
@@ -144,7 +145,7 @@
             <div class="card-body">
               <h5 class="card-title">Reportes</h5>
               <p class="card-text">Activos, Comrpobacion de inventario y movimiento de activos</p>
-              <a href="./reporteActa.php" class="btn btn-primary">Acceder</a>
+              <button id="btnReporte" name="reporte" class="btn-abrir-popup">Acceder</button>
             </div>
           </div>
         </div>
@@ -154,12 +155,71 @@
             <div class="card-body">
               <h5 class="card-title">Actas Digitales</h5>
               <p class="card-text">Genera actas sobre las credenciales digitales de sistemas</p>
-              <a href="./actasDigitales.php" class="btn btn-primary">Acceder</a>
+              <button id="btnactasDigitales" name="actasDigitales" class="btn-abrir-popup">Acceder</button>
             </div>
           </div>
         </div>
   </div>    
 </div>
+
+<div class="overlay" id="overlay">
+        <div class="popup" id="popup">
+            <a href="#" class="btn-cerrar-popup" id="btnCerrarPopup"><i class="fas fa-times"></i></a>
+            <br>
+            <div id="popupBodyCategoria" class="popupBody">
+                <h4 class="mb-3">Seleccionar Categor&iacute;a</h4>
+                <div class="form">
+                    <div class="contenedor-inputs">
+                        <select name="SelectCategoria" class="form-control mb-3 tmm" id="SelectCategoria">
+                        </select>
+                    </div>
+                    <button id="BtnGenerarTodasActas" onclick="GenerarTodasActas();" class="btn-submit">Enviar</button>
+                </div>
+            </div>
+            <div id="popupBodyFuncionario" class="popupBody">
+                <h4 class="mb-3">Seleccionar Funcionario y su Categor&iacute;a</h4>
+                <div class="form">
+                    <div class="contenedor-inputs">
+                        <select name="SelectFuncionario" class="form-control mb-3 tmm" id="SelectFuncionario">
+                        </select>
+                        <select name="SelectCategoriaDos" class="form-control mb-3 tmm" id="SelectCategoriaDos">
+                        </select>
+                    </div>
+                    <button id="BtnGenerarPorUsuario" onclick="GenerarPorFuncionario();" class="btn-submit">Enviar</button>
+                </div>
+            </div>
+            <div id="popupBodyActivo" class="popupBody">
+                <h4 class="mb-3">Seleccionar Activo</h4>
+                <div class="form">
+                    <div class="contenedor-inputs">
+                        <label for="activo"></label>
+                        <datalist id="activo" name="activo">
+                        </datalist>
+                        <input id="codigoActivo" list="activo" onkeypress="soloNumeros()">
+                    </div>
+                    <button id="BtnGenerarPorActivo" onclick="GenerarPorActivo();" class="btn-submit">Enviar</button>
+                </div>
+            </div>
+            <div id="popupBodyReporte" class="popupBody">
+                <h4 class="mb-3">Seleccionar Tipo de Reporte</h4>
+                <div class="form">
+                    <a class="btn btn-submit col-12 mb-3" href="./reporteActivo.php">Activos</a>
+                    <a class="btn btn-submit col-12 mb-3" href="./historico.php">Histórico de activos</a>
+                    <a class="btn btn-submit col-12 mb-3" href="./movimientoActivo.php">Movimientos de activos</a>
+                    <a class="btn btn-submit col-12 mb-3" href="./activosConfirmados.php">Activos Confirmados</a>
+                    <a class="btn btn-submit col-12 mb-3" href="./activosNoConfirmados.php">Activos No Confirmados</a>
+                </div>
+            </div>
+            <div id="popupBodyActasDigitales" class="popupBody">
+                <h4 class="mb-3">Seleccionar la Acción</h4>
+                <div class="form">
+                    <a class="btn btn-submit col-12 mb-3" href="./sistema.php">Sistemas</a>
+                    <a class="btn btn-submit col-12 mb-3" href="./actasDigitales.php">Generar Actas</a>
+                </div>
+            </div>
+          </div>
+    </div>
+<script src="../assets/js/popup.js"></script>
   </body>
 </html>
 

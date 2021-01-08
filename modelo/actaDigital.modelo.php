@@ -11,7 +11,7 @@
         
         public function listarFuncionario(){
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("SELECT NOMBRE_PERSONA FROM persona");
+            $stmt = $conexion->prepare("SELECT NOMBRE_PERSONA FROM persona order by nombre_persona asc;");
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_OBJ);
         }

@@ -184,21 +184,21 @@
 
         public function listarFuncionario(){
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("SELECT NOMBRE_PERSONA FROM persona");
+            $stmt = $conexion->prepare("SELECT NOMBRE_PERSONA FROM persona order by NOMBRE_PERSONA asc;");
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_OBJ);
         }
 
         public function listarActivo(){
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("select a.codigo activo from activo a where a.historico = 1;");
+            $stmt = $conexion->prepare("select a.codigo activo from activo a where a.historico = 1 order by a.codigo asc;");
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_OBJ);
         }
 
         public function listarCustodio(){
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("select p.nombre_persona from custodio cu inner join persona p on cu.persona_id = p.id_persona;");
+            $stmt = $conexion->prepare("select p.nombre_persona from custodio cu inner join persona p on cu.persona_id = p.id_persona order by p.nombre_persona asc;");
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_OBJ);
         }

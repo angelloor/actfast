@@ -203,42 +203,42 @@
 
         public function listarCategoria(){
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("SELECT NOMBRE_CATEGORIA FROM CATEGORIA");
+            $stmt = $conexion->prepare("SELECT NOMBRE_CATEGORIA FROM CATEGORIA order by nombre_categoria asc;");
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_OBJ);
         }
 
         public function listarMarca(){
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("SELECT NOMBRE_MARCA FROM MARCA");
+            $stmt = $conexion->prepare("SELECT NOMBRE_MARCA FROM MARCA order by nombre_marca asc;");
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_OBJ);
         }
 
         public function listarEstado(){
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("SELECT NOMBRE_ESTADO FROM ESTADO");
+            $stmt = $conexion->prepare("SELECT NOMBRE_ESTADO FROM ESTADO order by NOMBRE_ESTADO asc;");
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_OBJ);
         }
 
         public function listarColor(){
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("SELECT NOMBRE_COLOR FROM COLOR");
+            $stmt = $conexion->prepare("SELECT NOMBRE_COLOR FROM COLOR order by NOMBRE_COLOR asc;");
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_OBJ);
         }
 
         public function listarBodega(){
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("SELECT NOMBRE_BODEGA FROM BODEGA");
+            $stmt = $conexion->prepare("SELECT NOMBRE_BODEGA FROM BODEGA order by NOMBRE_BODEGA asc;");
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_OBJ);
         }
 
         public function listarCustodio(){
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("select p.nombre_persona from custodio c inner join persona p on c.persona_id = p.id_persona;");
+            $stmt = $conexion->prepare("select p.nombre_persona from custodio c inner join persona p on c.persona_id = p.id_persona order by p.nombre_persona asc;;");
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_OBJ);
         }

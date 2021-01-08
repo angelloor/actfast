@@ -80,7 +80,6 @@ function listarCustodio(){
     });
 }
 
-
 function Consultar() {
     $.ajax({
         data: { "accion": "CONSULTAR" },

@@ -103,14 +103,14 @@
 
         public function listarCargo(){
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("SELECT NOMBRE_CARGO FROM CARGO");
+            $stmt = $conexion->prepare("SELECT NOMBRE_CARGO FROM CARGO order by NOMBRE_CARGO asc;");
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_OBJ);
         }
 
         public function listarUnidad(){
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("SELECT NOMBRE_UNIDAD FROM UNIDAD");
+            $stmt = $conexion->prepare("SELECT NOMBRE_UNIDAD FROM UNIDAD order by NOMBRE_UNIDAD asc;");
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_OBJ);
         }

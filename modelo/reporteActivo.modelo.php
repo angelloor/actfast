@@ -6,28 +6,28 @@
         public function cagarValor($campo){
             $conexion = new Conexion();
             if($campo == "categoria"){
-                $stmt = $conexion->prepare("select nombre_categoria as nombre from categoria");
+                $stmt = $conexion->prepare("select nombre_categoria as nombre from categoria order by nombre_categoria asc;");
                 $stmt->bindValue(":campo", $campo, PDO::PARAM_STR);
                 $stmt->execute();
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
 
             if($campo == "marca"){
-                $stmt = $conexion->prepare("select nombre_marca as nombre from marca");
+                $stmt = $conexion->prepare("select nombre_marca as nombre from marca order by nombre_marca asc;");
                 $stmt->bindValue(":campo", $campo, PDO::PARAM_STR);
                 $stmt->execute();
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
 
             if($campo == "estado"){
-                $stmt = $conexion->prepare("select nombre_estado as nombre from estado");
+                $stmt = $conexion->prepare("select nombre_estado as nombre from estado order by nombre_estado asc;");
                 $stmt->bindValue(":campo", $campo, PDO::PARAM_STR);
                 $stmt->execute();
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
 
             if($campo == "funcionario"){
-                $stmt = $conexion->prepare("select nombre_persona as nombre from persona;");
+                $stmt = $conexion->prepare("select nombre_persona as nombre from persona order by nombre_persona asc;");
                 $stmt->bindValue(":campo", $campo, PDO::PARAM_STR);
                 $stmt->execute();
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -88,7 +88,7 @@
         
         public function cargarValor(){
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("select nombre_categoria as nombre from categoria");
+            $stmt = $conexion->prepare("select nombre_categoria as nombre from categoria order by nombre_categoria asc;");
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
