@@ -102,12 +102,11 @@
 .popup .form .contenedor-inputs input {
     width: 80%;
     margin-bottom: 20px;
-    height: 52px;
+    height: 34.5px;
     font-size: 18px;
     line-height: 52px;
     text-align: center;
     border: 1px solid #BBBBBB;
-    border-radius: 10px;
 }
 
 .popup .form .btn-submit {

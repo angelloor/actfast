@@ -19,7 +19,6 @@ function soloNumeros(){
         return false;
       }
     });
-
 }
 
 function soloNumerosPunto(){

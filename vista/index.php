@@ -57,6 +57,7 @@
         <a class="nav-link dropdown-toggle" href="gestionActa.php" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gestión de Actas</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
           <a class="dropdown-item" href="gestionActa.php">Actas</a>
+          <a class="dropdown-item" href="firma.php">Firmas</a>
         </div>
       </li>
       <li class="nav-item dropdown">
@@ -161,7 +162,6 @@
         </div>
   </div>    
 </div>
-
 <div class="overlay" id="overlay">
         <div class="popup" id="popup">
             <a href="#" class="btn-cerrar-popup" id="btnCerrarPopup"><i class="fas fa-times"></i></a>
@@ -172,6 +172,8 @@
                     <div class="contenedor-inputs">
                         <select name="SelectCategoria" class="form-control mb-3 tmm" id="SelectCategoria">
                         </select>
+                        <h4>Salto de linea</h4>
+                        <input type="text" id="saltoLineaUno" name="saltoLineaUno" class="form-control" onkeypress="soloNumeros()">
                     </div>
                     <button id="BtnGenerarTodasActas" onclick="GenerarTodasActas();" class="btn-submit">Enviar</button>
                 </div>
@@ -184,6 +186,8 @@
                         </select>
                         <select name="SelectCategoriaDos" class="form-control mb-3 tmm" id="SelectCategoriaDos">
                         </select>
+                        <h4>Salto de linea</h4>
+                        <input type="text" id="saltoLineaDos" name="saltoLineaDos" class="form-control" onkeypress="soloNumeros()">
                     </div>
                     <button id="BtnGenerarPorUsuario" onclick="GenerarPorFuncionario();" class="btn-submit">Enviar</button>
                 </div>
@@ -196,6 +200,8 @@
                         <datalist id="activo" name="activo">
                         </datalist>
                         <input id="codigoActivo" list="activo" onkeypress="soloNumeros()">
+                        <h4>Salto de linea</h4>
+                        <input type="text" id="saltoLineaTres" name="saltoLineaTres" class="form-control" onkeypress="soloNumeros()">
                     </div>
                     <button id="BtnGenerarPorActivo" onclick="GenerarPorActivo();" class="btn-submit">Enviar</button>
                 </div>

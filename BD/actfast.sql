@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 07-01-2021 a las 15:15:08
+-- Tiempo de generación: 08-01-2021 a las 19:56:36
 -- Versión del servidor: 8.0.21
 -- Versión de PHP: 7.3.21
 
@@ -2874,6 +2874,28 @@ INSERT INTO `estado` (`ID_ESTADO`, `NOMBRE_ESTADO`) VALUES
 (1, 'BUENO'),
 (2, 'MALO'),
 (3, 'REGULAR');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `firma`
+--
+
+DROP TABLE IF EXISTS `firma`;
+CREATE TABLE IF NOT EXISTS `firma` (
+  `ID_FIRMA` int NOT NULL AUTO_INCREMENT,
+  `PERSONA_ID` int NOT NULL,
+  `DENOMINACION` varchar(50) NOT NULL,
+  PRIMARY KEY (`ID_FIRMA`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Volcado de datos para la tabla `firma`
+--
+
+INSERT INTO `firma` (`ID_FIRMA`, `PERSONA_ID`, `DENOMINACION`) VALUES
+(1, 4, 'ING'),
+(2, 39, 'ING');
 
 -- --------------------------------------------------------
 

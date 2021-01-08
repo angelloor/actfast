@@ -8,12 +8,20 @@
 
     $conexion = new Conexion();
     //TRAER DATOS DEL FUNCIONARIO QUE ENTREGA
-    $stmt = $conexion->prepare("select p.nombre_persona, c.nombre_cargo from persona p inner join cargo c on p.cargo_id = c.id_cargo where p.id_persona = 4;");
-    $stmt->bindValue(":nombrePersona", $nombreFuncionario, PDO::PARAM_STR);
+    $stmt = $conexion->prepare("select f.denominacion ,p.nombre_persona, c.nombre_cargo from firma f inner join persona p on f.persona_id = p.id_persona inner join cargo c on p.cargo_id = c.id_cargo where f.id_firma = 1;");
     $stmt->execute();
     $results = $stmt->fetch(PDO::FETCH_ASSOC);
-    $nombreEntrega = $results['nombre_persona'];
+    $nombreEntregaCompleto = $results['nombre_persona'];
     $cargoEntrega = $results['nombre_cargo'];
+    $denominacion = $results['denominacion'];
+
+    function nombreMasDenominacion($nombreEntregaCompleto,$denominacion){
+        $separarNombres = explode(" ", $nombreEntregaCompleto);
+        return $denominacion.". ".$separarNombres[2]." ".$separarNombres[0];
+    }
+
+    $nombreEntrega = nombreMasDenominacion($nombreEntregaCompleto,$denominacion);
+
 
     $stmt = $conexion->prepare("select p.cedula, c.nombre_cargo from persona p inner join cargo c on p.cargo_id = c.id_cargo where p.nombre_persona = :nombrePersona;");
     $stmt->bindValue(":nombrePersona", $nombreFuncionario, PDO::PARAM_STR);

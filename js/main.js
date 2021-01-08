@@ -8,12 +8,13 @@ $(document).ready(function() {
 })
 
 function soloNumeros(){
-  $('#codigoActivo').keydown(function (event) {
-    if (event.which < 48 || event.which > 57 ) {
+  $('input').keypress(function (event) {
+    if (event.which < 48 || event.which > 57  || event.which == 9) {
       return false;
     }
   });
 }
+
 
 function cargarCategoria(){
     $.ajax({
@@ -67,12 +68,11 @@ function listarActivo(){
   });
 }
 
-
-
 function GenerarTodasActas(){
   urlGet = "";
   categoriaUno = document.getElementById('SelectCategoria').value;
-  urlGet = urlGet+"categoria="+categoriaUno;
+  saltoLinea = document.getElementById('saltoLineaUno').value;
+  urlGet = urlGet+"categoria="+categoriaUno+"&saltoLinea="+saltoLinea;
   window.open('../modelo/actaGlobal.php?'+urlGet, '_blank');
   close();
   clear();
@@ -82,7 +82,8 @@ function GenerarPorFuncionario(){
   urlGet = "";
   funcionario = document.getElementById('SelectFuncionario').value;
   categoriaDos = document.getElementById('SelectCategoriaDos').value;
-  urlGet = urlGet+"categoria="+categoriaDos+"&funcionario="+funcionario;
+  saltoLinea = document.getElementById('saltoLineaDos').value;
+  urlGet = urlGet+"categoria="+categoriaDos+"&funcionario="+funcionario+"&saltoLinea="+saltoLinea;
   window.open('../modelo/actaPorFuncionario.php?'+urlGet, '_blank');
   close();
   clear();
@@ -91,11 +92,12 @@ function GenerarPorFuncionario(){
 function GenerarPorActivo(){
   urlGet = "";
   activo = document.getElementById('codigoActivo').value;
+  saltoLinea = document.getElementById('saltoLineaTres').value;
   if (activo == "") {
     MostrarAlerta("","Seleccione un activo","info");
     return;
   }else{
-    urlGet = urlGet+"activo="+activo;
+    urlGet = urlGet+"activo="+activo+"&saltoLinea="+saltoLinea;
     window.open('../modelo/actaPorActivo.php?'+urlGet, '_blank');
     close();
     clear();

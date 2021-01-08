@@ -24,6 +24,7 @@
         <a class="nav-link dropdown-toggle" href="gestionActa.php" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gestión de Actas</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
           <a class="dropdown-item" href="gestionActa.php">Actas</a>
+          <a class="dropdown-item" href="firma.php">Firmas</a>
         </div>
       </li>
       <li class="nav-item dropdown">
