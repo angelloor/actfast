@@ -51,7 +51,7 @@
 <!-- BREADCRUMB -->
 <!-- Gestionar  -->
 <div class="container-fluid">
-        <div class="card">
+        <div class="card margin-b-30">
             <div class="card-header bg-primary text-color-white">
                   <h5>Gestionar Activos</h5>
             </div>
@@ -119,7 +119,7 @@
                     </div>
                     <div class="col-12 col-sm-12- col-md-4 col-lg-3 col-xl-3 mt-2">
                         <label for="codigo"><strong>Código</strong></label>
-                        <input type="text" name="codigo" id="codigo" placeholder="Ingrese el código" onkeypress="soloNumeros()" class="form-control">
+                        <input type="text" name="codigo" id="codigo" placeholder="Ingrese el código" class="form-control">
                     </div>
                     <div class="col-12 col-sm-12- col-md-4 col-lg-3 col-xl-3 mt-2">
                         <label for="nombre">Nombre</label>
@@ -143,7 +143,7 @@
                     </div>
                     <div class="col-12 col-sm-12- col-md-4 col-lg-3 col-xl-3 mt-2">
                         <label for="valorCompra">Valor de compra</label>
-                        <input type="text" name="valorCompra" id="valorCompra" onkeypress="soloNumerosPunto()" placeholder="Ingrese el valor de la compra" class="form-control">
+                        <input type="text" name="valorCompra" id="valorCompra" placeholder="Ingrese el valor de la compra" class="form-control">
                     </div>
                     <div class="col-12 col-sm-12- col-md-4 col-lg-3 col-xl-3 mt-2">
                         <label for="comentario"><strong>Comentario</strong></label>
@@ -171,7 +171,7 @@
                             <th scope="col">Serie</th>
                             <th scope="col">Estado</th>
                             <th scope="col">CI</th>
-                            <th scope="col">Acciones</th>
+                            <th scope="col" class="btn-center-objet">Acciones</th>
                         </tr>
                     </thead>
                     <tbody id="datos">

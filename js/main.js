@@ -4,16 +4,18 @@ $(document).ready(function() {
   cargarCategoria();
   listarActivo();
   document.getElementById('SelectCategoriaDos').addEventListener('change',listarFuncionarioPorCategoria,false );
+  document.getElementById('saltoLineaDos').addEventListener('keypress', soloNumeros, false);
+  document.getElementById('saltoLineaTres').addEventListener('keypress', soloNumeros, false);
+  document.getElementById('codigoActivo').addEventListener('keypress', soloNumeros, false);
 })
 
-function soloNumeros(){
-  $('input').keypress(function (event) {
-    if (event.which < 48 || event.which > 57  || event.which == 9) {
-      return false;
-    }
-  });
-}
 
+function soloNumeros(e){
+  var key = window.event ? e.which : e.keyCode;
+  if (key < 48 || key > 57) {
+    e.preventDefault();
+  }
+}
 
 function cargarCategoria(){
     $.ajax({

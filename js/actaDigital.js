@@ -10,6 +10,14 @@ $(document).ready(function() {
     document.getElementById('periodo').addEventListener("keypress", soloNumeros, false);
 })
 
+function soloNumeros(e){
+    input = document.getElementById('periodo');
+    var key = window.event ? e.which : e.keyCode;
+    if (key < 48 || key > 57 || (input.value.length === 4)) {
+      e.preventDefault();
+    }
+  }
+
 function Generar(){
     vacio = 0;
     checkInput = 0;
@@ -76,12 +84,6 @@ function validarCheckbox(idCheck){
     }
 }
 
-function soloNumeros(e){
-    var key = window.event ? e.which : e.keyCode;
-    if (key < 48 || key > 57) {
-      e.preventDefault();
-    }
-  }
 
 function cargarSistemas(){
     $.ajax({

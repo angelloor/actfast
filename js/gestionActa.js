@@ -8,15 +8,15 @@ $(document).ready(function() {
     listarActivo();
     listarCustodio();
     cargarFechaActual();
+    document.getElementById('codigoActivo').addEventListener('keypress', soloNumeros, false);
 })
 
-function soloNumeros(){
-    $('#codigoActivo').keypress(function (event) {
-      if (event.which < 48 || event.which > 57 ) {
-        return false;
-      }
-    });
-}
+function soloNumeros(e){
+    var key = window.event ? e.which : e.keyCode;
+    if (key < 48 || key > 57) {
+      e.preventDefault();
+    }
+  }
 
 function cargarFechaActual(){
     var f = new Date();

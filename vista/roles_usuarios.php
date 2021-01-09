@@ -51,7 +51,7 @@
 <!-- BREADCRUMB -->
 <!-- Gestionar  -->
 <div class="container-fluid">
-        <div class="card">
+        <div class="card margin-b-30">
             <div class="card-header bg-primary text-color-white">
                   <h5>Gestionar Roles de usuario</h5>
             </div>
@@ -59,8 +59,8 @@
                 <table class="table tabled-bordered table-sm" id="tablaRolUsuario">
                     <thead>
                         <tr>
-                            <th>Nombre</th>
-                            <th>Descripción</th>
+                            <th class="padding-ru">Nombre</th>
+                            <th class="padding-ru">Descripción</th>
                         </tr>
                     </thead>
                     <tbody id="datos">

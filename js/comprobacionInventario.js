@@ -5,7 +5,16 @@ $(document).ready(function() {
     EscucharConsulta();
     listarFuncionario();
     listarEstado();
+    document.getElementById('codigo').addEventListener('keypress', soloNumeros, false);
 })
+
+function soloNumeros(e){
+    var key = window.event ? e.which : e.keyCode;
+  if (key < 48 || key > 57) {
+    e.preventDefault();
+  }
+  }
+  
 
 function listarFuncionario(){
     $.ajax({

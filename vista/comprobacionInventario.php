@@ -50,7 +50,7 @@
 </div>
 <!-- BREADCRUMB -->
 <div class="container">
-        <div class="card">
+        <div class="card margin-b-30">
             <div class="card-header bg-primary text-color-white">
                   <h5>Comprobación de Inventario</h5>
             </div>

@@ -193,3 +193,19 @@ body > div > div.container-title > nav{
 .text-mayus{
     text-transform: uppercase;
 }
+
+.btn-center-objet{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.margin-b-30{
+    margin-bottom: 30px;
+}
+
+.padding-ru{
+    padding: 12px 0 !important;
+}

@@ -51,7 +51,7 @@
 <!-- BREADCRUMB -->
 <!-- Gestionar  -->
 <div class="container-fluid">
-        <div class="card">
+        <div class="card margin-b-30">
             <div class="card-header bg-primary text-color-white">
                   <h5>Gestionar Actas</h5>
             </div>
@@ -89,7 +89,7 @@
                         <label for="activo">Activo</label>
                         <datalist id="activo" name="activo">
                         </datalist>
-                        <input id="codigoActivo" list="activo" class="form-control br" onkeypress="soloNumeros()">
+                        <input id="codigoActivo" list="activo" class="form-control br">
                     </div>
                     <div class="col-md-6 mt-2">
                         <label for="custodio">Custodio</label>

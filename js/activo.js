@@ -11,22 +11,22 @@ $(document).ready(function() {
     listarBodega();
     listarCustodio();
     cargarFechaActual();
+    document.getElementById('codigo').addEventListener('keypress', soloNumeros, false);
+    document.getElementById('valorCompra').addEventListener('keypress', soloNumerosPunto, false);
 })
 
-function soloNumeros(){
-    $('#codigo').keypress(function (event) {
-      if (event.which < 48 || event.which > 57  || event.which == 9) {
-        return false;
-      }
-    });
-}
+function soloNumeros(e){
+    var key = window.event ? e.which : e.keyCode;
+    if (key < 48 || key > 57) {
+      e.preventDefault();
+    }
+  }
 
-function soloNumerosPunto(){
-    $('#valorCompra').keypress(function (event) {
-      if (event.which < 46 || event.which > 57  || event.which == 9) {
-        return false;
-      }
-    });
+function soloNumerosPunto(e){
+    var key = window.event ? e.which : e.keyCode;
+    if (key < 46 || key > 57) {
+      e.preventDefault();
+    }
 }
 
 function cargarFechaActual(){
@@ -161,7 +161,7 @@ function Consultar() {
             html += "<td>" + data.serie + "</td>";
             html += "<td>" + data.nombre_estado + "</td>";
             html += "<td>" + data.comprobacion_inventario + "</td>";
-            html += "<td style='text-align: center;'>";
+            html += "<td class='btn-center-objet'>";
             html += "<button class='btn btn-success' onclick='ConsultarPorId(" + data.id_activo + ");'><span class='fa fa-edit'></span></button>"
             html += "<button style='margin-top: 3px;' class='btn btn-danger' onclick='Eliminar(" + data.id_activo + ");'><span class='fa fa-trash'></span></button>"
             html += "</td>";
@@ -196,7 +196,7 @@ function EscucharConsulta(){
                     html += "<td>" + data.serie + "</td>";
                     html += "<td>" + data.nombre_estado + "</td>";
                     html += "<td>" + data.comprobacion_inventario + "</td>";
-                    html += "<td style='text-align: center;'>";
+                    html += "<td class='btn-center-objet'>";
                     html += "<button class='btn btn-success' onclick='ConsultarPorId(" + data.id_activo + ");'><span class='fa fa-edit'></span></button>"
                     html += "<button style='margin-top: 3px;' class='btn btn-danger' onclick='Eliminar(" + data.id_activo + ");'><span class='fa fa-trash'></span></button>"
                     html += "</td>";

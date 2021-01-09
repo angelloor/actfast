@@ -6,20 +6,17 @@ $(document).ready(function() {
     BloquearBotones(true);
     listarCargo();
     listarUnidad();
+    document.getElementById('cedulaFuncionario').addEventListener('keypress', soloNumeros, false);
+    document.getElementById('telefonoFuncionario').addEventListener('keypress', soloNumeros, false);
 })
 
-function soloNumeros(){
-    $('#cedulaFuncionario').keypress(function (event) {
-      if (event.which < 48 || event.which > 57 ) {
-        return false;
-      }
-    });
-    $('#telefonoFuncionario').keypress(function (event) {
-        if (event.which < 48 || event.which > 57 ) {
-          return false;
-        }
-      });
+function soloNumeros(e){
+    var key = window.event ? e.which : e.keyCode;
+    if (key < 48 || key > 57) {
+      e.preventDefault();
+    }
 }
+
 
 function Consultar() {
     $.ajax({

@@ -57,6 +57,7 @@
         <a class="nav-link dropdown-toggle" href="gestionActa.php" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gestión de Actas</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
           <a class="dropdown-item" href="gestionActa.php">Actas</a>
+          <a class="dropdown-item" href="actasDigitales.php">Actas Digitales</a>
           <a class="dropdown-item" href="firma.php">Firmas</a>
         </div>
       </li>
@@ -98,7 +99,7 @@
   <li class="breadcrumb-item active">Funciones</li>
     </ol>
 </nav>
-<div class="container text-center">
+<div class="container text-center margin-b-30">
   <div class="row text-center">
         <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">                      
           <div class="card-sm width-card" id="card-inicio">
@@ -122,7 +123,7 @@
         </div>
         <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 mt-1">                      
           <div class="card-sm width-card" id="card-inicio">
-            <img src="../assets/img/au.png" class="card-img-top mt-3 img-card" alt="Imagen">
+            <img src="../assets/img/ab.png" class="card-img-top mt-3 img-card" alt="Imagen">
             <div class="card-body">
               <h5 class="card-title">Generar actas por activo</h5>
               <p class="card-text">Genera un acta seleccionando un activo</p>
@@ -185,7 +186,7 @@
                         <select name="SelectFuncionario" class="form-control mb-3 tmm" id="SelectFuncionario">
                         </select>
                         <h4>Salto de linea</h4>
-                        <input type="text" id="saltoLineaDos" name="saltoLineaDos" class="form-control" onkeypress="soloNumeros()">
+                        <input type="text" id="saltoLineaDos" name="saltoLineaDos" class="form-control">
                     </div>
                     <button id="BtnGenerarPorUsuario" onclick="GenerarPorFuncionario();" class="btn-submit">Enviar</button>
                 </div>
@@ -197,9 +198,9 @@
                         <label for="activo"></label>
                         <datalist id="activo" name="activo">
                         </datalist>
-                        <input id="codigoActivo" list="activo" onkeypress="soloNumeros()">
+                        <input id="codigoActivo" list="activo">
                         <h4>Salto de linea</h4>
-                        <input type="text" id="saltoLineaTres" name="saltoLineaTres" class="form-control" onkeypress="soloNumeros()">
+                        <input type="text" id="saltoLineaTres" name="saltoLineaTres" class="form-control">
                     </div>
                     <button id="BtnGenerarPorActivo" onclick="GenerarPorActivo();" class="btn-submit">Enviar</button>
                 </div>
