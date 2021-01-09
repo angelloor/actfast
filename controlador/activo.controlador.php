@@ -3,7 +3,6 @@
 
     if($_POST){
         $activo = new Activo();
-
         switch($_POST['accion']){
             case "CONSULTAR":
                 echo json_encode($activo->ConsultarTodo());
@@ -28,7 +27,6 @@
                 $valorCompra = $_POST['valorCompra'];
                 $comentario = $_POST['comentario'];
                 $comprobacionInventario = $_POST['comprobacionInventario'];
-                
                 if($categoria == ""){
                     echo json_encode("Seleccione la categoria");
                     return;
@@ -89,7 +87,6 @@
                     echo json_encode("Seleccione la comprobacion de Inventario");
                     return;
                 }
-
                 $respuesta = $activo->Guardar($categoria,$marca ,$estado,$color,$caracteristica,$bodega,$custodio,$codigo,$nombre,$modelo,$serie,$origenIngreso,$fechaIngreso,$valorCompra,$comentario,$comprobacionInventario);
                 echo json_encode($respuesta);
             break;
@@ -111,7 +108,6 @@
                 $comentario = $_POST['comentario'];
                 $comprobacionInventario = $_POST['comprobacionInventario'];
                 $idActivo = $_POST['idActivo'];
-                
                 if($categoria == ""){
                     echo json_encode("Seleccione la categoria");
                     return;
@@ -172,10 +168,8 @@
                     echo json_encode("Seleccione la comprobacion de Inventario");
                     return;
                 }
-        
                 $respuesta = $activo->Modificar($idActivo,$categoria,$marca ,$estado,$color,$caracteristica,$bodega,$custodio,$codigo,$nombre,$modelo,$serie,$origenIngreso,$fechaIngreso,$valorCompra,$comentario,$comprobacionInventario);
                 echo json_encode($respuesta);
-
             break;
             case "ELIMINAR":
                 $idActivo = $_POST['idActivo'];
@@ -183,7 +177,6 @@
                 $respuesta = $activo->Eliminar($idActivo,$fechaEliminar);
                 echo json_encode($respuesta);
             break;
-
             case "CONSULTAR_ID_ROW":
                 $idBuscar = $_POST['idActivo'];
                 $campoBuscar = $_POST['campoBuscar'];
@@ -217,6 +210,4 @@
             break;
         }
     }
-
-
 ?>

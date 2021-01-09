@@ -16,14 +16,7 @@
     background: #18BC9C;
 }
 
-
-/* ------------------------- */
-
-
 /* POPUP */
-
-
-/* ------------------------- */
 
 .overlay {
     background: rgba(0, 0, 0, .3);
@@ -42,13 +35,6 @@
     visibility: visible;
     
 }
-
-/* .popupBody {
-    visibility: hidden;
-}
-.popupBody.active {
-    visibility: visible;
-} */
 
 .popup {
     background: #19191A;
@@ -127,14 +113,7 @@
     background: #11836c;
 }
 
-
-/* ------------------------- */
-
-
 /* ANIMACIONES */
-
-
-/* ------------------------- */
 
 .popup.active {
     transform: scale(1);

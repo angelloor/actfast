@@ -3,7 +3,6 @@
 
     if($_POST){
         $color = new Color();
-
         switch($_POST['accion']){
             case "CONSULTAR":
                 echo json_encode($color->ConsultarTodo());
@@ -13,7 +12,6 @@
             break;
             case "GUARDAR":
                 $nombreColor = $_POST['nombreColor'];
-
                 if($nombreColor == ""){
                     echo json_encode("Ingrese el nombre del Color");
                     return;
@@ -24,15 +22,12 @@
             case "MODIFICAR":
                 $nombreColor = $_POST['nombreColor'];
                 $idColor = $_POST['idColor'];
-
                 if($nombreColor == ""){
                     echo json_encode("Ingrese el nombre del Color");
                     return;
                 }
-        
                 $respuesta = $color->Modificar($idColor,$nombreColor);
                 echo json_encode($respuesta);
-
             break;
             case "ELIMINAR":
                 $idColor = $_POST['idColor'];
@@ -47,6 +42,4 @@
             break;
         }
     }
-
-
 ?>

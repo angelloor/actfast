@@ -2,6 +2,7 @@
     require 'conexion.php';
 
     class Activo{
+        
         public function ConsultarTodo(){
             $conexion = new Conexion();
             $stmt = $conexion->prepare("select a.id_activo, a.codigo, a.nombre_activo, c.nombre_categoria, a.caracteristica, m.nombre_marca, a.modelo, a.serie, e.nombre_estado, a.comprobacion_inventario from activo a inner join categoria c on a.categoria_id = c.id_categoria inner join marca m on a.marca_id = m.id_marca inner join estado e on a.estado_id = e.id_estado where a.historico = 1 order by a.id_activo asc limit 50");
@@ -242,8 +243,5 @@
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_OBJ);
         }
-     
     }
-
-
 ?>

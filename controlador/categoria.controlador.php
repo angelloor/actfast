@@ -3,7 +3,6 @@
 
     if($_POST){
         $categoria = new Categoria();
-
         switch($_POST['accion']){
             case "CONSULTAR":
                 echo json_encode($categoria->ConsultarTodo());
@@ -14,7 +13,6 @@
             case "GUARDAR":
                 $nombreCategoria = $_POST['nombreCategoria'];
                 $descripcionCategoria = $_POST['descripcionCategoria'];
-
                 if($nombreCategoria == ""){
                     echo json_encode("Ingrese el nombre de la Categoria");
                     return;
@@ -30,7 +28,6 @@
                 $nombreCategoria = $_POST['nombreCategoria'];
                 $descripcionCategoria = $_POST['descripcionCategoria'];
                 $idCategoria = $_POST['idCategoria'];
-
                 if($nombreCategoria == ""){
                     echo json_encode("Ingrese el nombre de la Categoria");
                     return;
@@ -41,7 +38,6 @@
                 }
                 $respuesta = $categoria->Modificar($idCategoria,$nombreCategoria,$descripcionCategoria);
                 echo json_encode($respuesta);
-
             break;
             case "ELIMINAR":
                 $idCategoria = $_POST['idCategoria'];
@@ -56,6 +52,4 @@
             break;
         }
     }
-
-
 ?>

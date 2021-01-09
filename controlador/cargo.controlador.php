@@ -3,7 +3,6 @@
 
     if($_POST){
         $cargo = new Cargo();
-
         switch($_POST['accion']){
             case "CONSULTAR":
                 echo json_encode($cargo->ConsultarTodo());
@@ -13,7 +12,6 @@
             break;
             case "GUARDAR":
                 $nombreCargo = $_POST['nombreCargo'];
-
                 if($nombreCargo == ""){
                     echo json_encode("Ingrese el nombre del Cargo");
                     return;
@@ -29,10 +27,8 @@
                     echo json_encode("Ingrese el nombre del Cargo");
                     return;
                 }
-        
                 $respuesta = $cargo->Modificar($idCargo,$nombreCargo);
                 echo json_encode($respuesta);
-
             break;
             case "ELIMINAR":
                 $idCargo = $_POST['idCargo'];
@@ -47,6 +43,4 @@
             break;
         }
     }
-
-
 ?>

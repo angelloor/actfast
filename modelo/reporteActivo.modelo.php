@@ -3,6 +3,7 @@
     require 'conexion.php';
 
     class reporteActivo{
+        
         public function cagarValor($campo){
             $conexion = new Conexion();
             if($campo == "categoria"){

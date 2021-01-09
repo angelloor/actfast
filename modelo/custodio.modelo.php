@@ -2,6 +2,7 @@
     require 'conexion.php';
 
     class Custodio{
+
         public function ConsultarTodo(){
             $conexion = new Conexion();
             $stmt = $conexion->prepare("select c.id_custodio, p.nombre_persona from custodio c inner join persona p on c.persona_id = p.id_persona order by id_custodio asc;");
@@ -87,6 +88,4 @@
             }
         }
     }
-
-
 ?>

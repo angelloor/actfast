@@ -11,7 +11,5 @@ class Conexion extends PDO{
             exit;
         }
     }
-
 }
-
 ?>

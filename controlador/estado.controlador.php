@@ -3,7 +3,6 @@
 
     if($_POST){
         $estado = new Estado();
-
         switch($_POST['accion']){
             case "CONSULTAR":
                 echo json_encode($estado->ConsultarTodo());
@@ -13,7 +12,6 @@
             break;
             case "GUARDAR":
                 $nombreEstado = $_POST['nombreEstado'];
-
                 if($nombreEstado == ""){
                     echo json_encode("Ingrese el nombre de Estado");
                     return;
@@ -24,15 +22,12 @@
             case "MODIFICAR":
                 $nombreEstado = $_POST['nombreEstado'];
                 $idEstado = $_POST['idEstado'];
-
                 if($nombreEstado == ""){
                     echo json_encode("Ingrese el nombre de Estado");
                     return;
                 }
-        
                 $respuesta = $estado->Modificar($idEstado,$nombreEstado);
                 echo json_encode($respuesta);
-
             break;
             case "ELIMINAR":
                 $idEstado = $_POST['idEstado'];
@@ -47,6 +42,4 @@
             break;
         }
     }
-
-
 ?>

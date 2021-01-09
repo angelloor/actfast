@@ -1,7 +1,9 @@
 <?php
     require 'conexion.php';
     session_start();
+
     class Login{
+
         public function consultarUsuario($usuario, $clave){
 
             $conexion =  new Conexion();
@@ -18,5 +20,4 @@
             }
         }
     }
-
 ?>

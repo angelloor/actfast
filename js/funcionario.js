@@ -17,7 +17,6 @@ function soloNumeros(e){
     }
 }
 
-
 function Consultar() {
     $.ajax({
         data: { "accion": "CONSULTAR" },
@@ -136,7 +135,6 @@ function ConsultarPorId(idFuncionario) {
                     type: 'POST',
                     dataType: 'json'
                 }).done(function(response) {
-                    console.log(response);
                     document.getElementById('cedulaFuncionario').value = response.CEDULA;
                     document.getElementById('nombreFuncionario').value = response.NOMBRE_PERSONA;
                     document.getElementById('direccionFuncionario').value = response.DIRECCION;
@@ -163,7 +161,6 @@ function Guardar() {
         type: 'POST',
         dataType: 'json'
     }).done(function(response) {
-        console.log(response);
         if (response == "OK") {
             MostrarAlerta("Éxito!", "Datos guardados con éxito", "success");
             Limpiar();
@@ -183,7 +180,6 @@ function Modificar() {
         type: 'POST',
         dataType: 'json'
     }).done(function(response) {
-        console.log(response);
         if (response == "OK") {
             MostrarAlerta("Éxito!", "Datos actualizados con éxito", "success");
             Limpiar();

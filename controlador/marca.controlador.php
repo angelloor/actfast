@@ -3,7 +3,6 @@
 
     if($_POST){
         $marca = new Marca();
-
         switch($_POST['accion']){
             case "CONSULTAR":
                 echo json_encode($marca->ConsultarTodo());
@@ -13,7 +12,6 @@
             break;
             case "GUARDAR":
                 $nombreMarca = $_POST['nombreMarca'];
-
                 if($nombreMarca == ""){
                     echo json_encode("Ingrese el nombre de la Marca");
                     return;
@@ -24,15 +22,12 @@
             case "MODIFICAR":
                 $nombreMarca = $_POST['nombreMarca'];
                 $idMarca = $_POST['idMarca'];
-
                 if($nombreMarca == ""){
                     echo json_encode("Ingrese el nombre de la Marca");
                     return;
                 }
-        
                 $respuesta = $marca->Modificar($idMarca,$nombreMarca);
                 echo json_encode($respuesta);
-
             break;
             case "ELIMINAR":
                 $idMarca = $_POST['idMarca'];
@@ -47,6 +42,4 @@
             break;
         }
     }
-
-
 ?>

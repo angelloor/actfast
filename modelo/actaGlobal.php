@@ -170,8 +170,8 @@
             
             foreach ($datosActivos as $row) {
                 $pdf->Row(25, 0,Array(
-                    $row['nombre_activo']." ".$row['nombre_marca']." ".$row['modelo']." ".$row['caracteristica'],
-                    $row['serie'],
+                    utf8_decode($row['nombre_activo']." ".$row['nombre_marca']." ".$row['modelo']." ".$row['caracteristica']),
+                    utf8_decode($row['serie']),
                 ), 'C');
             }
 
@@ -244,8 +244,8 @@
                 
                 foreach ($datosActivos as $row) {
                     $pdf->Row(25, 0,Array(
-                        $row['nombre_activo']." ".$row['nombre_marca']." ".$row['modelo']." ".$row['caracteristica'],
-                        $row['serie'],
+                        utf8_decode($row['nombre_activo']." ".$row['nombre_marca']." ".$row['modelo']." ".$row['caracteristica']),
+                        utf8_decode($row['serie']),
                     ), 'C');
                 }
 
@@ -319,8 +319,8 @@
                 
                 foreach ($datosActivos as $row) {
                     $pdf->Row(25, 0,Array(
-                        $row['nombre_activo']." ".$row['nombre_marca']." ".$row['modelo']." ".$row['caracteristica'],
-                        $row['serie'],
+                        utf8_decode($row['nombre_activo']." ".$row['nombre_marca']." ".$row['modelo']." ".$row['caracteristica']),
+                        utf8_decode($row['serie']),
                     ), 'C');
                 }
 

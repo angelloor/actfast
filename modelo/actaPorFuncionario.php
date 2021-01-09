@@ -10,7 +10,6 @@
         $saltoLinea = 5;
     }
 
-    
     function fechaHora(){
         $fechaTotal = getdate();
         if ($fechaTotal['wday'] <= 9) {
@@ -22,7 +21,6 @@
         $fechaCompleta = $dia."/".$mes."/".$fechaTotal['year']." - ".$fechaTotal['hours'].":".$fechaTotal['minutes'];
         return $fechaCompleta;
     }
-    
 
     $conexion = new Conexion();
     //TRAER DATOS DEL FUNCIONARIO QUE ENTREGA
@@ -170,8 +168,8 @@
             
         foreach ($datosActivos as $row) {
             $pdf->Row(25, 0,Array(
-                $row['nombre_activo']." ".$row['nombre_marca']." ".$row['modelo']." ".$row['caracteristica'],
-                $row['serie'],
+                utf8_decode($row['nombre_activo']." ".$row['nombre_marca']." ".$row['modelo']." ".$row['caracteristica']),
+                utf8_decode($row['serie']),
             ), 'C');
         }
 
@@ -238,8 +236,8 @@
             
             foreach ($datosActivos as $row) {
                 $pdf->Row(25, 0,Array(
-                    $row['nombre_activo']." ".$row['nombre_marca']." ".$row['modelo']." ".$row['caracteristica'],
-                    $row['serie'],
+                    utf8_decode($row['nombre_activo']." ".$row['nombre_marca']." ".$row['modelo']." ".$row['caracteristica']),
+                    utf8_decode($row['serie']),
                 ), 'C');
             }
 
@@ -308,8 +306,8 @@
             
             foreach ($datosActivos as $row) {
                 $pdf->Row(25, 0,Array(
-                    $row['nombre_activo']." ".$row['nombre_marca']." ".$row['modelo']." ".$row['caracteristica'],
-                    $row['serie'],
+                    utf8_decode($row['nombre_activo']." ".$row['nombre_marca']." ".$row['modelo']." ".$row['caracteristica']),
+                    utf8_decode($row['serie']),
                 ), 'C');
             }
 
@@ -333,7 +331,6 @@
         }
     }
 
-
     $nombrePdf = $categoria.$nombreFuncionario;
     $pdf->Output('',nombrePdf($nombrePdf),true);
 
@@ -349,11 +346,6 @@
         $nombreFinal = $nombre.$fechaFinal.".pdf";
         return $nombreFinal;
     }
-
-
-
-
-
 ?>
 
 

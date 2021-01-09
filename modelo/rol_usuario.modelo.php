@@ -2,6 +2,7 @@
     require 'conexion.php';
 
     class RolUsuario{
+
         public function ConsultarTodo(){
             $conexion = new Conexion();
             $stmt = $conexion->prepare("select * from rol_usuario");
@@ -62,6 +63,4 @@
             }
         }
     }
-
-
 ?>

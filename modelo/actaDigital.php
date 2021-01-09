@@ -131,10 +131,10 @@
         $usuario = $_GET['usuario'.$i];
         $clave = $_GET['clave'.$i];
         $pdf->Row(25, 0,Array(
-            $sistema,
-            $url,
-            $usuario,
-            $clave,
+            utf8_decode($sistema),
+            utf8_decode($url),
+            utf8_decode($usuario),
+            utf8_decode($clave),
         ), 'C');
     }
     $pdf->Ln();
@@ -173,5 +173,4 @@
         $nombreFinal = $nombre.$fechaFinal.".pdf";
         return $nombreFinal;
     }
-
 ?>

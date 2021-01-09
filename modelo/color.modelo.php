@@ -2,6 +2,7 @@
     require 'conexion.php';
 
     class Color{
+
         public function ConsultarTodo(){
             $conexion = new Conexion();
             $stmt = $conexion->prepare("select * from color");
@@ -62,6 +63,4 @@
             }
         }
     }
-
-
 ?>

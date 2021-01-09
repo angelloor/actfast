@@ -2,6 +2,7 @@
     require 'conexion.php';
 
     class Unidad{
+        
         public function ConsultarTodo(){
             $conexion = new Conexion();
             $stmt = $conexion->prepare("select * from unidad");
@@ -62,6 +63,4 @@
             }
         }
     }
-
-
 ?>

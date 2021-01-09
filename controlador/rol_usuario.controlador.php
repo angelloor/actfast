@@ -3,7 +3,6 @@
 
     if($_POST){
         $RolUsuario = new RolUsuario();
-
         switch($_POST['accion']){
             case "CONSULTAR":
                 echo json_encode($RolUsuario->ConsultarTodo());
@@ -13,7 +12,6 @@
             break;
             case "GUARDAR":
                 $nombreRolUsuario = $_POST['nombreRolUsuario'];
-
                 if($nombreRolUsuario == ""){
                     echo json_encode("Ingrese el nombre de rol de usuario");
                     return;
@@ -24,12 +22,10 @@
             case "MODIFICAR":
                 $nombreRolUsuario = $_POST['nombreRolUsuario'];
                 $idRolUsuario = $_POST['idRolUsuario'];
-
                 if($nombreRolUsuario == ""){
                     echo json_encode("Ingrese el nombre de rol de usuario");
                     return;
                 }
-        
                 $respuesta = $RolUsuario->Modificar($idRolUsuario,$nombreRolUsuario);
                 echo json_encode($respuesta);
 
@@ -47,6 +43,4 @@
             break;
         }
     }
-
-
 ?>

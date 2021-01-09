@@ -2,6 +2,7 @@
     require 'conexion.php';
 
     class Marca{
+
         public function ConsultarTodo(){
             $conexion = new Conexion();
             $stmt = $conexion->prepare("select * from marca");
@@ -62,6 +63,4 @@
             }
         }
     }
-
-
 ?>

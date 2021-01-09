@@ -2,6 +2,7 @@
     require 'conexion.php';
 
     class Bodega{
+
         public function ConsultarTodo(){
             $conexion = new Conexion();
             $stmt = $conexion->prepare("select b.id_bodega, b.nombre_bodega, b.ubicacion, p.nombre_persona from bodega b inner join persona p on b.responsable_bodega = p.id_persona order by id_bodega asc");
@@ -86,6 +87,4 @@
             }
         }
     }
-
-
 ?>

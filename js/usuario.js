@@ -44,7 +44,6 @@ function EscucharConsulta(){
             type: 'POST',
             dataType: 'json'
             }).done(function(response) {
-                console.log(response);
                 var html = "";
                 $.each(response, function(index, data) {
                     html += "<tr>";
@@ -201,7 +200,6 @@ function Eliminar(idUsuario) {
             type: 'POST',
             dataType: 'json'
         }).done(function(response) {
-            console.log("Eliminado");
             if (response == "OK") {
                 swalWithBootstrapButtons.fire('','Registro eliminado','success')
             } else {

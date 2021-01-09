@@ -2,6 +2,7 @@
     require 'conexion.php';
 
     class Estado{
+
         public function ConsultarTodo(){
             $conexion = new Conexion();
             $stmt = $conexion->prepare("select * from estado");
@@ -62,6 +63,4 @@
             }
         }
     }
-
-
 ?>

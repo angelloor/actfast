@@ -3,7 +3,6 @@
 
     if($_POST){
         $login = new Login();
-
         switch($_POST['accion']){
             case "LOGIN":
                 $usuario = $_POST['usuario'];
@@ -12,6 +11,5 @@
                 echo json_encode($respuesta);
             break;
         }
-
     }
 ?>

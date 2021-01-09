@@ -54,7 +54,6 @@ function Generar(){
                     return;
                 }
                 urlGet = urlGet+"totalSistemas="+checkInput+"&funcionario="+nombrePersona+"&periodo="+periodo;
-                console.log(urlGet);
                 window.open('../modelo/actaDigital.php?'+urlGet, '_blank');
             }
         }
@@ -83,7 +82,6 @@ function validarCheckbox(idCheck){
         }
     }
 }
-
 
 function cargarSistemas(){
     $.ajax({
@@ -136,7 +134,6 @@ function listarFuncionario(){
         console.log(response);
     });
 }
-
 
 function MostrarAlerta(titulo, descripcion, tipoAlerta) {
     Swal.fire(

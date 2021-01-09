@@ -2,6 +2,7 @@
     require 'conexion.php';
 
     class Funcionario{
+
         public function ConsultarTodo(){
             $conexion = new Conexion();
             $stmt = $conexion->prepare("select p.id_persona, p.cedula, p.nombre_persona, p.direccion, p.telefono, c.nombre_cargo, u.nombre_unidad from persona p inner join cargo c on p.cargo_id = c.id_cargo inner join unidad u on p.unidad_id = u.id_unidad order by p.id_persona asc");
@@ -115,6 +116,4 @@
             return $stmt->fetchAll(PDO::FETCH_OBJ);
         }
     }
-
-
 ?>

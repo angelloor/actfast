@@ -3,7 +3,6 @@
 
     if($_POST){
         $funcionario = new Funcionario();
-
         switch($_POST['accion']){
             case "CONSULTAR":
                 echo json_encode($funcionario->ConsultarTodo());
@@ -18,7 +17,6 @@
                 $telefonoFuncionario = $_POST['telefonoFuncionario'];
                 $cargoFuncionario = $_POST['cargoFuncionario'];
                 $unidadFuncionario = $_POST['unidadFuncionario'];
-
                 if($cedulaFuncionario == ""){
                     echo json_encode("Ingrese el numero de cedula");
                     return;
@@ -54,7 +52,6 @@
                 $cargoFuncionario = $_POST['cargoFuncionario'];
                 $unidadFuncionario = $_POST['unidadFuncionario'];
                 $idFuncionario = $_POST['idFuncionario'];
-
                 if($cedulaFuncionario == ""){
                     echo json_encode("Ingrese el numero de cedula");
                     return;
@@ -79,7 +76,6 @@
                     echo json_encode("Ingrese la unidad");
                     return;
                 }
-        
                 $respuesta = $funcionario->Modificar($idFuncionario,$cedulaFuncionario,$nombreFuncionario,$direccionFuncionario,$telefonoFuncionario,$cargoFuncionario,$unidadFuncionario);
                 echo json_encode($respuesta);
 
@@ -105,6 +101,4 @@
             break;
         }
     }
-
-
 ?>

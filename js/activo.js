@@ -182,10 +182,8 @@ function EscucharConsulta(){
             type: 'POST',
             dataType: 'json'
             }).done(function(response) {
-                console.log(response);
                 var html = "";
                 $.each(response, function(index, data) {
-                    console.log(data);
                     html += "<tr>";
                     html += "<td>" + data.codigo + "</td>";
                     html += "<td>" + data.nombre_activo + "</td>";
@@ -233,7 +231,6 @@ function ConsultarPorId(idActivo) {
                     type: 'POST',
                     dataType: 'json'
                 }).done(function(response) {
-                    console.log(response);
                     document.getElementById('categoria').value = response.nombre_categoria;
                     document.getElementById('marca').value = response.nombre_marca;
                     document.getElementById('estado').value = response.nombre_estado;
@@ -270,7 +267,6 @@ function Guardar() {
         type: 'POST',
         dataType: 'json'
     }).done(function(response) {
-        console.log(response);
         if (response == "OK") {
             MostrarAlerta("Éxito!", "Datos guardados con éxito", "success");
             Limpiar();
@@ -290,7 +286,6 @@ function Modificar() {
         type: 'POST',
         dataType: 'json'
     }).done(function(response) {
-        console.log(response);
         if (response == "OK") {
             MostrarAlerta("Éxito!", "Datos actualizados con éxito", "success");
             Limpiar();

@@ -63,8 +63,6 @@
             $this->SetTextColor(0,0,0);
             $this->SetY(-15);
             $this->Cell(192,10,utf8_decode('Página ').$this->PageNo().' / {nb}',0,0,'C');
-
-
         }
 
         function parrafo($texto)
@@ -115,11 +113,11 @@
         
         foreach ($datos as $row) {
             $pdf->Row(23, 0,Array(
-                $row['id_movimiento_activo'],
-                $row['codigo'],
-                $row['nombreCustodio'],
-                $row['nombreFuncionario'],
-                $row['fecha_movimiento'],
+                utf8_decode($row['id_movimiento_activo']),
+                utf8_decode($row['codigo']),
+                utf8_decode($row['nombreCustodio']),
+                utf8_decode($row['nombreFuncionario']),
+                utf8_decode($row['fecha_movimiento']),
             ), 'C');
         }
         $nombrePdf = "movimientoActivo";

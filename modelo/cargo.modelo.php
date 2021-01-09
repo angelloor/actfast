@@ -2,6 +2,7 @@
     require 'conexion.php';
 
     class Cargo{
+
         public function ConsultarTodo(){
             $conexion = new Conexion();
             $stmt = $conexion->prepare("select * from cargo");
@@ -62,6 +63,4 @@
             }
         }
     }
-
-
 ?>

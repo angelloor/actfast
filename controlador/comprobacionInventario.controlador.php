@@ -4,7 +4,6 @@
 
     if($_POST){
         $comprobacionInventario = new comprobacionInventario();
-
         switch($_POST["accion"]){
             case "CONSULTARDATOS":
                 $codigoActivo = $_POST['codigoActivo'];

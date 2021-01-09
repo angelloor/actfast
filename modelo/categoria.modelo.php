@@ -2,6 +2,7 @@
     require 'conexion.php';
 
     class Categoria{
+
         public function ConsultarTodo(){
             $conexion = new Conexion();
             $stmt = $conexion->prepare("select * from categoria");
@@ -65,6 +66,4 @@
             }
         }
     }
-
-
 ?>

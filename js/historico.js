@@ -1,6 +1,7 @@
 var url = "../controlador/historico.controlador.php";
 var urlGet = "";
 var registrosTotales = false;
+
 $(document).ready(function() {
     cargarFechaActual();
     consultar();
@@ -86,7 +87,6 @@ function ConsultarPorFecha(){
             if (comprobarFechas() == 3) {
                 MostrarAlerta("","Ingrese la fecha final","info");
             }else{
-                console.log("Exito");
                 fechaInicio = document.getElementById('fechaInicio').value;
                 fechaFinal = document.getElementById('fechaFinal').value;
                 $.ajax({
@@ -98,7 +98,6 @@ function ConsultarPorFecha(){
                     if (response.length >= 1) {
                         registrosTotales = true;
                     }
-                    console.log("Estado de consultar = "+registrosTotales);
                     var html = "";
                     $.each(response, function(index, data) {
                         html += "<tr>";
@@ -145,7 +144,6 @@ function consultar(){
         if (response.length >= 1) {
             registrosTotales = true;
         }
-        console.log("Estado de consultar = "+registrosTotales);
         var html = "";
         $.each(response, function(index, data) {
             html += "<tr>";

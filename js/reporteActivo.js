@@ -8,7 +8,6 @@ $(document).ready(function() {
     cargarValor();
 })
 
-
 function cargarValor(){
     $.ajax({
         data: { "accion": "CARGARVALOR" },
@@ -78,8 +77,6 @@ function consultar(){
         });
     }
 }
-
-
 
 function pdf(){
     urlGet = "";

@@ -114,12 +114,12 @@
         
         foreach ($datos as $row) {
             $pdf->Row(23, 0,Array(
-                $row['codigo'],
-                $row['nombre_activo'],
-                $row['nombre_marca'],
-                $row['modelo'],
-                $row['serie'],
-                $row['fecha_historico'],
+                utf8_decode($row['codigo']),
+                utf8_decode($row['nombre_activo']),
+                utf8_decode($row['nombre_marca']),
+                utf8_decode($row['modelo']),
+                utf8_decode($row['serie']),
+                utf8_decode($row['fecha_historico']),
             ), 'C');
         }
         $nombrePdf = "reporteHistorico";

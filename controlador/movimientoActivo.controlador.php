@@ -4,7 +4,6 @@
 
     if($_POST){
         $movimientoActivo = new movimientoActivo();
-
         switch($_POST["accion"]){
             case "CONSULTAR":
                 echo json_encode($movimientoActivo->ConsultarTodo());

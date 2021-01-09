@@ -25,7 +25,6 @@ function iniciarSesion(){
     let usuario, clave;
     usuario = document.getElementById("usuario").value;
     clave = document.getElementById("clave").value;
-
     if(usuario == ""){
         Swal.fire("","Ingrese el usuario","info");
         return;
@@ -34,14 +33,12 @@ function iniciarSesion(){
         Swal.fire("","Ingrese la contraseña","info");
         return;
     }
-
     $.ajax({
         data: { "accion": "LOGIN", "usuario": usuario, "clave": clave},
         url: url,
         type: 'POST',
         dataType: 'json'
     }).done(function(response) {
-        console.log(response);
         if (response == "OK") {
                 window.location.href = "vista/index.php";
         } else {

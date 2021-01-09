@@ -16,7 +16,7 @@ function soloNumeros(e){
     if (key < 48 || key > 57) {
       e.preventDefault();
     }
-  }
+}
 
 function cargarFechaActual(){
     var f = new Date();
@@ -115,7 +115,6 @@ function EscucharConsulta(){
             type: 'POST',
             dataType: 'json'
             }).done(function(response) {
-                console.log(response);
                 var html = "";
                 $.each(response, function(index, data) {
                     html += "<tr>";
@@ -185,7 +184,6 @@ function Guardar() {
         type: 'POST',
         dataType: 'json'
     }).done(function(response) {
-        console.log(response);
         if (response == "OK") {
             MostrarAlerta("Éxito!", "Datos guardados con éxito", "success");
             Limpiar();
@@ -205,7 +203,6 @@ function Modificar() {
         type: 'POST',
         dataType: 'json'
     }).done(function(response) {
-        console.log(response);
         if (response == "OK") {
             MostrarAlerta("Éxito!", "Datos actualizados con éxito", "success");
             Limpiar();

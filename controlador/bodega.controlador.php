@@ -3,7 +3,6 @@
 
     if($_POST){
         $bodega = new Bodega();
-
         switch($_POST['accion']){
             case "CONSULTAR":
                 echo json_encode($bodega->ConsultarTodo());
@@ -15,7 +14,6 @@
                 $nombreBodega = $_POST['nombreBodega'];
                 $ubicacion = $_POST['ubicacion'];
                 $nombreResponsable = $_POST['nombreResponsable'];
-
                 if($nombreBodega == "" ){
                     echo json_encode("Ingrese el nombre de la Bodega");
                     return;
@@ -36,7 +34,6 @@
                 $ubicacion = $_POST['ubicacion'];
                 $nombreResponsable = $_POST['nombreResponsable'];
                 $idBodega = $_POST['idBodega'];
-
                 if($nombreBodega == "" ){
                     echo json_encode("Ingrese el nombre de la Bodega");
                     return;
@@ -51,7 +48,6 @@
                 }
                 $respuesta = $bodega->Modificar($idBodega,$nombreBodega,$ubicacion,$nombreResponsable);
                 echo json_encode($respuesta);
-
             break;
             case "ELIMINAR":
                 $idBodega = $_POST['idBodega'];
@@ -70,6 +66,4 @@
             break;
         }
     }
-
-
 ?>

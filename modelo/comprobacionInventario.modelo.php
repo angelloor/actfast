@@ -3,6 +3,7 @@
     require 'conexion.php';
 
     class comprobacionInventario{
+
         public function Consultar($codigoActivo){
             $conexion = new Conexion();
             $stmt = $conexion->prepare("select a.id_activo, a.codigo, e.nombre_estado, p.nombre_persona as funcionario, a.comentario from activo a inner join estado e on a.estado_id = e.id_estado inner join entrega_recepcion er on er.activo_id = a.id_activo inner join persona p on er.persona_id = p.id_persona where a.codigo = :codigoActivo");
@@ -82,9 +83,6 @@
             }else{
                 return "Error: se ha generado un error al modificar la información";
             }
-
-            // $cadena = "Codigo " . $codigo . "Estado " . $estado . "Funcionario " . $funcionario . "Comentario" . $comentario . " idActivo" .$idActivo . " idEstado" .$idEstado . " idPersona" .$idPersona;
-            // return $cadena;
         }
     }
 ?>

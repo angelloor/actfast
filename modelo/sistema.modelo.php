@@ -2,6 +2,7 @@
     require 'conexion.php';
 
     class Sistema{
+
         public function ConsultarTodo(){
             $conexion = new Conexion();
             $stmt = $conexion->prepare("select * from sistema");
@@ -65,6 +66,4 @@
             }
         }
     }
-
-
 ?>

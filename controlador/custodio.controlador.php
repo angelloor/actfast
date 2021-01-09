@@ -3,7 +3,6 @@
 
     if($_POST){
         $custodio = new Custodio();
-
         switch($_POST['accion']){
             case "CONSULTAR":
                 echo json_encode($custodio->ConsultarTodo());
@@ -13,7 +12,6 @@
             break;
             case "GUARDAR":
                 $nombreCustodio = $_POST['nombreCustodio'];
-
                 if($nombreCustodio == ""){
                     echo json_encode("Ingrese el nombre del Custodio");
                     return;
@@ -24,15 +22,12 @@
             case "MODIFICAR":
                 $nombreCustodio = $_POST['nombreCustodio'];
                 $idCustodio = $_POST['idCustodio'];
-
                 if($nombreCustodio == ""){
                     echo json_encode("Ingrese el nombre del Custodio");
                     return;
                 }
-        
                 $respuesta = $custodio->Modificar($idCustodio,$nombreCustodio);
                 echo json_encode($respuesta);
-
             break;
             case "ELIMINAR":
                 $idCustodio = $_POST['idCustodio'];
@@ -51,6 +46,4 @@
             break;
         }
     }
-
-
 ?>

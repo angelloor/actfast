@@ -4,7 +4,6 @@
 
     if($_POST){
         $gestionActa = new gestionActa();
-
         switch($_POST["accion"]){
             case "CONSULTAR":
                 echo json_encode($gestionActa->ConsultarTodo());
@@ -17,22 +16,21 @@
                 $codigoActivo = $_POST["codigoActivo"];
                 $custodio = $_POST["custodio"];
                 $fecha = $_POST["fecha"];
-
-              if($idPersona == ""){
-                    echo json_encode("Seleccione un Funcionario para asignar la acta");
-                    return;
-                }
-              if($codigoActivo == ""){
-                    echo json_encode("Seleccione el codigo del activo");
-                    return;
-                }
-              if($custodio == ""){
-                    echo json_encode("Seleccione el custodio del activo");
-                    return;
-                }
-              if($fecha == ""){
-                    echo json_encode("Seleccione la fecha del acta");
-                    return;
+                if($idPersona == ""){
+                        echo json_encode("Seleccione un Funcionario para asignar la acta");
+                        return;
+                    }
+                if($codigoActivo == ""){
+                        echo json_encode("Seleccione el codigo del activo");
+                        return;
+                    }
+                if($custodio == ""){
+                        echo json_encode("Seleccione el custodio del activo");
+                        return;
+                    }
+                if($fecha == ""){
+                        echo json_encode("Seleccione la fecha del acta");
+                        return;
                 }
                 $respuesta = $gestionActa->Guardar($idPersona, $codigoActivo, $custodio, $fecha);
                 echo json_encode($respuesta);
@@ -43,7 +41,6 @@
                 $custodio = $_POST["custodio"];
                 $fecha = $_POST["fecha"];
                 $idGestionActa = $_POST["idGestionActa"];
-
                 if($idPersona == ""){
                     echo json_encode("Seleccione un Funcionario para asignar la acta");
                     return;
@@ -87,7 +84,6 @@
                 $respuesta = $gestionActa->listarCustodio();
                 echo json_encode($respuesta);
             break;
-        
         }
     }
 ?>

@@ -2,6 +2,7 @@
     require 'conexion.php';
 
     class historico{
+
         public function consultar(){
             $conexion = new Conexion();
             $stmt = $conexion->prepare("select a.id_activo, a.codigo, a.nombre_activo, m.nombre_marca, a.serie, a.modelo, a.fecha_historico from activo a inner join marca m on a.marca_id = m.id_marca where a.historico = 0;");
@@ -30,6 +31,4 @@
             return $stmt->fetchAll(PDO::FETCH_OBJ);
         }
     }
-
-
 ?>

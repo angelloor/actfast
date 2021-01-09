@@ -181,8 +181,8 @@
         
         foreach ($datosActivos as $row) {
             $pdf->Row(25, 0,Array(
-                $row['nombre_activo']." ".$row['nombre_marca']." ".$row['modelo']." ".$row['caracteristica'],
-                $row['serie'],
+                utf8_decode($row['nombre_activo']." ".$row['nombre_marca']." ".$row['modelo']." ".$row['caracteristica']),
+                utf8_decode($row['serie']),
             ), 'C');
         }
 
@@ -254,8 +254,8 @@
             
             foreach ($datosActivos as $row) {
                 $pdf->Row(25, 0,Array(
-                    $row['nombre_activo']." ".$row['nombre_marca']." ".$row['modelo']." ".$row['caracteristica'],
-                    $row['serie'],
+                    utf8_decode($row['nombre_activo']." ".$row['nombre_marca']." ".$row['modelo']." ".$row['caracteristica']),
+                    utf8_decode($row['serie']),
                 ), 'C');
             }
 
@@ -307,7 +307,7 @@
             $pdf->SetTextColor(31,78,121);
             $pdf->SetFont('Times','B',12);
             $pdf->Ln();
-            $pdf->Cell(0,10,utf8_decode("ACTIVO: ".$activo." CAT: ".$categoria.'ACTA ENTREGA RECEPCIÓN'),0,1,'C');
+            $pdf->Cell(0,10,utf8_decode('ACTA ENTREGA RECEPCIÓN'),0,1,'C');
             $pdf->SetTextColor(0,0,0);
             $pdf->parrafo("En la ciudad de Puyo, a los $dia días del mes de $mes del $año, se procede a realizar el acta de entrega entre $nombreEntregaUno, $cargoEntregaUno, $nombreUnidadUno y $nombreFuncionario con C.I. $cedula, $cargoFuncionario,  del siguiente activo:");
 
@@ -329,8 +329,8 @@
             
             foreach ($datosActivos as $row) {
                 $pdf->Row(25, 0,Array(
-                    $row['nombre_activo']." ".$row['nombre_marca']." ".$row['modelo']." ".$row['caracteristica'],
-                    $row['serie'],
+                    utf8_decode($row['nombre_activo']." ".$row['nombre_marca']." ".$row['modelo']." ".$row['caracteristica']),
+                    utf8_decode($row['serie']),
                 ), 'C');
             }
 

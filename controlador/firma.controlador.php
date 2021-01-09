@@ -4,7 +4,6 @@
 
     if($_POST){
         $firma = new firma();
-
         switch($_POST["accion"]){
             case "CONSULTAR":
                 echo json_encode($firma->ConsultarTodo());
@@ -31,8 +30,6 @@
                 $respuesta = $firma->listarFuncionario();
                 echo json_encode($respuesta);
             break;
-          
-        
         }
     }
 ?>

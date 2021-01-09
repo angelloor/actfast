@@ -3,7 +3,6 @@
 
     if($_POST){
         $unidad = new Unidad();
-
         switch($_POST['accion']){
             case "CONSULTAR":
                 echo json_encode($unidad->ConsultarTodo());
@@ -13,7 +12,6 @@
             break;
             case "GUARDAR":
                 $nombreUnidad = $_POST['nombreUnidad'];
-
                 if($nombreUnidad == ""){
                     echo json_encode("Ingrese el nombre de la unidad");
                     return;
@@ -24,12 +22,10 @@
             case "MODIFICAR":
                 $nombreUnidad = $_POST['nombreUnidad'];
                 $idUnidad = $_POST['idUnidad'];
-
                 if($nombreUnidad == ""){
                     echo json_encode("Ingrese el nombre de la unidad");
                     return;
                 }
-        
                 $respuesta = $unidad->Modificar($idUnidad,$nombreUnidad);
                 echo json_encode($respuesta);
 
@@ -47,6 +43,4 @@
             break;
         }
     }
-
-
 ?>

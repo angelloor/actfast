@@ -3,7 +3,6 @@
 
     if($_POST){
         $sistema = new Sistema();
-
         switch($_POST['accion']){
             case "CONSULTAR":
                 echo json_encode($sistema->ConsultarTodo());
@@ -29,7 +28,6 @@
                 $nombreSistema = $_POST['nombreSistema'];
                 $direccion = $_POST['direccion'];
                 $idSistema = $_POST['idSistema'];
-
                 if($nombreSistema == ""){
                     echo json_encode("Ingrese el nombre de sistema");
                     return;
@@ -54,6 +52,4 @@
             break;
         }
     }
-
-
 ?>

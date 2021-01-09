@@ -3,7 +3,6 @@
 
     if($_POST){
         $main = new Main();
-
         switch($_POST['accion']){
             case "CARGARCATEGORIA":
                 echo json_encode($main->cargarCategoria());
@@ -21,7 +20,6 @@
                 $respuesta = $main->listarFuncionarioPorCategoria($categoria);
                 echo json_encode($respuesta);
             break;
-            
         }
     }
 ?>

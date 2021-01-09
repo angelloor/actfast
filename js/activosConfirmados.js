@@ -16,7 +16,6 @@ function consultar(){
         if (response.length >= 1) {
             registrosTotales = true;
         }
-        console.log("Estado de consultar = "+registrosTotales);
         var html = "";
         $.each(response, function(index, data) {
             html += "<tr>";

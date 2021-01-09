@@ -1,5 +1,6 @@
 var url = "../controlador/main.controlador.php";
 var urlGet = "";
+
 $(document).ready(function() {
   cargarCategoria();
   listarActivo();

@@ -3,7 +3,6 @@
 
     if($_POST){
         $historico = new historico();
-
         switch($_POST['accion']){
             case "CONSULTAR":
                 echo json_encode($historico->consultar());
@@ -20,6 +19,4 @@
             break;
         }
     }
-
-
 ?>
