@@ -172,19 +172,17 @@
                     <div class="contenedor-inputs">
                         <select name="SelectCategoria" class="form-control mb-3 tmm" id="SelectCategoria">
                         </select>
-                        <h4>Salto de linea</h4>
-                        <input type="text" id="saltoLineaUno" name="saltoLineaUno" class="form-control" onkeypress="soloNumeros()">
                     </div>
                     <button id="BtnGenerarTodasActas" onclick="GenerarTodasActas();" class="btn-submit">Enviar</button>
                 </div>
             </div>
             <div id="popupBodyFuncionario" class="popupBody">
-                <h4 class="mb-3">Seleccionar Funcionario y su Categor&iacute;a</h4>
+                <h4 class="mb-3">Seleccionar la Categor&iacute;a y el Funcionario</h4>
                 <div class="form">
                     <div class="contenedor-inputs">
-                        <select name="SelectFuncionario" class="form-control mb-3 tmm" id="SelectFuncionario">
-                        </select>
                         <select name="SelectCategoriaDos" class="form-control mb-3 tmm" id="SelectCategoriaDos">
+                        </select>
+                        <select name="SelectFuncionario" class="form-control mb-3 tmm" id="SelectFuncionario">
                         </select>
                         <h4>Salto de linea</h4>
                         <input type="text" id="saltoLineaDos" name="saltoLineaDos" class="form-control" onkeypress="soloNumeros()">

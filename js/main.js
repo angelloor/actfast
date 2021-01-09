@@ -2,9 +2,8 @@ var url = "../controlador/main.controlador.php";
 var urlGet = "";
 $(document).ready(function() {
   cargarCategoria();
-  listarFuncionario();
   listarActivo();
-  
+  document.getElementById('SelectCategoriaDos').addEventListener('change',listarFuncionarioPorCategoria,false );
 })
 
 function soloNumeros(){
@@ -34,16 +33,17 @@ function cargarCategoria(){
   });
 }
 
-function listarFuncionario(){
+function listarFuncionarioPorCategoria(){
+  categoria = document.getElementById('SelectCategoriaDos').value;
   $.ajax({
-      data: { "accion": "LISTARFUNCIONARIO" },
+      data: { "accion": "LISTARFUNCIONARIOPORCATEGORIA", "categoria": categoria },
       url: url,
       type: 'POST',
       dataType: 'json'
   }).done(function(response){
       var html = "";
       $.each(response, function(index, data) {
-          html += "<option>" + data.NOMBRE_PERSONA + "</option>";
+          html += "<option>" + data.nombre_persona + "</option>";
       });
       document.getElementById("SelectFuncionario").innerHTML = html;
   }).fail(function(response){
@@ -71,8 +71,7 @@ function listarActivo(){
 function GenerarTodasActas(){
   urlGet = "";
   categoriaUno = document.getElementById('SelectCategoria').value;
-  saltoLinea = document.getElementById('saltoLineaUno').value;
-  urlGet = urlGet+"categoria="+categoriaUno+"&saltoLinea="+saltoLinea;
+  urlGet = urlGet+"categoria="+categoriaUno;
   window.open('../modelo/actaGlobal.php?'+urlGet, '_blank');
   close();
   clear();
@@ -85,6 +84,7 @@ function GenerarPorFuncionario(){
   saltoLinea = document.getElementById('saltoLineaDos').value;
   urlGet = urlGet+"categoria="+categoriaDos+"&funcionario="+funcionario+"&saltoLinea="+saltoLinea;
   window.open('../modelo/actaPorFuncionario.php?'+urlGet, '_blank');
+  document.getElementById('saltoLineaDos').value = "";
   close();
   clear();
 }
@@ -99,6 +99,8 @@ function GenerarPorActivo(){
   }else{
     urlGet = urlGet+"activo="+activo+"&saltoLinea="+saltoLinea;
     window.open('../modelo/actaPorActivo.php?'+urlGet, '_blank');
+    document.getElementById('codigoActivo').value = "";
+    document.getElementById('saltoLineaTres').value = "";
     close();
     clear();
   }

@@ -12,12 +12,13 @@
                 $respuesta = $main->listarCategoria();
                 echo json_encode($respuesta);
             break;
-            case "LISTARFUNCIONARIO":
-                $respuesta = $main->listarFuncionario();
-                echo json_encode($respuesta);
-            break;
             case "LISTARACTIVO":
                 $respuesta = $main->listarActivo();
+                echo json_encode($respuesta);
+            break;
+            case "LISTARFUNCIONARIOPORCATEGORIA":
+                $categoria = $_POST['categoria'];
+                $respuesta = $main->listarFuncionarioPorCategoria($categoria);
                 echo json_encode($respuesta);
             break;
             

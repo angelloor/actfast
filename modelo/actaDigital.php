@@ -86,7 +86,7 @@
             $this->SetFont('Times','',10);
             $this->SetTextColor(0,0,0);
             $this->Cell(165,10,utf8_decode('Página ').$this->PageNo().' / {nb}',0,0,'C');
-            $this->Cell(-120,10,'ISO - FO-01(DG-SM-AD-09)',0,0,'R');
+            $this->Cell(-123,10,'FO-01(DG-SM-AD-09)',0,0,'R');
 
         }
         

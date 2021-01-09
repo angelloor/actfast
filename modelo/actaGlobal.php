@@ -3,11 +3,19 @@
     require 'conexion.php';
 
     $categoria = $_GET['categoria'];
-    $saltoLinea = $_GET['saltoLinea'];
-
-    if($saltoLinea == ""){
-        $saltoLinea = 5;
+    
+    function fechaHora(){
+        $fechaTotal = getdate();
+        if ($fechaTotal['wday'] <= 9) {
+            $dia = "0".$fechaTotal['wday'];
+        }
+        if ($fechaTotal['mon'] <= 9) {
+            $mes = "0".$fechaTotal['mon'];
+        }
+        $fechaCompleta = $dia."/".$mes."/".$fechaTotal['year']." - ".$fechaTotal['hours'].":".$fechaTotal['minutes'];
+        return $fechaCompleta;
     }
+    
 
     $conexion = new Conexion();
     //TRAER DATOS DEL FUNCIONARIO QUE ENTREGA
@@ -88,6 +96,8 @@
             $this->SetFont('Times','',10);
             $this->SetTextColor(0,0,0);
             $this->Cell(165,10,utf8_decode('Página ').$this->PageNo().' / {nb}',0,0,'C');
+            $fechaHora = fechaHora();
+            $this->Cell(-130,10,$fechaHora,0,0,'R');
 
         }
         
@@ -139,7 +149,7 @@
             $pdf->Ln();
             $pdf->Cell(0,10,utf8_decode('ACTA ENTREGA RECEPCIÓN'),0,1,'C');
             $pdf->SetTextColor(0,0,0);
-            $pdf->parrafo("En la ciudad de Puyo, a los $dia días del mes de $mes del $año, se procede a realizar el acta de entrega entre $nombreEntregaDos, $cargoEntregaDos, $nombreUnidadDos y $nombreFuncionario con C.I. $cedula, $cargoFuncionario,  de los siguientes equipos  informáticos:");
+            $pdf->parrafo("En la ciudad de Puyo, a los $dia días del mes de $mes del $año, se procede a realizar el acta de entrega entre $nombreEntregaDos, $cargoEntregaDos, $nombreUnidadDos y $nombreFuncionario con C.I. $cedula, $cargoFuncionario,  de los siguientes bienes inmuebles:");
             
             $stmt = $conexion->prepare("select a.nombre_activo, m.nombre_marca, a.modelo, a.caracteristica, a.serie from entrega_recepcion er inner join activo a on er.activo_id = a.id_activo inner join categoria ca on a.categoria_id = ca.id_categoria inner join marca m on a.marca_id = m.id_marca where (er.persona_id = :idPersona) and (ca.nombre_categoria = :nombreCategoria);");
             $stmt->bindValue(":idPersona", $row['id_persona'], PDO::PARAM_INT);
@@ -166,10 +176,10 @@
             }
 
             $pdf->ln(5);
-            $pdf->parrafo("Equipos informáticos y cables de poder que se encuentran en perfectas condiciones de funcionamiento en caso de pérdida, daño o deterioro de los mismos quedaran a su entera responsabilidad. \n\nPara lo actuado las partes firman en duplicado de igual valor y contenido.");
+            $pdf->parrafo("Bienes inmuebles que se encuentran en perfectas condiciones de funcionamiento en caso de pérdida, daño o deterioro de los mismos quedaran a su entera responsabilidad. \n\nPara lo actuado las partes firman en duplicado de igual valor y contenido.");
             
             $pdf->SetFont('Times','B',10);
-            $pdf->ln($saltoLinea);
+            $pdf->ln(5);
             $pdf->Cell(0,10,utf8_decode('ENTREGAN CONFORME'),0,1,'C');
             $pdf->SetFont('Times','',10);
             $pdf->ln(10);
@@ -240,10 +250,10 @@
                 }
 
                 $pdf->ln(5);
-                $pdf->parrafo("Equipos informáticos y cables de poder que se encuentran en perfectas condiciones de funcionamiento en caso de pérdida, daño o deterioro de los mismos quedaran a su entera responsabilidad. \n\nPara lo actuado las partes firman en duplicado de igual valor y contenido.");
+                $pdf->parrafo("Equipos informáticos que se encuentran en perfectas condiciones de funcionamiento en caso de pérdida, daño o deterioro de los mismos quedaran a su entera responsabilidad. \n\nPara lo actuado las partes firman en duplicado de igual valor y contenido.");
                 
                 $pdf->SetFont('Times','B',10);
-                $pdf->ln($saltoLinea);
+                $pdf->ln(5);
                 $pdf->Cell(0,10,utf8_decode('ENTREGAN CONFORME'),0,1,'C');
                 $pdf->SetFont('Times','',10);
                 $pdf->ln(10);
@@ -288,7 +298,7 @@
                 $pdf->Ln();
                 $pdf->Cell(0,10,utf8_decode('ACTA ENTREGA RECEPCIÓN'),0,1,'C');
                 $pdf->SetTextColor(0,0,0);
-                $pdf->parrafo("En la ciudad de Puyo, a los $dia días del mes de $mes del $año, se procede a realizar el acta de entrega entre $nombreEntregaDos, $cargoEntregaDos, $nombreUnidadDos y $nombreFuncionario con C.I. $cedula, $cargoFuncionario,  de los siguientes equipos  informáticos:");
+                $pdf->parrafo("En la ciudad de Puyo, a los $dia días del mes de $mes del $año, se procede a realizar el acta de entrega entre $nombreEntregaUno, $cargoEntregaUno, $nombreUnidadUno y $nombreFuncionario con C.I. $cedula, $cargoFuncionario,  de los siguientes activos:");
                 
                 $stmt = $conexion->prepare("select a.nombre_activo, m.nombre_marca, a.modelo, a.caracteristica, a.serie from entrega_recepcion er inner join activo a on er.activo_id = a.id_activo inner join categoria ca on a.categoria_id = ca.id_categoria inner join marca m on a.marca_id = m.id_marca where (er.persona_id = :idPersona) and (ca.nombre_categoria = :nombreCategoria);");
                 $stmt->bindValue(":idPersona", $row['id_persona'], PDO::PARAM_INT);
@@ -315,10 +325,10 @@
                 }
 
                 $pdf->ln(5);
-                $pdf->parrafo("Equipos informáticos y cables de poder, incluida la maleta en la cual se transportan, que se encuentran en perfectas condiciones de funcionamiento en caso de pérdida, daño o deterioro de los mismos quedarán a su entera responsabilidad. \n\nPara lo actuado las partes firman en duplicado de igual valor y contenido.");
+                $pdf->parrafo("Activos que se encuentran en perfectas condiciones de funcionamiento en caso de pérdida, daño o deterioro de los mismos quedarán a su entera responsabilidad. \n\nPara lo actuado las partes firman en duplicado de igual valor y contenido.");
                 
                 $pdf->SetFont('Times','B',10);
-                $pdf->ln($saltoLinea);
+                $pdf->ln(5);
                 $pdf->Cell(0,10,utf8_decode('ENTREGAN CONFORME'),0,1,'C');
                 $pdf->SetFont('Times','',10);
                 $pdf->ln(10);

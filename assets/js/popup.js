@@ -50,6 +50,7 @@ function callPopupFrame(target) {
             break;
         case 'funcionario':
             Funcionario.removeAttribute('hidden');
+            listarFuncionarioPorCategoria();
             break;
         case 'activo':
             Activo.removeAttribute('hidden');
