@@ -1,5 +1,5 @@
 var url = "../controlador/gestionActa.controlador.php";
-
+var registrosTotales = false;
 $(document).ready(function() {
     BloquearBotones(true);
     Consultar();
@@ -10,6 +10,16 @@ $(document).ready(function() {
     cargarFechaActual();
     document.getElementById('codigoActivo').addEventListener('keypress', soloNumeros, false);
 })
+
+function mostrarAlertaDatos(){
+    var alerta = document.getElementById('alerta');
+    alerta.style.display = "block";
+}
+
+function ocultarAlerta(){
+    var alerta = document.getElementById('alerta');
+    alerta.style.display = "none";
+}
 
 function soloNumeros(e){
     var key = window.event ? e.which : e.keyCode;
@@ -81,12 +91,19 @@ function listarCustodio(){
 }
 
 function Consultar() {
+    registrosTotales = false;
     $.ajax({
         data: { "accion": "CONSULTAR" },
         url: url,
         type: 'POST',
         dataType: 'json'
     }).done(function(response) {
+        if (response.length >= 1) {
+            registrosTotales = true;
+            ocultarAlerta();
+        }else{
+            mostrarAlertaDatos();
+        }
         var html = "";
         $.each(response, function(index, data) {
             html += "<tr>";
@@ -107,6 +124,7 @@ function Consultar() {
 }
 
 function EscucharConsulta(){
+    registrosTotales = false;
     $('#idGestionActa').keyup(function() {
         if($('#idGestionActa').val()) {
           $.ajax({
@@ -115,6 +133,12 @@ function EscucharConsulta(){
             type: 'POST',
             dataType: 'json'
             }).done(function(response) {
+                if (response.length >= 1) {
+                    registrosTotales = true;
+                    ocultarAlerta();
+                }else{
+                    mostrarAlertaDatos();
+                }
                 var html = "";
                 $.each(response, function(index, data) {
                     html += "<tr>";

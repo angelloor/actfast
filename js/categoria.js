@@ -1,18 +1,35 @@
 var url = "../controlador/categoria.controlador.php";
-
+var registrosTotales = false;
 $(document).ready(function() {
     Consultar();
     EscucharConsulta();
     BloquearBotones(true);
 })
 
+function mostrarAlertaDatos(){
+    var alerta = document.getElementById('alerta');
+    alerta.style.display = "block";
+}
+
+function ocultarAlerta(){
+    var alerta = document.getElementById('alerta');
+    alerta.style.display = "none";
+}
+
 function Consultar() {
+    registrosTotales = false;
     $.ajax({
         data: { "accion": "CONSULTAR" },
         url: url,
         type: 'POST',
         dataType: 'json'
     }).done(function(response) {
+        if (response.length >= 1) {
+            registrosTotales = true;
+            ocultarAlerta();
+        }else{
+            mostrarAlertaDatos();
+        }
         var html = "";
         $.each(response, function(index, data) {
             html += "<tr>";
@@ -31,6 +48,7 @@ function Consultar() {
 }
 
 function EscucharConsulta(){
+    registrosTotales = false;
     $('#idCategoria').keyup(function() {
         if($('#idCategoria').val()) {
           let idBuscar = $('#idCategoria').val();
@@ -40,6 +58,12 @@ function EscucharConsulta(){
             type: 'POST',
             dataType: 'json'
             }).done(function(response) {
+                if (response.length >= 1) {
+                    registrosTotales = true;
+                    ocultarAlerta();
+                }else{
+                    mostrarAlertaDatos();
+                }
                 var html = "";
                 $.each(response, function(index, data) {
                     html += "<tr>";

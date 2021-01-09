@@ -3,7 +3,18 @@ var registrosTotales = false;
 
 $(document).ready(function() {
     consultar();
+    ocultarAlerta();
 })
+
+function mostrarAlertaDatos(){
+    var alerta = document.getElementById('alerta');
+    alerta.style.display = "block";
+}
+
+function ocultarAlerta(){
+    var alerta = document.getElementById('alerta');
+    alerta.style.display = "none";
+}
 
 function consultar(){
     registrosTotales = false;
@@ -15,6 +26,9 @@ function consultar(){
     }).done(function(response) {
         if (response.length >= 1) {
             registrosTotales = true;
+            ocultarAlerta();
+        }else{
+            mostrarAlertaDatos();
         }
         var html = "";
         $.each(response, function(index, data) {

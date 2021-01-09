@@ -1,12 +1,22 @@
 var url = "../controlador/reporteActivo.controlador.php";
-
 var urlGet = "";
 var registrosTotales = false;
 $(document).ready(function() {
     document.getElementById('campo').addEventListener('change', cagarValor, false);
     document.getElementById('valor').addEventListener('change', consultar, false);
+    ocultarAlerta();
     cargarValor();
 })
+
+function mostrarAlertaDatos(){
+    var alerta = document.getElementById('alerta');
+    alerta.style.display = "block";
+}
+
+function ocultarAlerta(){
+    var alerta = document.getElementById('alerta');
+    alerta.style.display = "none";
+}
 
 function cargarValor(){
     $.ajax({
@@ -58,6 +68,9 @@ function consultar(){
         }).done(function(response){
             if (response.length >= 1) {
                 registrosTotales = true;
+                ocultarAlerta();
+            }else{
+                mostrarAlertaDatos();
             }
             var html = "";
             $.each(response, function(index, data) {

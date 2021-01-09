@@ -1,5 +1,5 @@
 var url = "../controlador/custodio.controlador.php";
-
+var registrosTotales = false;
 $(document).ready(function() {
     Consultar();
     EscucharConsulta();
@@ -7,13 +7,30 @@ $(document).ready(function() {
     listarFuncionarios();
 })
 
+function mostrarAlertaDatos(){
+    var alerta = document.getElementById('alerta');
+    alerta.style.display = "block";
+}
+
+function ocultarAlerta(){
+    var alerta = document.getElementById('alerta');
+    alerta.style.display = "none";
+}
+
 function Consultar() {
+    registrosTotales = false;
     $.ajax({
         data: { "accion": "CONSULTAR" },
         url: url,
         type: 'POST',
         dataType: 'json'
     }).done(function(response) {
+        if (response.length >= 1) {
+            registrosTotales = true;
+            ocultarAlerta();
+        }else{
+            mostrarAlertaDatos();
+        }
         var html = "";
         $.each(response, function(index, data) {
             html += "<tr>";
@@ -48,6 +65,7 @@ function listarFuncionarios(){
 }
 
 function EscucharConsulta(){
+    registrosTotales = false;
     $('#idCustodio').keyup(function() {
         if($('#idCustodio').val()) {
           let idBuscar = $('#idCustodio').val();
@@ -57,6 +75,12 @@ function EscucharConsulta(){
             type: 'POST',
             dataType: 'json'
             }).done(function(response) {
+                if (response.length >= 1) {
+                    registrosTotales = true;
+                    ocultarAlerta();
+                }else{
+                    mostrarAlertaDatos();
+                }
                 var html = "";
                 $.each(response, function(index, data) {
                     html += "<tr>";

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 08-01-2021 a las 19:56:36
+-- Tiempo de generación: 09-01-2021 a las 22:29:49
 -- Versión del servidor: 8.0.21
 -- Versión de PHP: 7.3.21
 
@@ -3123,7 +3123,7 @@ INSERT INTO `rol_usuario` (`ID_ROL_USUARIO`, `NOMBRE_ROL_USUARIO`, `DESCRIPCION_
 (1, 'ADMINISTRADOR', 'Encargado de la Administración del Sistema'),
 (2, 'INVITADO', 'Permite hacer todo lo del administrador menos el control de usuarios'),
 (3, 'COMPROBADOR DE INVENTARIO', 'Permite hacer la comprobación del Inventario'),
-(4, 'GENERADOR DE REPORTES', 'Encargado de la Generación de Reportes');
+(4, 'GENERADOR DE REPORTES Y ACTAS', 'Encargado de la Generación de Reportes y Actas');
 
 -- --------------------------------------------------------
 

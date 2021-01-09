@@ -1,5 +1,5 @@
 var url = "../controlador/Funcionario.controlador.php";
-
+var registrosTotales = false;
 $(document).ready(function() {
     Consultar();
     EscucharConsulta();
@@ -10,6 +10,16 @@ $(document).ready(function() {
     document.getElementById('telefonoFuncionario').addEventListener('keypress', soloNumeros, false);
 })
 
+function mostrarAlertaDatos(){
+    var alerta = document.getElementById('alerta');
+    alerta.style.display = "block";
+}
+
+function ocultarAlerta(){
+    var alerta = document.getElementById('alerta');
+    alerta.style.display = "none";
+}
+
 function soloNumeros(e){
     var key = window.event ? e.which : e.keyCode;
     if (key < 48 || key > 57) {
@@ -18,12 +28,19 @@ function soloNumeros(e){
 }
 
 function Consultar() {
+    registrosTotales = false;
     $.ajax({
         data: { "accion": "CONSULTAR" },
         url: url,
         type: 'POST',
         dataType: 'json'
     }).done(function(response) {
+        if (response.length >= 1) {
+            registrosTotales = true;
+            ocultarAlerta();
+        }else{
+            mostrarAlertaDatos();
+        }
         var html = "";
         $.each(response, function(index, data) {
             html += "<tr>";
@@ -46,6 +63,7 @@ function Consultar() {
 }
 
 function EscucharConsulta(){
+    registrosTotales = false;
     $('#idFuncionario').keyup(function() {
         if($('#idFuncionario').val()) {
           let idBuscar = $('#idFuncionario').val();
@@ -55,6 +73,12 @@ function EscucharConsulta(){
             type: 'POST',
             dataType: 'json'
             }).done(function(response) {
+                if (response.length >= 1) {
+                    registrosTotales = true;
+                    ocultarAlerta();
+                }else{
+                    mostrarAlertaDatos();
+                }
                 var html = "";
                 $.each(response, function(index, data) {
                     html += "<tr>";

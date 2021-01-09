@@ -95,9 +95,16 @@
                         </tr>
                     </thead>
                     <tbody id="datos">
+                    
+
 
                     </tbody>
                 </table>
+                <div id="alerta">
+                    <div class="alert alert-success text-center" role="alert"> 
+                        No se ha encontrado datos con los siguientes criterios 
+                    </div>
+                </div>
             </div>
         </div>
     </div>

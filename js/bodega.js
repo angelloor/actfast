@@ -1,5 +1,5 @@
 var url = "../controlador/bodega.controlador.php";
-
+var registrosTotales = false;
 $(document).ready(function() {
     Consultar();
     EscucharConsulta();
@@ -7,13 +7,30 @@ $(document).ready(function() {
     listarResponsableBodega();
 })
 
+function mostrarAlertaDatos(){
+    var alerta = document.getElementById('alerta');
+    alerta.style.display = "block";
+}
+
+function ocultarAlerta(){
+    var alerta = document.getElementById('alerta');
+    alerta.style.display = "none";
+}
+
 function Consultar() {
+    registrosTotales = false;
     $.ajax({
         data: { "accion": "CONSULTAR" },
         url: url,
         type: 'POST',
         dataType: 'json'
     }).done(function(response) {
+        if (response.length >= 1) {
+            registrosTotales = true;
+            ocultarAlerta();
+        }else{
+            mostrarAlertaDatos();
+        }
         var html = "";
         $.each(response, function(index, data) {
             html += "<tr>";
@@ -50,6 +67,7 @@ function listarResponsableBodega(){
 }
 
 function EscucharConsulta(){
+    registrosTotales = false;
     $('#idBodega').keyup(function() {
         if($('#idBodega').val()) {
           let idBuscar = $('#idBodega').val();
@@ -59,6 +77,12 @@ function EscucharConsulta(){
             type: 'POST',
             dataType: 'json'
             }).done(function(response) {
+                if (response.length >= 1) {
+                    registrosTotales = true;
+                    ocultarAlerta();
+                }else{
+                    mostrarAlertaDatos();
+                }
                 var html = "";
                 $.each(response, function(index, data) {
                     html += "<tr>";

@@ -90,6 +90,11 @@
                             
                     </tbody>
                 </table>
+                <div id="alerta">
+                    <div class="alert alert-success text-center" role="alert"> 
+                        No se ha encontrado datos
+                    </div>
+                </div>
             </div>
         </div>
     </div>

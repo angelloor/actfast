@@ -1,18 +1,35 @@
 var url = "../controlador/unidad.controlador.php";
-
+var registrosTotales = false;
 $(document).ready(function() {
     Consultar();
     EscucharConsulta();
     BloquearBotones(true);
 })
 
+function mostrarAlertaDatos(){
+    var alerta = document.getElementById('alerta');
+    alerta.style.display = "block";
+}
+
+function ocultarAlerta(){
+    var alerta = document.getElementById('alerta');
+    alerta.style.display = "none";
+}
+
 function Consultar() {
+    registrosTotales = false;
     $.ajax({
         data: { "accion": "CONSULTAR" },
         url: url,
         type: 'POST',
         dataType: 'json'
     }).done(function(response) {
+        if (response.length >= 1) {
+            registrosTotales = true;
+            ocultarAlerta();
+        }else{
+            mostrarAlertaDatos();
+        }
         var html = "";
         $.each(response, function(index, data) {
             html += "<tr>";
@@ -30,6 +47,7 @@ function Consultar() {
 }
 
 function EscucharConsulta(){
+    registrosTotales = false;
     $('#idUnidad').keyup(function() {
         if($('#idUnidad').val()) {
           let idBuscar = $('#idUnidad').val();
@@ -39,6 +57,12 @@ function EscucharConsulta(){
             type: 'POST',
             dataType: 'json'
             }).done(function(response) {
+                if (response.length >= 1) {
+                    registrosTotales = true;
+                    ocultarAlerta();
+                }else{
+                    mostrarAlertaDatos();
+                }
                 var html = "";
                 $.each(response, function(index, data) {
                     html += "<tr>";
