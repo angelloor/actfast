@@ -28,27 +28,48 @@
 
         public function Guardar($nombreUnidad){
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("INSERT INTO `unidad` (`NOMBRE_UNIDAD`) 
-                                        VALUES (:nombreUnidad);");
-            $stmt->bindValue(":nombreUnidad",$nombreUnidad, PDO::PARAM_STR);
-            if($stmt->execute()){
-                return "OK";
+
+            $stmt = $conexion->prepare("select count(*) from unidad where nombre_unidad = :nombreUnidad");
+            $stmt->bindValue(":nombreUnidad", $nombreUnidad, PDO::PARAM_STR);
+            $stmt->execute();
+            $results = $stmt->fetch(PDO::FETCH_ASSOC);
+            $existeRegistro = $results['count(*)'];
+
+            if($existeRegistro == 1){
+                return "La unidad ya existe ";
             }else{
-                return "Error: se ha generado un error al guardar la información";
+                $stmt = $conexion->prepare("INSERT INTO `unidad` (`NOMBRE_UNIDAD`) 
+                                            VALUES (:nombreUnidad);");
+                $stmt->bindValue(":nombreUnidad",$nombreUnidad, PDO::PARAM_STR);
+                if($stmt->execute()){
+                    return "OK";
+                }else{
+                    return "Error: se ha generado un error al guardar la información";
+                }
             }
         }
 
         public function Modificar($idUnidad,$nombreUnidad){
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("UPDATE `unidad` 
-                                        SET `NOMBRE_UNIDAD` = :nombreUnidad
-                                        WHERE `ID_UNIDAD` = :idUnidad;");
-            $stmt->bindValue(":nombreUnidad",$nombreUnidad,PDO::PARAM_STR); 
-            $stmt->bindValue(":idUnidad",$idUnidad,PDO::PARAM_INT); 
-            if($stmt->execute()){
-                return "OK";
+            $stmt = $conexion->prepare("select count(*) from unidad where nombre_unidad = :nombreUnidad");
+            $stmt->bindValue(":nombreUnidad", $nombreUnidad, PDO::PARAM_STR);
+            $stmt->execute();
+            $results = $stmt->fetch(PDO::FETCH_ASSOC);
+            $existeRegistro = $results['count(*)'];
+
+            if($existeRegistro == 1){
+                return "La unidad ya existe ";
             }else{
+                $stmt = $conexion->prepare("UPDATE `unidad` 
+                                SET `NOMBRE_UNIDAD` = :nombreUnidad
+                                WHERE `ID_UNIDAD` = :idUnidad;");
+                $stmt->bindValue(":nombreUnidad",$nombreUnidad,PDO::PARAM_STR); 
+                $stmt->bindValue(":idUnidad",$idUnidad,PDO::PARAM_INT); 
+                if($stmt->execute()){
+                return "OK";
+                }else{
                 return "Error: se ha generado un error al modificar la información";
+                }
             }
         }
 
