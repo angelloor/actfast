@@ -35,7 +35,7 @@
             $results = $stmt->fetch(PDO::FETCH_ASSOC);
             $existeRegistro = $results['count(*)'];
 
-            if($existeRegistro == 1){
+            if($existeRegistro >= 1){
                 return "El cargo ya existe ";
             }else{
                 $stmt = $conexion->prepare("INSERT INTO `cargo` (`NOMBRE_CARGO`) 
@@ -58,7 +58,7 @@
             $results = $stmt->fetch(PDO::FETCH_ASSOC);
             $existeRegistro = $results['count(*)'];
 
-            if($existeRegistro == 1){
+            if($existeRegistro >= 1){
                 return "El cargo ya existe ";
             }else{
                 $stmt = $conexion->prepare("UPDATE `cargo` 

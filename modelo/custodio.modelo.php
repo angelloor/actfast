@@ -34,46 +34,63 @@
         }
 
         public function Guardar($personaId){
-
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("select ID_PERSONA FROM persona where NOMBRE_PERSONA = :personaId");
+
+            $stmt = $conexion->prepare("select count(*) from custodio cu inner join persona p on cu.persona_id = p.id_persona where p.nombre_persona = :personaId;");
             $stmt->bindValue(":personaId", $personaId, PDO::PARAM_STR);
             $stmt->execute();
             $results = $stmt->fetch(PDO::FETCH_ASSOC);
-            $idp = $results['ID_PERSONA'];
-
-
-            $conexion = new Conexion();
-            $stmt = $conexion->prepare("INSERT INTO `custodio` (`PERSONA_ID`) 
-                                        VALUES (:nombreCustodio);");
-            $stmt->bindValue(":nombreCustodio",$idp, PDO::PARAM_INT);
-            if($stmt->execute()){
-                return "OK";
+            $existeRegistro = $results['count(*)'];
+            
+            if($existeRegistro >= 1){
+                return "El custodio ya existe";
             }else{
-                return "Error: se ha generado un error al guardar la información";
+                $stmt = $conexion->prepare("select ID_PERSONA FROM persona where NOMBRE_PERSONA = :personaId");
+                $stmt->bindValue(":personaId", $personaId, PDO::PARAM_STR);
+                $stmt->execute();
+                $results = $stmt->fetch(PDO::FETCH_ASSOC);
+                $idp = $results['ID_PERSONA'];
+
+                $stmt = $conexion->prepare("INSERT INTO `custodio` (`PERSONA_ID`) 
+                                            VALUES (:nombreCustodio);");
+                $stmt->bindValue(":nombreCustodio",$idp, PDO::PARAM_INT);
+                if($stmt->execute()){
+                    return "OK";
+                }else{
+                    return "Error: se ha generado un error al guardar la información";
+                }
             }
         }
 
         public function Modificar($idCustodio,$nombreCustodio){
 
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("select ID_PERSONA FROM persona where NOMBRE_PERSONA = :nombreCustodio");
+            $stmt = $conexion->prepare("select count(*) from custodio cu inner join persona p on cu.persona_id = p.id_persona where p.nombre_persona = :nombreCustodio;");
             $stmt->bindValue(":nombreCustodio", $nombreCustodio, PDO::PARAM_STR);
             $stmt->execute();
             $results = $stmt->fetch(PDO::FETCH_ASSOC);
-            $idp = $results['ID_PERSONA'];
-
-
-            $conexion = new Conexion();
-            $stmt = $conexion->prepare("UPDATE `custodio` 
-                                        SET `PERSONA_ID` = :idPersona
-                                        WHERE `ID_CUSTODIO` = :idCustodio;");
-            $stmt->bindValue(":idPersona",$idp,PDO::PARAM_INT); 
-            $stmt->bindValue(":idCustodio",$idCustodio,PDO::PARAM_INT); 
-            if($stmt->execute()){
-                return "OK";
+            $existeRegistro = $results['count(*)'];
+            
+            if($existeRegistro >= 1){
+                return "El custodio ya existe";
             }else{
-                return "Error: se ha generado un error al modificar la información";
+                $stmt = $conexion->prepare("select ID_PERSONA FROM persona where NOMBRE_PERSONA = :nombreCustodio");
+                $stmt->bindValue(":nombreCustodio", $nombreCustodio, PDO::PARAM_STR);
+                $stmt->execute();
+                $results = $stmt->fetch(PDO::FETCH_ASSOC);
+                $idp = $results['ID_PERSONA'];
+
+
+                $stmt = $conexion->prepare("UPDATE `custodio` 
+                                            SET `PERSONA_ID` = :idPersona
+                                            WHERE `ID_CUSTODIO` = :idCustodio;");
+                $stmt->bindValue(":idPersona",$idp,PDO::PARAM_INT); 
+                $stmt->bindValue(":idCustodio",$idCustodio,PDO::PARAM_INT); 
+                if($stmt->execute()){
+                    return "OK";
+                }else{
+                    return "Error: se ha generado un error al modificar la información";
+                }
             }
         }
 

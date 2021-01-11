@@ -35,7 +35,7 @@
             $results = $stmt->fetch(PDO::FETCH_ASSOC);
             $existeRegistro = $results['count(*)'];
 
-            if($existeRegistro == 1){
+            if($existeRegistro >= 1){
                 return "La unidad ya existe ";
             }else{
                 $stmt = $conexion->prepare("INSERT INTO `unidad` (`NOMBRE_UNIDAD`) 
@@ -57,7 +57,7 @@
             $results = $stmt->fetch(PDO::FETCH_ASSOC);
             $existeRegistro = $results['count(*)'];
 
-            if($existeRegistro == 1){
+            if($existeRegistro >= 1){
                 return "La unidad ya existe ";
             }else{
                 $stmt = $conexion->prepare("UPDATE `unidad` 

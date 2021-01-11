@@ -28,27 +28,47 @@
 
         public function Guardar($nombreColor){
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("INSERT INTO `color` (`NOMBRE_COLOR`) 
-                                        VALUES (:nombreColor);");
-            $stmt->bindValue(":nombreColor",$nombreColor, PDO::PARAM_STR);
-            if($stmt->execute()){
-                return "OK";
+            $stmt = $conexion->prepare("select count(*) from color where nombre_color = :nombreColor;");
+            $stmt->bindValue(":nombreColor", $nombreColor, PDO::PARAM_STR);
+            $stmt->execute();
+            $results = $stmt->fetch(PDO::FETCH_ASSOC);
+            $existeRegistro = $results['count(*)'];
+            
+            if($existeRegistro >= 1){
+                return "El color ya existe";
             }else{
+                $stmt = $conexion->prepare("INSERT INTO `color` (`NOMBRE_COLOR`) 
+                                VALUES (:nombreColor);");
+                $stmt->bindValue(":nombreColor",$nombreColor, PDO::PARAM_STR);
+                if($stmt->execute()){
+                return "OK";
+                }else{
                 return "Error: se ha generado un error al guardar la información";
+                }
             }
         }
 
         public function Modificar($idColor,$nombreColor){
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("UPDATE `color` 
-                                        SET `NOMBRE_COLOR` = :nombreColor
-                                        WHERE `ID_COLOR` = :idColor;");
-            $stmt->bindValue(":nombreColor",$nombreColor,PDO::PARAM_STR); 
-            $stmt->bindValue(":idColor",$idColor,PDO::PARAM_INT); 
-            if($stmt->execute()){
-                return "OK";
+            $stmt = $conexion->prepare("select count(*) from color where nombre_color = :nombreColor;");
+            $stmt->bindValue(":nombreColor", $nombreColor, PDO::PARAM_STR);
+            $stmt->execute();
+            $results = $stmt->fetch(PDO::FETCH_ASSOC);
+            $existeRegistro = $results['count(*)'];
+            
+            if($existeRegistro >= 1){
+                return "El color ya existe";
             }else{
+                $stmt = $conexion->prepare("UPDATE `color` 
+                                SET `NOMBRE_COLOR` = :nombreColor
+                                WHERE `ID_COLOR` = :idColor;");
+                $stmt->bindValue(":nombreColor",$nombreColor,PDO::PARAM_STR); 
+                $stmt->bindValue(":idColor",$idColor,PDO::PARAM_INT); 
+                if($stmt->execute()){
+                return "OK";
+                }else{
                 return "Error: se ha generado un error al modificar la información";
+                }
             }
         }
 

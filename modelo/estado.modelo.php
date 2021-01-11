@@ -28,27 +28,47 @@
 
         public function Guardar($nombreEstado){
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("INSERT INTO `estado` (`NOMBRE_Estado`) 
-                                        VALUES (:nombreEstado);");
-            $stmt->bindValue(":nombreEstado",$nombreEstado, PDO::PARAM_STR);
-            if($stmt->execute()){
-                return "OK";
+            $stmt = $conexion->prepare("select count(*) from estado where nombre_estado = :nombreEstado;");
+            $stmt->bindValue(":nombreEstado", $nombreEstado, PDO::PARAM_STR);
+            $stmt->execute();
+            $results = $stmt->fetch(PDO::FETCH_ASSOC);
+            $existeRegistro = $results['count(*)'];
+            
+            if($existeRegistro >= 1){
+                return "El estado ya existe";
             }else{
+                $stmt = $conexion->prepare("INSERT INTO `estado` (`NOMBRE_Estado`) 
+                                VALUES (:nombreEstado);");
+                $stmt->bindValue(":nombreEstado",$nombreEstado, PDO::PARAM_STR);
+                if($stmt->execute()){
+                return "OK";
+                }else{
                 return "Error: se ha generado un error al guardar la información";
+                }
             }
         }
 
         public function Modificar($idEstado,$nombreEstado){
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("UPDATE `estado` 
-                                        SET `NOMBRE_Estado` = :nombreEstado
-                                        WHERE `ID_Estado` = :idEstado;");
-            $stmt->bindValue(":nombreEstado",$nombreEstado,PDO::PARAM_STR); 
-            $stmt->bindValue(":idEstado",$idEstado,PDO::PARAM_INT); 
-            if($stmt->execute()){
-                return "OK";
+            $stmt = $conexion->prepare("select count(*) from estado where nombre_estado = :nombreEstado;");
+            $stmt->bindValue(":nombreEstado", $nombreEstado, PDO::PARAM_STR);
+            $stmt->execute();
+            $results = $stmt->fetch(PDO::FETCH_ASSOC);
+            $existeRegistro = $results['count(*)'];
+            
+            if($existeRegistro >= 1){
+                return "El estado ya existe";
             }else{
-                return "Error: se ha generado un error al modificar la información";
+                $stmt = $conexion->prepare("UPDATE `estado` 
+                                            SET `NOMBRE_Estado` = :nombreEstado
+                                            WHERE `ID_Estado` = :idEstado;");
+                $stmt->bindValue(":nombreEstado",$nombreEstado,PDO::PARAM_STR); 
+                $stmt->bindValue(":idEstado",$idEstado,PDO::PARAM_INT); 
+                if($stmt->execute()){
+                    return "OK";
+                }else{
+                    return "Error: se ha generado un error al modificar la información";
+                }
             }
         }
 

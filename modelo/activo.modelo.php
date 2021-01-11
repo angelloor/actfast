@@ -61,132 +61,154 @@
 
         public function Guardar($categoria,$marca ,$estado,$color,$caracteristica,$bodega,$custodio,$codigo,$nombre,$modelo,$serie,$origenIngreso,$fechaIngreso,$valorCompra,$comentario,$comprobacionInventario){
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("SELECT ID_CATEGORIA FROM CATEGORIA WHERE NOMBRE_CATEGORIA = :categoria");
-            $stmt->bindValue(":categoria", $categoria, PDO::PARAM_STR);
-            $stmt->execute();
-            $results = $stmt->fetch(PDO::FETCH_ASSOC);
-            $idCategoria = $results['ID_CATEGORIA'];
-
-            $stmt = $conexion->prepare("SELECT ID_MARCA FROM MARCA WHERE NOMBRE_MARCA = :marca");
-            $stmt->bindValue(":marca", $marca, PDO::PARAM_STR);
-            $stmt->execute();
-            $results = $stmt->fetch(PDO::FETCH_ASSOC);
-            $idMarca = $results['ID_MARCA'];
             
-            $stmt = $conexion->prepare("SELECT ID_ESTADO FROM ESTADO WHERE NOMBRE_ESTADO = :estado");
-            $stmt->bindValue(":estado", $estado, PDO::PARAM_STR);
+            $stmt = $conexion->prepare("select count(*) from activo where codigo = :codigo;");
+            $stmt->bindValue(":codigo", $codigo, PDO::PARAM_INT);
             $stmt->execute();
             $results = $stmt->fetch(PDO::FETCH_ASSOC);
-            $idEstado = $results['ID_ESTADO'];
-
-            $stmt = $conexion->prepare("SELECT ID_COLOR FROM COLOR WHERE NOMBRE_COLOR = :color");
-            $stmt->bindValue(":color", $color, PDO::PARAM_STR);
-            $stmt->execute();
-            $results = $stmt->fetch(PDO::FETCH_ASSOC);
-            $idColor = $results['ID_COLOR'];
-
-            $stmt = $conexion->prepare("SELECT ID_BODEGA FROM BODEGA WHERE NOMBRE_BODEGA = :bodega");
-            $stmt->bindValue(":bodega", $bodega, PDO::PARAM_STR);
-            $stmt->execute();
-            $results = $stmt->fetch(PDO::FETCH_ASSOC);
-            $idBodega = $results['ID_BODEGA'];
-
-            $stmt = $conexion->prepare("SELECT ID_PERSONA FROM PERSONA WHERE NOMBRE_PERSONA = :custodio");
-            $stmt->bindValue(":custodio", $custodio, PDO::PARAM_STR);
-            $stmt->execute();
-            $results = $stmt->fetch(PDO::FETCH_ASSOC);
-            $idCustodio = $results['ID_PERSONA'];
-
-            $stmt = $conexion->prepare("INSERT INTO `activo`(`CATEGORIA_ID`, `MARCA_ID`, `ESTADO_ID`, `COLOR_ID`, `CARACTERISTICA`, `BODEGA_ID`, `CUSTODIO_ID`, `CODIGO`, `NOMBRE_ACTIVO`, `MODELO`, `SERIE`, `ORIGEN_INGRESO`,`FECHA_INGRESO`, `VALOR_COMPRA`, `COMENTARIO`, `COMPROBACION_INVENTARIO`) VALUES (:categoria,:marca ,:estado,:color,:caracteristica,:bodega,:custodio,:codigo,:nombre,:modelo,:serie,:origenIngreso,:fechaIngreso,:valorCompra,:comentario,:comprobacionInventario)");
-            $stmt->bindValue(":categoria",$idCategoria, PDO::PARAM_INT);
-            $stmt->bindValue(":marca",$idMarca, PDO::PARAM_INT);
-            $stmt->bindValue(":estado",$idEstado, PDO::PARAM_INT);
-            $stmt->bindValue(":color",$idColor, PDO::PARAM_INT);
-            $stmt->bindValue(":caracteristica",$caracteristica, PDO::PARAM_STR);
-            $stmt->bindValue(":bodega",$idBodega, PDO::PARAM_INT);
-            $stmt->bindValue(":custodio",$idCustodio, PDO::PARAM_INT);
-            $stmt->bindValue(":codigo",$codigo, PDO::PARAM_INT);
-            $stmt->bindValue(":nombre",$nombre, PDO::PARAM_STR);
-            $stmt->bindValue(":modelo",$modelo, PDO::PARAM_STR);
-            $stmt->bindValue(":serie",$serie, PDO::PARAM_STR);
-            $stmt->bindValue(":origenIngreso",$origenIngreso, PDO::PARAM_STR);
-            $stmt->bindValue(":fechaIngreso",$fechaIngreso, PDO::PARAM_STR);
-            $stmt->bindValue(":valorCompra",$valorCompra, PDO::PARAM_STR);
-            $stmt->bindValue(":comentario",$comentario, PDO::PARAM_STR);
-            $stmt->bindValue(":comprobacionInventario",$comprobacionInventario, PDO::PARAM_STR);
+            $existeRegistro = $results['count(*)'];
             
-            if($stmt->execute()){
-                return "OK";
+            if($existeRegistro >= 1){
+                return "Activo ya existe ";
             }else{
-                return "Error: se ha generado un error al guardar la información";
+                $stmt = $conexion->prepare("SELECT ID_CATEGORIA FROM CATEGORIA WHERE NOMBRE_CATEGORIA = :categoria");
+                $stmt->bindValue(":categoria", $categoria, PDO::PARAM_STR);
+                $stmt->execute();
+                $results = $stmt->fetch(PDO::FETCH_ASSOC);
+                $idCategoria = $results['ID_CATEGORIA'];
+
+                $stmt = $conexion->prepare("SELECT ID_MARCA FROM MARCA WHERE NOMBRE_MARCA = :marca");
+                $stmt->bindValue(":marca", $marca, PDO::PARAM_STR);
+                $stmt->execute();
+                $results = $stmt->fetch(PDO::FETCH_ASSOC);
+                $idMarca = $results['ID_MARCA'];
+                
+                $stmt = $conexion->prepare("SELECT ID_ESTADO FROM ESTADO WHERE NOMBRE_ESTADO = :estado");
+                $stmt->bindValue(":estado", $estado, PDO::PARAM_STR);
+                $stmt->execute();
+                $results = $stmt->fetch(PDO::FETCH_ASSOC);
+                $idEstado = $results['ID_ESTADO'];
+
+                $stmt = $conexion->prepare("SELECT ID_COLOR FROM COLOR WHERE NOMBRE_COLOR = :color");
+                $stmt->bindValue(":color", $color, PDO::PARAM_STR);
+                $stmt->execute();
+                $results = $stmt->fetch(PDO::FETCH_ASSOC);
+                $idColor = $results['ID_COLOR'];
+
+                $stmt = $conexion->prepare("SELECT ID_BODEGA FROM BODEGA WHERE NOMBRE_BODEGA = :bodega");
+                $stmt->bindValue(":bodega", $bodega, PDO::PARAM_STR);
+                $stmt->execute();
+                $results = $stmt->fetch(PDO::FETCH_ASSOC);
+                $idBodega = $results['ID_BODEGA'];
+
+                $stmt = $conexion->prepare("SELECT ID_PERSONA FROM PERSONA WHERE NOMBRE_PERSONA = :custodio");
+                $stmt->bindValue(":custodio", $custodio, PDO::PARAM_STR);
+                $stmt->execute();
+                $results = $stmt->fetch(PDO::FETCH_ASSOC);
+                $idCustodio = $results['ID_PERSONA'];
+
+                $stmt = $conexion->prepare("INSERT INTO `activo`(`CATEGORIA_ID`, `MARCA_ID`, `ESTADO_ID`, `COLOR_ID`, `CARACTERISTICA`, `BODEGA_ID`, `CUSTODIO_ID`, `CODIGO`, `NOMBRE_ACTIVO`, `MODELO`, `SERIE`, `ORIGEN_INGRESO`,`FECHA_INGRESO`, `VALOR_COMPRA`, `COMENTARIO`, `COMPROBACION_INVENTARIO`) VALUES (:categoria,:marca ,:estado,:color,:caracteristica,:bodega,:custodio,:codigo,:nombre,:modelo,:serie,:origenIngreso,:fechaIngreso,:valorCompra,:comentario,:comprobacionInventario)");
+                $stmt->bindValue(":categoria",$idCategoria, PDO::PARAM_INT);
+                $stmt->bindValue(":marca",$idMarca, PDO::PARAM_INT);
+                $stmt->bindValue(":estado",$idEstado, PDO::PARAM_INT);
+                $stmt->bindValue(":color",$idColor, PDO::PARAM_INT);
+                $stmt->bindValue(":caracteristica",$caracteristica, PDO::PARAM_STR);
+                $stmt->bindValue(":bodega",$idBodega, PDO::PARAM_INT);
+                $stmt->bindValue(":custodio",$idCustodio, PDO::PARAM_INT);
+                $stmt->bindValue(":codigo",$codigo, PDO::PARAM_INT);
+                $stmt->bindValue(":nombre",$nombre, PDO::PARAM_STR);
+                $stmt->bindValue(":modelo",$modelo, PDO::PARAM_STR);
+                $stmt->bindValue(":serie",$serie, PDO::PARAM_STR);
+                $stmt->bindValue(":origenIngreso",$origenIngreso, PDO::PARAM_STR);
+                $stmt->bindValue(":fechaIngreso",$fechaIngreso, PDO::PARAM_STR);
+                $stmt->bindValue(":valorCompra",$valorCompra, PDO::PARAM_STR);
+                $stmt->bindValue(":comentario",$comentario, PDO::PARAM_STR);
+                $stmt->bindValue(":comprobacionInventario",$comprobacionInventario, PDO::PARAM_STR);
+                
+                if($stmt->execute()){
+                    return "OK";
+                }else{
+                    return "Error: se ha generado un error al guardar la información";
+                }
             }
         }
 
         public function Modificar($idActivo,$categoria,$marca ,$estado,$color,$caracteristica,$bodega,$custodio,$codigo,$nombre,$modelo,$serie,$origenIngreso,$fechaIngreso,$valorCompra,$comentario,$comprobacionInventario){
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("SELECT ID_CATEGORIA FROM CATEGORIA WHERE NOMBRE_CATEGORIA = :categoria");
-            $stmt->bindValue(":categoria", $categoria, PDO::PARAM_STR);
-            $stmt->execute();
-            $results = $stmt->fetch(PDO::FETCH_ASSOC);
-            $idCategoria = $results['ID_CATEGORIA'];
 
-            $stmt = $conexion->prepare("SELECT ID_MARCA FROM MARCA WHERE NOMBRE_MARCA = :marca");
-            $stmt->bindValue(":marca", $marca, PDO::PARAM_STR);
+            $stmt = $conexion->prepare("select count(*) from activo where codigo = :codigo;");
+            $stmt->bindValue(":codigo", $codigo, PDO::PARAM_INT);
             $stmt->execute();
             $results = $stmt->fetch(PDO::FETCH_ASSOC);
-            $idMarca = $results['ID_MARCA'];
+            $existeRegistro = $results['count(*)'];
             
-            $stmt = $conexion->prepare("SELECT ID_ESTADO FROM ESTADO WHERE NOMBRE_ESTADO = :estado");
-            $stmt->bindValue(":estado", $estado, PDO::PARAM_STR);
-            $stmt->execute();
-            $results = $stmt->fetch(PDO::FETCH_ASSOC);
-            $idEstado = $results['ID_ESTADO'];
-
-            $stmt = $conexion->prepare("SELECT ID_COLOR FROM COLOR WHERE NOMBRE_COLOR = :color");
-            $stmt->bindValue(":color", $color, PDO::PARAM_STR);
-            $stmt->execute();
-            $results = $stmt->fetch(PDO::FETCH_ASSOC);
-            $idColor = $results['ID_COLOR'];
-
-            $stmt = $conexion->prepare("SELECT ID_BODEGA FROM BODEGA WHERE NOMBRE_BODEGA = :bodega");
-            $stmt->bindValue(":bodega", $bodega, PDO::PARAM_STR);
-            $stmt->execute();
-            $results = $stmt->fetch(PDO::FETCH_ASSOC);
-            $idBodega = $results['ID_BODEGA'];
-
-            $stmt = $conexion->prepare("SELECT ID_PERSONA FROM PERSONA WHERE NOMBRE_PERSONA = :custodio");
-            $stmt->bindValue(":custodio", $custodio, PDO::PARAM_STR);
-            $stmt->execute();
-            $results = $stmt->fetch(PDO::FETCH_ASSOC);
-            $idCustodio = $results['ID_PERSONA'];
-           
-            $stmt = $conexion->prepare("UPDATE `activo` SET `CATEGORIA_ID`= :categoria,
-            `MARCA_ID`= :marca,`ESTADO_ID`= :estado,`COLOR_ID`= :color,`CARACTERISTICA`= :caracteristica,
-            `BODEGA_ID`= :bodega,`CUSTODIO_ID`= :custodio,`CODIGO`= :codigo,`NOMBRE_ACTIVO`= :nombre,
-            `MODELO`= :modelo,`SERIE`= :serie,`ORIGEN_INGRESO`= :origenIngreso,`FECHA_INGRESO`= :fechaIngreso,
-            `VALOR_COMPRA`= :valorCompra,`COMENTARIO`= :comentario,`COMPROBACION_INVENTARIO`= :comprobacionInventario WHERE ID_ACTIVO = :idActivo");
-           
-            $stmt->bindValue(":categoria",$idCategoria, PDO::PARAM_INT);
-            $stmt->bindValue(":marca",$idMarca, PDO::PARAM_INT);
-            $stmt->bindValue(":estado",$idEstado, PDO::PARAM_INT);
-            $stmt->bindValue(":color",$idColor, PDO::PARAM_INT);
-            $stmt->bindValue(":caracteristica",$caracteristica, PDO::PARAM_STR);
-            $stmt->bindValue(":bodega",$idBodega, PDO::PARAM_INT);
-            $stmt->bindValue(":custodio",$idCustodio, PDO::PARAM_INT);
-            $stmt->bindValue(":codigo",$codigo, PDO::PARAM_INT);
-            $stmt->bindValue(":nombre",$nombre, PDO::PARAM_STR);
-            $stmt->bindValue(":modelo",$modelo, PDO::PARAM_STR);
-            $stmt->bindValue(":serie",$serie, PDO::PARAM_STR);
-            $stmt->bindValue(":origenIngreso",$origenIngreso, PDO::PARAM_STR);
-            $stmt->bindValue(":fechaIngreso",$fechaIngreso, PDO::PARAM_STR);
-            $stmt->bindValue(":valorCompra",$valorCompra, PDO::PARAM_STR);
-            $stmt->bindValue(":comentario",$comentario, PDO::PARAM_STR);
-            $stmt->bindValue(":comprobacionInventario",$comprobacionInventario, PDO::PARAM_STR);
-            $stmt->bindValue(":idActivo",$idActivo,PDO::PARAM_INT); 
-            if($stmt->execute()){
-                return "OK";
+            if($existeRegistro >= 1){
+                return "El codigo ".$codigo." ya se esta utilizando en otro activo";
             }else{
-                return "Error: se ha generado un error al modificar la información";
+                $stmt = $conexion->prepare("SELECT ID_CATEGORIA FROM CATEGORIA WHERE NOMBRE_CATEGORIA = :categoria");
+                $stmt->bindValue(":categoria", $categoria, PDO::PARAM_STR);
+                $stmt->execute();
+                $results = $stmt->fetch(PDO::FETCH_ASSOC);
+                $idCategoria = $results['ID_CATEGORIA'];
+
+                $stmt = $conexion->prepare("SELECT ID_MARCA FROM MARCA WHERE NOMBRE_MARCA = :marca");
+                $stmt->bindValue(":marca", $marca, PDO::PARAM_STR);
+                $stmt->execute();
+                $results = $stmt->fetch(PDO::FETCH_ASSOC);
+                $idMarca = $results['ID_MARCA'];
+                
+                $stmt = $conexion->prepare("SELECT ID_ESTADO FROM ESTADO WHERE NOMBRE_ESTADO = :estado");
+                $stmt->bindValue(":estado", $estado, PDO::PARAM_STR);
+                $stmt->execute();
+                $results = $stmt->fetch(PDO::FETCH_ASSOC);
+                $idEstado = $results['ID_ESTADO'];
+
+                $stmt = $conexion->prepare("SELECT ID_COLOR FROM COLOR WHERE NOMBRE_COLOR = :color");
+                $stmt->bindValue(":color", $color, PDO::PARAM_STR);
+                $stmt->execute();
+                $results = $stmt->fetch(PDO::FETCH_ASSOC);
+                $idColor = $results['ID_COLOR'];
+
+                $stmt = $conexion->prepare("SELECT ID_BODEGA FROM BODEGA WHERE NOMBRE_BODEGA = :bodega");
+                $stmt->bindValue(":bodega", $bodega, PDO::PARAM_STR);
+                $stmt->execute();
+                $results = $stmt->fetch(PDO::FETCH_ASSOC);
+                $idBodega = $results['ID_BODEGA'];
+
+                $stmt = $conexion->prepare("SELECT ID_PERSONA FROM PERSONA WHERE NOMBRE_PERSONA = :custodio");
+                $stmt->bindValue(":custodio", $custodio, PDO::PARAM_STR);
+                $stmt->execute();
+                $results = $stmt->fetch(PDO::FETCH_ASSOC);
+                $idCustodio = $results['ID_PERSONA'];
+            
+                $stmt = $conexion->prepare("UPDATE `activo` SET `CATEGORIA_ID`= :categoria,
+                `MARCA_ID`= :marca,`ESTADO_ID`= :estado,`COLOR_ID`= :color,`CARACTERISTICA`= :caracteristica,
+                `BODEGA_ID`= :bodega,`CUSTODIO_ID`= :custodio,`CODIGO`= :codigo,`NOMBRE_ACTIVO`= :nombre,
+                `MODELO`= :modelo,`SERIE`= :serie,`ORIGEN_INGRESO`= :origenIngreso,`FECHA_INGRESO`= :fechaIngreso,
+                `VALOR_COMPRA`= :valorCompra,`COMENTARIO`= :comentario,`COMPROBACION_INVENTARIO`= :comprobacionInventario WHERE ID_ACTIVO = :idActivo");
+            
+                $stmt->bindValue(":categoria",$idCategoria, PDO::PARAM_INT);
+                $stmt->bindValue(":marca",$idMarca, PDO::PARAM_INT);
+                $stmt->bindValue(":estado",$idEstado, PDO::PARAM_INT);
+                $stmt->bindValue(":color",$idColor, PDO::PARAM_INT);
+                $stmt->bindValue(":caracteristica",$caracteristica, PDO::PARAM_STR);
+                $stmt->bindValue(":bodega",$idBodega, PDO::PARAM_INT);
+                $stmt->bindValue(":custodio",$idCustodio, PDO::PARAM_INT);
+                $stmt->bindValue(":codigo",$codigo, PDO::PARAM_INT);
+                $stmt->bindValue(":nombre",$nombre, PDO::PARAM_STR);
+                $stmt->bindValue(":modelo",$modelo, PDO::PARAM_STR);
+                $stmt->bindValue(":serie",$serie, PDO::PARAM_STR);
+                $stmt->bindValue(":origenIngreso",$origenIngreso, PDO::PARAM_STR);
+                $stmt->bindValue(":fechaIngreso",$fechaIngreso, PDO::PARAM_STR);
+                $stmt->bindValue(":valorCompra",$valorCompra, PDO::PARAM_STR);
+                $stmt->bindValue(":comentario",$comentario, PDO::PARAM_STR);
+                $stmt->bindValue(":comprobacionInventario",$comprobacionInventario, PDO::PARAM_STR);
+                $stmt->bindValue(":idActivo",$idActivo,PDO::PARAM_INT); 
+                if($stmt->execute()){
+                    return "OK";
+                }else{
+                    return "Error: se ha generado un error al modificar la información";
+                }
             }
         }
 

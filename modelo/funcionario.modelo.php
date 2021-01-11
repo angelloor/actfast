@@ -40,7 +40,7 @@
             $results = $stmt->fetch(PDO::FETCH_ASSOC);
             $existeRegistro = $results['count(*)'];
 
-            if($existeRegistro == 1){
+            if($existeRegistro >= 1){
                 return "El Funcionario ya existe ";
             }else{
                 $stmt = $conexion->prepare("SELECT ID_UNIDAD FROM UNIDAD WHERE NOMBRE_UNIDAD = :unidadFuncionario");
@@ -74,7 +74,7 @@
             $results = $stmt->fetch(PDO::FETCH_ASSOC);
             $existeRegistro = $results['count(*)'];
 
-            if($existeRegistro == 1){
+            if($existeRegistro >= 1){
                 return "El numero de cedula ya esta asignado a un funcionario";
             }else{
                 $stmt = $conexion->prepare("SELECT ID_CARGO FROM CARGO WHERE NOMBRE_CARGO = :cargoFuncionario");

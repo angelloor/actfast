@@ -28,27 +28,47 @@
 
         public function Guardar($nombreMarca){
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("INSERT INTO `marca` (`NOMBRE_MARCA`) 
-                                        VALUES (:nombreMarca);");
-            $stmt->bindValue(":nombreMarca",$nombreMarca, PDO::PARAM_STR);
-            if($stmt->execute()){
-                return "OK";
+            $stmt = $conexion->prepare("select count(*) from marca where nombre_marca = :nombreMarca;");
+            $stmt->bindValue(":nombreMarca", $nombreMarca, PDO::PARAM_STR);
+            $stmt->execute();
+            $results = $stmt->fetch(PDO::FETCH_ASSOC);
+            $existeRegistro = $results['count(*)'];
+            
+            if($existeRegistro >= 1){
+                return "La marca ya existe";
             }else{
-                return "Error: se ha generado un error al guardar la información";
+                $stmt = $conexion->prepare("INSERT INTO `marca` (`NOMBRE_MARCA`) 
+                                            VALUES (:nombreMarca);");
+                $stmt->bindValue(":nombreMarca",$nombreMarca, PDO::PARAM_STR);
+                if($stmt->execute()){
+                    return "OK";
+                }else{
+                    return "Error: se ha generado un error al guardar la información";
+                }
             }
         }
 
         public function Modificar($idMarca,$nombreMarca){
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("UPDATE `marca` 
-                                        SET `NOMBRE_MARCA` = :nombreMarca
-                                        WHERE `ID_MARCA` = :idMarca;");
-            $stmt->bindValue(":nombreMarca",$nombreMarca,PDO::PARAM_STR); 
-            $stmt->bindValue(":idMarca",$idMarca,PDO::PARAM_INT); 
-            if($stmt->execute()){
-                return "OK";
+            $stmt = $conexion->prepare("select count(*) from marca where nombre_marca = :nombreMarca;");
+            $stmt->bindValue(":nombreMarca", $nombreMarca, PDO::PARAM_STR);
+            $stmt->execute();
+            $results = $stmt->fetch(PDO::FETCH_ASSOC);
+            $existeRegistro = $results['count(*)'];
+            
+            if($existeRegistro >= 1){
+                return "La marca ya existe";
             }else{
-                return "Error: se ha generado un error al guardar la información";
+                $stmt = $conexion->prepare("UPDATE `marca` 
+                                            SET `NOMBRE_MARCA` = :nombreMarca
+                                            WHERE `ID_MARCA` = :idMarca;");
+                $stmt->bindValue(":nombreMarca",$nombreMarca,PDO::PARAM_STR); 
+                $stmt->bindValue(":idMarca",$idMarca,PDO::PARAM_INT); 
+                if($stmt->execute()){
+                    return "OK";
+                }else{
+                    return "Error: se ha generado un error al guardar la información";
+                }
             }
         }
 
