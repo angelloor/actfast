@@ -3,16 +3,9 @@
 
     class Main{
         
-        public function cargarCategoria(){
-            $conexion = new Conexion();
-            $stmt = $conexion->prepare("SELECT NOMBRE_CATEGORIA FROM CATEGORIA");
-            $stmt->execute();
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
-        }
-
         public function listarCategoria(){
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("SELECT NOMBRE_CATEGORIA FROM CATEGORIA order by nombre_categoria asc;");
+            $stmt = $conexion->prepare("select distinct c.nombre_categoria from entrega_recepcion er inner join activo a on er.activo_id = a.id_activo inner join categoria c on a.categoria_id = c.id_categoria order by c.nombre_categoria asc;");
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_OBJ);
         }

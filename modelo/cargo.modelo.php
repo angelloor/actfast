@@ -5,7 +5,7 @@
 
         public function ConsultarTodo(){
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("select * from cargo");
+            $stmt = $conexion->prepare("select * from cargo order by nombre_cargo asc");
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_OBJ);
         }
@@ -20,7 +20,7 @@
 
         public function ConsultarPorIdRow($idCargo){
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("select * from cargo where nombre_cargo like :patron;");
+            $stmt = $conexion->prepare("select * from cargo where nombre_cargo like :patron order by nombre_cargo asc;");
             $stmt->bindValue(":patron", "%".$idCargo."%", PDO::PARAM_STR);
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_OBJ);

@@ -5,7 +5,7 @@
 
         public function ConsultarTodo(){
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("select p.id_persona, p.cedula, p.nombre_persona, p.direccion, p.telefono, c.nombre_cargo, u.nombre_unidad from persona p inner join cargo c on p.cargo_id = c.id_cargo inner join unidad u on p.unidad_id = u.id_unidad order by p.id_persona asc");
+            $stmt = $conexion->prepare("select p.id_persona, p.cedula, p.nombre_persona, p.direccion, p.telefono, c.nombre_cargo, u.nombre_unidad from persona p inner join cargo c on p.cargo_id = c.id_cargo inner join unidad u on p.unidad_id = u.id_unidad order by p.nombre_persona asc");
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_OBJ);
         }
@@ -20,7 +20,7 @@
 
         public function ConsultarPorIdRow($idFuncionario){
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("SELECT P.ID_PERSONA, P.CEDULA, P.NOMBRE_PERSONA, P.DIRECCION, P.TELEFONO, C.NOMBRE_CARGO, U.NOMBRE_UNIDAD FROM PERSONA P INNER JOIN CARGO C ON P.CARGO_ID = C.ID_CARGO INNER JOIN UNIDAD U ON P.UNIDAD_ID = U.ID_UNIDAD WHERE P.NOMBRE_PERSONA LIKE :patron");
+            $stmt = $conexion->prepare("SELECT P.ID_PERSONA, P.CEDULA, P.NOMBRE_PERSONA, P.DIRECCION, P.TELEFONO, C.NOMBRE_CARGO, U.NOMBRE_UNIDAD FROM PERSONA P INNER JOIN CARGO C ON P.CARGO_ID = C.ID_CARGO INNER JOIN UNIDAD U ON P.UNIDAD_ID = U.ID_UNIDAD WHERE P.NOMBRE_PERSONA LIKE :patron order by p.nombre_persona asc");
             $stmt->bindValue(":patron", "%".$idFuncionario."%", PDO::PARAM_STR);
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_OBJ);

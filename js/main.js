@@ -10,7 +10,6 @@ $(document).ready(function() {
   document.getElementById('codigoActivo').addEventListener('keypress', soloNumeros, false);
 })
 
-
 function soloNumeros(e){
   var key = window.event ? e.which : e.keyCode;
   if (key < 48 || key > 57) {
@@ -27,7 +26,7 @@ function cargarCategoria(){
   }).done(function(response){
       var html = "";
       $.each(response, function(index, data) {
-          html += "<option>" + data.NOMBRE_CATEGORIA + "</option>";
+          html += "<option>" + data.nombre_categoria + "</option>";
       });
       document.getElementById("SelectCategoria").innerHTML = html;
       document.getElementById("SelectCategoriaDos").innerHTML = html;

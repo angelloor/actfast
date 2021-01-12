@@ -5,7 +5,7 @@
         
         public function ConsultarTodo(){
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("select * from unidad");
+            $stmt = $conexion->prepare("select * from unidad order by nombre_unidad asc");
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_OBJ);
         }
@@ -20,7 +20,7 @@
 
         public function ConsultarPorIdRow($idUnidad){
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("select * from unidad where nombre_unidad like :patron");
+            $stmt = $conexion->prepare("select * from unidad where nombre_unidad like :patron order by nombre_unidad asc");
             $stmt->bindValue(":patron", "%".$idUnidad."%", PDO::PARAM_STR);
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_OBJ);
