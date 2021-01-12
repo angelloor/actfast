@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 11-01-2021 a las 23:15:21
+-- Tiempo de generación: 12-01-2021 a las 14:10:58
 -- Versión del servidor: 8.0.21
 -- Versión de PHP: 7.3.21
 
@@ -3156,7 +3156,6 @@ INSERT INTO `persona` (`ID_PERSONA`, `CEDULA`, `NOMBRE_PERSONA`, `DIRECCION`, `T
 (52, 1600348880, 'HARO RODRIGUEZ MAGALI JANNETH', 'PUYO', '0', 22, 3),
 (53, 1600507501, 'BARBA SARMIENTO MARYURI ABIGAIL', 'PUYO', '0', 22, 3),
 (54, 1500907652, 'VASQUEZ SANTI ROSA FERNANDA', 'PUYO', '0', 22, 3),
-(55, 1600518672, 'BERMEO BALLESTEROS KAREN VANESSA', 'PUYO', '0', 9, 7),
 (56, 1600783946, 'ROBALINO CAMINO MANUEL DAMIAN', 'PUYO', '0992996436', 2, 3),
 (57, 1600646499, 'NARANJO FLORES BYRON STALIN', 'PUYO', '0992639924', 2, 3);
 
@@ -3253,14 +3252,17 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   PRIMARY KEY (`ID_USUARIO`),
   KEY `FK_USUARIO_REF_PERSONA` (`PERSONA_ID`),
   KEY `FK_USUARIO_REF_ROL_USUARIO` (`ROL_USUARIO_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
 INSERT INTO `usuario` (`ID_USUARIO`, `PERSONA_ID`, `NOMBRE_USUARIO`, `CLAVE`, `ROL_USUARIO_ID`) VALUES
-(1, 4, 'ADMIN', 'Pastaza16*', 1);
+(1, 4, 'ADMIN', 'Pastaza16*', 1),
+(2, 41, 'LOOR', 'LOOR', 3),
+(3, 41, 'ADMIN2', 'ADMIN', 2),
+(4, 41, 'GENERADOR', 'GENERADOR', 4);
 
 --
 -- Restricciones para tablas volcadas

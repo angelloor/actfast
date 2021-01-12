@@ -6,6 +6,12 @@
     if($_SESSION['rolUsuario'] == "COMPROBADOR DE INVENTARIO"){
     	header('Location: ./');
     }
+    if($_SESSION['rolUsuario'] == "INVITADO"){
+    	header('Location: ./');
+    }
+    if($_SESSION['rolUsuario'] == "GENERADOR DE REPORTES Y ACTAS"){
+    	header('Location: ./');
+    }
 ?>
 <!doctype html>
 <html lang="es">

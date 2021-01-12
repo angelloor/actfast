@@ -7,7 +7,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
-          <li class="nav-item dropdown" <?php if($_SESSION['rolUsuario'] == "COMPROBADOR DE INVENTARIO"){ echo 'style="display:none;"';} ?>>
+          <li class="nav-item dropdown" <?php if(($_SESSION['rolUsuario'] == "COMPROBADOR DE INVENTARIO") || ($_SESSION['rolUsuario'] == "GENERADOR DE REPORTES Y ACTAS")){ echo 'style="display:none;"';} ?>>
         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gestión de Activos</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
           <a class="dropdown-item" href="activos.php">Activos</a>
@@ -23,12 +23,12 @@
       <li class="nav-item dropdown" <?php if($_SESSION['rolUsuario'] == "COMPROBADOR DE INVENTARIO"){ echo 'style="display:none;"';} ?>>
         <a class="nav-link dropdown-toggle" href="gestionActa.php" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gestión de Actas</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
-          <a class="dropdown-item" href="gestionActa.php">Actas</a>
+          <a class="dropdown-item" href="gestionActa.php" <?php if($_SESSION['rolUsuario'] == "GENERADOR DE REPORTES Y ACTAS"){ echo 'style="display:none;"';} ?>>Actas</a>
           <a class="dropdown-item" href="actasDigitales.php">Actas Digitales</a>
           <a class="dropdown-item" href="firma.php">Firmas</a>
         </div>
       </li>
-      <li class="nav-item dropdown" <?php if($_SESSION['rolUsuario'] == "COMPROBADOR DE INVENTARIO"){ echo 'style="display:none;"';} ?>>
+      <li class="nav-item dropdown" <?php if(($_SESSION['rolUsuario'] == "COMPROBADOR DE INVENTARIO") || ($_SESSION['rolUsuario'] == "GENERADOR DE REPORTES Y ACTAS")){ echo 'style="display:none;"';} ?>>
         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Recurso Humano</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
           <a class="dropdown-item" href="funcionarios.php">Funcionarios</a>
@@ -36,7 +36,7 @@
           <a class="dropdown-item" href="cargos.php">Cargos</a>
         </div>
       </li>
-      <li class="nav-item dropdown" <?php if($_SESSION['rolUsuario'] == "COMPROBADOR DE INVENTARIO"){ echo 'style="display:none;"';} ?>>
+      <li class="nav-item dropdown" <?php if(($_SESSION['rolUsuario'] == "COMPROBADOR DE INVENTARIO") || ($_SESSION['rolUsuario'] == "INVITADO") || ($_SESSION['rolUsuario'] == "GENERADOR DE REPORTES Y ACTAS")){ echo 'style="display:none;"';} ?>>
         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gestión de Usuarios</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
           <a class="dropdown-item" href="usuarios.php">Usuarios</a>
