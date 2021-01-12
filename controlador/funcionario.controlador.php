@@ -99,6 +99,11 @@
                 $respuesta = $funcionario->listarUnidad();
                 echo json_encode($respuesta);
             break;
+            case "CONSULTARREGISTROS":
+                $idFuncionario = $_POST['idFuncionario'];
+                $respuesta = $funcionario->consultarRegistros($idFuncionario);
+                echo json_encode($respuesta);
+            break;
         }
     }
 ?>

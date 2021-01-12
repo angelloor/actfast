@@ -157,44 +157,56 @@ function Modificar() {
 }
 
 function Eliminar(idUnidad) {
-    const swalWithBootstrapButtons = Swal.mixin({
-        customClass: {
-          cancelButton: 'btn btn-primary mr-2 ml-2',
-          confirmButton: 'btn btn-success mr-2 ml-2'
-        },
-        buttonsStyling: false
-      })
-      swalWithBootstrapButtons.fire({
-        text: '¿Estas seguro de eliminar la unidad?',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Si',
-        cancelButtonText: 'Cancelar',
-        reverseButtons: true
-      }).then((result) => {
-        if (result.isConfirmed) {
-        $.ajax({
-            url: url,
-            data: { "idUnidad": idUnidad, "accion": "ELIMINAR" },
-            type: 'POST',
-            dataType: 'json'
-        }).done(function(response) {
-            if (response == "OK") {
-                swalWithBootstrapButtons.fire('','Registro eliminado','success')
-            } else {
-                swalWithBootstrapButtons.fire('', response ,'error')
+    var registros = 0;
+    $.ajax({
+        url: url,
+        data: { "idUnidad": idUnidad, "accion": "CONSULTARREGISTROS" },
+        type: 'POST',
+        dataType: 'json'
+    }).done(function(response) {
+        registros = response.registros;
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+              cancelButton: 'btn btn-primary mr-2 ml-2',
+              confirmButton: 'btn btn-success mr-2 ml-2'
+            },
+            buttonsStyling: false
+          })
+          swalWithBootstrapButtons.fire({
+            title:'¿Estas seguro de eliminar la unidad? Contiene '+registros+' funcionarios registrados',
+            text: 'Nota: no es recomendable, se perderán todos los registros que se encuentren asociados a esta unidad',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Si',
+            cancelButtonText: 'Cancelar',
+            reverseButtons: true
+          }).then((result) => {
+            if (result.isConfirmed) {
+            $.ajax({
+                url: url,
+                data: { "idUnidad": idUnidad, "accion": "ELIMINAR" },
+                type: 'POST',
+                dataType: 'json'
+            }).done(function(response) {
+                if (response == "OK") {
+                    swalWithBootstrapButtons.fire('','Registro eliminado','success')
+                } else {
+                    swalWithBootstrapButtons.fire('', response ,'error')
+                }
+                Consultar();
+            }).fail(function(response) {
+                console.log(response);
+            });
+            } else if (
+              result.dismiss === Swal.DismissReason.cancel
+            ) {
+                swalWithBootstrapButtons.fire('','Operación Cancelada','info')
             }
-            Consultar();
-        }).fail(function(response) {
-            console.log(response);
-        });
-        } else if (
-          result.dismiss === Swal.DismissReason.cancel
-        ) {
-            swalWithBootstrapButtons.fire('','Operación Cancelada','info')
-        }
-      })
-      Limpiar();
+          })
+          Limpiar();
+    }).fail(function(response) {
+        console.log(response);
+    });
 }
 
 function Validar() {

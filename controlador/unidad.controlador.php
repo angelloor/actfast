@@ -41,6 +41,11 @@
                 echo json_encode($respuesta);
                 return;
             break;
+            case "CONSULTARREGISTROS":
+                $idUnidad = $_POST['idUnidad'];
+                $respuesta = $unidad->consultarRegistros($idUnidad);
+                echo json_encode($respuesta);
+            break;
         }
     }
 ?>

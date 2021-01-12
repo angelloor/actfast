@@ -50,6 +50,11 @@
                 echo json_encode($respuesta);
                 return;
             break;
+            case "CONSULTARREGISTROS":
+            $idCategoria = $_POST['idCategoria'];
+            $respuesta = $categoria->consultarRegistros($idCategoria);
+            echo json_encode($respuesta);
+            break;
         }
     }
 ?>

@@ -40,6 +40,11 @@
                 echo json_encode($respuesta);
                 return;
             break;
+            case "CONSULTARREGISTROS":
+            $idMarca = $_POST['idMarca'];
+            $respuesta = $marca->consultarRegistros($idMarca);
+            echo json_encode($respuesta);
+            break;
         }
     }
 ?>

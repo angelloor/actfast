@@ -238,6 +238,27 @@ function Modificar() {
 }
 
 function Eliminar(idUsuario) {
+	var registros = 0;
+    $.ajax({
+        url: url,
+        data: { "idUsuario": idUsuario, "accion": "CONSULTARREGISTROS" },
+        type: 'POST',
+        dataType: 'json'
+    }).done(function(response) {
+        registros = response.registros;
+        console.log(registros)
+    }).fail(function(response) {
+        console.log(response);
+    });
+
+
+
+
+
+
+
+
+
 	const swalWithBootstrapButtons = Swal.mixin({
 		customClass: {
 			cancelButton: 'btn btn-primary mr-2 ml-2',

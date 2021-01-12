@@ -64,6 +64,11 @@
                 $respuesta = $bodega->listarResponsableBodega();
                 echo json_encode($respuesta);
             break;
+            case "CONSULTARREGISTROS":
+                $idBodega = $_POST['idBodega'];
+                $respuesta = $bodega->consultarRegistros($idBodega);
+                echo json_encode($respuesta);
+            break;
         }
     }
 ?>

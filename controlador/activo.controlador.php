@@ -208,6 +208,11 @@
                 $respuesta = $activo->listarCustodio();
                 echo json_encode($respuesta);
             break;
+            case "CONSULTARREGISTROS":
+                $idActivo = $_POST['idActivo'];
+                $respuesta = $activo->consultarRegistros($idActivo);
+                echo json_encode($respuesta);
+            break;
         }
     }
 ?>

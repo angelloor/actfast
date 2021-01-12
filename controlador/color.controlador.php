@@ -40,6 +40,11 @@
                 echo json_encode($respuesta);
                 return;
             break;
+            case "CONSULTARREGISTROS":
+                $idColor = $_POST['idColor'];
+                $respuesta = $color->consultarRegistros($idColor);
+                echo json_encode($respuesta);
+            break;
         }
     }
 ?>

@@ -265,5 +265,14 @@
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_OBJ);
         }
+
+        public function consultarRegistros($idActivo){
+            $conexion = new Conexion();
+            $stmt = $conexion->prepare("select count(*) as registros from entrega_recepcion where activo_id = :idActivo;");
+            $stmt->bindValue(":idActivo",$idActivo, PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_OBJ);
+        }
+
     }
 ?>

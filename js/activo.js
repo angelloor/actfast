@@ -330,49 +330,77 @@ function Eliminar(idActivo) {
     var f = new Date();
     if((f.getMonth() +1) <=9){
         mesFinal = "0"+(f.getMonth() +1);
+    }else{
+        mesFinal = f.getMonth();
     }
     if((f.getDate()) <=9){
         diaFinal = "0"+(f.getDate());
+    }else{
+        diaFinal = f.getDate();
     }
-    var fechaEliminar = f.getFullYear() + "-" + mesFinal + "-" + diaFinal;
-    const swalWithBootstrapButtons = Swal.mixin({
-        customClass: {
-          cancelButton: 'btn btn-primary mr-2 ml-2',
-          confirmButton: 'btn btn-success mr-2 ml-2'
-        },
-        buttonsStyling: false
-      })
-      swalWithBootstrapButtons.fire({
-        text: '¿Estas seguro de eliminar el activo?',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Si',
-        cancelButtonText: 'Cancelar',
-        reverseButtons: true
-      }).then((result) => {
-        if (result.isConfirmed) {
-        $.ajax({
-            url: url,
-            data: { "idActivo": idActivo, "accion": "ELIMINAR", "fechaEliminar": fechaEliminar },
-            type: 'POST',
-            dataType: 'json'
-        }).done(function(response) {
-            if (response == "OK") {
-                swalWithBootstrapButtons.fire('','Registro eliminado','success')
-            } else {
-                swalWithBootstrapButtons.fire('', response ,'error')
-            }
-            Consultar();
-        }).fail(function(response) {
-            console.log(response);
-        });
-        } else if (
-          result.dismiss === Swal.DismissReason.cancel
-        ) {
-            swalWithBootstrapButtons.fire('','Operación Cancelada','info')
+
+    var registros = 0;
+    let mensaje = "";
+    $.ajax({
+        url: url,
+        data: { "idActivo": idActivo, "accion": "CONSULTARREGISTROS" },
+        type: 'POST',
+        dataType: 'json'
+    }).done(function(response) {
+        registros = response.registros;
+        if (registros == 1) {
+            mensaje = 'El activo se encuentra asignado a un funcionario    Nota: la asignacion se eliminara si usted continua con esta acción';
+        }else{
+            mensaje = 'Activo no asignado a un funcionario';
         }
-      })
-      Limpiar();
+        var fechaEliminar = f.getFullYear() + "-" + mesFinal + "-" + diaFinal;
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+            cancelButton: 'btn btn-primary mr-2 ml-2',
+            confirmButton: 'btn btn-success mr-2 ml-2'
+            },
+            buttonsStyling: false
+        })
+        swalWithBootstrapButtons.fire({
+            title:'¿Estas seguro de eliminar el activo?',
+            text: mensaje,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Si',
+            cancelButtonText: 'Cancelar',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+            $.ajax({
+                url: url,
+                data: { "idActivo": idActivo, "accion": "ELIMINAR", "fechaEliminar": fechaEliminar },
+                type: 'POST',
+                dataType: 'json'
+            }).done(function(response) {
+                if (response == "OK") {
+                    swalWithBootstrapButtons.fire('','Registro eliminado','success')
+                } else {
+                    swalWithBootstrapButtons.fire('', response ,'error')
+                }
+                Consultar();
+            }).fail(function(response) {
+                console.log(response);
+            });
+            } else if (
+            result.dismiss === Swal.DismissReason.cancel
+            ) {
+                swalWithBootstrapButtons.fire('','Operación Cancelada','info')
+            }
+        })
+        Limpiar();
+    }).fail(function(response) {
+        console.log(response);
+    });
+
+
+
+
+    
 }
 
 function Validar() {

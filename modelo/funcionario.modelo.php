@@ -136,5 +136,14 @@
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_OBJ);
         }
+
+        public function consultarRegistros($idFuncionario){
+            $conexion = new Conexion();
+            $stmt = $conexion->prepare("select count(*) as registros from entrega_recepcion where persona_id = :idFuncionario;");
+            $stmt->bindValue(":idFuncionario",$idFuncionario, PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_OBJ);
+        }
+
     }
 ?>

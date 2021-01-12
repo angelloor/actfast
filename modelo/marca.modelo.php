@@ -82,5 +82,13 @@
                 return "Error: se ha generado un error al guardar la información";
             }
         }
+
+        public function consultarRegistros($idMarca){
+            $conexion = new Conexion();
+            $stmt = $conexion->prepare("select count(*) as registros from activo where marca_id = :idMarca;");
+            $stmt->bindValue(":idMarca",$idMarca, PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_OBJ);
+        }
     }
 ?>

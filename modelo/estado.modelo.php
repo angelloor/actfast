@@ -82,5 +82,14 @@
                 return "Error: se ha generado un error al eliminar el registro";
             }
         }
+
+        public function consultarRegistros($idEstado){
+            $conexion = new Conexion();
+            $stmt = $conexion->prepare("select count(*) as registros from activo where estado_id = :idEstado;");
+            $stmt->bindValue(":idEstado",$idEstado, PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_OBJ);
+        }
+
     }
 ?>

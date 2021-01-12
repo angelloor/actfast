@@ -104,5 +104,14 @@
                 return "Error: se ha generado un error al eliminar el registro";
             }
         }
+
+        public function consultarRegistros($idCustodio){
+            $conexion = new Conexion();
+            $stmt = $conexion->prepare("select count(*) as registros from entrega_recepcion where custodio_id = :idCustodio;");
+            $stmt->bindValue(":idCustodio",$idCustodio, PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_OBJ);
+        }
+
     }
 ?>

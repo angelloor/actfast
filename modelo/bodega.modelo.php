@@ -107,5 +107,14 @@
                 return "Error: se ha generado un error al eliminar el registro";
             }
         }
+
+        public function consultarRegistros($idBodega){
+            $conexion = new Conexion();
+            $stmt = $conexion->prepare("select count(*) as registros from activo where bodega_id = :idBodega;");
+            $stmt->bindValue(":idBodega",$idBodega, PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_OBJ);
+        }
+
     }
 ?>

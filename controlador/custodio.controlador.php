@@ -44,6 +44,11 @@
                 $respuesta = $custodio->listarFuncionarios();
                 echo json_encode($respuesta);
             break;
+            case "CONSULTARREGISTROS":
+                $idCustodio = $_POST['idCustodio'];
+                $respuesta = $custodio->consultarRegistros($idCustodio);
+                echo json_encode($respuesta);
+            break;
         }
     }
 ?>
