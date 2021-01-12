@@ -3,6 +3,7 @@
     if($_SESSION['user'] == ""){
     	header('Location: ../');
     }
+  
 ?>
 <!doctype html>
 <html lang="es">
@@ -40,7 +41,7 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown" <?php if($_SESSION['rolUsuario'] == "COMPROBADOR DE INVENTARIO"){ echo 'style="display:none;"';} ?>>
         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gestión de Activos</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
           <a class="dropdown-item" href="activos.php">Activos</a>
@@ -53,7 +54,7 @@
           <a class="dropdown-item" href="sistema.php">Sistemas</a>
         </div>
       </li>
-      <li class="nav-item dropdown">
+      <li class="nav-item dropdown" <?php if($_SESSION['rolUsuario'] == "COMPROBADOR DE INVENTARIO"){ echo 'style="display:none;"';} ?>>
         <a class="nav-link dropdown-toggle" href="gestionActa.php" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gestión de Actas</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
           <a class="dropdown-item" href="gestionActa.php">Actas</a>
@@ -61,7 +62,7 @@
           <a class="dropdown-item" href="firma.php">Firmas</a>
         </div>
       </li>
-      <li class="nav-item dropdown">
+      <li class="nav-item dropdown" <?php if($_SESSION['rolUsuario'] == "COMPROBADOR DE INVENTARIO"){ echo 'style="display:none;"';} ?>>
         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Recurso Humano</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
           <a class="dropdown-item" href="funcionarios.php">Funcionarios</a>
@@ -69,7 +70,7 @@
           <a class="dropdown-item" href="cargos.php">Cargos</a>
         </div>
       </li>
-      <li class="nav-item dropdown">
+      <li class="nav-item dropdown" <?php if($_SESSION['rolUsuario'] == "COMPROBADOR DE INVENTARIO"){ echo 'style="display:none;"';} ?>>
         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gestión de Usuarios</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
           <a class="dropdown-item" href="usuarios.php">Usuarios</a>
@@ -79,9 +80,9 @@
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Reportes</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
-          <a class="dropdown-item" href="./reporteActivo.php">Activos</a>
-          <a class="dropdown-item" href="./historico.php">Histórico de activos</a>
-          <a class="dropdown-item" href="./movimientoActivo.php">Movimientos de activos</a>
+          <a class="dropdown-item" href="./reporteActivo.php" <?php if($_SESSION['rolUsuario'] == "COMPROBADOR DE INVENTARIO"){ echo 'style="display:none;"';} ?>>Activos</a>
+          <a class="dropdown-item" href="./historico.php" <?php if($_SESSION['rolUsuario'] == "COMPROBADOR DE INVENTARIO"){ echo 'style="display:none;"';} ?>>Histórico de activos</a>
+          <a class="dropdown-item" href="./movimientoActivo.php" <?php if($_SESSION['rolUsuario'] == "COMPROBADOR DE INVENTARIO"){ echo 'style="display:none;"';} ?>>Movimientos de activos</a>
           <a class="dropdown-item" href="../vista/activosConfirmados.php">Activos Confirmados</a>
           <a class="dropdown-item" href="../vista/activosNoConfirmados.php">Activos No Confirmados</a>
         </div>
@@ -101,7 +102,7 @@
 </nav>
 <div class="container text-center margin-b-30">
   <div class="row text-center">
-        <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">                      
+        <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4" <?php if($_SESSION['rolUsuario'] == "COMPROBADOR DE INVENTARIO"){ echo 'style="display:none;"';} ?>>                      
           <div class="card-sm width-card" id="card-inicio">
             <img src="../assets/img/ga.png" class="card-img-top mt-3 img-card" alt="Imagen">
             <div class="card-body">
@@ -111,17 +112,17 @@
             </div>
           </div>
         </div>
-        <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">                      
+        <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4" <?php if($_SESSION['rolUsuario'] == "COMPROBADOR DE INVENTARIO"){ echo 'style="display:none;"';} ?>>                      
           <div class="card-sm width-card" id="card-inicio">
             <img src="../assets/img/au.png" class="card-img-top mt-3 img-card" alt="Imagen">
             <div class="card-body">
-              <h5 class="card-title">Generar actas por usuario </h5>
+              <h5 class="card-title">Generar actas por usuario</h5>
               <p class="card-text">Genera las actas de acuerdo a un usuario seleccionado</p>
               <button id="btnFuncionario" name="funcionario" class="btn-abrir-popup">Acceder</button>
             </div>
           </div>
         </div>
-        <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 mt-1">                      
+        <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 mt-1" <?php if($_SESSION['rolUsuario'] == "COMPROBADOR DE INVENTARIO"){ echo 'style="display:none;"';} ?>>                      
           <div class="card-sm width-card" id="card-inicio">
             <img src="../assets/img/ab.png" class="card-img-top mt-3 img-card" alt="Imagen">
             <div class="card-body">
@@ -141,7 +142,7 @@
             </div>
           </div>
         </div>
-        <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 mt-1">                      
+        <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 mt-1" <?php if($_SESSION['rolUsuario'] == "COMPROBADOR DE INVENTARIO"){ echo 'style="display:none;"';} ?>>                      
           <div class="card-sm width-card" id="card-inicio">
             <img src="../assets/img/rp.png" class="card-img-top mt-3 img-card" alt="Imagen">
             <div class="card-body">
@@ -151,7 +152,7 @@
             </div>
           </div>
         </div>
-        <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 mt-1">                      
+        <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 mt-1" <?php if($_SESSION['rolUsuario'] == "COMPROBADOR DE INVENTARIO"){ echo 'style="display:none;"';} ?>>                      
           <div class="card-sm width-card" id="card-inicio">
             <img src="../assets/img/ad.png" class="card-img-top mt-3 img-card" alt="Imagen">
             <div class="card-body">

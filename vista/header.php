@@ -7,7 +7,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown" <?php if($_SESSION['rolUsuario'] == "COMPROBADOR DE INVENTARIO"){ echo 'style="display:none;"';} ?>>
         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gestión de Activos</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
           <a class="dropdown-item" href="activos.php">Activos</a>
@@ -20,7 +20,7 @@
           <a class="dropdown-item" href="sistema.php">Sistemas</a>
         </div>
       </li>
-      <li class="nav-item dropdown">
+      <li class="nav-item dropdown" <?php if($_SESSION['rolUsuario'] == "COMPROBADOR DE INVENTARIO"){ echo 'style="display:none;"';} ?>>
         <a class="nav-link dropdown-toggle" href="gestionActa.php" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gestión de Actas</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
           <a class="dropdown-item" href="gestionActa.php">Actas</a>
@@ -28,7 +28,7 @@
           <a class="dropdown-item" href="firma.php">Firmas</a>
         </div>
       </li>
-      <li class="nav-item dropdown">
+      <li class="nav-item dropdown" <?php if($_SESSION['rolUsuario'] == "COMPROBADOR DE INVENTARIO"){ echo 'style="display:none;"';} ?>>
         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Recurso Humano</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
           <a class="dropdown-item" href="funcionarios.php">Funcionarios</a>
@@ -36,7 +36,7 @@
           <a class="dropdown-item" href="cargos.php">Cargos</a>
         </div>
       </li>
-      <li class="nav-item dropdown">
+      <li class="nav-item dropdown" <?php if($_SESSION['rolUsuario'] == "COMPROBADOR DE INVENTARIO"){ echo 'style="display:none;"';} ?>>
         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gestión de Usuarios</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
           <a class="dropdown-item" href="usuarios.php">Usuarios</a>
@@ -46,9 +46,9 @@
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Reportes</a>
         <div class="dropdown-menu" href="null" aria-labelledby="dropdown01">
-          <a class="dropdown-item" href="./reporteActivo.php">Activos</a>
-          <a class="dropdown-item" href="./historico.php">Histórico de activos</a>
-          <a class="dropdown-item" href="./movimientoActivo.php">Movimientos de activos</a>
+          <a class="dropdown-item" href="./reporteActivo.php" <?php if($_SESSION['rolUsuario'] == "COMPROBADOR DE INVENTARIO"){ echo 'style="display:none;"';} ?>>Activos</a>
+          <a class="dropdown-item" href="./historico.php" <?php if($_SESSION['rolUsuario'] == "COMPROBADOR DE INVENTARIO"){ echo 'style="display:none;"';} ?>>Histórico de activos</a>
+          <a class="dropdown-item" href="./movimientoActivo.php" <?php if($_SESSION['rolUsuario'] == "COMPROBADOR DE INVENTARIO"){ echo 'style="display:none;"';} ?>>Movimientos de activos</a>
           <a class="dropdown-item" href="../vista/activosConfirmados.php">Activos Confirmados</a>
           <a class="dropdown-item" href="../vista/activosNoConfirmados.php">Activos No Confirmados</a>
         </div>

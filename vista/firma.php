@@ -3,6 +3,9 @@
     if($_SESSION['user'] == ""){
     	header('Location: ../');
     }
+    if($_SESSION['rolUsuario'] == "COMPROBADOR DE INVENTARIO"){
+    	header('Location: ./');
+    }
 ?>
 <!doctype html>
 <html lang="es">
