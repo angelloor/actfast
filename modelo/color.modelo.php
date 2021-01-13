@@ -55,19 +55,38 @@
             $stmt->execute();
             $results = $stmt->fetch(PDO::FETCH_ASSOC);
             $existeRegistro = $results['count(*)'];
+
+            $stmt = $conexion->prepare("select nombre_color from color where id_color = :idColor;");
+            $stmt->bindValue(":idColor", $idColor, PDO::PARAM_INT);
+            $stmt->execute();
+            $results = $stmt->fetch(PDO::FETCH_ASSOC);
+            $colorBD = $results['nombre_color'];
             
-            if($existeRegistro >= 1){
-                return "El color ya existe";
-            }else{
+            if ($nombreColor == $colorBD) {
                 $stmt = $conexion->prepare("UPDATE `color` 
                                 SET `NOMBRE_COLOR` = :nombreColor
                                 WHERE `ID_COLOR` = :idColor;");
                 $stmt->bindValue(":nombreColor",$nombreColor,PDO::PARAM_STR); 
                 $stmt->bindValue(":idColor",$idColor,PDO::PARAM_INT); 
                 if($stmt->execute()){
-                return "OK";
+                    return "OK";
                 }else{
-                return "Error: se ha generado un error al modificar la información";
+                    return "Error: se ha generado un error al modificar la información";
+                }
+            }else{
+                if($existeRegistro >= 1){
+                    return "El color ya existe";
+                }else{
+                    $stmt = $conexion->prepare("UPDATE `color` 
+                                    SET `NOMBRE_COLOR` = :nombreColor
+                                    WHERE `ID_COLOR` = :idColor;");
+                    $stmt->bindValue(":nombreColor",$nombreColor,PDO::PARAM_STR); 
+                    $stmt->bindValue(":idColor",$idColor,PDO::PARAM_INT); 
+                    if($stmt->execute()){
+                        return "OK";
+                    }else{
+                        return "Error: se ha generado un error al modificar la información";
+                    }
                 }
             }
         }

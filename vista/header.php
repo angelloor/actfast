@@ -53,6 +53,9 @@
           <a class="dropdown-item" href="../vista/activosNoConfirmados.php">Activos No Confirmados</a>
         </div>
       </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link" href="../backupmysql/backup.php" id="dropdown01" aria-expanded="false" target="_blank">Backup BD</a>
+      </li>
           </ul>
           <form class="form-inline my-2 my-lg-0">
           <a class="btn btn-success my-2 my-sm-0" href="../index.php?logout=true"><span class="fa fa-sign-out-alt"></span>&nbsp&nbspSalir<span class="sr-only">(current)</span></a>

@@ -63,7 +63,7 @@ function listarCategoria(){
     }).done(function(response){
         var html = "";
         $.each(response, function(index, data) {
-            html += "<option>" + data.NOMBRE_CATEGORIA + "</option>";
+            html += "<option>" + data.nombre_categoria + "</option>";
         });
         document.getElementById("categoria").innerHTML = html;
     }).fail(function(response){
@@ -80,7 +80,7 @@ function listarMarca(){
     }).done(function(response){
         var html = "";
         $.each(response, function(index, data) {
-            html += "<option>" + data.NOMBRE_MARCA + "</option>";
+            html += "<option>" + data.nombre_marca + "</option>";
         });
         document.getElementById("marca").innerHTML = html;
     }).fail(function(response){
@@ -97,7 +97,7 @@ function listarEstado(){
     }).done(function(response){
         var html = "";
         $.each(response, function(index, data) {
-            html += "<option>" + data.NOMBRE_ESTADO + "</option>";
+            html += "<option>" + data.nombre_estado + "</option>";
         });
         document.getElementById("estado").innerHTML = html;
     }).fail(function(response){
@@ -114,7 +114,7 @@ function listarColor(){
     }).done(function(response){
         var html = "";
         $.each(response, function(index, data) {
-            html += "<option>" + data.NOMBRE_COLOR + "</option>";
+            html += "<option>" + data.nombre_color + "</option>";
         });
         document.getElementById("color").innerHTML = html;
     }).fail(function(response){
@@ -131,7 +131,7 @@ function listarBodega(){
     }).done(function(response){
         var html = "";
         $.each(response, function(index, data) {
-            html += "<option>" + data.NOMBRE_BODEGA + "</option>";
+            html += "<option>" + data.nombre_bodega + "</option>";
         });
         document.getElementById("bodega").innerHTML = html;
     }).fail(function(response){

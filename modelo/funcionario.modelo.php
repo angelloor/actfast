@@ -74,40 +74,81 @@
             $results = $stmt->fetch(PDO::FETCH_ASSOC);
             $existeRegistro = $results['count(*)'];
 
-            if($existeRegistro >= 1){
-                return "El numero de cedula ya esta asignado a un funcionario";
-            }else{
-                $stmt = $conexion->prepare("SELECT ID_CARGO FROM CARGO WHERE NOMBRE_CARGO = :cargoFuncionario");
-                $stmt->bindValue(":cargoFuncionario", $cargoFuncionario, PDO::PARAM_STR);
-                $stmt->execute();
-                $results = $stmt->fetch(PDO::FETCH_ASSOC);
-                $idCargo = $results['ID_CARGO'];
+            $stmt = $conexion->prepare("select cedula from persona where id_persona = :idFuncionario;");
+            $stmt->bindValue(":idFuncionario", $idFuncionario, PDO::PARAM_INT);
+            $stmt->execute();
+            $results = $stmt->fetch(PDO::FETCH_ASSOC);
+            $cedulaBD = $results['cedula'];
 
-                $stmt = $conexion->prepare("SELECT ID_UNIDAD FROM UNIDAD WHERE NOMBRE_UNIDAD = :unidadFuncionario");
-                $stmt->bindValue(":unidadFuncionario", $unidadFuncionario, PDO::PARAM_STR);
-                $stmt->execute();
-                $results = $stmt->fetch(PDO::FETCH_ASSOC);
-                $idUnidad = $results['ID_UNIDAD'];
-            
-                $stmt = $conexion->prepare("UPDATE `persona` 
-                                            SET `CEDULA` = :cedulaFuncionario, 
-                                            `NOMBRE_PERSONA` = :nombreFuncionario,
-                                            `DIRECCION` = :direccionFuncionario,
-                                            `TELEFONO` = :telefonoFuncionario,
-                                            `CARGO_ID` = :cargoFuncionario,
-                                            `UNIDAD_ID` = :unidadFuncionario
-                                            WHERE `ID_PERSONA` = :idFuncionario;");
-                $stmt->bindValue(":cedulaFuncionario",$cedulaFuncionario, PDO::PARAM_INT);
-                $stmt->bindValue(":nombreFuncionario",$nombreFuncionario, PDO::PARAM_STR);
-                $stmt->bindValue(":direccionFuncionario",$direccionFuncionario, PDO::PARAM_STR);
-                $stmt->bindValue(":telefonoFuncionario",$telefonoFuncionario, PDO::PARAM_STR);
-                $stmt->bindValue(":cargoFuncionario",$idCargo, PDO::PARAM_INT);
-                $stmt->bindValue(":unidadFuncionario",$idUnidad, PDO::PARAM_INT);
-                $stmt->bindValue(":idFuncionario",$idFuncionario,PDO::PARAM_INT); 
-                if($stmt->execute()){
-                    return "OK";
+            if ($cedulaFuncionario == $cedulaBD) {
+                $stmt = $conexion->prepare("SELECT ID_CARGO FROM CARGO WHERE NOMBRE_CARGO = :cargoFuncionario");
+                    $stmt->bindValue(":cargoFuncionario", $cargoFuncionario, PDO::PARAM_STR);
+                    $stmt->execute();
+                    $results = $stmt->fetch(PDO::FETCH_ASSOC);
+                    $idCargo = $results['ID_CARGO'];
+    
+                    $stmt = $conexion->prepare("SELECT ID_UNIDAD FROM UNIDAD WHERE NOMBRE_UNIDAD = :unidadFuncionario");
+                    $stmt->bindValue(":unidadFuncionario", $unidadFuncionario, PDO::PARAM_STR);
+                    $stmt->execute();
+                    $results = $stmt->fetch(PDO::FETCH_ASSOC);
+                    $idUnidad = $results['ID_UNIDAD'];
+                
+                    $stmt = $conexion->prepare("UPDATE `persona` 
+                                                SET `CEDULA` = :cedulaFuncionario, 
+                                                `NOMBRE_PERSONA` = :nombreFuncionario,
+                                                `DIRECCION` = :direccionFuncionario,
+                                                `TELEFONO` = :telefonoFuncionario,
+                                                `CARGO_ID` = :cargoFuncionario,
+                                                `UNIDAD_ID` = :unidadFuncionario
+                                                WHERE `ID_PERSONA` = :idFuncionario;");
+                    $stmt->bindValue(":cedulaFuncionario",$cedulaFuncionario, PDO::PARAM_INT);
+                    $stmt->bindValue(":nombreFuncionario",$nombreFuncionario, PDO::PARAM_STR);
+                    $stmt->bindValue(":direccionFuncionario",$direccionFuncionario, PDO::PARAM_STR);
+                    $stmt->bindValue(":telefonoFuncionario",$telefonoFuncionario, PDO::PARAM_STR);
+                    $stmt->bindValue(":cargoFuncionario",$idCargo, PDO::PARAM_INT);
+                    $stmt->bindValue(":unidadFuncionario",$idUnidad, PDO::PARAM_INT);
+                    $stmt->bindValue(":idFuncionario",$idFuncionario,PDO::PARAM_INT); 
+                    if($stmt->execute()){
+                        return "OK";
+                    }else{
+                        return "Error: se ha generado un error al modificar la información";
+                    }
+            }else{
+                if($existeRegistro >= 1){
+                    return "El numero de cedula ya esta asignado a un funcionario";
                 }else{
-                    return "Error: se ha generado un error al modificar la información";
+                    $stmt = $conexion->prepare("SELECT ID_CARGO FROM CARGO WHERE NOMBRE_CARGO = :cargoFuncionario");
+                    $stmt->bindValue(":cargoFuncionario", $cargoFuncionario, PDO::PARAM_STR);
+                    $stmt->execute();
+                    $results = $stmt->fetch(PDO::FETCH_ASSOC);
+                    $idCargo = $results['ID_CARGO'];
+    
+                    $stmt = $conexion->prepare("SELECT ID_UNIDAD FROM UNIDAD WHERE NOMBRE_UNIDAD = :unidadFuncionario");
+                    $stmt->bindValue(":unidadFuncionario", $unidadFuncionario, PDO::PARAM_STR);
+                    $stmt->execute();
+                    $results = $stmt->fetch(PDO::FETCH_ASSOC);
+                    $idUnidad = $results['ID_UNIDAD'];
+                
+                    $stmt = $conexion->prepare("UPDATE `persona` 
+                                                SET `CEDULA` = :cedulaFuncionario, 
+                                                `NOMBRE_PERSONA` = :nombreFuncionario,
+                                                `DIRECCION` = :direccionFuncionario,
+                                                `TELEFONO` = :telefonoFuncionario,
+                                                `CARGO_ID` = :cargoFuncionario,
+                                                `UNIDAD_ID` = :unidadFuncionario
+                                                WHERE `ID_PERSONA` = :idFuncionario;");
+                    $stmt->bindValue(":cedulaFuncionario",$cedulaFuncionario, PDO::PARAM_INT);
+                    $stmt->bindValue(":nombreFuncionario",$nombreFuncionario, PDO::PARAM_STR);
+                    $stmt->bindValue(":direccionFuncionario",$direccionFuncionario, PDO::PARAM_STR);
+                    $stmt->bindValue(":telefonoFuncionario",$telefonoFuncionario, PDO::PARAM_STR);
+                    $stmt->bindValue(":cargoFuncionario",$idCargo, PDO::PARAM_INT);
+                    $stmt->bindValue(":unidadFuncionario",$idUnidad, PDO::PARAM_INT);
+                    $stmt->bindValue(":idFuncionario",$idFuncionario,PDO::PARAM_INT); 
+                    if($stmt->execute()){
+                        return "OK";
+                    }else{
+                        return "Error: se ha generado un error al modificar la información";
+                    }
                 }
             }
         }

@@ -56,18 +56,37 @@
             $results = $stmt->fetch(PDO::FETCH_ASSOC);
             $existeRegistro = $results['count(*)'];
             
-            if($existeRegistro >= 1){
-                return "El estado ya existe";
-            }else{
+            $stmt = $conexion->prepare("select nombre_estado from estado where id_estado = :idEstado;");
+            $stmt->bindValue(":idEstado", $idEstado, PDO::PARAM_INT);
+            $stmt->execute();
+            $results = $stmt->fetch(PDO::FETCH_ASSOC);
+            $estadoBD = $results['nombre_estado'];
+
+            if ($nombreEstado == $estadoBD) {
                 $stmt = $conexion->prepare("UPDATE `estado` 
-                                            SET `NOMBRE_Estado` = :nombreEstado
-                                            WHERE `ID_Estado` = :idEstado;");
+                                SET `NOMBRE_Estado` = :nombreEstado
+                                WHERE `ID_Estado` = :idEstado;");
                 $stmt->bindValue(":nombreEstado",$nombreEstado,PDO::PARAM_STR); 
                 $stmt->bindValue(":idEstado",$idEstado,PDO::PARAM_INT); 
                 if($stmt->execute()){
                     return "OK";
                 }else{
                     return "Error: se ha generado un error al modificar la información";
+                }
+            }else{
+                if($existeRegistro >= 1){
+                    return "El estado ya existe";
+                }else{
+                    $stmt = $conexion->prepare("UPDATE `estado` 
+                                                SET `NOMBRE_Estado` = :nombreEstado
+                                                WHERE `ID_Estado` = :idEstado;");
+                    $stmt->bindValue(":nombreEstado",$nombreEstado,PDO::PARAM_STR); 
+                    $stmt->bindValue(":idEstado",$idEstado,PDO::PARAM_INT); 
+                    if($stmt->execute()){
+                        return "OK";
+                    }else{
+                        return "Error: se ha generado un error al modificar la información";
+                    }
                 }
             }
         }

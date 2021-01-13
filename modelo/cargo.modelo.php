@@ -58,18 +58,37 @@
             $results = $stmt->fetch(PDO::FETCH_ASSOC);
             $existeRegistro = $results['count(*)'];
 
-            if($existeRegistro >= 1){
-                return "El cargo ya existe ";
-            }else{
+            $stmt = $conexion->prepare("select nombre_cargo from cargo where id_cargo = :idCargo;");
+            $stmt->bindValue(":idCargo", $idCargo, PDO::PARAM_INT);
+            $stmt->execute();
+            $results = $stmt->fetch(PDO::FETCH_ASSOC);
+            $cargoBD = $results['nombre_cargo'];
+
+            if ($nombreCargo == $cargoBD) {
                 $stmt = $conexion->prepare("UPDATE `cargo` 
-                                SET `NOMBRE_CARGO` = :nombreCargo
-                                WHERE `ID_CARGO` = :idCargo;");
-                $stmt->bindValue(":nombreCargo",$nombreCargo,PDO::PARAM_STR); 
-                $stmt->bindValue(":idCargo",$idCargo,PDO::PARAM_INT); 
-                if($stmt->execute()){
-                return "OK";
+                                    SET `NOMBRE_CARGO` = :nombreCargo
+                                    WHERE `ID_CARGO` = :idCargo;");
+                    $stmt->bindValue(":nombreCargo",$nombreCargo,PDO::PARAM_STR); 
+                    $stmt->bindValue(":idCargo",$idCargo,PDO::PARAM_INT); 
+                    if($stmt->execute()){
+                        return "OK";
+                    }else{
+                        return "Error: se ha generado un error al modificar la información";
+                    }
+            }else{
+                if($existeRegistro >= 1){
+                    return "El cargo ya existe ";
                 }else{
-                return "Error: se ha generado un error al modificar la información";
+                    $stmt = $conexion->prepare("UPDATE `cargo` 
+                                    SET `NOMBRE_CARGO` = :nombreCargo
+                                    WHERE `ID_CARGO` = :idCargo;");
+                    $stmt->bindValue(":nombreCargo",$nombreCargo,PDO::PARAM_STR); 
+                    $stmt->bindValue(":idCargo",$idCargo,PDO::PARAM_INT); 
+                    if($stmt->execute()){
+                        return "OK";
+                    }else{
+                        return "Error: se ha generado un error al modificar la información";
+                    }
                 }
             }
         }

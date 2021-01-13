@@ -3,7 +3,6 @@
     if($_SESSION['user'] == ""){
     	header('Location: ../');
     }
-  
 ?>
 <!doctype html>
 <html lang="es">
@@ -86,6 +85,9 @@
           <a class="dropdown-item" href="../vista/activosConfirmados.php">Activos Confirmados</a>
           <a class="dropdown-item" href="../vista/activosNoConfirmados.php">Activos No Confirmados</a>
         </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link" href="../backupmysql/backup.php" id="dropdown01" aria-expanded="false" target="_blank">Backup BD</a>
       </li>
           </ul>
           <form class="form-inline my-2 my-lg-0">

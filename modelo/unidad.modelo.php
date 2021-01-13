@@ -57,18 +57,37 @@
             $results = $stmt->fetch(PDO::FETCH_ASSOC);
             $existeRegistro = $results['count(*)'];
 
-            if($existeRegistro >= 1){
-                return "La unidad ya existe ";
-            }else{
+            $stmt = $conexion->prepare("select nombre_unidad from unidad where id_unidad = :idUnidad;");
+            $stmt->bindValue(":idUnidad", $idUnidad, PDO::PARAM_INT);
+            $stmt->execute();
+            $results = $stmt->fetch(PDO::FETCH_ASSOC);
+            $unidadBD = $results['nombre_unidad'];
+
+            if ($nombreUnidad == $unidadBD) {
                 $stmt = $conexion->prepare("UPDATE `unidad` 
                                 SET `NOMBRE_UNIDAD` = :nombreUnidad
                                 WHERE `ID_UNIDAD` = :idUnidad;");
                 $stmt->bindValue(":nombreUnidad",$nombreUnidad,PDO::PARAM_STR); 
                 $stmt->bindValue(":idUnidad",$idUnidad,PDO::PARAM_INT); 
                 if($stmt->execute()){
-                return "OK";
+                    return "OK";
                 }else{
-                return "Error: se ha generado un error al modificar la información";
+                    return "Error: se ha generado un error al modificar la información";
+                }
+            }else{
+                if($existeRegistro >= 1){
+                    return "La unidad ya existe ";
+                }else{
+                    $stmt = $conexion->prepare("UPDATE `unidad` 
+                                    SET `NOMBRE_UNIDAD` = :nombreUnidad
+                                    WHERE `ID_UNIDAD` = :idUnidad;");
+                    $stmt->bindValue(":nombreUnidad",$nombreUnidad,PDO::PARAM_STR); 
+                    $stmt->bindValue(":idUnidad",$idUnidad,PDO::PARAM_INT); 
+                    if($stmt->execute()){
+                    return "OK";
+                    }else{
+                    return "Error: se ha generado un error al modificar la información";
+                    }
                 }
             }
         }

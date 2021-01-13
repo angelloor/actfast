@@ -57,21 +57,42 @@
             $stmt->execute();
             $results = $stmt->fetch(PDO::FETCH_ASSOC);
             $existeRegistro = $results['count(*)'];
-            
-            if($existeRegistro >= 1){
-                return "El sistema ya existe";
-            }else{
+
+            $stmt = $conexion->prepare("select nombre_sistema from sistema where id_sistema = :idSistema;");
+            $stmt->bindValue(":idSistema", $idSistema, PDO::PARAM_INT);
+            $stmt->execute();
+            $results = $stmt->fetch(PDO::FETCH_ASSOC);
+            $sistemaBD = $results['nombre_sistema'];
+
+            if ($nombreSistema == $sistemaBD) {
                 $stmt = $conexion->prepare("UPDATE `sistema` 
-                                SET `NOMBRE_SISTEMA` = :nombreSistema,
-                                `DIRECCION_SISTEMA` = :direccionSistema
-                                WHERE `ID_SISTEMA` = :idSistema;");
-                $stmt->bindValue(":nombreSistema",$nombreSistema,PDO::PARAM_STR); 
-                $stmt->bindValue(":idSistema",$idSistema,PDO::PARAM_INT); 
-                $stmt->bindValue(":direccionSistema",$direccion, PDO::PARAM_STR);
-                if($stmt->execute()){
-                return "OK";
+                                    SET `NOMBRE_SISTEMA` = :nombreSistema,
+                                    `DIRECCION_SISTEMA` = :direccionSistema
+                                    WHERE `ID_SISTEMA` = :idSistema;");
+                    $stmt->bindValue(":nombreSistema",$nombreSistema,PDO::PARAM_STR); 
+                    $stmt->bindValue(":idSistema",$idSistema,PDO::PARAM_INT); 
+                    $stmt->bindValue(":direccionSistema",$direccion, PDO::PARAM_STR);
+                    if($stmt->execute()){
+                    return "OK";
+                    }else{
+                    return "Error: se ha generado un error al modificar la información";
+                    }
+            }else{
+                if($existeRegistro >= 1){
+                    return "El sistema ya existe";
                 }else{
-                return "Error: se ha generado un error al modificar la información";
+                    $stmt = $conexion->prepare("UPDATE `sistema` 
+                                    SET `NOMBRE_SISTEMA` = :nombreSistema,
+                                    `DIRECCION_SISTEMA` = :direccionSistema
+                                    WHERE `ID_SISTEMA` = :idSistema;");
+                    $stmt->bindValue(":nombreSistema",$nombreSistema,PDO::PARAM_STR); 
+                    $stmt->bindValue(":idSistema",$idSistema,PDO::PARAM_INT); 
+                    $stmt->bindValue(":direccionSistema",$direccion, PDO::PARAM_STR);
+                    if($stmt->execute()){
+                    return "OK";
+                    }else{
+                    return "Error: se ha generado un error al modificar la información";
+                    }
                 }
             }
         }

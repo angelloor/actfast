@@ -115,9 +115,13 @@
             $año = $fechaTotal['year'];
             if($diaInicial <= 9){
                 $dia = "0".$diaInicial;
+            }else{
+                $dia = $diaInicial;
             }
             if($mesInicial <= 9){
                 $mes = "0".$mesInicial;
+            }else{
+                $mes = $mesInicial;
             }
             $fechaActual = $año."-".$mes."-".$dia;
 

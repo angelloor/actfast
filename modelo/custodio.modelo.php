@@ -70,16 +70,19 @@
             $stmt->execute();
             $results = $stmt->fetch(PDO::FETCH_ASSOC);
             $existeRegistro = $results['count(*)'];
-            
-            if($existeRegistro >= 1){
-                return "El custodio ya existe";
-            }else{
+
+            $stmt = $conexion->prepare("select p.nombre_persona from custodio cu inner join persona p on cu.persona_id = p.id_persona where cu.id_custodio = :idCustodio;");
+            $stmt->bindValue(":idCustodio", $idCustodio, PDO::PARAM_INT);
+            $stmt->execute();
+            $results = $stmt->fetch(PDO::FETCH_ASSOC);
+            $custodioBD = $results['nombre_persona'];
+
+            if ($nombreCustodio == $custodioBD) {
                 $stmt = $conexion->prepare("select ID_PERSONA FROM persona where NOMBRE_PERSONA = :nombreCustodio");
                 $stmt->bindValue(":nombreCustodio", $nombreCustodio, PDO::PARAM_STR);
                 $stmt->execute();
                 $results = $stmt->fetch(PDO::FETCH_ASSOC);
                 $idp = $results['ID_PERSONA'];
-
 
                 $stmt = $conexion->prepare("UPDATE `custodio` 
                                             SET `PERSONA_ID` = :idPersona
@@ -90,6 +93,27 @@
                     return "OK";
                 }else{
                     return "Error: se ha generado un error al modificar la información";
+                }
+            }else{
+                if($existeRegistro >= 1){
+                    return "El custodio ya existe";
+                }else{
+                    $stmt = $conexion->prepare("select ID_PERSONA FROM persona where NOMBRE_PERSONA = :nombreCustodio");
+                    $stmt->bindValue(":nombreCustodio", $nombreCustodio, PDO::PARAM_STR);
+                    $stmt->execute();
+                    $results = $stmt->fetch(PDO::FETCH_ASSOC);
+                    $idp = $results['ID_PERSONA'];
+    
+                    $stmt = $conexion->prepare("UPDATE `custodio` 
+                                                SET `PERSONA_ID` = :idPersona
+                                                WHERE `ID_CUSTODIO` = :idCustodio;");
+                    $stmt->bindValue(":idPersona",$idp,PDO::PARAM_INT); 
+                    $stmt->bindValue(":idCustodio",$idCustodio,PDO::PARAM_INT); 
+                    if($stmt->execute()){
+                        return "OK";
+                    }else{
+                        return "Error: se ha generado un error al modificar la información";
+                    }
                 }
             }
         }

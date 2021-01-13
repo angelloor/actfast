@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 12-01-2021 a las 14:10:58
+-- Tiempo de generación: 13-01-2021 a las 13:50:27
 -- Versión del servidor: 8.0.21
 -- Versión de PHP: 7.3.21
 
@@ -20,16 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `actfast`
 --
-
-DELIMITER $$
---
--- Procedimientos
---
-DROP PROCEDURE IF EXISTS `select_activo`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `select_activo` ()  NO SQL
-SELECT * from activo$$
-
-DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -66,7 +56,7 @@ CREATE TABLE IF NOT EXISTS `activo` (
   KEY `FK_ACTIVO_REF_ESTADO` (`ESTADO_ID`),
   KEY `FK_ACTIVO_REF_MARCA` (`MARCA_ID`),
   KEY `FK_ACTIVO_REF_CUSTODIO` (`CUSTODIO_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=1354 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1357 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `activo`
@@ -1428,7 +1418,10 @@ INSERT INTO `activo` (`ID_ACTIVO`, `CATEGORIA_ID`, `MARCA_ID`, `ESTADO_ID`, `COL
 (1350, 3, 90, 1, 20, ' ', 1, 4, 211, 'FUENTE ESCANER', 'PQ8412F', 'PQ12F5015', 'MATRIZ', '2021-01-11', 0, '', 'NO', 1, NULL),
 (1351, 3, 90, 1, 20, ' ', 1, 4, 212, 'FUENTE ESCANER', 'PQ8412F', 'PQ12F3418', 'MATRIZ', '2021-01-11', 0, '', 'NO', 1, NULL),
 (1352, 3, 90, 1, 20, ' ', 1, 4, 213, 'FUENTE ESCANER', 'PQ8412F', 'PQ12F3286', 'MATRIZ', '2021-01-11', 0, '', 'NO', 1, NULL),
-(1353, 3, 90, 1, 20, ' ', 1, 4, 214, 'FUENTE ESCANER', 'PQ8412F', 'PQ12F3382', 'MATRIZ', '2021-01-11', 0, '', 'NO', 1, NULL);
+(1353, 3, 90, 1, 20, ' ', 1, 4, 214, 'FUENTE ESCANER', 'PQ8412F', 'PQ12F3382', 'MATRIZ', '2021-01-11', 0, '', 'NO', 1, NULL),
+(1354, NULL, NULL, NULL, NULL, 'asd', NULL, NULL, 5445, 'asd', 'asd', 'asd', 'asd', '2021-01-12', 5, '', 'NO', 1, NULL),
+(1355, 2, 1, 1, 1, 'asdsa', 1, 4, 4545, 'asd', 'asd', 'asd', 'asd', '2021-01-12', 54, 'asd', 'NO', 1, NULL),
+(1356, 2, 1, 1, 1, 'ASD', 1, 4, 544554, 'ASD', 'ASD', 'ASD', 'ASD', '2021-01-12', 5, 'ASD', 'NO', 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -2941,9 +2934,9 @@ DROP TABLE IF EXISTS `firma`;
 CREATE TABLE IF NOT EXISTS `firma` (
   `ID_FIRMA` int NOT NULL AUTO_INCREMENT,
   `PERSONA_ID` int NOT NULL,
-  `DENOMINACION` varchar(50) NOT NULL,
+  `DENOMINACION` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   PRIMARY KEY (`ID_FIRMA`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
 
 --
 -- Volcado de datos para la tabla `firma`
@@ -3192,8 +3185,8 @@ INSERT INTO `rol_usuario` (`ID_ROL_USUARIO`, `NOMBRE_ROL_USUARIO`, `DESCRIPCION_
 DROP TABLE IF EXISTS `sistema`;
 CREATE TABLE IF NOT EXISTS `sistema` (
   `ID_SISTEMA` int NOT NULL AUTO_INCREMENT,
-  `NOMBRE_SISTEMA` varchar(150) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL,
-  `DIRECCION_SISTEMA` varchar(150) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL,
+  `NOMBRE_SISTEMA` varchar(150) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `DIRECCION_SISTEMA` varchar(150) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   PRIMARY KEY (`ID_SISTEMA`)
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 

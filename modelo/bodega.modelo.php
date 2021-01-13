@@ -71,9 +71,13 @@
             $results = $stmt->fetch(PDO::FETCH_ASSOC);
             $existeRegistro = $results['count(*)'];
             
-            if($existeRegistro >= 1){
-                return "La bodega ya existe";
-            }else{
+            $stmt = $conexion->prepare("select nombre_bodega from bodega where id_bodega = :idBodega;");
+            $stmt->bindValue(":idBodega", $idBodega, PDO::PARAM_INT);
+            $stmt->execute();
+            $results = $stmt->fetch(PDO::FETCH_ASSOC);
+            $bodegaBD = $results['nombre_bodega'];
+
+            if ($nombreBodega == $bodegaBD) {
                 $stmt = $conexion->prepare("select ID_PERSONA FROM persona where NOMBRE_PERSONA = :nombreResponsable");
                 $stmt->bindValue(":nombreResponsable", $nombreResponsable, PDO::PARAM_STR);
                 $stmt->execute();
@@ -93,6 +97,31 @@
                     return "OK";
                 }else{
                     return "Error: se ha generado un error al modificar la información $idPersona";
+                }
+            }else{
+                if($existeRegistro >= 1){
+                    return "La bodega ya existe";
+                }else{
+                    $stmt = $conexion->prepare("select ID_PERSONA FROM persona where NOMBRE_PERSONA = :nombreResponsable");
+                    $stmt->bindValue(":nombreResponsable", $nombreResponsable, PDO::PARAM_STR);
+                    $stmt->execute();
+                    $results = $stmt->fetch(PDO::FETCH_ASSOC);
+                    $idPersona = $results['ID_PERSONA'];  
+                    
+                    $stmt = $conexion->prepare("UPDATE `bodega` 
+                                                SET `NOMBRE_BODEGA` = :nombreBodega,
+                                                `UBICACION` = :ubicacion,
+                                                `RESPONSABLE_BODEGA` = :responsableBodegaId
+                                                WHERE `ID_BODEGA` = :idBodega;");
+                    $stmt->bindValue(":nombreBodega",$nombreBodega, PDO::PARAM_STR);
+                    $stmt->bindValue(":ubicacion",$ubicacion, PDO::PARAM_STR);
+                    $stmt->bindValue(":responsableBodegaId",$idPersona, PDO::PARAM_INT);
+                    $stmt->bindValue(":idBodega",$idBodega,PDO::PARAM_INT); 
+                    if($stmt->execute()){
+                        return "OK";
+                    }else{
+                        return "Error: se ha generado un error al modificar la información $idPersona";
+                    }
                 }
             }
         }

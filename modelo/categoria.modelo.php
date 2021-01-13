@@ -58,20 +58,41 @@
             $results = $stmt->fetch(PDO::FETCH_ASSOC);
             $existeRegistro = $results['count(*)'];
             
-            if($existeRegistro >= 1){
-                return "La categoria ya existe";
-            }else{
+            $stmt = $conexion->prepare("select nombre_categoria from categoria where id_categoria = :idCategoria;");
+            $stmt->bindValue(":idCategoria", $idCategoria, PDO::PARAM_INT);
+            $stmt->execute();
+            $results = $stmt->fetch(PDO::FETCH_ASSOC);
+            $categoriaBD = $results['nombre_categoria'];
+
+            if ($nombreCategoria == $categoriaBD) {
                 $stmt = $conexion->prepare("UPDATE `categoria` 
-                                            SET `NOMBRE_CATEGORIA` = :nombreCategoria,
-                                            `DESCRIPCION_CATEGORIA` = :descripcionCategoria
-                                            WHERE `ID_CATEGORIA` = :idCategoria;");
-                $stmt->bindValue(":nombreCategoria",$nombreCategoria, PDO::PARAM_STR);
-                $stmt->bindValue(":descripcionCategoria",$descripcionCategoria, PDO::PARAM_STR);
-                $stmt->bindValue(":idCategoria",$idCategoria,PDO::PARAM_INT); 
-                if($stmt->execute()){
-                    return "OK";
+                                                SET `NOMBRE_CATEGORIA` = :nombreCategoria,
+                                                `DESCRIPCION_CATEGORIA` = :descripcionCategoria
+                                                WHERE `ID_CATEGORIA` = :idCategoria;");
+                    $stmt->bindValue(":nombreCategoria",$nombreCategoria, PDO::PARAM_STR);
+                    $stmt->bindValue(":descripcionCategoria",$descripcionCategoria, PDO::PARAM_STR);
+                    $stmt->bindValue(":idCategoria",$idCategoria,PDO::PARAM_INT); 
+                    if($stmt->execute()){
+                        return "OK";
+                    }else{
+                        return "Error: se ha generado un error al modificar la información";
+                    }
+            }else{
+                if($existeRegistro >= 1){
+                    return "La categoria ya existe";
                 }else{
-                    return "Error: se ha generado un error al modificar la información";
+                    $stmt = $conexion->prepare("UPDATE `categoria` 
+                                                SET `NOMBRE_CATEGORIA` = :nombreCategoria,
+                                                `DESCRIPCION_CATEGORIA` = :descripcionCategoria
+                                                WHERE `ID_CATEGORIA` = :idCategoria;");
+                    $stmt->bindValue(":nombreCategoria",$nombreCategoria, PDO::PARAM_STR);
+                    $stmt->bindValue(":descripcionCategoria",$descripcionCategoria, PDO::PARAM_STR);
+                    $stmt->bindValue(":idCategoria",$idCategoria,PDO::PARAM_INT); 
+                    if($stmt->execute()){
+                        return "OK";
+                    }else{
+                        return "Error: se ha generado un error al modificar la información";
+                    }
                 }
             }
         }

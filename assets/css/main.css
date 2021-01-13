@@ -209,3 +209,28 @@ body > div > div.container-title > nav{
 .padding-ru{
     padding: 12px 0 !important;
 }
+
+.body-backup{
+    width: 100vw;
+    height: 100vh;
+    background-color: #2C3E50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.body-backup > table > tbody > tr > td {
+    padding: 10px;
+    font-size: 1.8rem;
+    color: white;
+}
+
+
+.body-backup > table > tbody > tr > td > a > span{
+    color: blue; font-size:18px;
+}
+
+
+
+
+
