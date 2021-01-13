@@ -56,7 +56,7 @@ function listarFuncionarios(){
     }).done(function(response){
         var html = "";
         $.each(response, function(index, data) {
-            html += "<option>" + data.NOMBRE_PERSONA + "</option>";
+            html += "<option>" + data.nombre_persona + "</option>";
         });
         document.getElementById("idPersona").innerHTML = html;
     }).fail(function(response){

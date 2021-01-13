@@ -33,10 +33,10 @@ function Consultar() {
         var html = "";
         $.each(response, function(index, data) {
             html += "<tr>";
-            html += "<td>" + data.NOMBRE_CARGO + "</td>";
+            html += "<td>" + data.nombre_cargo + "</td>";
             html += "<td style='text-align: right;'>";
-            html += "<button class='btn btn-success mr-1' onclick='ConsultarPorId(" + data.ID_CARGO + ");'><span class='fa fa-edit'></span></button>"
-            html += "<button class='btn btn-danger ml-1' onclick='Eliminar(" + data.ID_CARGO + ");'><span class='fa fa-trash'></span></button>"
+            html += "<button class='btn btn-success mr-1' onclick='ConsultarPorId(" + data.id_cargo + ");'><span class='fa fa-edit'></span></button>"
+            html += "<button class='btn btn-danger ml-1' onclick='Eliminar(" + data.id_cargo + ");'><span class='fa fa-trash'></span></button>"
             html += "</td>";
             html += "</tr>";
         });
@@ -66,10 +66,10 @@ function EscucharConsulta(){
                 var html = "";
                 $.each(response, function(index, data) {
                     html += "<tr>";
-                    html += "<td>" + data.NOMBRE_CARGO + "</td>";
+                    html += "<td>" + data.nombre_cargo + "</td>";
                     html += "<td style='text-align: right;'>";
-                    html += "<button class='btn btn-success mr-1' onclick='ConsultarPorId(" + data.ID_CARGO + ");'><span class='fa fa-edit'></span></button>"
-                    html += "<button class='btn btn-danger ml-1' onclick='Eliminar(" + data.ID_CARGO + ");'><span class='fa fa-trash'></span></button>"
+                    html += "<button class='btn btn-success mr-1' onclick='ConsultarPorId(" + data.id_cargo + ");'><span class='fa fa-edit'></span></button>"
+                    html += "<button class='btn btn-danger ml-1' onclick='Eliminar(" + data.id_cargo + ");'><span class='fa fa-trash'></span></button>"
                     html += "</td>";
                     html += "</tr>";
                 });
@@ -104,8 +104,8 @@ function ConsultarPorId(idCargo) {
                     type: 'POST',
                     dataType: 'json'
                 }).done(function(response) {
-                    document.getElementById('nombre').value = response.NOMBRE_CARGO;
-                    document.getElementById('idCargo').value = response.ID_CARGO;
+                    document.getElementById('nombre').value = response.nombre_cargo;
+                    document.getElementById('idCargo').value = response.id_cargo;
                     BloquearBotones(false);
                 }).fail(function(response) {
                     console.log(response);

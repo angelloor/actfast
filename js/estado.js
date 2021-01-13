@@ -41,10 +41,10 @@ function Consultar() {
         var html = "";
         $.each(response, function(index, data) {
             html += "<tr>";
-            html += "<td>" + data.NOMBRE_ESTADO + "</td>";
+            html += "<td>" + data.nombre_estado + "</td>";
             html += "<td style='text-align: right;'>";
-            html += "<button class='btn btn-success mr-1' onclick='ConsultarPorId(" + data.ID_ESTADO + ");'><span class='fa fa-edit'></span></button>"
-            html += "<button class='btn btn-danger ml-1' onclick='Eliminar(" + data.ID_ESTADO + ");'><span class='fa fa-trash'></span></button>"
+            html += "<button class='btn btn-success mr-1' onclick='ConsultarPorId(" + data.id_estado + ");'><span class='fa fa-edit'></span></button>"
+            html += "<button class='btn btn-danger ml-1' onclick='Eliminar(" + data.id_estado + ");'><span class='fa fa-trash'></span></button>"
             html += "</td>";
             html += "</tr>";
         });
@@ -74,10 +74,10 @@ function EscucharConsulta(){
                 var html = "";
                 $.each(response, function(index, data) {
                     html += "<tr>";
-                    html += "<td>" + data.NOMBRE_ESTADO + "</td>";
+                    html += "<td>" + data.nombre_estado + "</td>";
                     html += "<td style='text-align: right;'>";
-                    html += "<button class='btn btn-success mr-1' onclick='ConsultarPorId(" + data.ID_ESTADO + ");'><span class='fa fa-edit'></span></button>"
-                    html += "<button class='btn btn-danger ml-1' onclick='Eliminar(" + data.ID_ESTADO + ");'><span class='fa fa-trash'></span></button>"
+                    html += "<button class='btn btn-success mr-1' onclick='ConsultarPorId(" + data.id_estado + ");'><span class='fa fa-edit'></span></button>"
+                    html += "<button class='btn btn-danger ml-1' onclick='Eliminar(" + data.id_estado + ");'><span class='fa fa-trash'></span></button>"
                     html += "</td>";
                     html += "</tr>";
                 });
@@ -112,8 +112,8 @@ function ConsultarPorId(idEstado) {
                     type: 'POST',
                     dataType: 'json'
                 }).done(function(response) {
-                    document.getElementById('nombre').value = response.NOMBRE_ESTADO;
-                    document.getElementById('idEstado').value = response.ID_ESTADO;
+                    document.getElementById('nombre').value = response.nombre_estado;
+                    document.getElementById('idEstado').value = response.id_estado;
                     BloquearBotones(false);
                 }).fail(function(response) {
                     console.log(response);

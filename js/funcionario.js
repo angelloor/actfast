@@ -82,15 +82,15 @@ function EscucharConsulta(){
                 var html = "";
                 $.each(response, function(index, data) {
                     html += "<tr>";
-                    html += "<td>" + data.CEDULA + "</td>";
-                    html += "<td>" + data.NOMBRE_PERSONA + "</td>";
-                    html += "<td>" + data.DIRECCION + "</td>";
-                    html += "<td>" + data.TELEFONO + "</td>";
-                    html += "<td>" + data.NOMBRE_CARGO + "</td>";
-                    html += "<td>" + data.NOMBRE_UNIDAD + "</td>";
+                    html += "<td>" + data.cedula + "</td>";
+                    html += "<td>" + data.nombre_persona + "</td>";
+                    html += "<td>" + data.direccion + "</td>";
+                    html += "<td>" + data.telefono + "</td>";
+                    html += "<td>" + data.nombre_cargo + "</td>";
+                    html += "<td>" + data.nombre_unidad + "</td>";
                     html += "<td style='text-align: center;'>";
-                    html += "<button class='btn btn-success' onclick='ConsultarPorId(" + data.ID_PERSONA + ");'><span class='fa fa-edit'></span></button>"
-                    html += "<button style='margin-top: 3px;' class='btn btn-danger' onclick='Eliminar(" + data.ID_PERSONA + ");'><span class='fa fa-trash'></span></button>"
+                    html += "<button class='btn btn-success' onclick='ConsultarPorId(" + data.id_persona + ");'><span class='fa fa-edit'></span></button>"
+                    html += "<button style='margin-top: 3px;' class='btn btn-danger' onclick='Eliminar(" + data.id_persona + ");'><span class='fa fa-trash'></span></button>"
                     html += "</td>";
                     html += "</tr>";
                 });
@@ -111,7 +111,7 @@ function listarCargo(){
     }).done(function(response){
         var html = "";
         $.each(response, function(index, data) {
-            html += "<option>" + data.NOMBRE_CARGO + "</option>";
+            html += "<option>" + data.nombre_cargo + "</option>";
         });
         document.getElementById("cargoFuncionario").innerHTML = html;
     }).fail(function(response){
@@ -128,7 +128,7 @@ function listarUnidad(){
     }).done(function(response){
         var html = "";
         $.each(response, function(index, data) {
-            html += "<option>" + data.NOMBRE_UNIDAD + "</option>";
+            html += "<option>" + data.nombre_unidad + "</option>";
         });
         document.getElementById("unidadFuncionario").innerHTML = html;
     }).fail(function(response){
@@ -159,13 +159,13 @@ function ConsultarPorId(idFuncionario) {
                     type: 'POST',
                     dataType: 'json'
                 }).done(function(response) {
-                    document.getElementById('cedulaFuncionario').value = response.CEDULA;
-                    document.getElementById('nombreFuncionario').value = response.NOMBRE_PERSONA;
-                    document.getElementById('direccionFuncionario').value = response.DIRECCION;
-                    document.getElementById('telefonoFuncionario').value = response.TELEFONO;
-                    document.getElementById('cargoFuncionario').value = response.NOMBRE_CARGO;
-                    document.getElementById('unidadFuncionario').value = response.NOMBRE_UNIDAD;
-                    document.getElementById('idFuncionario').value = response.ID_PERSONA;
+                    document.getElementById('cedulaFuncionario').value = response.cedula;
+                    document.getElementById('nombreFuncionario').value = response.nombre_persona;
+                    document.getElementById('direccionFuncionario').value = response.direccion;
+                    document.getElementById('telefonoFuncionario').value = response.telefono;
+                    document.getElementById('cargoFuncionario').value = response.nombre_cargo;
+                    document.getElementById('unidadFuncionario').value = response.nombre_unidad;
+                    document.getElementById('idFuncionario').value = response.id_persona;
                     BloquearBotones(false);
                 }).fail(function(response) {
                     console.log(response);

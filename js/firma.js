@@ -22,7 +22,7 @@ function listarFuncionario(){
     }).done(function(response){
         var html = "";
         $.each(response, function(index, data) {
-            html += "<option>" + data.NOMBRE_PERSONA + "</option>";
+            html += "<option>" + data.nombre_persona + "</option>";
         });
         document.getElementById("nombrePersona").innerHTML = html;
     }).fail(function(response){

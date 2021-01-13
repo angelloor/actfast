@@ -53,7 +53,7 @@
           <a class="dropdown-item" href="../vista/activosNoConfirmados.php">Activos No Confirmados</a>
         </div>
       </li>
-      <li class="nav-item dropdown">
+      <li class="nav-item dropdown" <?php if(($_SESSION['rolUsuario'] == "COMPROBADOR DE INVENTARIO") || ($_SESSION['rolUsuario'] == "GENERADOR DE REPORTES Y ACTAS") || ($_SESSION['rolUsuario'] == "INVITADO")){ echo 'style="display:none;"';} ?>>
         <a class="nav-link" href="../backupmysql/backup.php" id="dropdown01" aria-expanded="false" target="_blank">Backup BD</a>
       </li>
           </ul>

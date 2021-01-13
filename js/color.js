@@ -41,10 +41,10 @@ function Consultar() {
         var html = "";
         $.each(response, function(index, data) {
             html += "<tr>";
-            html += "<td>" + data.NOMBRE_COLOR + "</td>";
+            html += "<td>" + data.nombre_color + "</td>";
             html += "<td style='text-align: right;'>";
-            html += "<button class='btn btn-success mr-1' onclick='ConsultarPorId(" + data.ID_COLOR + ");'><span class='fa fa-edit'></span></button>"
-            html += "<button class='btn btn-danger ml-1' onclick='Eliminar(" + data.ID_COLOR + ");'><span class='fa fa-trash'></span></button>"
+            html += "<button class='btn btn-success mr-1' onclick='ConsultarPorId(" + data.id_color + ");'><span class='fa fa-edit'></span></button>"
+            html += "<button class='btn btn-danger ml-1' onclick='Eliminar(" + data.id_color + ");'><span class='fa fa-trash'></span></button>"
             html += "</td>";
             html += "</tr>";
         });
@@ -74,10 +74,10 @@ function EscucharConsulta(){
                 var html = "";
                 $.each(response, function(index, data) {
                     html += "<tr>";
-                    html += "<td>" + data.NOMBRE_COLOR + "</td>";
+                    html += "<td>" + data.nombre_color + "</td>";
                     html += "<td style='text-align: right;'>";
-                    html += "<button class='btn btn-success mr-1' onclick='ConsultarPorId(" + data.ID_COLOR + ");'><span class='fa fa-edit'></span></button>"
-                    html += "<button class='btn btn-danger ml-1' onclick='Eliminar(" + data.ID_COLOR + ");'><span class='fa fa-trash'></span></button>"
+                    html += "<button class='btn btn-success mr-1' onclick='ConsultarPorId(" + data.id_color + ");'><span class='fa fa-edit'></span></button>"
+                    html += "<button class='btn btn-danger ml-1' onclick='Eliminar(" + data.id_color + ");'><span class='fa fa-trash'></span></button>"
                     html += "</td>";
                     html += "</tr>";
                 });
@@ -112,8 +112,8 @@ function ConsultarPorId(idColor) {
                     type: 'POST',
                     dataType: 'json'
                 }).done(function(response) {
-                    document.getElementById('nombre').value = response.NOMBRE_COLOR;
-                    document.getElementById('idColor').value = response.ID_COLOR;
+                    document.getElementById('nombre').value = response.nombre_color;
+                    document.getElementById('idColor').value = response.id_color;
                     BloquearBotones(false);
                 }).fail(function(response) {
                     console.log(response);

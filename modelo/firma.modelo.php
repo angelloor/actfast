@@ -27,7 +27,7 @@
             $results = $stmt->fetch(PDO::FETCH_ASSOC);
             $idPersona = $results['id_persona'];
 
-            $stmt = $conexion->prepare("UPDATE `firma` SET `PERSONA_ID` = :idPersona, `DENOMINACION` = :denominacion WHERE `ID_FIRMA` = :idFirma;");
+            $stmt = $conexion->prepare("update `firma` set `persona_id` = :idPersona, `denominacion` = :denominacion where `id_firma` = :idFirma;");
             $stmt->bindValue(":idPersona", $idPersona, PDO::PARAM_INT);
             $stmt->bindValue(":idFirma", $idFirma, PDO::PARAM_INT);
             $stmt->bindValue(":denominacion", $denominacion, PDO::PARAM_STR);
@@ -41,7 +41,7 @@
 
         public function listarFuncionario(){
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("SELECT NOMBRE_PERSONA FROM persona order by NOMBRE_PERSONA asc;");
+            $stmt = $conexion->prepare("select nombre_persona from persona order by nombre_persona asc;");
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_OBJ);
         }

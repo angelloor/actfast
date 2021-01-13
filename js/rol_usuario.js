@@ -14,8 +14,8 @@ function Consultar() {
         var html = "";
         $.each(response, function(index, data) {
             html += "<tr>";
-            html += "<td class='padding-ru'>" + data.NOMBRE_ROL_USUARIO + "</td>";
-            html += "<td class='padding-ru'>" + data.DESCRIPCION_ROL_USUARIO + "</td>";
+            html += "<td class='padding-ru'>" + data.nombre_rol_usuario + "</td>";
+            html += "<td class='padding-ru'>" + data.descripcion_rol_usuario + "</td>";
             html += "</tr>";
         });
         document.getElementById("datos").innerHTML = html;

@@ -68,17 +68,17 @@
                 return "El activo ya se encuentra asignado a un funcionario";
             }
             
-            $stmt = $conexion->prepare("select ID_PERSONA FROM persona where NOMBRE_PERSONA = :nombreFuncionario");
+            $stmt = $conexion->prepare("select id_persona from persona where nombre_persona = :nombreFuncionario");
             $stmt->bindValue(":nombreFuncionario", $nombreFuncionario, PDO::PARAM_STR);
             $stmt->execute();
             $results = $stmt->fetch(PDO::FETCH_ASSOC);
-            $idPersona = $results['ID_PERSONA'];
+            $idPersona = $results['id_persona'];
        
-            $stmt = $conexion->prepare("select ID_ACTIVO from activo where codigo = :codigoActivo");
+            $stmt = $conexion->prepare("select id_activo from activo where codigo = :codigoActivo");
             $stmt->bindValue(":codigoActivo", $codigoActivo, PDO::PARAM_INT);
             $stmt->execute();
             $results = $stmt->fetch(PDO::FETCH_ASSOC);
-            $idActivo = $results['ID_ACTIVO'];
+            $idActivo = $results['id_activo'];
 
             $stmt = $conexion->prepare("select cu.id_custodio from custodio cu inner join persona p on cu.persona_id = p.id_persona where p.nombre_persona = :nombreCustodio");
             $stmt->bindValue(":nombreCustodio", $nombreCustodio, PDO::PARAM_STR);
@@ -86,12 +86,12 @@
             $results = $stmt->fetch(PDO::FETCH_ASSOC);
             $idCustodio = $results['id_custodio'];
                 
-            $stmt = $conexion->prepare("INSERT INTO `entrega_recepcion`
-                                                    (`PERSONA_ID`,
-                                                    `ACTIVO_ID`,
-                                                    `CUSTODIO_ID`,
-                                                    `FECHA`)
-                                        VALUES (:idPersona,
+            $stmt = $conexion->prepare("insert into `entrega_recepcion`
+                                                    (`persona_id`,
+                                                    `activo_id`,
+                                                    `custodio_id`,
+                                                    `fecha`)
+                                        values (:idPersona,
                                                 :idActivo,
                                                 :idCustodio,    
                                                 :fecha);");
@@ -125,17 +125,17 @@
             }
             $fechaActual = $año."-".$mes."-".$dia;
 
-            $stmt = $conexion->prepare("select ID_PERSONA FROM persona where NOMBRE_PERSONA = :nombreFuncionario");
+            $stmt = $conexion->prepare("select id_persona from persona where nombre_persona = :nombreFuncionario");
             $stmt->bindValue(":nombreFuncionario", $nombreFuncionario, PDO::PARAM_STR);
             $stmt->execute();
             $results = $stmt->fetch(PDO::FETCH_ASSOC);
-            $idPersona = $results['ID_PERSONA'];
+            $idPersona = $results['id_persona'];
        
-            $stmt = $conexion->prepare("select ID_ACTIVO from activo where codigo = :codigoActivo");
+            $stmt = $conexion->prepare("select id_activo from activo where codigo = :codigoActivo");
             $stmt->bindValue(":codigoActivo", $codigoActivo, PDO::PARAM_INT);
             $stmt->execute();
             $results = $stmt->fetch(PDO::FETCH_ASSOC);
-            $idActivo = $results['ID_ACTIVO'];
+            $idActivo = $results['id_activo'];
 
             $stmt = $conexion->prepare("select cu.id_custodio from custodio cu inner join persona p on cu.persona_id = p.id_persona where p.nombre_persona = :nombreCustodio");
             $stmt->bindValue(":nombreCustodio", $nombreCustodio, PDO::PARAM_STR);
@@ -143,24 +143,24 @@
             $results = $stmt->fetch(PDO::FETCH_ASSOC);
             $idCustodio = $results['id_custodio'];
                 
-            $stmt = $conexion->prepare("UPDATE `entrega_recepcion`
-                                            SET `PERSONA_ID` = :idPersona,
-                                            `ACTIVO_ID` = :idActivo,
-                                            `CUSTODIO_ID` = :idCustodio,
-                                            `FECHA` = :fecha
-                                            WHERE `ID_ENTREGA_RECEPCION` = :idActa;");
+            $stmt = $conexion->prepare("update `entrega_recepcion`
+                                            set `persona_id` = :idPersona,
+                                            `activo_id` = :idActivo,
+                                            `custodio_id` = :idCustodio,
+                                            `fecha` = :fecha
+                                            where `id_entrega_recepcion` = :idActa;");
             $stmt->bindValue(":idPersona", $idPersona, PDO::PARAM_INT);
             $stmt->bindValue(":idActivo", $idActivo, PDO::PARAM_INT);
             $stmt->bindValue(":idCustodio", $idCustodio, PDO::PARAM_INT);
             $stmt->bindValue(":fecha", $fecha, PDO::PARAM_STR);
             $stmt->bindValue(":idActa", $idActa, PDO::PARAM_INT);
 
-            $stmt1 = $conexion->prepare("INSERT INTO `movimiento_activo`
-                                                    (`ACTIVO_ID`,
-                                                    `CUSTODIO_ID`,
-                                                    `PERSONA_ID`,
-                                                    `FECHA_MOVIMIENTO`)
-                                        VALUES (:idActivo,
+            $stmt1 = $conexion->prepare("insert into `movimiento_activo`
+                                                    (`activo_id`,
+                                                    `custodio_id`,
+                                                    `persona_id`,
+                                                    `fecha_movimiento`)
+                                        values (:idActivo,
                                                 :idCustodio,
                                                 :idPersona,    
                                                 :fecha);");
@@ -177,7 +177,7 @@
 
         public function Eliminar($idEntregaRecepcion){
             $conexion = new Conexion();
-            $stmtdel = $conexion->prepare("DELETE FROM entrega_recepcion WHERE id_entrega_recepcion = :idEntregaRecepcion");
+            $stmtdel = $conexion->prepare("delete from entrega_recepcion where id_entrega_recepcion = :idEntregaRecepcion");
             $stmtdel->bindValue(":idEntregaRecepcion", $idEntregaRecepcion, PDO::PARAM_INT);
             if($stmtdel->execute()){
                 return "OK";
@@ -188,7 +188,7 @@
 
         public function listarFuncionario(){
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("SELECT NOMBRE_PERSONA FROM persona order by NOMBRE_PERSONA asc;");
+            $stmt = $conexion->prepare("select nombre_persona from persona order by nombre_persona asc;");
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_OBJ);
         }

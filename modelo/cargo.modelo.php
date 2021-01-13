@@ -5,14 +5,14 @@
 
         public function ConsultarTodo(){
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("select * from cargo order by nombre_cargo asc");
+            $stmt = $conexion->prepare("select id_cargo, nombre_cargo from cargo order by nombre_cargo asc");
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_OBJ);
         }
 
         public function ConsultarPorId($idCargo){
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("SELECT * FROM cargo where ID_CARGO = :idCargo");
+            $stmt = $conexion->prepare("select id_cargo, nombre_cargo from cargo where id_cargo = :idCargo");
             $stmt->bindValue(":idCargo", $idCargo, PDO::PARAM_INT);
             $stmt->execute();
             return $stmt->fetch(PDO::FETCH_OBJ);
@@ -20,7 +20,7 @@
 
         public function ConsultarPorIdRow($idCargo){
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("select * from cargo where nombre_cargo like :patron order by nombre_cargo asc;");
+            $stmt = $conexion->prepare("select id_cargo, nombre_cargo from cargo where nombre_cargo like :patron order by nombre_cargo asc;");
             $stmt->bindValue(":patron", "%".$idCargo."%", PDO::PARAM_STR);
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_OBJ);
@@ -38,8 +38,8 @@
             if($existeRegistro >= 1){
                 return "El cargo ya existe ";
             }else{
-                $stmt = $conexion->prepare("INSERT INTO `cargo` (`NOMBRE_CARGO`) 
-                                            VALUES (:nombreCargo);");
+                $stmt = $conexion->prepare("insert into `cargo` (`nombre_cargo`) 
+                                            values (:nombreCargo);");
                 $stmt->bindValue(":nombreCargo",$nombreCargo, PDO::PARAM_STR);
                 if($stmt->execute()){
                     return "OK";
@@ -65,9 +65,9 @@
             $cargoBD = $results['nombre_cargo'];
 
             if ($nombreCargo == $cargoBD) {
-                $stmt = $conexion->prepare("UPDATE `cargo` 
-                                    SET `NOMBRE_CARGO` = :nombreCargo
-                                    WHERE `ID_CARGO` = :idCargo;");
+                $stmt = $conexion->prepare("update `cargo` 
+                                    set `nombre_cargo` = :nombreCargo
+                                    where `id_cargo` = :idCargo;");
                     $stmt->bindValue(":nombreCargo",$nombreCargo,PDO::PARAM_STR); 
                     $stmt->bindValue(":idCargo",$idCargo,PDO::PARAM_INT); 
                     if($stmt->execute()){
@@ -79,9 +79,9 @@
                 if($existeRegistro >= 1){
                     return "El cargo ya existe ";
                 }else{
-                    $stmt = $conexion->prepare("UPDATE `cargo` 
-                                    SET `NOMBRE_CARGO` = :nombreCargo
-                                    WHERE `ID_CARGO` = :idCargo;");
+                    $stmt = $conexion->prepare("update `cargo` 
+                                    set `nombre_cargo` = :nombreCargo
+                                    where `id_cargo` = :idCargo;");
                     $stmt->bindValue(":nombreCargo",$nombreCargo,PDO::PARAM_STR); 
                     $stmt->bindValue(":idCargo",$idCargo,PDO::PARAM_INT); 
                     if($stmt->execute()){
@@ -95,7 +95,7 @@
 
         public function Eliminar($idCargo){
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("DELETE FROM cargo WHERE ID_CARGO = :idCargo");
+            $stmt = $conexion->prepare("delete from cargo where id_cargo = :idCargo");
             $stmt->bindValue(":idCargo",$idCargo, PDO::PARAM_INT);
             if($stmt->execute()){
                 return "OK";

@@ -5,14 +5,14 @@
 
         public function ConsultarTodo(){
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("select * from categoria");
+            $stmt = $conexion->prepare("select id_categoria, nombre_categoria, descripcion_categoria from categoria");
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_OBJ);
         }
 
         public function ConsultarPorId($idCategoria){
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("SELECT * FROM categoria where ID_CATEGORIA = :idCategoria");
+            $stmt = $conexion->prepare("select id_categoria, nombre_categoria, descripcion_categoria from categoria where id_categoria = :idCategoria");
             $stmt->bindValue(":idCategoria", $idCategoria, PDO::PARAM_INT);
             $stmt->execute();
             return $stmt->fetch(PDO::FETCH_OBJ);
@@ -20,7 +20,7 @@
 
         public function ConsultarPorIdRow($idCategoria){
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("SELECT * FROM categoria where nombre_categoria LIKE :patron");
+            $stmt = $conexion->prepare("select id_categoria, nombre_categoria, descripcion_categoria from categoria where nombre_categoria like :patron");
             $stmt->bindValue(":patron", "%".$idCategoria."%", PDO::PARAM_STR);
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_OBJ);
@@ -38,8 +38,8 @@
             if($existeRegistro >= 1){
                 return "La categoria ya existe";
             }else{
-                $stmt = $conexion->prepare("INSERT INTO `categoria` (`NOMBRE_CATEGORIA`, `DESCRIPCION_CATEGORIA`)
-                                            VALUES (:nombreCategoria, :descripcionCategoria);");
+                $stmt = $conexion->prepare("insert into `categoria` (`nombre_categoria`, `descripcion_categoria`)
+                                            values (:nombreCategoria, :descripcionCategoria);");
                 $stmt->bindValue(":nombreCategoria",$nombreCategoria, PDO::PARAM_STR);
                 $stmt->bindValue(":descripcionCategoria",$descripcionCategoria, PDO::PARAM_STR);
                 if($stmt->execute()){
@@ -65,10 +65,10 @@
             $categoriaBD = $results['nombre_categoria'];
 
             if ($nombreCategoria == $categoriaBD) {
-                $stmt = $conexion->prepare("UPDATE `categoria` 
-                                                SET `NOMBRE_CATEGORIA` = :nombreCategoria,
-                                                `DESCRIPCION_CATEGORIA` = :descripcionCategoria
-                                                WHERE `ID_CATEGORIA` = :idCategoria;");
+                $stmt = $conexion->prepare("update `categoria` 
+                                                set `nombre_categoria` = :nombreCategoria,
+                                                `descripcion_categoria` = :descripcionCategoria
+                                                where `id_categoria` = :idCategoria;");
                     $stmt->bindValue(":nombreCategoria",$nombreCategoria, PDO::PARAM_STR);
                     $stmt->bindValue(":descripcionCategoria",$descripcionCategoria, PDO::PARAM_STR);
                     $stmt->bindValue(":idCategoria",$idCategoria,PDO::PARAM_INT); 
@@ -81,10 +81,10 @@
                 if($existeRegistro >= 1){
                     return "La categoria ya existe";
                 }else{
-                    $stmt = $conexion->prepare("UPDATE `categoria` 
-                                                SET `NOMBRE_CATEGORIA` = :nombreCategoria,
-                                                `DESCRIPCION_CATEGORIA` = :descripcionCategoria
-                                                WHERE `ID_CATEGORIA` = :idCategoria;");
+                    $stmt = $conexion->prepare("update `categoria` 
+                                                set `nombre_categoria` = :nombreCategoria,
+                                                `descripcion_categoria` = :descripcionCategoria
+                                                where `id_categoria` = :idCategoria;");
                     $stmt->bindValue(":nombreCategoria",$nombreCategoria, PDO::PARAM_STR);
                     $stmt->bindValue(":descripcionCategoria",$descripcionCategoria, PDO::PARAM_STR);
                     $stmt->bindValue(":idCategoria",$idCategoria,PDO::PARAM_INT); 
@@ -99,7 +99,7 @@
 
         public function Eliminar($idCategoria){
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("DELETE FROM categoria WHERE ID_CATEGORIA = :idCategoria");
+            $stmt = $conexion->prepare("delete from categoria where id_categoria = :idCategoria");
             $stmt->bindValue(":idCategoria",$idCategoria, PDO::PARAM_INT);
             if($stmt->execute()){
                 return "OK";

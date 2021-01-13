@@ -22,7 +22,7 @@
                     return;
                 }
                 if($nombreFuncionario == ""){
-                    echo json_encode("Ingrese el nombre");
+                    echo json_encode("Ingrese el nombre asdasd".$cedulaFuncionario.$direccionFuncionario);
                     return;
                 }
                 if($direccionFuncionario == ""){
@@ -57,7 +57,7 @@
                     return;
                 }
                 if($nombreFuncionario == ""){
-                    echo json_encode("Ingrese el nombre");
+                    echo json_encode("Ingrese el nombre asdasd".$cedulaFuncionario.$direccionFuncionario);
                     return;
                 }
                 if($direccionFuncionario == ""){

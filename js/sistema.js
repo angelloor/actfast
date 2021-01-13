@@ -38,11 +38,11 @@ function Consultar() {
         var html = "";
         $.each(response, function(index, data) {
             html += "<tr>";
-            html += "<td>" + data.NOMBRE_SISTEMA + "</td>";
-            html += "<td>" + data.DIRECCION_SISTEMA + "</td>";
+            html += "<td>" + data.nombre_sistema + "</td>";
+            html += "<td>" + data.direccion_sistema + "</td>";
             html += "<td style='text-align: right;'>";
-            html += "<button class='btn btn-success mr-1' onclick='ConsultarPorId(" + data.ID_SISTEMA + ");'><span class='fa fa-edit'></span></button>"
-            html += "<button class='btn btn-danger ml-1' onclick='Eliminar(" + data.ID_SISTEMA + ");'><span class='fa fa-trash'></span></button>"
+            html += "<button class='btn btn-success mr-1' onclick='ConsultarPorId(" + data.id_sistema + ");'><span class='fa fa-edit'></span></button>"
+            html += "<button class='btn btn-danger ml-1' onclick='Eliminar(" + data.id_sistema + ");'><span class='fa fa-trash'></span></button>"
             html += "</td>";
             html += "</tr>";
         });
@@ -64,7 +64,7 @@ function EscucharConsulta(){
             dataType: 'json'
             }).done(function(response) {
                 if (response.length >= 1) {
-                    registrosTotales = true;
+                    registrosTotales = true;                    
                     ocultarAlerta();
                 }else{
                     mostrarAlertaDatos();
@@ -72,11 +72,11 @@ function EscucharConsulta(){
                 var html = "";
                 $.each(response, function(index, data) {
                     html += "<tr>";
-                    html += "<td>" + data.NOMBRE_SISTEMA + "</td>";
-                    html += "<td>" + data.DIRECCION_SISTEMA + "</td>";
+                    html += "<td>" + data.nombre_sistema + "</td>";
+                    html += "<td>" + data.direccion_sistema + "</td>";
                     html += "<td style='text-align: right;'>";
-                    html += "<button class='btn btn-success mr-1' onclick='ConsultarPorId(" + data.ID_SISTEMA + ");'><span class='fa fa-edit'></span></button>"
-                    html += "<button class='btn btn-danger ml-1' onclick='Eliminar(" + data.ID_SISTEMA + ");'><span class='fa fa-trash'></span></button>"
+                    html += "<button class='btn btn-success mr-1' onclick='ConsultarPorId(" + data.id_sistema + ");'><span class='fa fa-edit'></span></button>"
+                    html += "<button class='btn btn-danger ml-1' onclick='Eliminar(" + data.id_sistema + ");'><span class='fa fa-trash'></span></button>"
                     html += "</td>";
                     html += "</tr>";
                 });
@@ -111,9 +111,9 @@ function ConsultarPorId(idSistema) {
                     type: 'POST',
                     dataType: 'json'
                 }).done(function(response) {
-                    document.getElementById('nombre').value = response.NOMBRE_SISTEMA;
-                    document.getElementById('direccion').value = response.DIRECCION_SISTEMA;
-                    document.getElementById('idSistema').value = response.ID_SISTEMA;
+                    document.getElementById('nombre').value = response.nombre_sistema;
+                    document.getElementById('direccion').value = response.direccion_sistema;
+                    document.getElementById('idSistema').value = response.id_sistema;
                     BloquearBotones(false);
                 }).fail(function(response) {
                     console.log(response);

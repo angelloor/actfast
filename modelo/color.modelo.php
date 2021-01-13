@@ -5,14 +5,14 @@
 
         public function ConsultarTodo(){
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("select * from color");
+            $stmt = $conexion->prepare("select id_color, nombre_color from color");
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_OBJ);
         }
 
         public function ConsultarPorId($idColor){
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("SELECT * FROM color where ID_COLOR = :idColor");
+            $stmt = $conexion->prepare("select id_color, nombre_color from color where id_color = :idColor");
             $stmt->bindValue(":idColor", $idColor, PDO::PARAM_INT);
             $stmt->execute();
             return $stmt->fetch(PDO::FETCH_OBJ);
@@ -20,7 +20,7 @@
 
         public function ConsultarPorIdRow($idColor){
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("SELECT * FROM color where nombre_color LIKE :patron");
+            $stmt = $conexion->prepare("select id_color, nombre_color from color where nombre_color like :patron");
             $stmt->bindValue(":patron", "%".$idColor."%", PDO::PARAM_STR);
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_OBJ);
@@ -37,8 +37,8 @@
             if($existeRegistro >= 1){
                 return "El color ya existe";
             }else{
-                $stmt = $conexion->prepare("INSERT INTO `color` (`NOMBRE_COLOR`) 
-                                VALUES (:nombreColor);");
+                $stmt = $conexion->prepare("insert into `color` (`nombre_color`) 
+                                values (:nombreColor);");
                 $stmt->bindValue(":nombreColor",$nombreColor, PDO::PARAM_STR);
                 if($stmt->execute()){
                 return "OK";
@@ -63,9 +63,9 @@
             $colorBD = $results['nombre_color'];
             
             if ($nombreColor == $colorBD) {
-                $stmt = $conexion->prepare("UPDATE `color` 
-                                SET `NOMBRE_COLOR` = :nombreColor
-                                WHERE `ID_COLOR` = :idColor;");
+                $stmt = $conexion->prepare("update `color` 
+                                set `nombre_color` = :nombreColor
+                                where `id_color` = :idColor;");
                 $stmt->bindValue(":nombreColor",$nombreColor,PDO::PARAM_STR); 
                 $stmt->bindValue(":idColor",$idColor,PDO::PARAM_INT); 
                 if($stmt->execute()){
@@ -77,9 +77,9 @@
                 if($existeRegistro >= 1){
                     return "El color ya existe";
                 }else{
-                    $stmt = $conexion->prepare("UPDATE `color` 
-                                    SET `NOMBRE_COLOR` = :nombreColor
-                                    WHERE `ID_COLOR` = :idColor;");
+                    $stmt = $conexion->prepare("update `color` 
+                                    set `nombre_color` = :nombreColor
+                                    where `id_color` = :idColor;");
                     $stmt->bindValue(":nombreColor",$nombreColor,PDO::PARAM_STR); 
                     $stmt->bindValue(":idColor",$idColor,PDO::PARAM_INT); 
                     if($stmt->execute()){
@@ -93,7 +93,7 @@
 
         public function Eliminar($idColor){
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("DELETE FROM color WHERE ID_COLOR = :idColor");
+            $stmt = $conexion->prepare("delete from color where id_color = :idColor");
             $stmt->bindValue(":idColor",$idColor, PDO::PARAM_INT);
             if($stmt->execute()){
                 return "OK";

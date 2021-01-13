@@ -33,11 +33,11 @@ function Consultar() {
         var html = "";
         $.each(response, function(index, data) {
             html += "<tr>";
-            html += "<td>" + data.NOMBRE_CATEGORIA + "</td>";
-            html += "<td>" + data.DESCRIPCION_CATEGORIA + "</td>";
+            html += "<td>" + data.nombre_categoria + "</td>";
+            html += "<td>" + data.descripcion_categoria + "</td>";
             html += "<td style='text-align: right;'>";
-            html += "<button class='btn btn-success mr-1' onclick='ConsultarPorId(" + data.ID_CATEGORIA + ");'><span class='fa fa-edit'></span></button>"
-            html += "<button class='btn btn-danger ml-1' onclick='Eliminar(" + data.ID_CATEGORIA + ");'><span class='fa fa-trash'></span></button>"
+            html += "<button class='btn btn-success mr-1' onclick='ConsultarPorId(" + data.id_categoria + ");'><span class='fa fa-edit'></span></button>"
+            html += "<button class='btn btn-danger ml-1' onclick='Eliminar(" + data.id_categoria + ");'><span class='fa fa-trash'></span></button>"
             html += "</td>";
             html += "</tr>";
         });
@@ -67,11 +67,11 @@ function EscucharConsulta(){
                 var html = "";
                 $.each(response, function(index, data) {
                     html += "<tr>";
-                    html += "<td>" + data.NOMBRE_CATEGORIA + "</td>";
-                    html += "<td>" + data.DESCRIPCION_CATEGORIA + "</td>";
+                    html += "<td>" + data.nombre_categoria + "</td>";
+                    html += "<td>" + data.descripcion_categoria + "</td>";
                     html += "<td style='text-align: right;'>";
-                    html += "<button class='btn btn-success mr-1' onclick='ConsultarPorId(" + data.ID_CATEGORIA + ");'><span class='fa fa-edit'></span></button>"
-                    html += "<button class='btn btn-danger ml-1' onclick='Eliminar(" + data.ID_CATEGORIA + ");'><span class='fa fa-trash'></span></button>"
+                    html += "<button class='btn btn-success mr-1' onclick='ConsultarPorId(" + data.id_categoria + ");'><span class='fa fa-edit'></span></button>"
+                    html += "<button class='btn btn-danger ml-1' onclick='Eliminar(" + data.id_categoria + ");'><span class='fa fa-trash'></span></button>"
                     html += "</td>";
                     html += "</tr>";
                 });
@@ -106,9 +106,9 @@ function ConsultarPorId(idCategoria) {
                     type: 'POST',
                     dataType: 'json'
                 }).done(function(response) {
-                    document.getElementById('nombre').value = response.NOMBRE_CATEGORIA;
-                    document.getElementById('descripcion').value = response.DESCRIPCION_CATEGORIA;
-                    document.getElementById('idCategoria').value = response.ID_CATEGORIA;
+                    document.getElementById('nombre').value = response.nombre_categoria;
+                    document.getElementById('descripcion').value = response.descripcion_categoria;
+                    document.getElementById('idCategoria').value = response.id_categoria;
                     BloquearBotones(false);
                 }).fail(function(response) {
                     console.log(response);

@@ -14,28 +14,28 @@
         
         public function listarFuncionario(){
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("SELECT NOMBRE_PERSONA FROM persona");
+            $stmt = $conexion->prepare("select nombre_persona from persona");
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_OBJ);
         }
 
         public function listarEstado(){
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("SELECT NOMBRE_ESTADO FROM ESTADO");
+            $stmt = $conexion->prepare("select nombre_estado from estado");
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_OBJ);
         }
 
         public function Restablecer(){
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("UPDATE activo SET comprobacion_inventario = 'NO'");
+            $stmt = $conexion->prepare("update activo set comprobacion_inventario = 'NO'");
             if($stmt->execute()){
                 return "OK";
             }else{
                 return "Error: se ha generado un error al restablecer la comprobación de inventario";
             }
-
         }
+        
         public function Guardar($codigo,$estado,$funcionario,$comentario){
             $conexion = new Conexion();
             $stmt = $conexion->prepare("select comprobacion_inventario from activo where codigo = :codigo;");
@@ -53,34 +53,33 @@
                 $results = $stmt->fetch(PDO::FETCH_ASSOC);
                 $idActivo = $results['id_activo'];
 
-                $stmt = $conexion->prepare("select ID_ESTADO from estado where NOMBRE_ESTADO = :estado");
+                $stmt = $conexion->prepare("select id_estado from estado where nombre_estado = :estado");
                 $stmt->bindValue(":estado", $estado, PDO::PARAM_STR);
                 $stmt->execute();
                 $results = $stmt->fetch(PDO::FETCH_ASSOC);
-                $idEstado = $results['ID_ESTADO'];
-        
+                $idEstado = $results['id_estado'];
 
-                $stmt = $conexion->prepare("select ID_PERSONA from persona where NOMBRE_PERSONA = :nombrePersona");
+                $stmt = $conexion->prepare("select id_persona from persona where nombre_persona = :nombrePersona");
                 $stmt->bindValue(":nombrePersona", $funcionario, PDO::PARAM_STR);
                 $stmt->execute();
                 $results = $stmt->fetch(PDO::FETCH_ASSOC);
-                $idPersona = $results['ID_PERSONA'];
+                $idPersona = $results['id_persona'];
                 
                 $comprobacionInventario = "SI";
 
                 // Actualizamos la persona a cargo del activo
-                $stmtone = $conexion->prepare("UPDATE `entrega_recepcion` 
-                                            SET `PERSONA_ID` = :idPersona
-                                            WHERE `ACTIVO_ID` = :idActivo;");
+                $stmtone = $conexion->prepare("update `entrega_recepcion` 
+                                            set `persona_id` = :idPersona
+                                            where `activo_id` = :idActivo;");
                 $stmtone->bindValue(":idPersona",$idPersona,PDO::PARAM_INT); 
                 $stmtone->bindValue(":idActivo",$idActivo,PDO::PARAM_INT); 
                 $stmtone->execute();
                 // Actualizamos los datos de la comprobacion del inventario 
-                $stmttwo = $conexion->prepare("UPDATE `activo`
-                                            SET `ESTADO_ID` = :idEstado,
-                                            `COMENTARIO` = :comentario,
-                                            `COMPROBACION_INVENTARIO` = :comprobacionInventario
-                                            WHERE `ID_ACTIVO` = :idActivo;");
+                $stmttwo = $conexion->prepare("update `activo`
+                                            set `estado_id` = :idEstado,
+                                            `comentario` = :comentario,
+                                            `comprobacion_inventario` = :comprobacionInventario
+                                            where `id_activo` = :idActivo;");
                 $stmttwo->bindValue(":idEstado",$idEstado,PDO::PARAM_INT); 
                 $stmttwo->bindValue(":comentario",$comentario,PDO::PARAM_STR); 
                 $stmttwo->bindValue(":comprobacionInventario",$comprobacionInventario,PDO::PARAM_STR); 

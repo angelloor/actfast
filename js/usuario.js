@@ -119,7 +119,7 @@ function listarFuncionarios() {
 		.done(function (response) {
 			var html = '';
 			$.each(response, function (index, data) {
-				html += '<option>' + data.NOMBRE_PERSONA + '</option>';
+				html += '<option>' + data.nombre_persona + '</option>';
 			});
 			document.getElementById('idPersona').innerHTML = html;
 		})
@@ -138,7 +138,7 @@ function listarRoles() {
 		.done(function (response) {
 			var html = '';
 			$.each(response, function (index, data) {
-				html += '<option>' + data.NOMBRE_ROL_USUARIO + '</option>';
+				html += '<option>' + data.nombre_rol_usuario + '</option>';
 			});
 			document.getElementById('rol').innerHTML = html;
 		})
@@ -238,27 +238,6 @@ function Modificar() {
 }
 
 function Eliminar(idUsuario) {
-	var registros = 0;
-    $.ajax({
-        url: url,
-        data: { "idUsuario": idUsuario, "accion": "CONSULTARREGISTROS" },
-        type: 'POST',
-        dataType: 'json'
-    }).done(function(response) {
-        registros = response.registros;
-        console.log(registros)
-    }).fail(function(response) {
-        console.log(response);
-    });
-
-
-
-
-
-
-
-
-
 	const swalWithBootstrapButtons = Swal.mixin({
 		customClass: {
 			cancelButton: 'btn btn-primary mr-2 ml-2',

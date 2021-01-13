@@ -5,14 +5,14 @@
 
         public function ConsultarTodo(){
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("select * from marca");
+            $stmt = $conexion->prepare("select id_marca, nombre_marca from marca");
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_OBJ);
         }
 
         public function ConsultarPorId($idMarca){
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("SELECT * FROM marca where ID_MARCA = :idMarca");
+            $stmt = $conexion->prepare("select id_marca, nombre_marca from marca where id_marca = :idMarca");
             $stmt->bindValue(":idMarca", $idMarca, PDO::PARAM_INT);
             $stmt->execute();
             return $stmt->fetch(PDO::FETCH_OBJ);
@@ -20,7 +20,7 @@
 
         public function ConsultarPorIdRow($idMarca){
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("SELECT * FROM marca where nombre_marca LIKE :patron");
+            $stmt = $conexion->prepare("select id_marca, nombre_marca from marca where nombre_marca like :patron");
             $stmt->bindValue(":patron", "%".$idMarca."%", PDO::PARAM_STR);
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_OBJ);
@@ -37,8 +37,8 @@
             if($existeRegistro >= 1){
                 return "La marca ya existe";
             }else{
-                $stmt = $conexion->prepare("INSERT INTO `marca` (`NOMBRE_MARCA`) 
-                                            VALUES (:nombreMarca);");
+                $stmt = $conexion->prepare("insert into `marca` (`nombre_marca`) 
+                                            values (:nombreMarca);");
                 $stmt->bindValue(":nombreMarca",$nombreMarca, PDO::PARAM_STR);
                 if($stmt->execute()){
                     return "OK";
@@ -63,9 +63,9 @@
             $marcaBD = $results['nombre_marca'];
 
             if ($nombreMarca == $marcaBD) {
-                $stmt = $conexion->prepare("UPDATE `marca` 
-                                            SET `NOMBRE_MARCA` = :nombreMarca
-                                            WHERE `ID_MARCA` = :idMarca;");
+                $stmt = $conexion->prepare("update `marca` 
+                                            set `nombre_marca` = :nombreMarca
+                                            where `id_marca` = :idMarca;");
                 $stmt->bindValue(":nombreMarca",$nombreMarca,PDO::PARAM_STR); 
                 $stmt->bindValue(":idMarca",$idMarca,PDO::PARAM_INT); 
                 if($stmt->execute()){
@@ -77,9 +77,9 @@
                 if($existeRegistro >= 1){
                     return "La marca ya existe";
                 }else{
-                    $stmt = $conexion->prepare("UPDATE `marca` 
-                                                SET `NOMBRE_MARCA` = :nombreMarca
-                                                WHERE `ID_MARCA` = :idMarca;");
+                    $stmt = $conexion->prepare("update `marca` 
+                                                set `nombre_marca` = :nombreMarca
+                                                where `id_marca` = :idMarca;");
                     $stmt->bindValue(":nombreMarca",$nombreMarca,PDO::PARAM_STR); 
                     $stmt->bindValue(":idMarca",$idMarca,PDO::PARAM_INT); 
                     if($stmt->execute()){
@@ -93,7 +93,7 @@
 
         public function Eliminar($idMarca){
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("DELETE FROM marca WHERE ID_Marca = :idMarca");
+            $stmt = $conexion->prepare("delete from marca where id_marca = :idMarca");
             $stmt->bindValue(":idMarca",$idMarca, PDO::PARAM_INT);
             if($stmt->execute()){
                 return "OK";

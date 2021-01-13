@@ -5,14 +5,14 @@
         
         public function ConsultarTodo(){
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("select * from unidad order by nombre_unidad asc");
+            $stmt = $conexion->prepare("select id_unidad, nombre_unidad from unidad order by nombre_unidad asc");
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_OBJ);
         }
 
         public function ConsultarPorId($idUnidad){
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("SELECT * FROM unidad where ID_UNIDAD = :idUnidad");
+            $stmt = $conexion->prepare("select id_unidad, nombre_unidad from unidad where id_unidad = :idUnidad");
             $stmt->bindValue(":idUnidad", $idUnidad, PDO::PARAM_INT);
             $stmt->execute();
             return $stmt->fetch(PDO::FETCH_OBJ);
@@ -20,7 +20,7 @@
 
         public function ConsultarPorIdRow($idUnidad){
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("select * from unidad where nombre_unidad like :patron order by nombre_unidad asc");
+            $stmt = $conexion->prepare("select id_unidad, nombre_unidad from unidad where nombre_unidad like :patron order by nombre_unidad asc");
             $stmt->bindValue(":patron", "%".$idUnidad."%", PDO::PARAM_STR);
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_OBJ);
@@ -38,8 +38,8 @@
             if($existeRegistro >= 1){
                 return "La unidad ya existe ";
             }else{
-                $stmt = $conexion->prepare("INSERT INTO `unidad` (`NOMBRE_UNIDAD`) 
-                                            VALUES (:nombreUnidad);");
+                $stmt = $conexion->prepare("insert into `unidad` (`nombre_unidad`) 
+                                            values (:nombreUnidad);");
                 $stmt->bindValue(":nombreUnidad",$nombreUnidad, PDO::PARAM_STR);
                 if($stmt->execute()){
                     return "OK";
@@ -64,9 +64,9 @@
             $unidadBD = $results['nombre_unidad'];
 
             if ($nombreUnidad == $unidadBD) {
-                $stmt = $conexion->prepare("UPDATE `unidad` 
-                                SET `NOMBRE_UNIDAD` = :nombreUnidad
-                                WHERE `ID_UNIDAD` = :idUnidad;");
+                $stmt = $conexion->prepare("update `unidad` 
+                                set `nombre_unidad` = :nombreUnidad
+                                where `id_unidad` = :idUnidad;");
                 $stmt->bindValue(":nombreUnidad",$nombreUnidad,PDO::PARAM_STR); 
                 $stmt->bindValue(":idUnidad",$idUnidad,PDO::PARAM_INT); 
                 if($stmt->execute()){
@@ -78,9 +78,9 @@
                 if($existeRegistro >= 1){
                     return "La unidad ya existe ";
                 }else{
-                    $stmt = $conexion->prepare("UPDATE `unidad` 
-                                    SET `NOMBRE_UNIDAD` = :nombreUnidad
-                                    WHERE `ID_UNIDAD` = :idUnidad;");
+                    $stmt = $conexion->prepare("update `unidad` 
+                                    set `nombre_unidad` = :nombreUnidad
+                                    where `id_unidad` = :idUnidad;");
                     $stmt->bindValue(":nombreUnidad",$nombreUnidad,PDO::PARAM_STR); 
                     $stmt->bindValue(":idUnidad",$idUnidad,PDO::PARAM_INT); 
                     if($stmt->execute()){
@@ -94,7 +94,7 @@
 
         public function Eliminar($idUnidad){
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("DELETE FROM unidad WHERE ID_UNIDAD = :idUnidad");
+            $stmt = $conexion->prepare("delete from unidad where id_unidad = :idUnidad");
             $stmt->bindValue(":idUnidad",$idUnidad, PDO::PARAM_INT);
             if($stmt->execute()){
                 return "OK";

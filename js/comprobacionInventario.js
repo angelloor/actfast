@@ -27,7 +27,7 @@ function listarFuncionario() {
         .done(function (response) {
             var html = '';
             $.each(response, function (index, data) {
-                html += '<option>' + data.NOMBRE_PERSONA + '</option>';
+                html += '<option>' + data.nombre_persona + '</option>';
             });
             document.getElementById('funcionario').innerHTML = html;
         })
@@ -46,7 +46,7 @@ function listarEstado() {
         .done(function (response) {
             var html = '';
             $.each(response, function (index, data) {
-                html += '<option>' + data.NOMBRE_ESTADO + '</option>';
+                html += '<option>' + data.nombre_estado + '</option>';
             });
             document.getElementById('estado').innerHTML = html;
         })
@@ -64,15 +64,20 @@ function EscucharConsulta() {
                 url: url,
                 type: 'POST',
                 dataType: 'json',
-            })
-                .done(function (response) {
+            }).done(function (response) {
+                console.log(response);
+                if (response == false) {
+                    MostrarAlerta("","No se puede hacer la comprobacion de un activo que no se encuentra asignado aun","info");
+                    return;
+                }else{ 
                     document.getElementById('estado').value = response.nombre_estado;
                     document.getElementById('funcionario').value = response.funcionario;
                     document.getElementById('comentario').value = response.comentario;
-                })
-                .fail(function (response) {
-                    console.log(response);
-                });
+                }
+                
+            }).fail(function (response) {
+                console.log(response);
+            });
         }
     });
 }

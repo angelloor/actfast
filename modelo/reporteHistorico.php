@@ -106,7 +106,7 @@
         $pdf->SetLineHeight(5);
         $pdf->SetFont('Times','',8);
         
-        $stmt = $conexion->prepare("select a.id_activo, a.codigo, a.nombre_activo, m.nombre_marca, a.serie, a.modelo, a.fecha_historico from activo a inner join marca m on a.marca_id = m.id_marca where (a.historico = 0) and (a.fecha_historico BETWEEN :fechaInicio AND :fechaFinal);");
+        $stmt = $conexion->prepare("select a.id_activo, a.codigo, a.nombre_activo, m.nombre_marca, a.serie, a.modelo, a.fecha_historico from activo a inner join marca m on a.marca_id = m.id_marca where (a.historico = 0) and (a.fecha_historico between :fechaInicio and :fechaFinal);");
         $stmt->bindValue(":fechaInicio",$fechaInicio, PDO::PARAM_STR);
         $stmt->bindValue(":fechaFinal",$fechaFinal, PDO::PARAM_STR);
         $stmt->execute();
@@ -129,7 +129,7 @@
         header('Content-type:application/xls');
         header('Content-Disposition: attachment; filename=reporteHistorico.xls');
 
-        $stmt = $conexion->prepare("select a.id_activo, a.codigo, a.nombre_activo, m.nombre_marca, a.serie, a.modelo, a.fecha_historico from activo a inner join marca m on a.marca_id = m.id_marca where (a.historico = 0) and (a.fecha_historico BETWEEN :fechaInicio AND :fechaFinal);");
+        $stmt = $conexion->prepare("select a.id_activo, a.codigo, a.nombre_activo, m.nombre_marca, a.serie, a.modelo, a.fecha_historico from activo a inner join marca m on a.marca_id = m.id_marca where (a.historico = 0) and (a.fecha_historico between :fechaInicio and :fechaFinal);");
         $stmt->bindValue(":fechaInicio",$fechaInicio, PDO::PARAM_STR);
         $stmt->bindValue(":fechaFinal",$fechaFinal, PDO::PARAM_STR);
         $stmt->execute();

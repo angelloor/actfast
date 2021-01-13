@@ -8,15 +8,15 @@
 
             $conexion =  new Conexion();
 
-            $stmt = $conexion->prepare("SELECT COUNT(*) FROM usuario WHERE NOMBRE_USUARIO = :usuario");
+            $stmt = $conexion->prepare("select count(*) from usuario where nombre_usuario = :usuario");
             $stmt->bindValue(":usuario",$usuario,PDO::PARAM_STR);
             $stmt->execute();
             $usuarioExiste = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            if($usuarioExiste['COUNT(*)'] == 0 ){
+            if($usuarioExiste['count(*)'] == 0 ){
                 return "El usuario no existe";
             }else{
-                $stmt = $conexion->prepare("SELECT u.id_usuario, p.nombre_persona, u.nombre_usuario, u.clave, ru.nombre_rol_usuario FROM usuario u INNER JOIN persona p ON u.persona_id = p.id_persona INNER JOIN rol_usuario ru ON u.rol_usuario_id = ru.id_rol_usuario WHERE nombre_usuario = :usuario");
+                $stmt = $conexion->prepare("select u.id_usuario, p.nombre_persona, u.nombre_usuario, u.clave, ru.nombre_rol_usuario from usuario u inner join persona p on u.persona_id = p.id_persona inner join rol_usuario ru on u.rol_usuario_id = ru.id_rol_usuario where nombre_usuario = :usuario");
                 $stmt->bindValue(":usuario",$usuario,PDO::PARAM_STR); 
                 $stmt->execute();
                 $datos = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -25,7 +25,7 @@
                     $_SESSION['rolUsuario'] = $datos['nombre_rol_usuario'];
                     return "OK";
                 }else{
-                    return "Usuario o contraseña incorrectos".$datos['clave']." - ".$clave;
+                    return "Usuario o contraseña incorrectos";
                     return "Contraseña incorrecta";
                 }
             }

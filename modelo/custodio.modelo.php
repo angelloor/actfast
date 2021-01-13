@@ -5,14 +5,14 @@
 
         public function ConsultarTodo(){
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("select c.id_custodio, p.nombre_persona from custodio c inner join persona p on c.persona_id = p.id_persona order by id_custodio asc;");
+            $stmt = $conexion->prepare("select c.id_custodio, p.nombre_persona from custodio c inner join persona p on c.persona_id = p.id_persona order by c.id_custodio asc;");
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_OBJ);
         }
 
         public function ConsultarPorId($idCustodio){
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("select c.id_custodio, p.nombre_persona from custodio c inner join persona p on c.persona_id = p.id_persona where ID_CUSTODIO = :idCustodio");
+            $stmt = $conexion->prepare("select c.id_custodio, p.nombre_persona from custodio c inner join persona p on c.persona_id = p.id_persona where c.id_custodio = :idCustodio");
             $stmt->bindValue(":idCustodio", $idCustodio, PDO::PARAM_INT);
             $stmt->execute();
             return $stmt->fetch(PDO::FETCH_OBJ);
@@ -20,7 +20,7 @@
 
         public function ConsultarPorIdRow($idCustodio){
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("select c.id_custodio, p.nombre_persona from custodio c inner join persona p on c.persona_id = p.id_persona where p.nombre_persona LIKE :patron");
+            $stmt = $conexion->prepare("select c.id_custodio, p.nombre_persona from custodio c inner join persona p on c.persona_id = p.id_persona where p.nombre_persona like :patron");
             $stmt->bindValue(":patron", "%".$idCustodio."%", PDO::PARAM_STR);
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_OBJ);
@@ -28,7 +28,7 @@
 
         public function listarFuncionarios(){
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("SELECT NOMBRE_PERSONA FROM persona");
+            $stmt = $conexion->prepare("select nombre_persona from persona");
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_OBJ);
         }
@@ -45,14 +45,14 @@
             if($existeRegistro >= 1){
                 return "El custodio ya existe";
             }else{
-                $stmt = $conexion->prepare("select ID_PERSONA FROM persona where NOMBRE_PERSONA = :personaId");
+                $stmt = $conexion->prepare("select id_persona from persona where nombre_persona = :personaId");
                 $stmt->bindValue(":personaId", $personaId, PDO::PARAM_STR);
                 $stmt->execute();
                 $results = $stmt->fetch(PDO::FETCH_ASSOC);
-                $idp = $results['ID_PERSONA'];
+                $idp = $results['id_persona'];
 
-                $stmt = $conexion->prepare("INSERT INTO `custodio` (`PERSONA_ID`) 
-                                            VALUES (:nombreCustodio);");
+                $stmt = $conexion->prepare("insert into `custodio` (`persona_id`) 
+                                            values (:nombreCustodio);");
                 $stmt->bindValue(":nombreCustodio",$idp, PDO::PARAM_INT);
                 if($stmt->execute()){
                     return "OK";
@@ -78,15 +78,15 @@
             $custodioBD = $results['nombre_persona'];
 
             if ($nombreCustodio == $custodioBD) {
-                $stmt = $conexion->prepare("select ID_PERSONA FROM persona where NOMBRE_PERSONA = :nombreCustodio");
+                $stmt = $conexion->prepare("select id_persona from persona where nombre_persona = :nombreCustodio");
                 $stmt->bindValue(":nombreCustodio", $nombreCustodio, PDO::PARAM_STR);
                 $stmt->execute();
                 $results = $stmt->fetch(PDO::FETCH_ASSOC);
-                $idp = $results['ID_PERSONA'];
+                $idp = $results['id_persona'];
 
-                $stmt = $conexion->prepare("UPDATE `custodio` 
-                                            SET `PERSONA_ID` = :idPersona
-                                            WHERE `ID_CUSTODIO` = :idCustodio;");
+                $stmt = $conexion->prepare("update `custodio` 
+                                            set `persona_id` = :idPersona
+                                            where `id_custodio` = :idCustodio;");
                 $stmt->bindValue(":idPersona",$idp,PDO::PARAM_INT); 
                 $stmt->bindValue(":idCustodio",$idCustodio,PDO::PARAM_INT); 
                 if($stmt->execute()){
@@ -98,15 +98,15 @@
                 if($existeRegistro >= 1){
                     return "El custodio ya existe";
                 }else{
-                    $stmt = $conexion->prepare("select ID_PERSONA FROM persona where NOMBRE_PERSONA = :nombreCustodio");
+                    $stmt = $conexion->prepare("select id_persona from persona where nombre_persona = :nombreCustodio");
                     $stmt->bindValue(":nombreCustodio", $nombreCustodio, PDO::PARAM_STR);
                     $stmt->execute();
                     $results = $stmt->fetch(PDO::FETCH_ASSOC);
-                    $idp = $results['ID_PERSONA'];
+                    $idp = $results['id_persona'];
     
-                    $stmt = $conexion->prepare("UPDATE `custodio` 
-                                                SET `PERSONA_ID` = :idPersona
-                                                WHERE `ID_CUSTODIO` = :idCustodio;");
+                    $stmt = $conexion->prepare("update `custodio` 
+                                                set `persona_id` = :idPersona
+                                                where `id_custodio` = :idCustodio;");
                     $stmt->bindValue(":idPersona",$idp,PDO::PARAM_INT); 
                     $stmt->bindValue(":idCustodio",$idCustodio,PDO::PARAM_INT); 
                     if($stmt->execute()){
@@ -120,7 +120,7 @@
 
         public function Eliminar($idCustodio){
             $conexion = new Conexion();
-            $stmt = $conexion->prepare("DELETE FROM custodio WHERE ID_CUSTODIO = :idCustodio");
+            $stmt = $conexion->prepare("delete from custodio where id_custodio = :idCustodio");
             $stmt->bindValue(":idCustodio",$idCustodio, PDO::PARAM_INT);
             if($stmt->execute()){
                 return "OK";

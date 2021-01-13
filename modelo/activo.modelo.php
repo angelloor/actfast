@@ -35,7 +35,7 @@
             if($campoBuscar == "Marca"){
                 //obtener el id de la marca
                 $stmt = $conexion->prepare("select id_marca from marca where nombre_marca = :nombremarca");
-                $stmt->bindvalue(":nombremarca", $idbuscar, pdo::param_str);
+                $stmt->bindvalue(":nombremarca", $idBuscar, pdo::PARAM_STR);
                 $stmt->execute();
                 $results = $stmt->fetch(PDO::FETCH_ASSOC);
                 $idMarca = $results['id_marca'];
@@ -62,7 +62,7 @@
         public function Guardar($categoria,$marca ,$estado,$color,$caracteristica,$bodega,$custodio,$codigo,$nombre,$modelo,$serie,$origenIngreso,$fechaIngreso,$valorCompra,$comentario,$comprobacionInventario){
             $conexion = new Conexion();
             
-            $stmt = $conexion->prepare("select count(*) from activo where codigo = :codigo;");
+            $stmt = $conexion->prepare("select count(*) from activo where (codigo = :codigo) and (historico = 0);");
             $stmt->bindValue(":codigo", $codigo, PDO::PARAM_INT);
             $stmt->execute();
             $results = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -136,7 +136,7 @@
         public function Modificar($idActivo,$categoria,$marca ,$estado,$color,$caracteristica,$bodega,$custodio,$codigo,$nombre,$modelo,$serie,$origenIngreso,$fechaIngreso,$valorCompra,$comentario,$comprobacionInventario){
             $conexion = new Conexion();
 
-            $stmt = $conexion->prepare("select count(*) from activo where codigo = :codigo;");
+            $stmt = $conexion->prepare("select count(*) from activo where (codigo = :codigo) and (historico = 0);");
             $stmt->bindValue(":codigo", $codigo, PDO::PARAM_INT);
             $stmt->execute();
             $results = $stmt->fetch(PDO::FETCH_ASSOC);
