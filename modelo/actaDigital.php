@@ -2,7 +2,8 @@
     require('../fpdf/wrapper.php');
     require 'conexion.php';
 
-    $totalSistemas = $_GET['totalSistemas'];
+    $totalSistemas = $_GET['totalSistemas'];    
+    $idSistemas = explode(',', $_GET['idSistemas']);
     $periodo = $_GET['periodo'];
     $nombreFuncionario = $_GET['funcionario'];
 
@@ -125,11 +126,13 @@
     $pdf->SetLineHeight(5);
     $pdf->SetFont('Times','',8);
 
-    for ($i=1; $i <=$totalSistemas ; $i++) {
-        $sistema = $_GET['sistema'.$i];
-        $url = $_GET['url'.$i];
-        $usuario = $_GET['usuario'.$i];
-        $clave = $_GET['clave'.$i];
+
+    for ($i = 0; $i < $totalSistemas ; $i++) {
+        $id = $idSistemas[$i];
+        $sistema = $_GET['sistema'.$id];
+        $url = $_GET['url'.$id];
+        $usuario = $_GET['usuario'.$id];
+        $clave = $_GET['clave'.$id];
         $pdf->Row(25, 0,Array(
             utf8_decode($sistema),
             utf8_decode($url),
@@ -137,6 +140,7 @@
             utf8_decode($clave),
         ), 'C');
     }
+
     $pdf->Ln();
     $pdf->parrafo("a $nombreFuncionario con numero de cedula $cedula, cuyo cargo es $nombreCargo para el proceso Electoral $periodo, El funcionario receptor de las credenciales está obligado al complimiento de:");
     $pdf->Ln();

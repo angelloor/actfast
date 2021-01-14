@@ -3,7 +3,7 @@ var url = "../controlador/actaDigital.controlador.php";
 var vacio = 0;
 var checkInput = 0;
 var urlGet = "";
-
+var idSistemas = "";
 $(document).ready(function() {
     cargarSistemas();
     listarFuncionario();
@@ -19,6 +19,7 @@ function soloNumeros(e){
   }
 
 function Generar(){
+    idSistemas = "";
     vacio = 0;
     checkInput = 0;
     urlGet = "";
@@ -39,6 +40,7 @@ function Generar(){
                     vacio = vacio + 1;
                 }
                 urlGet = urlGet + "sistema"+(index+1)+"="+data.nombre_sistema+"&url"+(index+1)+"="+data.direccion_sistema+"&usuario"+(index+1)+"="+usuario+"&clave"+(index+1)+"="+clave+"&";
+                idSistemas = idSistemas + (index+1)+",";
             }
         });
         if (checkInput == 0) {
@@ -53,7 +55,7 @@ function Generar(){
                     MostrarAlerta("","Ingrese el año del proceso","info");
                     return;
                 }
-                urlGet = urlGet+"totalSistemas="+checkInput+"&funcionario="+nombrePersona+"&periodo="+periodo;
+                urlGet = urlGet+"totalSistemas="+checkInput+"&funcionario="+nombrePersona+"&periodo="+periodo+"&idSistemas="+idSistemas;
                 window.open('../modelo/actaDigital.php?'+urlGet, '_blank');
             }
         }
