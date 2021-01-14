@@ -20,7 +20,7 @@
 
         public function ConsultarPorIdRow($idBuscar,$campoBuscar){
             $conexion = new Conexion();
-            if($campoBuscar == "Codigo"){
+            if($campoBuscar == "Código"){
                 $stmt = $conexion->prepare("select a.id_activo, a.codigo, a.nombre_activo, c.nombre_categoria, a.caracteristica, m.nombre_marca, a.modelo, a.serie, e.nombre_estado, a.comprobacion_inventario from activo a inner join categoria c on a.categoria_id = c.id_categoria inner join marca m on a.marca_id = m.id_marca inner join estado e on a.estado_id = e.id_estado where (a.codigo like :patron) and (a.historico = 1) order by a.codigo asc");
                 $stmt->bindValue(":patron", "%".$idBuscar."%", PDO::PARAM_STR);
                 $stmt->execute();

@@ -13,7 +13,13 @@ $(document).ready(function() {
     cargarFechaActual();
     document.getElementById('codigo').addEventListener('keypress', soloNumeros, false);
     document.getElementById('valorCompra').addEventListener('keypress', soloNumerosPunto, false);
+    document.getElementById('campoBuscar').addEventListener('change', limpiarIdBuscar, false);
 })
+
+function limpiarIdBuscar(){
+    document.getElementById('idActivo').value = "";
+    document.getElementById('idActivo').focus();
+}
 
 function mostrarAlertaDatos(){
     var alerta = document.getElementById('alerta');
