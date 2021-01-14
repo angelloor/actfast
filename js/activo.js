@@ -283,7 +283,7 @@ function ConsultarPorId(idActivo) {
             } else if (
               result.dismiss === Swal.DismissReason.cancel
             ) {
-                swalWithBootstrapButtons.fire('','Operación Cancelada','info')
+                swalWithBootstrapButtons.fire('','Operación cancelada','info')
             }
           })   
     }
@@ -338,7 +338,6 @@ function Eliminar(idActivo) {
     }else{
         diaFinal = f.getDate();
     }
-
     var registros = 0;
     let mensaje = "";
     $.ajax({
@@ -349,9 +348,7 @@ function Eliminar(idActivo) {
     }).done(function(response) {
         registros = response.registros;
         if (registros == 1) {
-            mensaje = 'El activo se encuentra asignado a un funcionario    Nota: la asignacion se eliminara si usted continua con esta acción';
-        }else{
-            mensaje = 'Activo no asignado a un funcionario';
+            mensaje = 'El activo se encuentra asignado a un funcionario    Nota: la asignación se eliminará si usted continua con esta acción';
         }
         var fechaEliminar = f.getFullYear() + "-" + mesFinal + "-" + diaFinal;
         const swalWithBootstrapButtons = Swal.mixin({
@@ -389,18 +386,13 @@ function Eliminar(idActivo) {
             } else if (
             result.dismiss === Swal.DismissReason.cancel
             ) {
-                swalWithBootstrapButtons.fire('','Operación Cancelada','info')
+                swalWithBootstrapButtons.fire('','Operación cancelada','info')
             }
         })
         Limpiar();
     }).fail(function(response) {
         console.log(response);
     });
-
-
-
-
-    
 }
 
 function Validar() {

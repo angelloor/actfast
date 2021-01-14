@@ -13,7 +13,7 @@
             case "GUARDAR":
                 $nombreCargo = $_POST['nombreCargo'];
                 if($nombreCargo == ""){
-                    echo json_encode("Ingrese el nombre del Cargo");
+                    echo json_encode("Ingrese el nombre del cargo");
                     return;
                 }
                 $respuesta = $cargo->Guardar($nombreCargo);
@@ -24,7 +24,7 @@
                 $idCargo = $_POST['idCargo'];
 
                 if($nombreCargo == ""){
-                    echo json_encode("Ingrese el nombre del Cargo");
+                    echo json_encode("Ingrese el nombre del cargo");
                     return;
                 }
                 $respuesta = $cargo->Modificar($idCargo,$nombreCargo);

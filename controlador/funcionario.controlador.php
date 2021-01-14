@@ -18,19 +18,19 @@
                 $cargoFuncionario = $_POST['cargoFuncionario'];
                 $unidadFuncionario = $_POST['unidadFuncionario'];
                 if($cedulaFuncionario == ""){
-                    echo json_encode("Ingrese el numero de cedula");
+                    echo json_encode("Ingrese el número de cédula");
                     return;
                 }
                 if($nombreFuncionario == ""){
-                    echo json_encode("Ingrese el nombre asdasd".$cedulaFuncionario.$direccionFuncionario);
+                    echo json_encode("Ingrese el nombre completo del funcionario");
                     return;
                 }
                 if($direccionFuncionario == ""){
-                    echo json_encode("Ingrese la direccion");
+                    echo json_encode("Ingrese la dirección");
                     return;
                 }
                 if($telefonoFuncionario == ""){
-                    echo json_encode("Ingrese el numero de telefono");
+                    echo json_encode("Ingrese el número de teléfono");
                     return;
                 }
                 if($cargoFuncionario == ""){
@@ -53,19 +53,19 @@
                 $unidadFuncionario = $_POST['unidadFuncionario'];
                 $idFuncionario = $_POST['idFuncionario'];
                 if($cedulaFuncionario == ""){
-                    echo json_encode("Ingrese el numero de cedula");
+                    echo json_encode("Ingrese el número de cédula");
                     return;
                 }
                 if($nombreFuncionario == ""){
-                    echo json_encode("Ingrese el nombre asdasd".$cedulaFuncionario.$direccionFuncionario);
+                    echo json_encode("Ingrese el nombre completo del funcionario");
                     return;
                 }
                 if($direccionFuncionario == ""){
-                    echo json_encode("Ingrese la direccion");
+                    echo json_encode("Ingrese la dirección");
                     return;
                 }
                 if($telefonoFuncionario == ""){
-                    echo json_encode("Ingrese el numero de telefono");
+                    echo json_encode("Ingrese el número de teléfono");
                     return;
                 }
                 if($cargoFuncionario == ""){

@@ -90,7 +90,7 @@ function ConsultarPorId(idCargo) {
             buttonsStyling: false
           })
           swalWithBootstrapButtons.fire({
-            text: '¿Estas seguro de modificar el Cargo?',
+            text: '¿Estas seguro de modificar el cargo?',
             icon: 'warning',
             showCancelButton: true,
             confirmButtonText: 'Si',
@@ -113,7 +113,7 @@ function ConsultarPorId(idCargo) {
             } else if (
               result.dismiss === Swal.DismissReason.cancel
             ) {
-                swalWithBootstrapButtons.fire('','Operación Cancelada','info')
+                swalWithBootstrapButtons.fire('','Operación cancelada','info')
             }
           })   
     }
@@ -200,7 +200,7 @@ function Eliminar(idCargo) {
             } else if (
               result.dismiss === Swal.DismissReason.cancel
             ) {
-                swalWithBootstrapButtons.fire('','Operación Cancelada','info')
+                swalWithBootstrapButtons.fire('','Operación cancelada','info')
             }
           })
           Limpiar();

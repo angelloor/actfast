@@ -47,7 +47,7 @@
         <nav aria-label="breadcrumb bg-light">
       <ol class="breadcrumb bg-transparent">
         <li class="breadcrumb-item"><a href="index.php">Inicio</a></li>
-        <li class="breadcrumb-item active">Gestión de Activos</li>
+        <li class="breadcrumb-item active">Gestión de activos</li>
         <li class="breadcrumb-item active" aria-current="page">Bodegas</li>
       </ol>
     </nav>
@@ -59,7 +59,7 @@
 <div class="container-fluid text-left">
         <div class="card margin-b-30">
             <div class="card-header bg-primary text-color-white">
-                  <h5>Gestionar Bodegas</h5>
+                  <h5>Gestionar bodegas</h5>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -71,21 +71,21 @@
                         </div>
                     </div>
                     <div class="col-12 col-sm-12 col-md-4 col-xl-4 input-group mt-2">
-                      <button class="btn btn-success mr-2" type="submit" onclick="mostrarTodo();"><span class="fa fa-search"></span>&nbsp&nbspMostrar Todo</button>
-                      <input class="form-control" id="idBodega"  type="search" placeholder="Buscar por Nombre" aria-label="Buscar" autofocus>
+                      <button class="btn btn-success mr-2" type="submit" onclick="mostrarTodo();"><span class="fa fa-search"></span>&nbsp&nbspMostrar todo</button>
+                      <input class="form-control" id="idBodega"  type="search" placeholder="Buscar por nombre" aria-label="Buscar" autofocus>
                     </div>
                 </div>
                 <div class="row mt-2">
                     <div class="col-md-4 mt-2">
                         <label for="nombres">Nombre</label>
-                        <input type="text" name="nombre" id="nombre" placeholder="Ingrese su nombre" class="form-control text-mayus">
+                        <input type="text" name="nombre" id="nombre" placeholder="Ingrese el nombre de la bodega" class="form-control text-mayus">
                     </div>
                     <div class="col-md-4 mt-2">
                         <label for="apellidos">Ubicación</label>
                         <input type="text" name="ubicacion" id="ubicacion" placeholder="Ingrese la ubicación" class="form-control text-mayus">
                     </div>
                     <div class="col-md-4 mt-2">
-                        <label for="responsable_bodega">Responsable de la bodega</label>
+                        <label for="responsable_bodega">Responsable de bodega</label>
                         <select name="idNombrePersona" class="form-control br" id="idNombrePersona">
                        </select>
                     </div>
@@ -97,7 +97,7 @@
                         <tr>
                             <th>Nombre</th>
                             <th>Ubicación</th>
-                            <th>Responsable Bodega</th>
+                            <th>Responsable de bodega</th>
                             <th class="th-text-align-right">Acciones</th>
                         </tr>
                     </thead>

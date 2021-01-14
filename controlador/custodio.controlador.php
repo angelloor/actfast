@@ -13,7 +13,7 @@
             case "GUARDAR":
                 $nombreCustodio = $_POST['nombreCustodio'];
                 if($nombreCustodio == ""){
-                    echo json_encode("Ingrese el nombre del Custodio");
+                    echo json_encode("Ingrese el nombre del custodio");
                     return;
                 }
                 $respuesta = $custodio->Guardar($nombreCustodio);
@@ -23,7 +23,7 @@
                 $nombreCustodio = $_POST['nombreCustodio'];
                 $idCustodio = $_POST['idCustodio'];
                 if($nombreCustodio == ""){
-                    echo json_encode("Ingrese el nombre del Custodio");
+                    echo json_encode("Ingrese el nombre del custodio");
                     return;
                 }
                 $respuesta = $custodio->Modificar($idCustodio,$nombreCustodio);

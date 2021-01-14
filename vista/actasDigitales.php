@@ -45,7 +45,7 @@
       <ol class="breadcrumb bg-transparent">
         <li class="breadcrumb-item"><a href="index.php">Inicio</a></li>
         <li class="breadcrumb-item active">Funciones</li>
-        <li class="breadcrumb-item active" aria-current="page">Actas Digitales</li>
+        <li class="breadcrumb-item active" aria-current="page">Actas digitales</li>
       </ol>
     </nav>
     </div>
@@ -56,7 +56,7 @@
 <div class="container-fluid">
         <div class="card margin-b-30">
             <div class="card-header bg-primary text-color-white">
-                  <h5>Actas Digitales</h5>
+                  <h5>Actas digitales</h5>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -73,7 +73,7 @@
                        </select>
                     </div>
                     <div class="col-md-6 mt-2">
-                        <label for="nombres">Año del Proceso</label>
+                        <label for="nombres">Año del proceso</label>
                         <input type="text" name="periodo" id="periodo" placeholder="Ingrese el año del proceso" class="form-control text-mayus">
                     </div>
                 </div>

@@ -14,11 +14,11 @@
                 $nombreCategoria = $_POST['nombreCategoria'];
                 $descripcionCategoria = $_POST['descripcionCategoria'];
                 if($nombreCategoria == ""){
-                    echo json_encode("Ingrese el nombre de la Categoria");
+                    echo json_encode("Ingrese el nombre de la categoría");
                     return;
                 }
                 if($descripcionCategoria == ""){
-                    echo json_encode("Ingrese la descripcion de la Categoria");
+                    echo json_encode("Ingrese la descripción de la categoría");
                     return;
                 }
                 $respuesta = $categoria->Guardar($nombreCategoria,$descripcionCategoria);
@@ -29,11 +29,11 @@
                 $descripcionCategoria = $_POST['descripcionCategoria'];
                 $idCategoria = $_POST['idCategoria'];
                 if($nombreCategoria == ""){
-                    echo json_encode("Ingrese el nombre de la Categoria");
+                    echo json_encode("Ingrese el nombre de la categoría");
                     return;
                 }
                 if($descripcionCategoria == ""){
-                    echo json_encode("Ingrese la descripcion de la Categoria");
+                    echo json_encode("Ingrese la descripción de la categoría");
                     return;
                 }
                 $respuesta = $categoria->Modificar($idCategoria,$nombreCategoria,$descripcionCategoria);

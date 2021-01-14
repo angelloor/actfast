@@ -41,7 +41,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
           <li class="nav-item dropdown" <?php if(($_SESSION['rolUsuario'] == "COMPROBADOR DE INVENTARIO") || ($_SESSION['rolUsuario'] == "GENERADOR DE REPORTES Y ACTAS")){ echo 'style="display:none;"';} ?>>
-        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gestión de Activos</a>
+        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gestión de activos</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
           <a class="dropdown-item" href="activos.php">Activos</a>
           <a class="dropdown-item" href="categorias.php">Categorías</a>
@@ -54,15 +54,15 @@
         </div>
       </li>
       <li class="nav-item dropdown" <?php if($_SESSION['rolUsuario'] == "COMPROBADOR DE INVENTARIO"){ echo 'style="display:none;"';} ?>>
-        <a class="nav-link dropdown-toggle" href="gestionActa.php" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gestión de Actas</a>
+        <a class="nav-link dropdown-toggle" href="gestionActa.php" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gestión de actas</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
           <a class="dropdown-item" href="gestionActa.php" <?php if($_SESSION['rolUsuario'] == "GENERADOR DE REPORTES Y ACTAS"){ echo 'style="display:none;"';} ?>>Actas</a>
-          <a class="dropdown-item" href="actasDigitales.php">Actas Digitales</a>
+          <a class="dropdown-item" href="actasDigitales.php">Actas digitales</a>
           <a class="dropdown-item" href="firma.php">Firmas</a>
         </div>
       </li>
       <li class="nav-item dropdown" <?php if(($_SESSION['rolUsuario'] == "COMPROBADOR DE INVENTARIO") || ($_SESSION['rolUsuario'] == "GENERADOR DE REPORTES Y ACTAS")){ echo 'style="display:none;"';} ?>>
-        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Recurso Humano</a>
+        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Recurso humano</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
           <a class="dropdown-item" href="funcionarios.php">Funcionarios</a>
           <a class="dropdown-item" href="unidades.php">Unidades</a>
@@ -70,7 +70,7 @@
         </div>
       </li>
       <li class="nav-item dropdown" <?php if(($_SESSION['rolUsuario'] == "COMPROBADOR DE INVENTARIO") || ($_SESSION['rolUsuario'] == "INVITADO") || ($_SESSION['rolUsuario'] == "GENERADOR DE REPORTES Y ACTAS")){ echo 'style="display:none;"';} ?>>
-        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gestión de Usuarios</a>
+        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gestión de usuarios</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
           <a class="dropdown-item" href="usuarios.php">Usuarios</a>
           <a class="dropdown-item" href="roles_usuarios.php">Roles de usuarios </a>
@@ -82,8 +82,8 @@
           <a class="dropdown-item" href="./reporteActivo.php" <?php if($_SESSION['rolUsuario'] == "COMPROBADOR DE INVENTARIO"){ echo 'style="display:none;"';} ?>>Activos</a>
           <a class="dropdown-item" href="./historico.php" <?php if($_SESSION['rolUsuario'] == "COMPROBADOR DE INVENTARIO"){ echo 'style="display:none;"';} ?>>Histórico de activos</a>
           <a class="dropdown-item" href="./movimientoActivo.php" <?php if($_SESSION['rolUsuario'] == "COMPROBADOR DE INVENTARIO"){ echo 'style="display:none;"';} ?>>Movimientos de activos</a>
-          <a class="dropdown-item" href="../vista/activosConfirmados.php">Activos Confirmados</a>
-          <a class="dropdown-item" href="../vista/activosNoConfirmados.php">Activos No Confirmados</a>
+          <a class="dropdown-item" href="../vista/activosConfirmados.php">Activos confirmados</a>
+          <a class="dropdown-item" href="../vista/activosNoConfirmados.php">Activos no confirmados</a>
         </div>
       </li>
       <li class="nav-item dropdown" <?php if(($_SESSION['rolUsuario'] == "COMPROBADOR DE INVENTARIO") || ($_SESSION['rolUsuario'] == "GENERADOR DE REPORTES Y ACTAS") || ($_SESSION['rolUsuario'] == "INVITADO")){ echo 'style="display:none;"';} ?>>
@@ -109,7 +109,7 @@
             <img src="../assets/img/ga.png" class="card-img-top mt-3 img-card" alt="Imagen">
             <div class="card-body">
               <h5 class="card-title">Generar actas</h5>
-              <p class="card-text">Genera todas las actas de manera rapida</p>
+              <p class="card-text">Genera todas las actas de manera rápida</p>
               <button id="btnCategoria" name="categoria" class="btn-abrir-popup">Acceder</button>
             </div>
           </div>
@@ -118,8 +118,8 @@
           <div class="card-sm width-card" id="card-inicio">
             <img src="../assets/img/au.png" class="card-img-top mt-3 img-card" alt="Imagen">
             <div class="card-body">
-              <h5 class="card-title">Generar actas por usuario</h5>
-              <p class="card-text">Genera las actas de acuerdo a un usuario seleccionado</p>
+              <h5 class="card-title">Generar actas por funcionario</h5>
+              <p class="card-text">Genera las actas de acuerdo a un funcionario seleccionado</p>
               <button id="btnFuncionario" name="funcionario" class="btn-abrir-popup">Acceder</button>
             </div>
           </div>
@@ -138,8 +138,8 @@
           <div class="card-sm width-card" id="card-inicio">
             <img src="../assets/img/ci.png" class="card-img-top mt-3 img-card" alt="Imagen">
             <div class="card-body">
-              <h5 class="card-title">Comprobar Inventario</h5>
-              <p class="card-text">Comprueba los activos de la institucion</p>
+              <h5 class="card-title">Comprobar inventario</h5>
+              <p class="card-text">Comprueba los activos de la institución</p>
               <a href="comprobacionInventario.php" class="btn btn-primary">Acceder</a>
             </div>
           </div>
@@ -149,7 +149,7 @@
             <img src="../assets/img/rp.png" class="card-img-top mt-3 img-card" alt="Imagen">
             <div class="card-body">
               <h5 class="card-title">Reportes</h5>
-              <p class="card-text">Activos, Comrpobacion de inventario y movimiento de activos</p>
+              <p class="card-text">Activos, Comprobación de inventario y movimiento de activos</p>
               <button id="btnReporte" name="reporte" class="btn-abrir-popup">Acceder</button>
             </div>
           </div>
@@ -158,8 +158,8 @@
           <div class="card-sm width-card" id="card-inicio">
             <img src="../assets/img/ad.png" class="card-img-top mt-3 img-card" alt="Imagen">
             <div class="card-body">
-              <h5 class="card-title">Actas Digitales</h5>
-              <p class="card-text">Genera actas sobre las credenciales digitales de sistemas</p>
+              <h5 class="card-title">Actas digitales</h5>
+              <p class="card-text">Genera actas de credenciales digitales de los sistemas</p>
               <button id="btnactasDigitales" name="actasDigitales" class="btn-abrir-popup">Acceder</button>
             </div>
           </div>

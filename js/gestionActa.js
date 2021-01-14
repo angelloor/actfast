@@ -173,7 +173,7 @@ function ConsultarPorId(idGestionActa) {
         buttonsStyling: false
       })
       swalWithBootstrapButtons.fire({
-        text: '¿Estas seguro de modificar el gestionActa?',
+        text: '¿Estas seguro de modificar la asignación del activo?',
         icon: 'warning',
         showCancelButton: true,
         confirmButtonText: 'Si',
@@ -200,7 +200,7 @@ function ConsultarPorId(idGestionActa) {
         } else if (
           result.dismiss === Swal.DismissReason.cancel
         ) {
-            swalWithBootstrapButtons.fire('','Operación Cancelada','info')
+            swalWithBootstrapButtons.fire('','Operación cancelada','info')
         }
       })   
 }
@@ -252,7 +252,7 @@ function Eliminar(idGestionActa) {
         buttonsStyling: false
       })
       swalWithBootstrapButtons.fire({
-        text: '¿Estas seguro de eliminar el gestionActa?',
+        text: '¿Estas seguro de eliminar la asignación del activo?',
         icon: 'warning',
         showCancelButton: true,
         confirmButtonText: 'Si',
@@ -278,7 +278,7 @@ function Eliminar(idGestionActa) {
         } else if (
           result.dismiss === Swal.DismissReason.cancel
         ) {
-            swalWithBootstrapButtons.fire('','Operación Cancelada','info')
+            swalWithBootstrapButtons.fire('','Operación cancelada','info')
         }
       })
       Limpiar();

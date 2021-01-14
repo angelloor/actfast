@@ -69,11 +69,11 @@
                 </div>
                 <div class="row">
                     <div class="col-md-3 mt-2">
-                        <label for="fechaInicio">Fecha Inicio</label>
+                        <label for="fechaInicio">Fecha inicio</label>
                         <input type="date" class="form-control" name="fechaInicio" id="fechaInicio">
                     </div>
                     <div class="col-md-3 mt-2">
-                        <label for="fechaFinal">Fecha Final</label>
+                        <label for="fechaFinal">Fecha final</label>
                         <input type="date" class="form-control" name="fechaFinal" id="fechaFinal">
                     </div>
                 </div>
@@ -82,12 +82,12 @@
                 <table class="table tabled-bordered table-sm" id="tablaUsuario">
                     <thead>
                         <tr>
-                            <th>Codigo</th>
+                            <th>Código</th>
                             <th>Nombre</th>
                             <th>Marca</th>
                             <th>Modelo</th>
                             <th>Serie</th>
-                            <th>Fecha de Eliminacion</th>
+                            <th>Fecha de eliminación</th>
                             <th class="th-text-align-right">Acciones</th>
                         </tr>
                     </thead>

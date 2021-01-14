@@ -69,11 +69,11 @@
                 </div>
                 <div class="row">
                     <div class="col-md-3 mt-2">
-                        <label for="fechaInicio">Fecha Inicio</label>
+                        <label for="fechaInicio">Fecha inicio</label>
                         <input type="date" class="form-control" name="fechaInicio" id="fechaInicio">
                     </div>
                     <div class="col-md-3 mt-2">
-                        <label for="fechaFinal">Fecha Final</label>
+                        <label for="fechaFinal">Fecha final</label>
                         <input type="date" class="form-control" name="fechaFinal" id="fechaFinal">
                     </div>
                 </div>
@@ -86,7 +86,7 @@
                             <th>Activo</th>
                             <th>Custodio</th>
                             <th>Funcionario</th>
-                            <th>Fecha Movimiento</th>
+                            <th>Fecha de movimiento</th>
                         </tr>
                     </thead>
                     <tbody id="datos">

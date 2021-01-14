@@ -13,7 +13,7 @@
             case "GUARDAR":
                 $nombreMarca = $_POST['nombreMarca'];
                 if($nombreMarca == ""){
-                    echo json_encode("Ingrese el nombre de la Marca");
+                    echo json_encode("Ingrese el nombre de la marca");
                     return;
                 }
                 $respuesta = $marca->Guardar($nombreMarca);
@@ -23,7 +23,7 @@
                 $nombreMarca = $_POST['nombreMarca'];
                 $idMarca = $_POST['idMarca'];
                 if($nombreMarca == ""){
-                    echo json_encode("Ingrese el nombre de la Marca");
+                    echo json_encode("Ingrese el nombre de la marca");
                     return;
                 }
                 $respuesta = $marca->Modificar($idMarca,$nombreMarca);

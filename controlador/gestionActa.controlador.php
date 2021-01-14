@@ -17,11 +17,11 @@
                 $custodio = $_POST["custodio"];
                 $fecha = $_POST["fecha"];
                 if($idPersona == ""){
-                        echo json_encode("Seleccione un Funcionario para asignar la acta");
+                        echo json_encode("Seleccione un funcionario para asignar la acta");
                         return;
                     }
                 if($codigoActivo == ""){
-                        echo json_encode("Seleccione el codigo del activo");
+                        echo json_encode("Seleccione el código del activo");
                         return;
                     }
                 if($custodio == ""){
@@ -42,11 +42,11 @@
                 $fecha = $_POST["fecha"];
                 $idGestionActa = $_POST["idGestionActa"];
                 if($idPersona == ""){
-                    echo json_encode("Seleccione un Funcionario para asignar la acta");
+                    echo json_encode("Seleccione un funcionario para asignar la acta");
                     return;
                 }
                 if($codigoActivo == ""){
-                    echo json_encode("Seleccione el codigo del activo");
+                    echo json_encode("Seleccione el código del activo");
                     return;
                 }
                 if($custodio == ""){

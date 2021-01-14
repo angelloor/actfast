@@ -55,7 +55,7 @@
 <div class="container-fluid">
         <div class="card margin-b-30">
             <div class="card-header bg-primary text-color-white">
-                  <h5>Reporte de Activos</h5>
+                  <h5>Reporte de activos</h5>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -71,7 +71,7 @@
                     <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
                         <label for="campo">Campo</label>
                         <select name="campo" class="form-control br" id="campo">
-                            <option value="categoria">Categoria</option>
+                            <option value="categoria">Categoría</option>
                             <option value="marca">Marca</option>
                             <option value="estado">Estado</option>
                             <option value="funcionario">Funcionario</option>
@@ -88,9 +88,9 @@
                 <table class="table tabled-bordered table-sm" id="tablaActivo">
                     <thead>
                         <tr>
-                            <th>Codigo</th>
+                            <th>Código</th>
                             <th>Nombre</th>
-                            <th>Caracteristica</th>
+                            <th>Característica</th>
                             <th>Marca</th>
                             <th>Modelo</th>
                             <th>Serie</th>

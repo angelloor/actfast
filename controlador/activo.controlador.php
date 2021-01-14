@@ -28,7 +28,7 @@
                 $comentario = $_POST['comentario'];
                 $comprobacionInventario = $_POST['comprobacionInventario'];
                 if($categoria == ""){
-                    echo json_encode("Seleccione la categoria");
+                    echo json_encode("Seleccione la categoría");
                     return;
                 }
                 if($marca == ""){
@@ -44,11 +44,11 @@
                     return;
                 }
                 if($caracteristica == ""){
-                    echo json_encode("Ingrese la caracteristica");
+                    echo json_encode("Ingrese la característica del activo");
                     return;
                 }
                 if($bodega == ""){
-                    echo json_encode("Ingrese la bodega");
+                    echo json_encode("seleccione la bodega");
                     return;
                 }
                 if($custodio == ""){
@@ -56,11 +56,11 @@
                     return;
                 }
                 if($codigo == ""){
-                    echo json_encode("Ingrese el codigo");
+                    echo json_encode("Ingrese el código asignado al activo");
                     return;
                 }
                 if($nombre == ""){
-                    echo json_encode("Ingrese el nombre");
+                    echo json_encode("Ingrese el nombre del activo");
                     return;
                 }
                 if($modelo == ""){
@@ -68,11 +68,11 @@
                     return;
                 }
                 if($serie == ""){
-                    echo json_encode("Ingrese el numero de serie");
+                    echo json_encode("Ingrese el número de serie");
                     return;
                 }
                 if($origenIngreso == ""){
-                    echo json_encode("Ingrese el origen del ingreso");
+                    echo json_encode("Ingrese el origen del activo");
                     return;
                 }
                 if($fechaIngreso == ""){
@@ -84,7 +84,7 @@
                     return;
                 }
                 if($comprobacionInventario == ""){
-                    echo json_encode("Seleccione la comprobacion de Inventario");
+                    echo json_encode("Seleccione la comprobación de inventario");
                     return;
                 }
                 $respuesta = $activo->Guardar($categoria,$marca ,$estado,$color,$caracteristica,$bodega,$custodio,$codigo,$nombre,$modelo,$serie,$origenIngreso,$fechaIngreso,$valorCompra,$comentario,$comprobacionInventario);
@@ -109,7 +109,7 @@
                 $comprobacionInventario = $_POST['comprobacionInventario'];
                 $idActivo = $_POST['idActivo'];
                 if($categoria == ""){
-                    echo json_encode("Seleccione la categoria");
+                    echo json_encode("Seleccione la categoría");
                     return;
                 }
                 if($marca == ""){
@@ -125,11 +125,11 @@
                     return;
                 }
                 if($caracteristica == ""){
-                    echo json_encode("Ingrese la caracteristica");
+                    echo json_encode("Ingrese la característica del activo");
                     return;
                 }
                 if($bodega == ""){
-                    echo json_encode("Ingrese la bodega");
+                    echo json_encode("seleccione la bodega");
                     return;
                 }
                 if($custodio == ""){
@@ -137,11 +137,11 @@
                     return;
                 }
                 if($codigo == ""){
-                    echo json_encode("Ingrese el codigo");
+                    echo json_encode("Ingrese el código asignado al activo");
                     return;
                 }
                 if($nombre == ""){
-                    echo json_encode("Ingrese el nombre");
+                    echo json_encode("Ingrese el nombre del activo");
                     return;
                 }
                 if($modelo == ""){
@@ -149,11 +149,11 @@
                     return;
                 }
                 if($serie == ""){
-                    echo json_encode("Ingrese el numero de serie");
+                    echo json_encode("Ingrese el número de serie");
                     return;
                 }
                 if($origenIngreso == ""){
-                    echo json_encode("Ingrese el origen del ingreso");
+                    echo json_encode("Ingrese el origen del activo");
                     return;
                 }
                 if($fechaIngreso == ""){
@@ -165,7 +165,7 @@
                     return;
                 }
                 if($comprobacionInventario == ""){
-                    echo json_encode("Seleccione la comprobacion de Inventario");
+                    echo json_encode("Seleccione la comprobación de inventario");
                     return;
                 }
                 $respuesta = $activo->Modificar($idActivo,$categoria,$marca ,$estado,$color,$caracteristica,$bodega,$custodio,$codigo,$nombre,$modelo,$serie,$origenIngreso,$fechaIngreso,$valorCompra,$comentario,$comprobacionInventario);

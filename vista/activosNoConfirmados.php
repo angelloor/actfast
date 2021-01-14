@@ -42,7 +42,7 @@
       <ol class="breadcrumb bg-transparent">
         <li class="breadcrumb-item"><a href="index.php">Inicio</a></li>
         <li class="breadcrumb-item active">Reportes</li>
-        <li class="breadcrumb-item active" aria-current="page">Activos No Confirmados</li>
+        <li class="breadcrumb-item active" aria-current="page">Activos no confirmados</li>
       </ol>
     </nav>
     </div>
@@ -52,7 +52,7 @@
 <div class="container-fluid">
         <div class="card margin-b-30">
             <div class="card-header bg-primary text-color-white">
-                  <h5>Activos No Confirmados</h5>
+                  <h5>Activos no confirmados</h5>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -68,9 +68,9 @@
                 <table class="table tabled-bordered table-sm" id="tablaActivos">
                     <thead>
                         <tr>
-                            <th>Codigo</th>
+                            <th>Código</th>
                             <th>Nombre</th>
-                            <th>Caracteristica</th>
+                            <th>Característica</th>
                             <th>Marca</th>
                             <th>Modelo</th>
                             <th>Serie</th>

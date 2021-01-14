@@ -63,7 +63,7 @@ function ConsultarPorId(idFirma) {
         buttonsStyling: false
       })
       swalWithBootstrapButtons.fire({
-        text: '¿Estas seguro de modificar el gestionActa?',
+        text: '¿Estas seguro de modificar la firma?',
         icon: 'warning',
         showCancelButton: true,
         confirmButtonText: 'Si',
@@ -86,7 +86,7 @@ function ConsultarPorId(idFirma) {
         } else if (
           result.dismiss === Swal.DismissReason.cancel
         ) {
-            swalWithBootstrapButtons.fire('','Operación Cancelada','info')
+            swalWithBootstrapButtons.fire('','Operación cancelada','info')
         }
       })   
 }

@@ -174,7 +174,7 @@ function ConsultarPorId(idFuncionario) {
             } else if (
               result.dismiss === Swal.DismissReason.cancel
             ) {
-                swalWithBootstrapButtons.fire('','Operación Cancelada','info')
+                swalWithBootstrapButtons.fire('','Operación cancelada','info')
             }
           })   
     }
@@ -261,7 +261,7 @@ function Eliminar(idFuncionario) {
             } else if (
               result.dismiss === Swal.DismissReason.cancel
             ) {
-                swalWithBootstrapButtons.fire('','Operación Cancelada','info')
+                swalWithBootstrapButtons.fire('','Operación cancelada','info')
             }
           })
           Limpiar();

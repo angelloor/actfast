@@ -90,7 +90,7 @@ function ConsultarPorId(idMarca) {
             buttonsStyling: false
           })
           swalWithBootstrapButtons.fire({
-            text: '¿Estas seguro de modificar la Marca?',
+            text: '¿Estas seguro de modificar la marca?',
             icon: 'warning',
             showCancelButton: true,
             confirmButtonText: 'Si',
@@ -113,7 +113,7 @@ function ConsultarPorId(idMarca) {
             } else if (
               result.dismiss === Swal.DismissReason.cancel
             ) {
-                swalWithBootstrapButtons.fire('','Operación Cancelada','info')
+                swalWithBootstrapButtons.fire('','Operación cancelada','info')
             }
           })   
     }
@@ -216,7 +216,7 @@ function Eliminar(idMarca) {
             } else if (
               result.dismiss === Swal.DismissReason.cancel
             ) {
-                swalWithBootstrapButtons.fire('','Operación Cancelada','info')
+                swalWithBootstrapButtons.fire('','Operación cancelada','info')
             }
           })
           Limpiar();

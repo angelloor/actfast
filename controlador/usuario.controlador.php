@@ -17,19 +17,19 @@
                 $clave = $_POST["clave"];
                 $rol = $_POST["rol"];
                 if($idPersona == ""){
-                        echo json_encode("Debe ingresar la persona asignada para este usuario");
+                        echo json_encode("Ingresar la persona asignada para este usuario");
                         return;
                     }
                 if($nombre == ""){
-                        echo json_encode("Debe ingresar el nombre del usuario");
+                        echo json_encode("Ingresar el nombre de usuario");
                         return;
                     }
                 if($clave == ""){
-                        echo json_encode("Debe ingresar la la clave del usuario");
+                        echo json_encode("Ingresar la clave del usuario");
                         return;
                     }
                 if($rol == ""){
-                        echo json_encode("Debe ingresar el rol del usuario");
+                        echo json_encode("Ingresar el rol del usuario");
                         return;
                 }
                 $respuesta = $usuario->Guardar($idPersona, $nombre, $clave, $rol);
@@ -42,19 +42,19 @@
                 $rol = $_POST["rol"];
                 $idUsuario = $_POST["idUsuario"];
                 if($idPersona == ""){
-                        echo json_encode("Debe ingresar la persona asignada para este usuario");
+                        echo json_encode("Ingresar la persona asignada para este usuario");
                         return;
                     }
                 if($nombre == ""){
-                        echo json_encode("Debe ingresar el nombre del usuario");
+                        echo json_encode("Ingresar el nombre de usuario");
                         return;
                     }
                 if($clave == ""){
-                        echo json_encode("Debe ingresar la la clave del usuario");
+                        echo json_encode("Ingresar la clave del usuario");
                         return;
                     }
                 if($rol == ""){
-                        echo json_encode("Debe ingresar el rol del usuario");
+                        echo json_encode("Ingresar el rol del usuario");
                         return;
                 }
                 $respuesta = $usuario->Modificar($idUsuario, $idPersona, $nombre, $clave, $rol);

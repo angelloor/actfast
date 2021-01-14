@@ -98,7 +98,7 @@ function ConsultarPorId(idColor) {
             buttonsStyling: false
           })
           swalWithBootstrapButtons.fire({
-            text: '¿Estas seguro de modificar el Color?',
+            text: '¿Estas seguro de modificar el color?',
             icon: 'warning',
             showCancelButton: true,
             confirmButtonText: 'Si',
@@ -121,7 +121,7 @@ function ConsultarPorId(idColor) {
             } else if (
               result.dismiss === Swal.DismissReason.cancel
             ) {
-                swalWithBootstrapButtons.fire('','Operación Cancelada','info')
+                swalWithBootstrapButtons.fire('','Operación cancelada','info')
             }
           })   
     }
@@ -209,7 +209,7 @@ function Eliminar(idColor) {
             } else if (
               result.dismiss === Swal.DismissReason.cancel
             ) {
-                swalWithBootstrapButtons.fire('','Operación Cancelada','info')
+                swalWithBootstrapButtons.fire('','Operación cancelada','info')
             }
           })
           Limpiar();

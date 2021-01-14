@@ -44,10 +44,10 @@ function Generar(){
             }
         });
         if (checkInput == 0) {
-            MostrarAlerta("","No se ha seleccionado ningun sistema","info");
+            MostrarAlerta("","No se ha seleccionado ningún sistema","info");
         }else{
             if (vacio >= 1) {
-                MostrarAlerta("","Complete el usuario o contraseña","info");
+                MostrarAlerta("","Complete el usuario y contraseña","info");
             }else{
                 nombrePersona = document.getElementById('idPersona').value;
                 periodo = document.getElementById('periodo').value;
@@ -105,7 +105,7 @@ function cargarSistemas(){
             html += '</div>';
             html += '<div class="col-md-4">';
             html += '<label for="nombres">Nombre de usuario</label>';
-            html += '<input id="usuario'+data.nombre_sistema+'" type="text" class="form-control" placeholder="Ingrese el nombre de usuario" disabled="true">';
+            html += '<input id="usuario'+data.nombre_sistema+'" type="text" class="form-control" placeholder="Ingrese el nombre del usuario" disabled="true">';
             html += '</div>';
             html += '<div class="col-md-4">';
             html += '<label for="nombres">Contraseña</label>';

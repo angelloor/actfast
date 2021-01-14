@@ -60,7 +60,7 @@
   <div class="container-fluid">
         <div class="card margin-b-30">
             <div class="card-header bg-primary text-color-white">
-                  <h5>Gestionar Custodios</h5>
+                  <h5>Gestionar custodios</h5>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -72,8 +72,8 @@
                         </div>
                     </div>
                     <div class="col-12 col-sm-12 col-md-4 col-xl-4 input-group mt-2">
-                      <button class="btn btn-success mr-2" type="submit" onclick="mostrarTodo();"><span class="fa fa-search"></span>&nbsp&nbspMostrar Todo</button>
-                      <input class="form-control" id="idCustodio"  type="search" placeholder="Buscar por Nombre" aria-label="Buscar" autofocus>
+                      <button class="btn btn-success mr-2" type="submit" onclick="mostrarTodo();"><span class="fa fa-search"></span>&nbsp&nbspMostrar todo</button>
+                      <input class="form-control" id="idCustodio"  type="search" placeholder="Buscar por nombre" aria-label="Buscar" autofocus>
                     </div>
                 </div>
                 <div class="row">

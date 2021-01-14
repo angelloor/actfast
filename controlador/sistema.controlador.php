@@ -14,11 +14,11 @@
                 $nombreSistema = $_POST['nombreSistema'];
                 $direccion = $_POST['direccion'];
                 if($nombreSistema == ""){
-                    echo json_encode("Ingrese el nombre de sistema");
+                    echo json_encode("Ingrese el nombre del sistema");
                     return;
                 }
                 if($direccion == ""){
-                    echo json_encode("Ingrese la direccion de acceso al sistema");
+                    echo json_encode("Ingrese la dirección de acceso al sistema");
                     return;
                 }
                 $respuesta = $sistema->Guardar($nombreSistema,$direccion);
@@ -29,11 +29,11 @@
                 $direccion = $_POST['direccion'];
                 $idSistema = $_POST['idSistema'];
                 if($nombreSistema == ""){
-                    echo json_encode("Ingrese el nombre de sistema");
+                    echo json_encode("Ingrese el nombre del sistema");
                     return;
                 }
                 if($direccion == ""){
-                    echo json_encode("Ingrese la direccion de acceso al sistema");
+                    echo json_encode("Ingrese la dirección de acceso al sistema");
                     return;
                 }
                 $respuesta = $sistema->Modificar($idSistema,$nombreSistema,$direccion);

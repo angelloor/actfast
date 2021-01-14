@@ -47,7 +47,7 @@
         <nav aria-label="breadcrumb bg-light">
       <ol class="breadcrumb bg-transparent">
         <li class="breadcrumb-item"><a href="index.php">Inicio</a></li>
-        <li class="breadcrumb-item active">Gestión de Activos</li>
+        <li class="breadcrumb-item active">Gestión de activos</li>
         <li class="breadcrumb-item active" aria-current="page">Activos</li>
       </ol>
     </nav>
@@ -59,7 +59,7 @@
 <div class="container-fluid">
         <div class="card margin-b-30">
             <div class="card-header bg-primary text-color-white">
-                  <h5>Gestionar Activos</h5>
+                  <h5>Gestionar activos</h5>
             </div>
             <div class="card-body">
             <div class="row">
@@ -73,11 +73,11 @@
                     <div class="col-12 col-sm-12 col-md-5 col-xl-5">
                         <div class="btn-toolbar pc-flex-end">
                             <div class="btn-group mt-2">
-                                <button class="btn btn-success mr-2" type="submit" onclick="mostrarTodo();"><span class="fa fa-search"></span>&nbsp&nbspMostrar Todo</button>
+                                <button class="btn btn-success mr-2" type="submit" onclick="mostrarTodo();"><span class="fa fa-search"></span>&nbsp&nbspMostrar todo</button>
                             </div>
                             <div class="input-group mt-2">
                                 <select name="campoBuscar" id="campoBuscar" class="form-control mr-2">
-                                    <option>Codigo</option>
+                                    <option>Código</option>
                                     <option>Nombre</option>
                                     <option>Marca</option>
                                     <option>Modelo</option>
@@ -140,11 +140,11 @@
                         <input type="text" name="serie" id="serie" placeholder="Ingrese la serie" class="form-control">
                     </div>
                     <div class="col-12 col-sm-12- col-md-4 col-lg-3 col-xl-3 mt-2">
-                        <label for="origenIngreso">Origen de Ingreso</label>
-                        <input type="text" name="origenIngreso" id="origenIngreso" placeholder="Ingrese el origen de ingreso" class="form-control">
+                        <label for="origenIngreso">Origen del activo</label>
+                        <input type="text" name="origenIngreso" id="origenIngreso" placeholder="Ingrese el origen del activo" class="form-control">
                     </div>
                     <div class="col-12 col-sm-12- col-md-4 col-lg-3 col-xl-3 mt-2">
-                        <label for="fechaIngreso">Fecha de Ingreso</label>
+                        <label for="fechaIngreso">Fecha de ingreso</label>
                         <input type="date" name="fechaIngreso" id="fechaIngreso" placeholder="Ingrese la fecha de ingreso" class="form-control">
                     </div>
                     <div class="col-12 col-sm-12- col-md-4 col-lg-3 col-xl-3 mt-2">
@@ -156,7 +156,7 @@
                         <textarea name="comentario" id="comentario" cols="60" rows="1" placeholder="Ingrese un comentario" class="form-control"></textarea>
                     </div>
                     <div class="col-12 col-sm-12- col-md-4 col-lg-3 col-xl-3 mt-2">
-                        <label for="comprobacionInventario"><strong>Comprobación Inventario</strong></label>
+                        <label for="comprobacionInventario"><strong>Comprobación inventario</strong></label>
                         <select name="comprobacionInventario" id="comprobacionInventario" class="form-control br">
                             <option>NO</option>
                             <option>SI</option>
@@ -168,10 +168,10 @@
                 <table class="table tabled-bordered table-sm" id="tablaActivo">
                     <thead>
                         <tr>
-                            <th scope="col">Codigo</th>
+                            <th scope="col">Código</th>
                             <th scope="col">Nombre</th>
                             <th scope="col">Categoría</th>
-                            <th scope="col">Caracteristica</th>
+                            <th scope="col">Característica</th>
                             <th scope="col">Marca</th>
                             <th scope="col">Modelo</th>
                             <th scope="col">Serie</th>

@@ -48,7 +48,7 @@
         <nav aria-label="breadcrumb bg-light">
       <ol class="breadcrumb bg-transparent">
         <li class="breadcrumb-item"><a href="index.php">Inicio</a></li>
-        <li class="breadcrumb-item active">Gestión de Activos</li>
+        <li class="breadcrumb-item active">Gestión de activos</li>
         <li class="breadcrumb-item active" aria-current="page">Estados</li>
       </ol>
     </nav>
@@ -60,7 +60,7 @@
 <div class="container-fluid">
         <div class="card margin-b-30">
             <div class="card-header bg-primary text-color-white">
-                  <h5>Gestionar Estados</h5>
+                  <h5>Gestionar estados</h5>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -72,14 +72,14 @@
                         </div>
                     </div>
                     <div class="col-12 col-sm-12 col-md-4 col-xl-4 input-group mt-2">
-                      <button class="btn btn-success mr-2" type="submit" onclick="mostrarTodo();"><span class="fa fa-search"></span>&nbsp&nbspMostrar Todo</button>
-                      <input class="form-control" id="idEstado"  type="search" placeholder="Buscar por Nombre" aria-label="Buscar" autofocus>
+                      <button class="btn btn-success mr-2" type="submit" onclick="mostrarTodo();"><span class="fa fa-search"></span>&nbsp&nbspMostrar todo</button>
+                      <input class="form-control" id="idEstado"  type="search" placeholder="Buscar por nombre" aria-label="Buscar" autofocus>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6 mt-3">
                         <label for="nombres">Nombre</label>
-                        <input type="text" name="nombre" id="nombre" placeholder="Ingrese el estado" class="form-control text-mayus" onkeypress="soloLetras()">
+                        <input type="text" name="nombre" id="nombre" placeholder="Ingrese el nombre del estado" class="form-control text-mayus" onkeypress="soloLetras()">
                     </div>
                 </div>
             </div>

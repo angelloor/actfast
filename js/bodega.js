@@ -112,7 +112,7 @@ function ConsultarPorId(idBodega) {
             buttonsStyling: false
           })
           swalWithBootstrapButtons.fire({
-            text: '¿Estas seguro de modificar la Bodega?',
+            text: '¿Estas seguro de modificar la bodega?',
             icon: 'warning',
             showCancelButton: true,
             confirmButtonText: 'Si',
@@ -137,7 +137,7 @@ function ConsultarPorId(idBodega) {
             } else if (
               result.dismiss === Swal.DismissReason.cancel
             ) {
-                swalWithBootstrapButtons.fire('','Operación Cancelada','info')
+                swalWithBootstrapButtons.fire('','Operación cancelada','info')
             }
           })   
     }
@@ -225,7 +225,7 @@ function Eliminar(idBodega) {
             } else if (
               result.dismiss === Swal.DismissReason.cancel
             ) {
-                swalWithBootstrapButtons.fire('','Operación Cancelada','info')
+                swalWithBootstrapButtons.fire('','Operación cancelada','info')
             }
           })
           Limpiar();

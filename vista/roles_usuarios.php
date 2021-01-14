@@ -50,8 +50,8 @@
         <nav aria-label="breadcrumb bg-light">
       <ol class="breadcrumb bg-transparent">
         <li class="breadcrumb-item"><a href="index.php">Inicio</a></li>
-        <li class="breadcrumb-item active">Gestión de Usuarios</li>
-        <li class="breadcrumb-item active" aria-current="page">Roles de Usuario</li>
+        <li class="breadcrumb-item active">Gestión de usuarios</li>
+        <li class="breadcrumb-item active" aria-current="page">Roles de usuario</li>
       </ol>
     </nav>
     </div>
@@ -62,7 +62,7 @@
 <div class="container-fluid">
         <div class="card margin-b-30">
             <div class="card-header bg-primary text-color-white">
-                  <h5>Gestionar Roles de usuario</h5>
+                  <h5>Gestionar roles de usuario</h5>
             </div>
             <div class="card-footer">
                 <table class="table tabled-bordered table-sm" id="tablaRolUsuario">

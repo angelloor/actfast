@@ -85,7 +85,7 @@ function EscucharConsulta() {
 
 function Guardar() {
     if (activoComprobacion == 1) {
-        MostrarAlerta("","No puede hacer la comprobacion del inventario de un activo que no esta asignado","info")
+        MostrarAlerta("","No puede hacer la comprobación del inventario de un activo que no esta asignado","info")
     }else{
         $.ajax({
             data: retornarDatos('GUARDAR'),
@@ -118,7 +118,7 @@ function Restablecer() {
     });
     swalWithBootstrapButtons
         .fire({
-            text: '¿Estas seguro de restablecer la Comprobación de Inventario?',
+            text: '¿Estas seguro de restablecer la comprobación de inventario?',
             icon: 'warning',
             showCancelButton: true,
             confirmButtonText: 'Si',
@@ -137,7 +137,7 @@ function Restablecer() {
                         if (response == 'OK') {
                             MostrarAlerta(
                                 'Éxito!',
-                                'Comprobación de inventario Restablecido',
+                                'Comprobación de inventario restablecido',
                                 'success'
                             );
                             Limpiar();
@@ -150,7 +150,7 @@ function Restablecer() {
                         console.log(response);
                     });
             } else if (result.dismiss === Swal.DismissReason.cancel) {
-                swalWithBootstrapButtons.fire('', 'Operación Cancelada', 'info');
+                swalWithBootstrapButtons.fire('', 'Operación cancelada', 'info');
             }
         });
     Limpiar();

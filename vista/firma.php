@@ -44,7 +44,7 @@
         <nav aria-label="breadcrumb bg-light">
       <ol class="breadcrumb bg-transparent">
         <li class="breadcrumb-item"><a href="index.php">Inicio</a></li>
-        <li class="breadcrumb-item active">Gestión de Actas</li>
+        <li class="breadcrumb-item active">Gestión de actas</li>
         <li class="breadcrumb-item active" aria-current="page">Firmas</li>
       </ol>
     </nav>
@@ -56,7 +56,7 @@
 <div class="container-fluid">
         <div class="card margin-b-30">
             <div class="card-header bg-primary text-color-white">
-                  <h5>Gestionar de Firmas</h5>
+                  <h5>Gestionar firmas</h5>
             </div>
             <div class="card-body">
                 <div class="row">

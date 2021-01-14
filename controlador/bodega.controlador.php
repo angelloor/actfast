@@ -15,15 +15,15 @@
                 $ubicacion = $_POST['ubicacion'];
                 $nombreResponsable = $_POST['nombreResponsable'];
                 if($nombreBodega == "" ){
-                    echo json_encode("Ingrese el nombre de la Bodega");
+                    echo json_encode("Ingrese el nombre de la bodega");
                     return;
                 }
                 if($ubicacion == "" ){
-                    echo json_encode("Ingrese la ubicacion de la Bodega");
+                    echo json_encode("Ingrese la ubicación de la bodega");
                     return;
                 }
                 if($nombreResponsable == "" ){
-                    echo json_encode("Ingrese el responsable de la Bodega");
+                    echo json_encode("Ingrese el responsable de la bodega");
                     return;
                 }
                 $respuesta = $bodega->Guardar($nombreBodega,$ubicacion,$nombreResponsable);
@@ -35,15 +35,15 @@
                 $nombreResponsable = $_POST['nombreResponsable'];
                 $idBodega = $_POST['idBodega'];
                 if($nombreBodega == "" ){
-                    echo json_encode("Ingrese el nombre de la Bodega");
+                    echo json_encode("Ingrese el nombre de la bodega");
                     return;
                 }
                 if($ubicacion == "" ){
-                    echo json_encode("Ingrese la ubicacion de la Bodega");
+                    echo json_encode("Ingrese la ubicación de la bodega");
                     return;
                 }
                 if($nombreResponsable == "" ){
-                    echo json_encode("Ingrese el responsable de la Bodega");
+                    echo json_encode("Ingrese el responsable de la bodega");
                     return;
                 }
                 $respuesta = $bodega->Modificar($idBodega,$nombreBodega,$ubicacion,$nombreResponsable);

@@ -47,7 +47,7 @@
     <nav aria-label="breadcrumb bg-light">
       <ol class="breadcrumb bg-transparent">
         <li class="breadcrumb-item"><a href="index.php">Inicio</a></li>
-        <li class="breadcrumb-item active">Recursos Humanos</li>
+        <li class="breadcrumb-item active">Recursos humanos</li>
         <li class="breadcrumb-item active" aria-current="page">Funcionarios</li>
       </ol>
     </nav>
@@ -59,7 +59,7 @@
   <div class="container-fluid">
         <div class="card margin-b-30">
             <div class="card-header bg-primary text-color-white">
-                  <h5>Gestionar Funcionarios</h5>
+                  <h5>Gestionar funcionarios</h5>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -71,17 +71,17 @@
                         </div>
                     </div>
                     <div class="col-12 col-sm-12 col-md-4 col-xl-4 input-group mt-2">
-                      <button class="btn btn-success mr-2" type="submit" onclick="mostrarTodo();"><span class="fa fa-search"></span>&nbsp&nbspMostrar Todo</button>
-                      <input class="form-control" id="idFuncionario"  type="search" placeholder="Buscar por Nombre" aria-label="Buscar" autofocus>
+                      <button class="btn btn-success mr-2" type="submit" onclick="mostrarTodo();"><span class="fa fa-search"></span>&nbsp&nbspMostrar todo</button>
+                      <input class="form-control" id="idFuncionario"  type="search" placeholder="Buscar por nombre" aria-label="Buscar" autofocus>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 mt-2">
-                        <label for="Cedula">Cedula</label>
-                        <input type="text" name="cedulaFuncionario" id="cedulaFuncionario" placeholder="Ingrese su número de cedula" class="form-control text-mayus">
+                        <label for="Cedula">Cédula</label>
+                        <input type="text" name="cedulaFuncionario" id="cedulaFuncionario" placeholder="Ingrese su número de cédula" class="form-control text-mayus">
                     </div>
                     <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 mt-2">
-                        <label for="nombreCompleto">Nombre Completo</label>
+                        <label for="nombreCompleto">Nombre completo</label>
                         <input type="text" name="nombreFuncionario" id="nombreFuncionario" placeholder="Apellidos - Nombres" class="form-control text-mayus">
                     </div>
                     <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 mt-2">
@@ -108,7 +108,7 @@
                 <table class="table tabled-bordered table-sm" id="tablaFuncionario">
                     <thead>
                         <tr>
-                            <th scope="col">Cedula</th>
+                            <th scope="col">Cédula</th>
                             <th scope="col">Nombre</th>
                             <th scope="col">Dirección</th>
                             <th scope="col">Teléfono</th>

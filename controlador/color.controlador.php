@@ -13,7 +13,7 @@
             case "GUARDAR":
                 $nombreColor = $_POST['nombreColor'];
                 if($nombreColor == ""){
-                    echo json_encode("Ingrese el nombre del Color");
+                    echo json_encode("Ingrese el nombre del color");
                     return;
                 }
                 $respuesta = $color->Guardar($nombreColor);
@@ -23,7 +23,7 @@
                 $nombreColor = $_POST['nombreColor'];
                 $idColor = $_POST['idColor'];
                 if($nombreColor == ""){
-                    echo json_encode("Ingrese el nombre del Color");
+                    echo json_encode("Ingrese el nombre del color");
                     return;
                 }
                 $respuesta = $color->Modificar($idColor,$nombreColor);

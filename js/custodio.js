@@ -108,7 +108,7 @@ function ConsultarPorId(idCustodio) {
             buttonsStyling: false
           })
           swalWithBootstrapButtons.fire({
-            text: '¿Estas seguro de modificar el Custodio?',
+            text: '¿Estas seguro de modificar el custodio?',
             icon: 'warning',
             showCancelButton: true,
             confirmButtonText: 'Si',
@@ -131,7 +131,7 @@ function ConsultarPorId(idCustodio) {
             } else if (
               result.dismiss === Swal.DismissReason.cancel
             ) {
-                swalWithBootstrapButtons.fire('','Operación Cancelada','info')
+                swalWithBootstrapButtons.fire('','Operación cancelada','info')
             }
           })   
     }
@@ -218,7 +218,7 @@ function Eliminar(idCustodio) {
             } else if (
               result.dismiss === Swal.DismissReason.cancel
             ) {
-                swalWithBootstrapButtons.fire('','Operación Cancelada','info')
+                swalWithBootstrapButtons.fire('','Operación cancelada','info')
             }
           })
           Limpiar();

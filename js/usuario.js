@@ -188,7 +188,7 @@ function ConsultarPorId(idUsuario) {
 						console.log(response);
 					});
 			} else if (result.dismiss === Swal.DismissReason.cancel) {
-				swalWithBootstrapButtons.fire('', 'Operación Cancelada', 'info');
+				swalWithBootstrapButtons.fire('', 'Operación cancelada', 'info');
 			}
 		});
 	document.getElementById('rol').disabled = false;
@@ -278,7 +278,7 @@ function Eliminar(idUsuario) {
 						console.log(response);
 					});
 			} else if (result.dismiss === Swal.DismissReason.cancel) {
-				swalWithBootstrapButtons.fire('', 'Operación Cancelada', 'info');
+				swalWithBootstrapButtons.fire('', 'Operación cancelada', 'info');
 			}
 		});
 	Limpiar();
