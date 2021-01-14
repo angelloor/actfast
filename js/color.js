@@ -18,7 +18,7 @@ function ocultarAlerta(){
 
 function soloLetras(){
     $('#nombre').keypress(function (event) {
-      if (event.which < 65 || event.which > 122 ) {
+      if (!((event.which >= 65 && event.which <= 90) || (event.which >= 97 && event.which <= 122) || (event.which == 32))) {
         return false;
       }
     });

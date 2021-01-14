@@ -92,7 +92,7 @@
         $pdf->SetX(23);
         $pdf->MultiCell(0,5,utf8_decode("Fecha: $dia de $mes del $año"),0,'L');
    
-        $stmt = $conexion->prepare("select a.codigo, a.nombre_activo, a.caracteristica, m.nombre_marca, a.modelo, a.serie, e.nombre_estado from activo a inner join marca m on a.marca_id = m.id_marca inner join estado e on a.estado_id = e.id_estado where a.comprobacion_inventario = 'NO' order by a.codigo asc;");
+        $stmt = $conexion->prepare("select a.codigo, a.nombre_activo, a.caracteristica, m.nombre_marca, a.modelo, a.serie, e.nombre_estado from activo a inner join marca m on a.marca_id = m.id_marca inner join estado e on a.estado_id = e.id_estado where (a.comprobacion_inventario = 'NO') and (a.historico = 1) order by a.codigo asc;");
         $stmt->execute();
         $datos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -132,7 +132,7 @@
         header('Content-type:application/xls');
         header('Content-Disposition: attachment; filename=reporteNoConfirmados.xls');
 
-        $stmt = $conexion->prepare("select a.codigo, a.nombre_activo, a.caracteristica, m.nombre_marca, a.modelo, a.serie, e.nombre_estado from activo a inner join marca m on a.marca_id = m.id_marca inner join estado e on a.estado_id = e.id_estado where a.comprobacion_inventario = 'NO' order by a.codigo asc;");
+        $stmt = $conexion->prepare("select a.codigo, a.nombre_activo, a.caracteristica, m.nombre_marca, a.modelo, a.serie, e.nombre_estado from activo a inner join marca m on a.marca_id = m.id_marca inner join estado e on a.estado_id = e.id_estado where (a.comprobacion_inventario = 'NO') and (a.historico = 1) order by a.codigo asc;");
         $stmt->execute();
         $datos = $stmt->fetchAll(PDO::FETCH_ASSOC);
         $mostrar_columnas = false;

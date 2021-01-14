@@ -1,4 +1,4 @@
-var url = "../controlador/Funcionario.controlador.php";
+var url = "../controlador/funcionario.controlador.php";
 var registrosTotales = false;
 $(document).ready(function() {
     Consultar();
@@ -21,8 +21,9 @@ function ocultarAlerta(){
 }
 
 function soloNumeros(e){
+    input = document.getElementById('telefonoFuncionario');
     var key = window.event ? e.which : e.keyCode;
-    if (key < 48 || key > 57) {
+    if (key < 48 || key > 57 || (input.value.length === 13)) {
       e.preventDefault();
     }
 }

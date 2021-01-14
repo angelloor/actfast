@@ -1,5 +1,7 @@
 var url = '../controlador/comprobacionInventario.controlador.php';
 
+var activoComprobacion = 0;
+
 $(document).ready(function () {
     BloquearBotones(true);
     EscucharConsulta();
@@ -56,6 +58,7 @@ function listarEstado() {
 }
 
 function EscucharConsulta() {
+    activoComprobacion = 0;
     $('#codigo').keyup(function () {
         if ($('#codigo').val()) {
             let codigoActivo = $('#codigo').val();
@@ -65,16 +68,14 @@ function EscucharConsulta() {
                 type: 'POST',
                 dataType: 'json',
             }).done(function (response) {
-                console.log(response);
                 if (response == false) {
-                    MostrarAlerta("","No se puede hacer la comprobacion de un activo que no se encuentra asignado aun","info");
-                    return;
+                    activoComprobacion = 1;
                 }else{ 
+                    activoComprobacion = 0;
                     document.getElementById('estado').value = response.nombre_estado;
                     document.getElementById('funcionario').value = response.funcionario;
                     document.getElementById('comentario').value = response.comentario;
                 }
-                
             }).fail(function (response) {
                 console.log(response);
             });
@@ -83,24 +84,28 @@ function EscucharConsulta() {
 }
 
 function Guardar() {
-    $.ajax({
-        data: retornarDatos('GUARDAR'),
-        url: url,
-        type: 'POST',
-        dataType: 'json',
-    })
-        .done(function (response) {
-            if (response == 'OK') {
-                MostrarAlerta('Éxito!', 'Activo verificado', 'success');
-                Cancelar();
-                Limpiar();
-            } else {
-                MostrarAlerta('Error!', response, 'error');
-            }
+    if (activoComprobacion == 1) {
+        MostrarAlerta("","No puede hacer la comprobacion del inventario de un activo que no esta asignado","info")
+    }else{
+        $.ajax({
+            data: retornarDatos('GUARDAR'),
+            url: url,
+            type: 'POST',
+            dataType: 'json',
         })
-        .fail(function (response) {
-            console.log(response);
-        });
+            .done(function (response) {
+                if (response == 'OK') {
+                    MostrarAlerta('Éxito!', 'Activo verificado', 'success');
+                    Cancelar();
+                    Limpiar();
+                } else {
+                    MostrarAlerta('Error!', response, 'error');
+                }
+            })
+            .fail(function (response) {
+                console.log(response);
+            });
+    }
 }
 
 function Restablecer() {
@@ -181,6 +186,8 @@ function Limpiar() {
 }
 
 function Nuevo() {
+    activoComprobacion = 0;
+    console.log(activoComprobacion);
     BloquearBotones(false);
     Limpiar();
 }

@@ -149,7 +149,7 @@
         $pdf->SetTextColor(0,0,0);
         $pdf->parrafo("En la ciudad de Puyo, a los $dia días del mes de $mes del $año, se procede a realizar el acta de entrega entre $nombreEntregaDos, $cargoEntregaDos, $nombreUnidadDos y $nombreFuncionario con C.I. $cedula, $cargoFuncionario,  de los siguientes bienes inmuebles:");
             
-        $stmt = $conexion->prepare("select a.nombre_activo, m.nombre_marca, a.modelo, a.caracteristica, a.serie from entrega_recepcion er inner join activo a on er.activo_id = a.id_activo inner join categoria ca on a.categoria_id = ca.id_categoria inner join marca m on a.marca_id = m.id_marca where (er.persona_id = :idPersona) and (ca.nombre_categoria = :nombreCategoria);");
+        $stmt = $conexion->prepare("select a.codigo, a.nombre_activo, m.nombre_marca, a.modelo, a.caracteristica, a.serie from entrega_recepcion er inner join activo a on er.activo_id = a.id_activo inner join categoria ca on a.categoria_id = ca.id_categoria inner join marca m on a.marca_id = m.id_marca where (er.persona_id = :idPersona) and (ca.nombre_categoria = :nombreCategoria);");
         $stmt->bindValue(":idPersona", $idPersona, PDO::PARAM_INT);
         $stmt->bindValue(":nombreCategoria", $categoria, PDO::PARAM_STR);
         $stmt->execute();
@@ -159,15 +159,17 @@
         $pdf->SetX(25);
         $pdf->ln(5);
 
-        $pdf->Cell(120,6, utf8_decode("DESCRIPCIÓN DEL BIEN"), 1,0,'C',0);
+        $pdf->Cell(30,6, utf8_decode("CODIGO"), 1,0,'C',0);
+        $pdf->Cell(90,6, utf8_decode("DESCRIPCIÓN DEL BIEN"), 1,0,'C',0);
         $pdf->Cell(40,6, "SERIE", 1,1,'C',0);
         //definiar distancias de cada celda
-        $pdf->SetWidths(Array(120,40));
+        $pdf->SetWidths(Array(30,90,40));
         $pdf->SetLineHeight(5);
         $pdf->SetFont('Times','',8);
             
         foreach ($datosActivos as $row) {
             $pdf->Row(25, 0,Array(
+                utf8_decode($row['codigo']),
                 utf8_decode($row['nombre_activo']." ".$row['nombre_marca']." ".$row['modelo']." ".$row['caracteristica']),
                 utf8_decode($row['serie']),
             ), 'C');
@@ -217,7 +219,7 @@
             $pdf->SetTextColor(0,0,0);
             $pdf->parrafo("En la ciudad de Puyo, a los $dia días del mes de $mes del $año, se procede a realizar el acta de entrega entre $nombreEntregaDos, $cargoEntregaDos, $nombreUnidadDos y $nombreFuncionario con C.I. $cedula, $cargoFuncionario,  de los siguientes equipos  informáticos:");
 
-            $stmt = $conexion->prepare("select a.nombre_activo, m.nombre_marca, a.modelo, a.caracteristica, a.serie from entrega_recepcion er inner join activo a on er.activo_id = a.id_activo inner join categoria ca on a.categoria_id = ca.id_categoria inner join marca m on a.marca_id = m.id_marca where (er.persona_id = :idPersona) and (ca.nombre_categoria = :nombreCategoria);");
+            $stmt = $conexion->prepare("select a.codigo, a.nombre_activo, m.nombre_marca, a.modelo, a.caracteristica, a.serie from entrega_recepcion er inner join activo a on er.activo_id = a.id_activo inner join categoria ca on a.categoria_id = ca.id_categoria inner join marca m on a.marca_id = m.id_marca where (er.persona_id = :idPersona) and (ca.nombre_categoria = :nombreCategoria);");
             $stmt->bindValue(":idPersona", $idPersona, PDO::PARAM_INT);
             $stmt->bindValue(":nombreCategoria", $categoria, PDO::PARAM_STR);
             $stmt->execute();
@@ -227,15 +229,17 @@
             $pdf->SetX(25);
             $pdf->ln(5);
             
-            $pdf->Cell(120,6, utf8_decode("DESCRIPCIÓN DEL BIEN"), 1,0,'C',0);
+            $pdf->Cell(30,6, utf8_decode("CODIGO"), 1,0,'C',0);
+            $pdf->Cell(90,6, utf8_decode("DESCRIPCIÓN DEL BIEN"), 1,0,'C',0);
             $pdf->Cell(40,6, "SERIE", 1,1,'C',0);
             //definiar distancias de cada celda
-            $pdf->SetWidths(Array(120,40));
+            $pdf->SetWidths(Array(30,90,40));
             $pdf->SetLineHeight(5);
             $pdf->SetFont('Times','',8);
-            
+                
             foreach ($datosActivos as $row) {
                 $pdf->Row(25, 0,Array(
+                    utf8_decode($row['codigo']),
                     utf8_decode($row['nombre_activo']." ".$row['nombre_marca']." ".$row['modelo']." ".$row['caracteristica']),
                     utf8_decode($row['serie']),
                 ), 'C');
@@ -287,7 +291,7 @@
             $pdf->SetTextColor(0,0,0);
             $pdf->parrafo("En la ciudad de Puyo, a los $dia días del mes de $mes del $año, se procede a realizar el acta de entrega entre $nombreEntregaUno, $cargoEntregaUno, $nombreUnidadUno y $nombreFuncionario con C.I. $cedula, $cargoFuncionario,  de los siguientes activos:");
 
-            $stmt = $conexion->prepare("select a.nombre_activo, m.nombre_marca, a.modelo, a.caracteristica, a.serie from entrega_recepcion er inner join activo a on er.activo_id = a.id_activo inner join categoria ca on a.categoria_id = ca.id_categoria inner join marca m on a.marca_id = m.id_marca where (er.persona_id = :idPersona) and (ca.nombre_categoria = :nombreCategoria);");
+            $stmt = $conexion->prepare("select a.codigo, a.nombre_activo, m.nombre_marca, a.modelo, a.caracteristica, a.serie from entrega_recepcion er inner join activo a on er.activo_id = a.id_activo inner join categoria ca on a.categoria_id = ca.id_categoria inner join marca m on a.marca_id = m.id_marca where (er.persona_id = :idPersona) and (ca.nombre_categoria = :nombreCategoria);");
             $stmt->bindValue(":idPersona", $idPersona, PDO::PARAM_INT);
             $stmt->bindValue(":nombreCategoria", $categoria, PDO::PARAM_STR);
             $stmt->execute();
@@ -297,15 +301,17 @@
             $pdf->SetX(25);
             $pdf->ln(5);
             
-            $pdf->Cell(120,6, utf8_decode("DESCRIPCIÓN DEL BIEN"), 1,0,'C',0);
+            $pdf->Cell(30,6, utf8_decode("CODIGO"), 1,0,'C',0);
+            $pdf->Cell(90,6, utf8_decode("DESCRIPCIÓN DEL BIEN"), 1,0,'C',0);
             $pdf->Cell(40,6, "SERIE", 1,1,'C',0);
             //definiar distancias de cada celda
-            $pdf->SetWidths(Array(120,40));
+            $pdf->SetWidths(Array(30,90,40));
             $pdf->SetLineHeight(5);
             $pdf->SetFont('Times','',8);
-            
+                
             foreach ($datosActivos as $row) {
                 $pdf->Row(25, 0,Array(
+                    utf8_decode($row['codigo']),
                     utf8_decode($row['nombre_activo']." ".$row['nombre_marca']." ".$row['modelo']." ".$row['caracteristica']),
                     utf8_decode($row['serie']),
                 ), 'C');

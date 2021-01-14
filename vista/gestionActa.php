@@ -67,7 +67,7 @@
                         <div class="btn-group-sm">
                             <button class="btn btn-success" id="guardar"  onclick="Guardar();"><span class="fa fa-save"></span>&nbsp&nbspGuardar</button>
                             <button class="btn btn-success" id="modificar" onclick="Modificar();"><span class="fa fa-pencil-alt"></span>&nbsp&nbspModificar</button>
-                            <button class="btn btn-primary" id="cancelar" onclick="Cancelar();"><span class="fa fa-pencil-alt"></span>&nbsp&nbspCancelar</button>
+                            <button class="btn btn-primary" id="cancelar" onclick="Cancelar();"><span class="fa fa-ban"></span>&nbsp&nbspCancelar</button>
                         </div>
                     </div>
                     <div class="col-12 col-sm-12 col-md-5 col-xl-5">

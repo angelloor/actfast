@@ -1,5 +1,5 @@
 <?php
-    require '../modelo/Funcionario.modelo.php';
+    require '../modelo/funcionario.modelo.php';
 
     if($_POST){
         $funcionario = new Funcionario();

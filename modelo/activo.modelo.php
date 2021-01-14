@@ -33,15 +33,8 @@
                 return $stmt->fetchAll(PDO::FETCH_OBJ);
             }
             if($campoBuscar == "Marca"){
-                //obtener el id de la marca
-                $stmt = $conexion->prepare("select id_marca from marca where nombre_marca = :nombremarca");
-                $stmt->bindvalue(":nombremarca", $idBuscar, pdo::PARAM_STR);
-                $stmt->execute();
-                $results = $stmt->fetch(PDO::FETCH_ASSOC);
-                $idMarca = $results['id_marca'];
-                
-                $stmt = $conexion->prepare("select a.id_activo, a.codigo, a.nombre_activo, c.nombre_categoria, a.caracteristica, m.nombre_marca, a.modelo, a.serie, e.nombre_estado, a.comprobacion_inventario from activo a inner join categoria c on a.categoria_id = c.id_categoria inner join marca m on a.marca_id = m.id_marca inner join estado e on a.estado_id = e.id_estado where (a.marca_id = :patron) and (a.historico = 1) order by a.codigo asc");
-                $stmt->bindValue(":patron", $idMarca, PDO::PARAM_INT);
+                $stmt = $conexion->prepare("select a.id_activo, a.codigo, a.nombre_activo, c.nombre_categoria, a.caracteristica, m.nombre_marca, a.modelo, a.serie, e.nombre_estado, a.comprobacion_inventario from activo a inner join categoria c on a.categoria_id = c.id_categoria inner join marca m on a.marca_id = m.id_marca inner join estado e on a.estado_id = e.id_estado where (m.nombre_marca like :patron) and (a.historico = 1) order by a.codigo asc");
+                $stmt->bindValue(":patron", "%".$idBuscar."%", PDO::PARAM_STR);
                 $stmt->execute();
                 return $stmt->fetchAll(PDO::FETCH_OBJ);
             }
