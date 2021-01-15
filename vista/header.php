@@ -23,7 +23,7 @@
       <li class="nav-item dropdown" <?php if($_SESSION['rolUsuario'] == "COMPROBADOR DE INVENTARIO"){ echo 'style="display:none;"';} ?>>
         <a class="nav-link dropdown-toggle" href="gestionActa.php" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gestión de actas</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
-          <a class="dropdown-item" href="gestionActa.php" <?php if($_SESSION['rolUsuario'] == "GENERADOR DE REPORTES Y ACTAS"){ echo 'style="display:none;"';} ?>>Actas</a>
+          <a class="dropdown-item" href="gestionActa.php" <?php if($_SESSION['rolUsuario'] == "GENERADOR DE REPORTES Y ACTAS"){ echo 'style="display:none;"';} ?>>Asignación de activos</a>
           <a class="dropdown-item" href="actasDigitales.php">Actas digitales</a>
           <a class="dropdown-item" href="firma.php">Firmas</a>
         </div>

@@ -48,7 +48,7 @@
       <ol class="breadcrumb bg-transparent">
         <li class="breadcrumb-item"><a href="index.php">Inicio</a></li>
         <li class="breadcrumb-item active">Gestión de actas</li>
-        <li class="breadcrumb-item active" aria-current="page">Actas</li>
+        <li class="breadcrumb-item active" aria-current="page">Asignación de activos</li>
       </ol>
     </nav>
     </div>
@@ -59,7 +59,7 @@
 <div class="container-fluid">
         <div class="card margin-b-30">
             <div class="card-header bg-primary text-color-white">
-                  <h5>Gestionar actas</h5>
+                  <h5>Asignación de activos</h5>
             </div>
             <div class="card-body">
             <div class="row">

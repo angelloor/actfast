@@ -25,7 +25,6 @@ function iniciarSesion(){
     let usuario, clave;
     usuario = document.getElementById("usuario").value;
     clave = document.getElementById("clave").value;
-    console.log(usuario+" - "+clave)
     if(usuario == ""){
         Swal.fire("","Ingrese el usuario","info");
         return;

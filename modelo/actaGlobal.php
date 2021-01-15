@@ -4,13 +4,19 @@
 
     $categoria = $_GET['categoria'];
     
+    date_default_timezone_set('America/Lima');
+
     function fechaHora(){
         $fechaTotal = getdate();
-        if ($fechaTotal['wday'] <= 9) {
-            $dia = "0".$fechaTotal['wday'];
+        if ($fechaTotal['mday'] <= 9) {
+            $dia = "0".$fechaTotal['mday'];
+        }else{
+            $dia = $fechaTotal['mday'];
         }
         if ($fechaTotal['mon'] <= 9) {
             $mes = "0".$fechaTotal['mon'];
+        }else{
+            $mes = $fechaTotal['mon'];
         }
         $fechaCompleta = $dia."/".$mes."/".$fechaTotal['year']." - ".$fechaTotal['hours'].":".$fechaTotal['minutes'];
         return $fechaCompleta;

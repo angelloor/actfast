@@ -1,7 +1,7 @@
 <?php
     $dbc;
-    $user = "root" ;
-    $pass = "sysadmin";
-    $dbname = "actfast";
     $host = "localhost";
+    $dbname = "actfast";
+    $user = "root";
+    $pass = "sysadmin";
 ?>
